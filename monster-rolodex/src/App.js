@@ -23,7 +23,8 @@ class App extends Component { // <- this is a Class component
       // ]
 
       // let's use an API
-      monsters: [] // <- the values will come from an API
+      monsters: [], // <- the values will come from an API
+      searchField: ''
     };
     console.log('constructor');
 
@@ -48,6 +49,12 @@ class App extends Component { // <- this is a Class component
 
   render() {
     console.log('render');
+
+    const filteredMonsters = this.state.monsters.filter((monster) => { // filter() - return an array pf the filtered values
+      //let searchString = event.target.value.toLocaleLowerCase();
+      return monster.name.toLocaleLowerCase().includes(this.state.searchField); // includes() in now case insensitive.
+    });
+
     return (
       <div className="App" >
         <input
@@ -58,19 +65,17 @@ class App extends Component { // <- this is a Class component
 
             console.log(event.target.value);
 
-            const filteredMonsters = this.state.monsters.filter((monster) => { // filter() - return an array pf the filtered values
-              let searchString = event.target.value.toLocaleLowerCase();
-              return monster.name.toLocaleLowerCase().includes(searchString); // includes() in now case insensitive.
-            });
+            const searchField = event.target.value.toLocaleLowerCase();
 
             this.setState(() => {
-              return { monsters: filteredMonsters };
+              return { searchField };
             });
 
           }}
         />
         {
-          this.state.monsters.map((monster) => { // map() - do this operation on each item in the array
+          // Show the filtered array
+          filteredMonsters.map((monster) => { // map() - do this operation on each item in the array
             return <div key={monster.id}><h2>{monster.name}</h2></div>
           })
         }
