@@ -1,5 +1,5 @@
 import { Component } from 'react'; // <- this is required by a Class component
-import logo from './logo.svg';
+import CardList from './components/card-list/card-list.component';
 import './App.css';
 
 // React uses funtions to return HTML
@@ -46,13 +46,23 @@ class App extends Component { // <- this is a Class component
       });
 
   }
+  onSearchChange = (event) => {
+    console.log(event.target.value);
+    const searchField = event.target.value.toLocaleLowerCase();
+    this.setState(() => {
+      return { searchField };
+    });
+  }
 
   render() {
     console.log('render');
 
-    const filteredMonsters = this.state.monsters.filter((monster) => { // filter() - return an array pf the filtered values
-      //let searchString = event.target.value.toLocaleLowerCase();
-      return monster.name.toLocaleLowerCase().includes(this.state.searchField); // includes() in now case insensitive.
+    // Desconstruction
+    const { monsters, searchField } = this.state;
+    const { onSearchChange } = this;
+    // We keep track of the original list and we always do the filtering this original list.
+    const filteredMonsters = monsters.filter((monster) => {            // filter() - return an array pf the filtered values
+      return monster.name.toLocaleLowerCase().includes(searchField);   // includes() in now case insensitive.
     });
 
     return (
@@ -61,24 +71,20 @@ class App extends Component { // <- this is a Class component
           className="search-box"
           type="search"
           placeholder='Search monsters'
-          onChange={(event) => {
+          onChange={onSearchChange}
+        // avoid putting anonymous function code inside an event handler
+        // that may iccur performance hits because of how Javascript recreates the function every time
+        // the component gets rendered. 
+        // put it in a method instead.
 
-            console.log(event.target.value);
-
-            const searchField = event.target.value.toLocaleLowerCase();
-
-            this.setState(() => {
-              return { searchField };
-            });
-
-          }}
         />
-        {
+        {/* {
           // Show the filtered array
           filteredMonsters.map((monster) => { // map() - do this operation on each item in the array
             return <div key={monster.id}><h2>{monster.name}</h2></div>
           })
-        }
+        } */}
+        <CardList monsters={filteredMonsters} />
       </div >
     )
   };
