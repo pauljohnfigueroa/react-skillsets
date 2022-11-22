@@ -3,7 +3,7 @@ import { Component } from "react"; // we need this for our class component
 class CardList extends Component {
 
     render() {
-        console.log(this.props);
+        console.log('Render from CardList component.');
         const { monsters } = this.props;
 
         return (

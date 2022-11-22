@@ -1,6 +1,8 @@
 import { Component } from 'react'; // <- this is required by a Class component
 import CardList from './components/card-list/card-list.component';
+import SearchBox from './components/search-box/search-box.component';
 import './App.css';
+
 
 // React uses funtions to return HTML
 class App extends Component { // <- this is a Class component
@@ -26,7 +28,7 @@ class App extends Component { // <- this is a Class component
       monsters: [], // <- the values will come from an API
       searchField: ''
     };
-    console.log('constructor');
+    //console.log('constructor');
 
   }
 
@@ -39,10 +41,7 @@ class App extends Component { // <- this is a Class component
       .then((users) => {
         this.setState(() => {
           return { monsters: users };
-        },
-          () => {
-            console.log(this.state);
-          });
+        });
       });
 
   }
@@ -55,7 +54,7 @@ class App extends Component { // <- this is a Class component
   }
 
   render() {
-    console.log('render');
+    // console.log('render');
 
     // Desconstruction
     const { monsters, searchField } = this.state;
@@ -67,23 +66,12 @@ class App extends Component { // <- this is a Class component
 
     return (
       <div className="App" >
-        <input
-          className="search-box"
-          type="search"
-          placeholder='Search monsters'
-          onChange={onSearchChange}
-        // avoid putting anonymous function code inside an event handler
-        // that may iccur performance hits because of how Javascript recreates the function every time
-        // the component gets rendered. 
-        // put it in a method instead.
-
+        <SearchBox
+          onChangeHandler={onSearchChange}
+          className="monster-search-box"
+          placeholder='Search Monsters'
         />
-        {/* {
-          // Show the filtered array
-          filteredMonsters.map((monster) => { // map() - do this operation on each item in the array
-            return <div key={monster.id}><h2>{monster.name}</h2></div>
-          })
-        } */}
+
         <CardList monsters={filteredMonsters} />
       </div >
     )
