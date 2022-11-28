@@ -1,0 +1,8 @@
+----------------------------------------------------------
+Converting a class compoent to functional component
+----------------------------------------------------------
+1. Get rid of the import {Componet}.
+2. Replace class declaration with arrow function declaration.
+3. Get rid of the render function.
+4. Add props and (optional forwardRef) arguments to the functional component.
+5. YOu can use implicit return in arrow functions.

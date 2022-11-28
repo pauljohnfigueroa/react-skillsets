@@ -63,6 +63,7 @@ const App = () => {
   );
 };
 
+export default App;
 
 // React uses funtions to return HTML
 // class App extends Component { // <- this is a Class component
@@ -140,4 +141,4 @@ const App = () => {
 
 // }
 
-export default App;
+// export default App;
