@@ -1,6 +1,9 @@
 // import { Component } from "react";
 import './search-box.styles.css';
 
+// you can also destructure here, 
+// const Card = ({className, placeholder, onChangeHandler}}) => {
+// then you can remove props. in the succeeding code.
 const SearchBox = (props) => (
 
     <input
