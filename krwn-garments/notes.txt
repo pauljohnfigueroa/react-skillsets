@@ -17,6 +17,39 @@ const categname = () => {
 
 }
 export default categname
------------------------------
+----------------------------------------------------------
+
+SECTION 4 COMPLETE | November 28, 2022
+----------------------------------------------------------
+SECTION 5 | REACT ROUTER | START | November 28, 2022
+install React Router
 
 
+$npm i react-router-dom@6
+-- IMPORTANT! version 6 is not backwards compatible to version 5
+
+    import {Route, Routes} from 'react-router-dom'
+ 
+    import Outlet
+
+Navigation links
+    import Link
+
+import logo as ReactComponent
+
+SECTION 5 | REACT ROUTER | COMPLETE | November 28, 2022
+
+----------------------------------------------------------
+
+SECTION 6 | FIREBASE | START | November 28, 2022
+
+Signin and create a database in firebase website.
+Authentication
+Firestore DB
+
+Install firebase library
+$npm i firebase --save-dev
+
+
+
+----------------------------------------------------------
