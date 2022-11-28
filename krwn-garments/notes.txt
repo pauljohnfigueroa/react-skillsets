@@ -1,0 +1,22 @@
+--------------------------------------
+
+array of categories
+
+use array.map() to loop through the categories 
+and display the category template for each.
+
+install SASS
+$ npm i sass --save-dev
+
+import .scss files
+
+create a component
+
+-----------------------------
+const categname = () => {
+
+}
+export default categname
+-----------------------------
+
+
