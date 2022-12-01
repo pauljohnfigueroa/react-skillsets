@@ -1,20 +1,66 @@
+import { useState } from "react";
+
+const defaultFormFields = {
+    displayName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+};
+
 const SignUpForm = () => {
+
+    const [formFields, setFormFields] = useState(defaultFormFields);
+    const { displayName, email, password, confirmPassword } = formFields;
+
+    const handleChange = (event) => {
+        const { name } = event;
+    }
+
     return (
         <div>
             <h1>Sign Up Form</h1>
             <form onSubmit={() => { }} action="">
                 <label htmlFor="">Display Name</label>
-                <input type="text" name="" id="" required />
+                <input
+                    type="text"
+                    id=""
+                    onChange={handleChange}
+                    required
+                    name="displayName"
+                    value={displayName}
+                />
 
                 <label htmlFor="">Email</label>
-                <input type="email" name="" id="" required />
+                <input
+                    type="email"
+                    id=""
+                    onChange={handleChange}
+                    required
+                    name="email"
+                    value={email}
+                />
 
                 <label htmlFor="">Password</label>
-                <input type="password" name="" id="" required />
+                <input
+                    type="password"
+                    id=""
+                    onChange={handleChange}
+                    required
+                    name="password"
+                    value={password}
+                />
 
                 <label htmlFor="">Confirm Password</label>
-                <input type="password" name="" id="" required />
+                <input
+                    type="password"
+                    id=""
+                    onChange={handleChange}
+                    required
+                    name="confirmPassword"
+                    value={confirmPassword} />
+
                 <button type="submit">Sign Up</button>
+
             </form>
         </div>
     );
