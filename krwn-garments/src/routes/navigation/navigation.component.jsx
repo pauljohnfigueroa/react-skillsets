@@ -3,6 +3,8 @@ import { Outlet, Link } from 'react-router-dom';
 
 import { ReactComponent as KrwnLogo } from '../../assets/krwnlogo.svg';
 import { UserContext } from '../../contexts/user.context';
+import { CartContext } from '../../contexts/cart.context';
+
 import { signOutUser } from '../../utils/firebase/firebase.utils';
 import CartIcon from '../../components/cart-icon/cart-icon.component';
 import CartDropDown from '../../components/cart-dropdown/cart-dropdown.component';
@@ -13,7 +15,7 @@ const Navigation = () => {
     // used to check if the user is logged in
     const { currentUser } = useContext(UserContext);
     console.log(currentUser);
-
+    const { isCartOpen } = useContext(CartContext);
     // const signOutHandler = async () => {
     //     await signOutUser();
     //     setCurrentUser(null);
@@ -41,7 +43,7 @@ const Navigation = () => {
                     )}
                     <CartIcon />
                 </div>
-                <CartDropDown />
+                {isCartOpen && <CartDropDown />}
             </div>
             <Outlet />
         </Fragment>
