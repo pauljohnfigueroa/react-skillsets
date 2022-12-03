@@ -6,9 +6,10 @@ const Directory = ({ categories }) => { // instead of props.categories, we direc
     return (
         <div className="directory-container">
 
-            {categories.map((category) => (
-                <CategoryItem key={category.id} category={category} />
-            ))
+            {
+                categories.map((category) => (
+                    <CategoryItem key={category.id} category={category} />
+                ))
             };
 
         </div>

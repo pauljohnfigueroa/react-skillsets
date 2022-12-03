@@ -14,7 +14,6 @@ import {
     setDoc
 } from 'firebase/firestore';
 
-
 // Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyDr_cnekSBoeDRPV-4ngnq4FoH2WjTyfPM",
@@ -36,11 +35,10 @@ export const auth = getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider);
 export const signInWithGoogleRedirect = () => signInWithRedirect(auth, googleProvider);
 
-
 // Firebase/firestore
 export const db = getFirestore();
 
-export const createUserDocumentFromAuth = async (userAuth) => {
+export const createUserDocumentFromAuth = async (userAuth, additionalInformation) => {
     const userDocRef = doc(db, 'usersx', userAuth.uid);
     console.log(userDocRef);
     const userSnaphot = await getDoc(userDocRef);
@@ -54,6 +52,7 @@ export const createUserDocumentFromAuth = async (userAuth) => {
                 displayName,
                 email,
                 createdAt,
+                ...additionalInformation,
             });
         } catch (error) {
             console.log('Something went wrong in creating the user.', error.messasge);
@@ -61,7 +60,6 @@ export const createUserDocumentFromAuth = async (userAuth) => {
     }
     return userDocRef;
 }
-
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
     if (!email || !password) return;
