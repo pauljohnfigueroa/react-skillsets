@@ -1,4 +1,5 @@
 import { initializeApp } from 'firebase/app';
+
 import {
     getAuth,
     signInWithRedirect,
@@ -55,10 +56,12 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
                 createdAt,
                 ...additionalInformation,
             });
+
         } catch (error) {
             console.log('Something went wrong in creating the user.', error.messasge);
         }
     }
+
     return userDocRef;
 }
 
