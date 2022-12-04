@@ -3,7 +3,7 @@ import { createContext, useState, useEffect } from "react";
 
 const addCartItem = (cartItems, productToAdd) => {
     const existingCartItem = cartItems.find((cartItem) => cartItem.id === productToAdd.id);
-    console.log(existingCartItem);
+    //console.log(existingCartItem);
 
     if (existingCartItem) {
 
@@ -17,6 +17,21 @@ const addCartItem = (cartItems, productToAdd) => {
     return [...cartItems, { ...productToAdd, quantity: 1 }];
 }
 
+const removeCartItem = (cartItems, productToRemoveFrom) => {
+    const existingCartItem = cartItems.find((cartItem) => cartItem.id === productToRemoveFrom.id);
+
+    if (existingCartItem) {
+
+        return cartItems.map((cartItem) =>
+            cartItem.id === productToRemoveFrom.id
+                ? { ...cartItem, quantity: cartItem.quantity - 1 }
+                : cartItem
+        );
+    }
+
+    return [...cartItems, { ...productToRemoveFrom, quantity: 1 }];
+}
+
 
 
 export const CartContext = createContext({
@@ -25,6 +40,7 @@ export const CartContext = createContext({
     cartItems: [],
     addItemToCart: () => { },
     cartCount: 0,
+    removeItemFromCart: () => { },
 });
 
 export const CartProvider = ({ children }) => {
@@ -41,8 +57,12 @@ export const CartProvider = ({ children }) => {
         setCartItems(addCartItem(cartItems, productToAdd));
     }
 
+    const removeItemFromCart = (productToRemoveFrom) => {
+        setCartItems(removeCartItem(cartItems, productToRemoveFrom));
+    }
+
     // expose these values to the children components
-    const value = { isCartOpen, setIsCartOpen, addItemToCart, cartItems, cartCount };
+    const value = { isCartOpen, setIsCartOpen, addItemToCart, removeItemFromCart, cartItems, cartCount };
 
     return <CartContext.Provider value={value}> {children} </CartContext.Provider>
 }
