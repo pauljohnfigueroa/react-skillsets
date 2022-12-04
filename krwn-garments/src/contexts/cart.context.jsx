@@ -17,19 +17,21 @@ const addCartItem = (cartItems, productToAdd) => {
     return [...cartItems, { ...productToAdd, quantity: 1 }];
 }
 
-const removeCartItem = (cartItems, productToRemoveFrom) => {
-    const existingCartItem = cartItems.find((cartItem) => cartItem.id === productToRemoveFrom.id);
+const removeCartItem = (cartItems, cartItemToRemove) => {
 
-    if (existingCartItem) {
+    const existingCartItem = cartItems.find((cartItem) => cartItem.id === cartItemToRemove.id);
 
-        return cartItems.map((cartItem) =>
-            cartItem.id === productToRemoveFrom.id
-                ? { ...cartItem, quantity: cartItem.quantity - 1 }
-                : cartItem
-        );
+    // check if the quantity is 1, if so, remove the item from cart.
+    if (existingCartItem.quantity === 1) {
+        // remove the current item by returning only the item that is NOT equal to the current item
+        return cartItems.filter((cartItem) => cartItem.id != cartItemToRemove.id);
     }
 
-    return [...cartItems, { ...productToRemoveFrom, quantity: 1 }];
+    return cartItems.map((cartItem) =>
+        cartItem.id === cartItemToRemove.id
+            ? { ...cartItem, quantity: cartItem.quantity - 1 }
+            : cartItem
+    );
 }
 
 
@@ -57,8 +59,8 @@ export const CartProvider = ({ children }) => {
         setCartItems(addCartItem(cartItems, productToAdd));
     }
 
-    const removeItemFromCart = (productToRemoveFrom) => {
-        setCartItems(removeCartItem(cartItems, productToRemoveFrom));
+    const removeItemFromCart = (cartItemToRemove) => {
+        setCartItems(removeCartItem(cartItems, cartItemToRemove));
     }
 
     // expose these values to the children components
