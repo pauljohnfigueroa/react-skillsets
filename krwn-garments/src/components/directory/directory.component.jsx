@@ -10,7 +10,7 @@ const Directory = ({ categories }) => { // instead of props.categories, we direc
                 categories.map((category) => (
                     <CategoryItem key={category.id} category={category} />
                 ))
-            };
+            }
 
         </div>
     );
