@@ -18,6 +18,8 @@ import {
     setDoc,
     collection,
     writeBatch,
+    query,
+    getDocs,
 } from 'firebase/firestore';
 
 // Your web app's Firebase configuration
@@ -55,6 +57,25 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
 
     await batch.commit();
     console.log('done');
+}
+
+// we setup utility functions like this one to minimize the effect 
+// of libraries changing in our code.
+// If ever firebase changes how it work, we will only 
+// change this part of the code to reflect those changes in our App
+export const getCategoriesAndDocuments = async () => {
+    const collectionRef = collection(db, 'categories');
+    const q = query(collectionRef);
+
+    const querySnapshot = await getDocs(q);
+    const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+        const { title, items } = docSnapshot.data();
+        acc[title.toLowerCase()] = items;
+        return acc;
+
+    }, {});
+
+    return categoryMap;
 }
 
 export const createUserDocumentFromAuth = async (userAuth, additionalInformation) => {

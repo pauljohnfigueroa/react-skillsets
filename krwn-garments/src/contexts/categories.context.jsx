@@ -10,27 +10,38 @@
 // }
 
 import { createContext, useState, useEffect } from "react";
-import { addCollectionAndDocuments } from '../utils/firebase/firebase.utils';
+import { getCategoriesAndDocuments } from '../utils/firebase/firebase.utils';
 
 // import PRODUCTS from '../shop-data.json';
 import SHOP_DATA from "../shop-data.js";
 
 // initialize
-export const ProductsContext = createContext({
-    products: [],
+export const CategoriesContext = createContext({
+    categoriesMap: {},
 });
 
-export const ProductsProvider = ({ children }) => {
+export const CategoriesProvider = ({ children }) => {
 
     // We used this to upload data to firestore
     // useEffect(() => {
     //     addCollectionAndDocuments('categories', SHOP_DATA);
     // }, []);
 
-    const [products, setProducts] = useState([]);
-    const value = { products };
+    const [categoriesMap, setCategoriesMap] = useState({});
+
+    useEffect(() => {
+        const getCategoriesMap = async () => {
+            const categoryMap = await getCategoriesAndDocuments();
+            console.log(categoryMap);
+            setCategoriesMap(categoryMap);
+        }
+        getCategoriesMap();
+    }, []);
+
+    const value = { categoriesMap };
+
     // console.log(value);
     // {children} pertains to all the 
     // components inside the ProductsProvider (see index.js)}
-    return (<ProductsContext.Provider value={value}>{children}</ProductsContext.Provider>)
+    return (<CategoriesContext.Provider value={value}>{children}</CategoriesContext.Provider>)
 }

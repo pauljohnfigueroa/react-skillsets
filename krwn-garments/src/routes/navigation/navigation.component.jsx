@@ -14,7 +14,6 @@ const Navigation = () => {
 
     // used to check if the user is logged in
     const { currentUser } = useContext(UserContext);
-    console.log(currentUser);
     const { isCartOpen } = useContext(CartContext);
     // const signOutHandler = async () => {
     //     await signOutUser();
