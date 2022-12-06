@@ -1,6 +1,6 @@
 import { useState } from "react";
 import FormInput from "../form-input/form-input.component";
-import Button from "../button/button.component";
+import Button, { BUTTON_TYPE_CLASS } from "../button/button.component";
 
 import {
     signInWithGooglePopup,
@@ -91,8 +91,8 @@ const SignInForm = () => {
                     value={password}
                 />
                 <div className="buttons-container">
-                    <Button buttonType="inverted" type="submit" onClick={handleSubmit}>Sign In</Button>
-                    <Button type="button" buttonType="google" onClick={signInWithGoogle}>Sign In with Google</Button>
+                    <Button buttonType={BUTTON_TYPE_CLASS.inverted} type="submit" onClick={handleSubmit}>Sign In</Button>
+                    <Button type="button" buttonType={BUTTON_TYPE_CLASS.google} onClick={signInWithGoogle}>Sign In with Google</Button>
                 </div>
             </form>
         </div>
