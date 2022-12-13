@@ -14,6 +14,10 @@ export const USER_ACTION_TYPES = {
     SET_CURRENT_USER: 'SET_CURRENT_USER',
 }
 
+const INITIAL_STATE = {
+    currentUser: null,
+}
+
 const userReducer = (state, action) => {
     console.log('dispatched');
     console.log(action);
@@ -32,9 +36,7 @@ const userReducer = (state, action) => {
     }
 }
 
-const INITIAL_STATE = {
-    currentUser: null,
-}
+
 
 // a provider is the actual component
 // every context, there is a Provider
