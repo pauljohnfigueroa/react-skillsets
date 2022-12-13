@@ -63,3 +63,7 @@ Merge to main branch.
     git merge main branchname
 
 --------------------------------------------------------------------------
+
+December 13, 2022
+Redux
+$npm i redux react-redux redux-logger --save-dev

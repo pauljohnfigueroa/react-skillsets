@@ -117,10 +117,7 @@ export const CartProvider = ({ children }) => {
         //             cartCount: newCartCount,
         //     }
         // });
-
-
     }
-
 
     const addItemToCart = (productToAdd) => {
         //setCartItems(addCartItem(cartItems, productToAdd));
