@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const MainNavigation = () => {
 
@@ -28,7 +29,9 @@ const MainNavigation = () => {
         <nav className="nav-desktop">
             <ul>
                 {menuItems.map((item) => (
-                    <li key={item.id}><a href={item.url}>{item.title}</a></li>
+                    <li key={item.id}>
+                        <Link to={item.url}>{item.title}</Link>
+                    </li>
                 ))}
             </ul>
         </nav>

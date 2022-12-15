@@ -4,7 +4,7 @@ import FeaturedProducts from "../../components/featured-products/featured-produc
 import Marketing from "../../components/marketing/marketing.component";
 import Footer from "../../components/footer/footer.component";
 
-import '../../assets/css/main.scss';
+
 
 const Home = () => {
 

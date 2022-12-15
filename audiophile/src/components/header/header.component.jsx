@@ -2,9 +2,9 @@ import { ReactComponent as AudiophileLogo } from '../../assets/images/logo.svg';
 import { ReactComponent as MobileNavIcon } from '../../assets/images/icon-hamburger.svg';
 import { ReactComponent as CartIcon } from '../../assets/images/icon-cart.svg';
 
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 
-import MainNavigation from "../main-navigation/main-navigation.component";
+import MainNavigation from "../../routes/main-navigation/main-navigation.component";
 
 const Header = () => {
     return (
@@ -14,9 +14,13 @@ const Header = () => {
                     <div className="hamburger-icon">
                         <MobileNavIcon />
                     </div>
-                    <div className="logo">
-                        <AudiophileLogo />
-                    </div>
+
+                    <Link to="/">
+                        <div className="logo">
+                            <AudiophileLogo />
+                        </div>
+                    </Link>
+
                     <MainNavigation />
                     <div className="cart-icon">
                         <CartIcon />

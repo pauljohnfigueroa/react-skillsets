@@ -2,17 +2,10 @@ import { Route, Routes } from "react-router-dom";
 import Header from "./components/header/header.component";
 import Home from "./routes/home/home.component";
 
-const Headphones = () => {
-  return <h1>I am the Headphones Page.</h1>;
-}
+import ProductCategoryPage from "./components/product-category-page/product-category-page.component";
 
-const Speakers = () => {
-  return <h1>I am the Speakers Page.</h1>;
-}
-
-const Earphones = () => {
-  return <h1>I am the Earphones Page.</h1>;
-}
+import './assets/css/main.scss';
+import './assets/css/categories.scss';
 
 const App = () => {
   return (
@@ -20,9 +13,9 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Header />} >
           <Route index element={<Home />} />
-          <Route path="headphones" element={<Headphones />} />
-          <Route path="speakers" element={<Speakers />} />
-          <Route path="earphones" element={<Earphones />} />
+          <Route path="headphones" element={<ProductCategoryPage categoryTitle="Headphones" />} />
+          <Route path="speakers" element={<ProductCategoryPage categoryTitle="Speakers" />} />
+          <Route path="earphones" element={<ProductCategoryPage categoryTitle="Earphones" />} />
         </Route>
       </Routes>
     </>
