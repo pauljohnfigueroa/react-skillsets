@@ -1,0 +1,18 @@
+/* Checkout - Desktop */
+@media screen and (min-width: 1018px) {
+
+    .checkout {
+        display: flex;
+        flex-direction: row;
+        width: 75%;
+        margin: 0 auto;
+
+        .checkout-form {
+            width: 70%;
+        }
+
+        .checkout-summary {
+            width: 30%;
+        }
+    }
+}
