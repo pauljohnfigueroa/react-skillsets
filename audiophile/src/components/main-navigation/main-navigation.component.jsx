@@ -5,22 +5,22 @@ const MainNavigation = () => {
         {
             "id": 1,
             "title": "Home",
-            "url": "#"
+            "url": "/"
         },
         {
             "id": 2,
             "title": "Speakers",
-            "url": "#"
+            "url": "/speakers"
         },
         {
             "id": 3,
             "title": "Headphones",
-            "url": "#"
+            "url": "/headphones"
         },
         {
             "id": 4,
             "title": "Earphones",
-            "url": "#"
+            "url": "/earphones"
         }
     ];
 

@@ -2,6 +2,8 @@ import { ReactComponent as AudiophileLogo } from '../../assets/images/logo.svg';
 import { ReactComponent as MobileNavIcon } from '../../assets/images/icon-hamburger.svg';
 import { ReactComponent as CartIcon } from '../../assets/images/icon-cart.svg';
 
+import { Outlet } from 'react-router-dom';
+
 import MainNavigation from "../main-navigation/main-navigation.component";
 
 const Header = () => {
@@ -21,6 +23,7 @@ const Header = () => {
                     </div>
                 </div>
             </header>
+            <Outlet />
         </>
 
     );

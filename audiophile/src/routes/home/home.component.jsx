@@ -1,5 +1,3 @@
-
-import Header from "../../components/header/header.component";
 import Hero from "../../components/hero/hero.component";
 import ProductCategories from "../../components/product-categories/product-categories.component";
 import FeaturedProducts from "../../components/featured-products/featured-products.component";
@@ -12,7 +10,6 @@ const Home = () => {
 
     return (
         <>
-            <Header />
             <Hero />
             <ProductCategories />
             <FeaturedProducts />
