@@ -5,7 +5,7 @@ import Home from "./routes/home/home.component";
 import ProductCategoryPage from "./components/product-category-page/product-category-page.component";
 
 import './assets/css/main.scss';
-import './assets/css/categories.scss';
+// import '../../assets/css/categories.scss';
 
 const App = () => {
   return (

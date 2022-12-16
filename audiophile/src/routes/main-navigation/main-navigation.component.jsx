@@ -31,6 +31,7 @@ const MainNavigation = () => {
                 {menuItems.map((item) => (
                     <li key={item.id}>
                         <Link to={item.url}>{item.title}</Link>
+
                     </li>
                 ))}
             </ul>

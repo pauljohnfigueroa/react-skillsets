@@ -6,6 +6,8 @@ import { Outlet, Link } from 'react-router-dom';
 
 import MainNavigation from "../../routes/main-navigation/main-navigation.component";
 
+import '../../assets/css/categories.scss';
+
 const Header = () => {
     return (
         <>
