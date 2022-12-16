@@ -1,4 +1,5 @@
 import { ReactComponent as AudiophileLogo } from '../../assets/images/logo.svg';
+import MainNavigation from '../../routes/main-navigation/main-navigation.component';
 
 const Footer = () => {
     return (
@@ -12,15 +13,7 @@ const Footer = () => {
                     <div className="logo">
                         <AudiophileLogo />
                     </div>
-
-                    <nav>
-                        <ul>
-                            <li><a href="#" alt="Home Page">Home</a></li>
-                            <li><a href="#" alt="Speakers">Speakers</a></li>
-                            <li><a href="#" alt="Headphones">Headphones</a></li>
-                            <li><a href="#" alt="Earphones">Earphones</a></li>
-                        </ul>
-                    </nav>
+                    <MainNavigation />
                 </div>
 
                 <p className="footer-subtexts">Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers and sound specialists who are devoted to helping you get the most out of personal audio. Come and visit our demo facility - we’re open 7 days a week.</p>
