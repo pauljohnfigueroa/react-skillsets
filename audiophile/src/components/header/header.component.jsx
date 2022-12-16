@@ -17,13 +17,14 @@ const Header = () => {
                         <MobileNavIcon />
                     </div>
 
-                    <Link to="/">
-                        <div className="logo">
+                    <div className="logo">
+                        <Link to="/">
                             <AudiophileLogo />
-                        </div>
-                    </Link>
+                        </Link>
+                    </div>
 
                     <MainNavigation />
+
                     <div className="cart-icon">
                         <CartIcon />
                     </div>
