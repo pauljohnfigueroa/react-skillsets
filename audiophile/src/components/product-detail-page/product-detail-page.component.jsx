@@ -6,6 +6,7 @@ const ProductDetailPage = () => {
 
     return (
         <>
+
             <ProductCategories />
             <Marketing />
             <Footer />
