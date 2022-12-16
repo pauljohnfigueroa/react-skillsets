@@ -4,46 +4,12 @@ import Home from "./routes/home/home.component";
 
 import ProductCategoryPage from "./components/product-category-page/product-category-page.component";
 
+import products from "./data/products.data";
+
 import './assets/css/main.scss';
-// import '../../assets/css/categories.scss';
+import './assets/css/categories.scss';
 
 const App = () => {
-
-  const products = {
-    headphones: [
-      {
-        id: 1,
-        name: 'XX99 Mark 2 Headphones',
-        price: 1214
-      },
-      {
-        id: 2,
-        name: 'XX99 Mark 1 Headphones',
-        price: 1021
-      },
-      {
-        id: 3,
-        name: 'XX59 Headphones',
-        price: 1987
-      }
-    ],
-
-    speakers: [
-      {
-        id: 1,
-        name: 'ZX7 Speaker',
-        price: 2267
-      }
-    ],
-    earphones: [
-      {
-        id: 1,
-        name: 'X23 Earphones',
-        price: 345
-      }
-    ]
-  };
-
 
   return (
     <>

@@ -1,27 +1,48 @@
+import { useNavigate } from "react-router-dom";
+
 const ProductCategoryListing = ({ products }) => {
-    console.log(products);
+
+    const navigate = useNavigate();
+
+    const onClickHandlerSeeProduct = (e, productPageSlug) => {
+        e.preventDefault();
+
+        //navigate('/');
+        console.log(productPageSlug);
+    }
+
     return (
         <>
-            <section class="product-section">
-                {products.map(product => (
-                    <div class="product-card">
-                        <div class="product-card-header">
-                            <img srcset="./dist/assets/images/product-xx99-mark-two-headphones/desktop/image-category-page-preview.jpg 1080w,
-        ./dist/assets/images/product-xx99-mark-two-headphones/mobile/image-category-page-preview-2.png 491w"
-                                src="./dist/assets/images/product-xx99-mark-two-headphones/desktop/image-category-page-preview.jpg" alt="" />
+            <section className="product-section">
+                {products.map(product => {
+
+                    let reversed = 'product-card-reversed';
+                    let isNewProduct = <p className="sub-heading">NEW PRODUCT</p>; // remember, we are working in JSX here and not HTML
+
+                    if (product.id % 2) {
+                        reversed = '';
+                    }
+
+                    if (!product.isNewProduct) {
+                        isNewProduct = '';
+                    }
+
+                    return (<div key={product.id} className={`product-card ${reversed}`}>
+                        <div className="product-card-header">
+                            <img srcSet={`${product.imgUrlMobile} ${product.imgUrlMobileWidth},
+                            ${product.imgUrlDesktop} ${product.imgUrlDesktopWidth}`}
+                                src={product.imgUrlDesktop} alt={product.name} />
                         </div>
-                        <div class="product-card-description-container">
-                            <div class="product-card-description">
-                                <p class="sub-heading">NEW PRODUCT</p>
-                                <h2 class="heading">XX99 Mark II Headphones</h2>
-                                <p class="sub-text">The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your
-                                    premium
-                                    headphone experience by reproducing the balanced depth and precision of studio-quality sound.</p>
-                                <button type="button" class="button">See Product</button>
+                        <div className="product-card-description-container">
+                            <div className="product-card-description">
+                                {isNewProduct}
+                                <h2 className="heading">{product.name}</h2>
+                                <p className="sub-text">{product.description}</p>
+                                <button type="button" className="button" onClick={event => onClickHandlerSeeProduct(event, product.productPageSlug)}>See Product</button>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    </div>)
+                })}
             </section>
         </>
     );
