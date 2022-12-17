@@ -9,6 +9,7 @@ import products from "./data/products.data";
 
 import './assets/css/main.scss';
 import './assets/css/categories.scss';
+import './assets/css/product.scss';
 
 const App = () => {
 
@@ -20,7 +21,7 @@ const App = () => {
           <Route path="headphones" element={<ProductCategoryPage categoryTitle="Headphones" products={products.headphones} />} />
           <Route path="speakers" element={<ProductCategoryPage categoryTitle="Speakers" products={products.speakers} />} />
           <Route path="earphones" element={<ProductCategoryPage categoryTitle="Earphones" products={products.earphones} />} />
-          <Route path="product" element={<ProductDetailPage />} />
+          <Route path="product" element={<ProductDetailPage product={products.headphones[0]} />} />
         </Route>
       </Routes>
     </>
