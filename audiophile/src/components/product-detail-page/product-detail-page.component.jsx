@@ -1,5 +1,7 @@
 import ProductFeatures from "./product-features/product-features.component";
 import ProductInTheBox from "./product-in-the-box/product-in-the-box.component";
+import ProductSuggestionCard from "./product-suggestion-card/product-suggestion-card.component";
+
 
 import ProductCategories from "../product-categories/product-categories.component";
 import Marketing from "../marketing/marketing.component";
@@ -114,44 +116,14 @@ const ProductDetailPage = ({ product }) => {
 
             <section className="product-suggestions">
                 <h2 className="heading">You may also like</h2>
-
                 <div className="product-suggestions-cards">
-                    <div className="suggestion-card">
-                        <div className="suggestion-card-header">
-                            <div className="image-container">
-                                <img srcSet={`${product.relatedProducts[0].photoMobile} ${product.relatedProducts[0].photoMobileWidth}`}
-                                    src={product.relatedProducts[0].photoMobile} alt={product.name} />
-                            </div>
-                        </div>
-                        <h2 className="title">{product.relatedProducts[0].name}</h2>
-                        <div className="suggestion-link">
-                            <a href="#">See Product</a>
-                        </div>
-                    </div>
-                    <div className="suggestion-card">
-                        <div className="suggestion-card-header">
-                            <div className="image-container">
-                                <img srcSet={`${product.relatedProducts[1].photoMobile} ${product.relatedProducts[1].photoMobileWidth}`}
-                                    src={product.relatedProducts[1].photoMobile} alt={product.name} />
-                            </div>
-                        </div>
-                        <h2 className="title">{product.relatedProducts[1].name}</h2>
-                        <div className="suggestion-link">
-                            <a href="#">See Product</a>
-                        </div>
-                    </div>
-                    <div className="suggestion-card">
-                        <div className="suggestion-card-header">
-                            <div className="image-container">
-                                <img srcSet={`${product.relatedProducts[2].photoMobile} ${product.relatedProducts[2].photoMobileWidth}`}
-                                    src={product.relatedProducts[2].photoMobile} alt={product.name} />
-                            </div>
-                        </div>
-                        <h2 className="title">{product.relatedProducts[2].name}</h2>
-                        <div className="suggestion-link">
-                            <a href="#">See Product</a>
-                        </div>
-                    </div>
+                    {product.relatedProducts.map(item => (
+                        <ProductSuggestionCard
+                            photoMobile={item.photoMobile}
+                            photoMobileWidth={item.photoMobileWidth}
+                            relatedProductName={item.relatedProductName}
+                        />
+                    ))}
                 </div>
             </section>
 
