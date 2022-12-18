@@ -1,5 +1,5 @@
 import ProductFeatures from "./product-features/product-features.component";
-
+import ProductInTheBox from "./product-in-the-box/product-in-the-box.component";
 
 import ProductCategories from "../product-categories/product-categories.component";
 import Marketing from "../marketing/marketing.component";
@@ -72,26 +72,17 @@ const ProductDetailPage = ({ product }) => {
                 <div className="in-the-box">
                     <h2>In the box</h2>
                     <ul>
-                        <li>
-                            <p className="quantity">{product.inTheBox[0].quantity}x</p>
-                            <p className="description">{product.inTheBox[0].description}</p>
-                        </li>
-                        <li>
-                            <p className="quantity">{product.inTheBox[1].quantity}x</p>
-                            <p className="description">{product.inTheBox[1].description}</p>
-                        </li>
-                        <li>
-                            <p className="quantity">{product.inTheBox[2].quantity}x</p>
-                            <p className="description">{product.inTheBox[2].description}</p>
-                        </li>
-                        <li>
-                            <p className="quantity">{product.inTheBox[3].quantity}x</p>
-                            <p className="description">{product.inTheBox[3].description}</p>
-                        </li>
-                        <li>
-                            <p className="quantity">{product.inTheBox[4].quantity}x</p>
-                            <p className="description">{product.inTheBox[4].description}</p>
-                        </li>
+                        {product.inTheBox.map(item => (
+                            <>
+                                <li>
+                                    <ProductInTheBox
+                                        quantity={item.quantity}
+                                        description={item.description}
+                                    />
+                                </li>
+                            </>
+                        )
+                        )}
                     </ul>
                 </div>
             </section >
