@@ -1,3 +1,6 @@
+import ProductFeatures from "./product-features/product-features.component";
+
+
 import ProductCategories from "../product-categories/product-categories.component";
 import Marketing from "../marketing/marketing.component";
 import Footer from "../footer/footer.component";
@@ -63,7 +66,7 @@ const ProductDetailPage = ({ product }) => {
             <section className="product-features-container">
                 <div className="product-features">
                     <h2>Features</h2>
-                    <p>{product.features}</p>
+                    <ProductFeatures features={product.features} />
                 </div>
 
                 <div className="in-the-box">
