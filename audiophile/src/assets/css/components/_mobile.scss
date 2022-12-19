@@ -36,6 +36,10 @@ header {
         .cart-icon {
             width: 20%;
             text-align: right;
+
+            &:hover {
+                cursor: pointer;
+            }
         }
     }
 }

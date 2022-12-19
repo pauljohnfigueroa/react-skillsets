@@ -1,13 +1,18 @@
+import { useContext } from 'react';
+
 import { ReactComponent as AudiophileLogo } from '../../assets/images/logo.svg';
 import { ReactComponent as MobileNavIcon } from '../../assets/images/icon-hamburger.svg';
-//import { ReactComponent as CartIcon } from '../../assets/images/icon-cart.svg';
 import CartIcon from '../cart/cart-icon/cart-icon.component';
 import CartDropDown from '../cart/cart-dropdown.component';
+import { CartContext } from '../../contexts/cart.context';
+
 import { Outlet, Link } from 'react-router-dom';
 
 import MainNavigation from "../../routes/main-navigation/main-navigation.component";
 
 const Header = () => {
+    const { isCartOpen } = useContext(CartContext);
+
     return (
         <>
             <header>
@@ -24,9 +29,12 @@ const Header = () => {
                     <MainNavigation />
                     <CartIcon />
                 </div>
-                <CartDropDown />
             </header>
+
+
+
             <Outlet />
+            {isCartOpen && <CartDropDown />}
         </>
 
     );

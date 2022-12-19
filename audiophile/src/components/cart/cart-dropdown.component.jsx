@@ -4,7 +4,6 @@ const CartDropDown = () => {
         <>
             <section class="cart-modal">
                 <aside class="cart">
-
                     <div class="heading-container">
                         <h2 class="heading">Cart <span>(3)</span></h2>
                         <a href="#">Remove all</a>
