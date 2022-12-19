@@ -10,6 +10,7 @@ import products from "./data/products.data";
 import './assets/css/main.scss';
 import './assets/css/categories.scss';
 import './assets/css/product.scss';
+import './assets/css/cart.scss';
 
 const App = () => {
 
