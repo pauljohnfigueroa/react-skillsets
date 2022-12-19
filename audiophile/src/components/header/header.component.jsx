@@ -30,9 +30,6 @@ const Header = () => {
                     <CartIcon />
                 </div>
             </header>
-
-
-
             <Outlet />
             {isCartOpen && <CartDropDown />}
         </>

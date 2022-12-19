@@ -4,17 +4,16 @@ import ProductCategories from "../product-categories/product-categories.componen
 import Marketing from "../marketing/marketing.component";
 import Footer from "../footer/footer.component";
 
-
-const ProductCategoryPage = ({ categoryTitle, products }) => {
+const ShopPage = () => {
 
     return (
         <>
-            <ProductCategoryTitle categoryTitle={categoryTitle} />
-            <ProductCategoryListing products={products} />
+            <ProductCategoryTitle />
+            <ProductCategoryListing />
             <ProductCategories />
             <Marketing />
             <Footer />
         </>
     );
 }
-export default ProductCategoryPage;
+export default ShopPage;

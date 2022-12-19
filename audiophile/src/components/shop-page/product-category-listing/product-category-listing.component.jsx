@@ -1,25 +1,26 @@
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import { CategoriesContext } from "../../../contexts/categories.context";
+
 const ProductCategoryListing = ({ products }) => {
 
-    const { categoriesMap } = useContext(CategoriesContext);
+    //const { categoriesMap } = useContext(CategoriesContext);
 
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
-    const onClickHandlerSeeProduct = (e, productPageSlug) => {
-        e.preventDefault();
+    // const onClickHandlerSeeProduct = (e, productPageSlug) => {
+    //     e.preventDefault();
 
-        //navigate('/');
-        console.log(productPageSlug);
-    }
+    //     //navigate('/');
+    //     console.log(productPageSlug);
+    // }
 
-    console.log('CATEGORIES MAP', categoriesMap);
+    //console.log('CATEGORIES MAP', categoriesMap);
 
     return (
         <>
             <section className="product-section">
-                {categoriesMap.headphones.map(product => {
+                {products.map(product => {
 
                     let reversed = 'product-card-reversed';
                     let isNewProduct = <p className="sub-heading">NEW PRODUCT</p>; // remember, we are working in JSX here and not HTML
@@ -43,7 +44,7 @@ const ProductCategoryListing = ({ products }) => {
                                 {isNewProduct}
                                 <h2 className="heading">{product.name}</h2>
                                 <p className="sub-text">{product.description}</p>
-                                <button type="button" className="button" onClick={event => onClickHandlerSeeProduct(event, product.productPageSlug)}>See Product</button>
+                                <button type="button" className="button" >See Product</button>
                             </div>
                         </div>
                     </div>)
