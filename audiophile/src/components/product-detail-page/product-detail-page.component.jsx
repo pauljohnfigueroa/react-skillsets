@@ -1,5 +1,6 @@
 import ProductFeatures from "./product-features/product-features.component";
 import ProductInTheBox from "./product-in-the-box/product-in-the-box.component";
+import ProductGalleryItem from "./product-gallery-item/product-gallery-item.component";
 import ProductSuggestionCard from "./product-suggestion-card/product-suggestion-card.component";
 
 
@@ -91,26 +92,38 @@ const ProductDetailPage = ({ product }) => {
 
             <section className="gallery">
                 <div className="vertical-group">
-                    <div className="gallery-card-vert">
-                        <img srcSet={`${product.galleryPhotos.photo1Mobile} ${product.galleryPhotos.photo1MobileWidth},
-                        ${product.galleryPhotos.photo1Tablet} ${product.galleryPhotos.photo1TabletWidth},
-                        ${product.galleryPhotos.photo1Desktop} ${product.galleryPhotos.photo1DesktopWidth}`}
-                            src={product.galleryPhotos.photo1Desktop} alt={product.name} />
-                    </div>
-                    <div className="gallery-card-vert">
-                        <img srcSet={`${product.galleryPhotos.photo2Mobile} ${product.galleryPhotos.photo2MobileWidth},
-                        ${product.galleryPhotos.photo2Tablet} ${product.galleryPhotos.photo2TabletWidth},
-                        ${product.galleryPhotos.photo2Desktop} ${product.galleryPhotos.photo2DesktopWidth}`}
-                            src={product.galleryPhotos.photo2Desktop} alt={product.name} />
-                    </div>
+                    <ProductGalleryItem
+                        productName={product.name}
+                        className="gallery-card-vert"
+                        photoMobile={product.galleryPhotos.photo1Mobile}
+                        photoTablet={product.galleryPhotos.photo1Tablet}
+                        photoDesktop={product.galleryPhotos.photo1Desktop}
+                        photoMobileWidth={product.galleryPhotos.photo1MobileWidth}
+                        photoTabletWidth={product.galleryPhotos.photo1TabletWidth}
+                        photoDesktopWidth={product.galleryPhotos.photo1DesktopWidth}
+                    />
+                    <ProductGalleryItem
+                        productName={product.name}
+                        className="gallery-card-vert"
+                        photoMobile={product.galleryPhotos.photo2Mobile}
+                        photoTablet={product.galleryPhotos.photo2Tablet}
+                        photoDesktop={product.galleryPhotos.photo2Desktop}
+                        photoMobileWidth={product.galleryPhotos.photo2MobileWidth}
+                        photoTabletWidth={product.galleryPhotos.photo2TabletWidth}
+                        photoDesktopWidth={product.galleryPhotos.photo2DesktopWidth}
+                    />
                 </div>
                 <div className="horizontal-group">
-                    <div className="gallery-card-hor">
-                        <img srcSet={`${product.galleryPhotos.photo3Mobile} ${product.galleryPhotos.photo3MobileWidth},
-                        ${product.galleryPhotos.photo3Tablet} ${product.galleryPhotos.photo3TabletWidth},
-                        ${product.galleryPhotos.photo3Desktop} ${product.galleryPhotos.photo3DesktopWidth}`}
-                            src={product.galleryPhotos.photo3Desktop} alt={product.name} />
-                    </div>
+                    <ProductGalleryItem
+                        productName={product.name}
+                        className="gallery-card-hor"
+                        photoMobile={product.galleryPhotos.photo3Mobile}
+                        photoTablet={product.galleryPhotos.photo3Tablet}
+                        photoDesktop={product.galleryPhotos.photo3Desktop}
+                        photoMobileWidth={product.galleryPhotos.photo3MobileWidth}
+                        photoTabletWidth={product.galleryPhotos.photo3TabletWidth}
+                        photoDesktopWidth={product.galleryPhotos.photo3DesktopWidth}
+                    />
                 </div>
             </section>
 
