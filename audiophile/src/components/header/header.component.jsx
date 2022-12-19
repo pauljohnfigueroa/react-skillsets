@@ -1,6 +1,7 @@
 import { ReactComponent as AudiophileLogo } from '../../assets/images/logo.svg';
 import { ReactComponent as MobileNavIcon } from '../../assets/images/icon-hamburger.svg';
-import { ReactComponent as CartIcon } from '../../assets/images/icon-cart.svg';
+//import { ReactComponent as CartIcon } from '../../assets/images/icon-cart.svg';
+import CartIcon from '../cart/cart-icon/cart-icon.component';
 
 import { Outlet, Link } from 'react-router-dom';
 
@@ -23,9 +24,9 @@ const Header = () => {
 
                     <MainNavigation />
 
-                    <div className="cart-icon">
-                        <CartIcon />
-                    </div>
+
+                    <CartIcon />
+
                 </div>
             </header>
             <Outlet />
