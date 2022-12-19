@@ -11,17 +11,17 @@ const MainNavigation = () => {
         {
             "id": 2,
             "title": "Speakers",
-            "url": "/speakers"
+            "url": "/shop/speakers"
         },
         {
             "id": 3,
             "title": "Headphones",
-            "url": "/headphones"
+            "url": "/shop/headphones"
         },
         {
             "id": 4,
             "title": "Earphones",
-            "url": "/earphones"
+            "url": "/shop/earphones"
         }
     ];
 

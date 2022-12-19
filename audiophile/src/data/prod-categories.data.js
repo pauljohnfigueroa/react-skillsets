@@ -8,21 +8,21 @@ const prodCategories = [
         imgUrl: desktopImageHeadphones,
         heading: 'Headphones',
         altText: 'Headphone',
-        url: '/headphones',
+        url: '/shop/headphones',
     },
     {
         id: 2,
         imgUrl: desktopImageSpeakers,
         heading: 'Speakers',
         altText: 'Audio Speaker',
-        url: '/speakers',
+        url: '/shop/speakers',
     },
     {
         id: 3,
         imgUrl: desktopImageEarphones,
         heading: 'Earphones',
         altText: 'Audio Earphone',
-        url: '/earphones',
+        url: '/shop/earphones',
     },
 ];
 

@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { CategoriesContext } from "../../../contexts/categories.context";
 const ProductCategoryListing = ({ products }) => {
+
+    const { categoriesMap } = useContext(CategoriesContext);
 
     const navigate = useNavigate();
 
@@ -11,10 +14,12 @@ const ProductCategoryListing = ({ products }) => {
         console.log(productPageSlug);
     }
 
+    console.log('CATEGORIES MAP', categoriesMap);
+
     return (
         <>
             <section className="product-section">
-                {products.map(product => {
+                {categoriesMap.headphones.map(product => {
 
                     let reversed = 'product-card-reversed';
                     let isNewProduct = <p className="sub-heading">NEW PRODUCT</p>; // remember, we are working in JSX here and not HTML

@@ -3,6 +3,7 @@
 
 import prodCategories from '../../data/prod-categories.data';
 
+
 const ProductCategories = () => {
 
     return (
