@@ -1,7 +1,3 @@
-import { useContext } from "react";
-//import { useNavigate } from "react-router-dom";
-import { CategoriesContext } from "../../../contexts/categories.context";
-
 const ProductCategoryListing = ({ products }) => {
 
     //const { categoriesMap } = useContext(CategoriesContext);
@@ -16,24 +12,31 @@ const ProductCategoryListing = ({ products }) => {
     // }
 
     //console.log('CATEGORIES MAP', categoriesMap);
-
+    let orientation = 1;
     return (
         <>
             <section className="product-section">
                 {products.map(product => {
 
-                    let reversed = 'product-card-reversed';
+                    let reversedCss = 'product-card-reversed';
                     let isNewProduct = <p className="sub-heading">NEW PRODUCT</p>; // remember, we are working in JSX here and not HTML
 
-                    if (product.id % 2) {
-                        reversed = '';
+                    // Even, not display in reversed direction
+                    // The product id might not be always a series of numbers.
+                    // using a counter (orientation) will ensure that we have a continuous series of numbers
+                    // for determining if we should display the product in normal or reversed.
+                    if (orientation % 2) {
+                        reversedCss = '';
                     }
+                    orientation++;
 
+                    // do not display the NEW PRODCUT label
                     if (!product.isNewProduct) {
                         isNewProduct = '';
                     }
 
-                    return (<div key={product.id} className={`product-card ${reversed}`}>
+
+                    return (<div key={product.id} className={`product-card ${reversedCss}`}>
                         <div className="product-card-header">
                             <img srcSet={`${product.imgUrlMobile} ${product.imgUrlMobileWidth},
                             ${product.imgUrlDesktop} ${product.imgUrlDesktopWidth}`}
@@ -48,7 +51,10 @@ const ProductCategoryListing = ({ products }) => {
                             </div>
                         </div>
                     </div>)
-                })}
+
+                })
+
+                }
             </section>
         </>
     );

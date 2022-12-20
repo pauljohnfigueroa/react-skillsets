@@ -1,18 +1,19 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 
 import PRODUCTS from "../data/products.data";
 
-const categoryMap = PRODUCTS.reduce((acc, categ) => {
-    const { category, items } = categ;
-    acc[category.toLowerCase()] = items;
-    return acc;
-}, {});
-
 export const CategoriesContext = createContext({
-    categoriesMap: {}
+    categoriesMap: {} // works even if I remove this, why??
 });
 
 export const CategoriesProvider = ({ children }) => {
+
+    const categoryMap = PRODUCTS.reduce((acc, categ) => {
+        const { category, items } = categ;
+        acc[category.toLowerCase()] = items;
+        return acc;
+    }, {});
+
     const [categoriesMap] = useState(categoryMap);
 
     // useEffect(() => {

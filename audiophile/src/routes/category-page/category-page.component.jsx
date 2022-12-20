@@ -10,10 +10,9 @@ import Marketing from "../../components/marketing/marketing.component";
 import Footer from "../../components/footer/footer.component";
 
 const CategoryPage = () => {
-    const { category } = useParams();
+    const { category } = useParams(); // URL/Route parameter :category, /shop/headphones
     const { categoriesMap } = useContext(CategoriesContext);
-
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState(categoriesMap[category]);
 
     useEffect(() => {
         setProducts(categoriesMap[category]);
@@ -21,7 +20,7 @@ const CategoryPage = () => {
 
     return (
         <>
-            <ProductCategoryTitle />
+            <ProductCategoryTitle categoryTitle={category} />
             <ProductCategoryListing products={products} />
             <ProductCategories />
             <Marketing />

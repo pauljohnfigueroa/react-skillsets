@@ -28,6 +28,7 @@ const Header = () => {
                     </div>
                     <MainNavigation />
                     <CartIcon />
+                    <div>Sign In</div>
                 </div>
             </header>
             <Outlet />
