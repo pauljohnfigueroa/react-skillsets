@@ -1,12 +1,19 @@
-import { signInWithGooglePopUp } from "../../utils/firebase/firebase.utils";
+import { signInWithGooglePopUp, createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
 
 const SignInForm = () => {
 
     const logGoogleUser = async () => {
-        const response = await signInWithGooglePopUp();
-        console.log(response);
-    }
+        // get the authenticate user
+        //const response = await signInWithGooglePopUp();
 
+        // the object returned (response) contains the auth_token 
+        // and other credentials like the uid that we can use as a
+        // unique key to store this user in firestore
+        //console.log(response);
+
+        const { user } = await signInWithGooglePopUp();
+        const useDocRef = await createUserDocumentFromAuth(user);
+    }
 
     return (
         <>
@@ -28,7 +35,7 @@ const SignInForm = () => {
                                 <button type="submit" className="form-button">Sign In</button>
                             </div>
                             <div className="button-container">
-                                <button type="submit" onClick={logGoogleUser} className="form-button">Sign In withGoogle</button>
+                                <button type="submit" onClick={logGoogleUser} className="form-button">Sign In with Google</button>
                             </div>
                         </div>
                     </form>
