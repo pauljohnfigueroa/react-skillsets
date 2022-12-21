@@ -2,8 +2,10 @@ import { useContext } from 'react';
 
 import { ReactComponent as AudiophileLogo } from '../../assets/images/logo.svg';
 import { ReactComponent as MobileNavIcon } from '../../assets/images/icon-hamburger.svg';
-import CartIcon from '../cart/cart-icon/cart-icon.component';
+
+import CartIcon from "../../components/cart/cart-icon/cart-icon.component";
 import CartDropDown from '../cart/cart-dropdown.component';
+
 import { CartContext } from '../../contexts/cart.context';
 
 import { Outlet, Link } from 'react-router-dom';
@@ -20,7 +22,6 @@ const Header = () => {
                     <div className="hamburger-icon">
                         <MobileNavIcon />
                     </div>
-
                     <div className="logo">
                         <Link to="/">
                             <AudiophileLogo />
@@ -28,7 +29,9 @@ const Header = () => {
                     </div>
                     <MainNavigation />
                     <CartIcon />
-                    <div>Sign In</div>
+                    <div>
+                        <Link to="/sign-in">Sign In</Link>
+                    </div>
                 </div>
             </header>
             <Outlet />

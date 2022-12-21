@@ -10,6 +10,17 @@
     letter-spacing: 1px;
 }
 
+// Links
+a,
+a:visited {
+    color: white;
+    cursor: pointer;
+}
+
+a:hover {
+    color: #d87d4a;
+}
+
 // Button
 .buttons-outer-container {
     display: flex;

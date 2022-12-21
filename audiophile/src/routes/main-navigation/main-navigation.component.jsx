@@ -26,15 +26,17 @@ const MainNavigation = () => {
     ];
 
     return (
-        <nav className="nav-desktop">
-            <ul>
-                {menuItems.map((item) => (
-                    <li key={item.id}>
-                        <Link to={item.url}>{item.title}</Link>
-                    </li>
-                ))}
-            </ul>
-        </nav>
+        <>
+            <nav className="nav-desktop">
+                <ul>
+                    {menuItems.map((item) => (
+                        <li key={item.id}>
+                            <Link to={item.url}>{item.title}</Link>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
+        </>
     );
 }
 

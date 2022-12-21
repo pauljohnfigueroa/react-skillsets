@@ -4,7 +4,7 @@ import Home from "./routes/home/home.component";
 
 import SignInForm from "./components/sign-in-form/sign-in-form.component";
 import ShopCategory from "./routes/shop-category/shop-category.component";
-import ProductDetailPage from "./components/product-detail-page/product-detail-page.component";
+//import ProductDetailPage from "./components/product-detail-page/product-detail-page.component";
 
 //import PRODUCTS from "./data/products.data";
 
@@ -21,9 +21,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Header />} >
           <Route index element={<Home />} />
-          <Route path="signin" element={<SignInForm />} />
           <Route path="shop/*" element={<ShopCategory />} />
-          <Route path="product" element={<ProductDetailPage />} />
+          <Route path="sign-in" element={<SignInForm />} />
         </Route>
       </Routes>
     </>
