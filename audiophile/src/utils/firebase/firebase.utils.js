@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 // for authenticating process
 import {
     getAuth,        // returns the Auth instance
-    //signInWithRedirect,
+    signInWithRedirect,
     signInWithPopup,
     GoogleAuthProvider
 } from 'firebase/auth';
@@ -31,18 +31,20 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 // AUTHENTICATION SECTION
-// you can have different providers
-const provider = new GoogleAuthProvider();
+// you can have different providers like FB, Github, etc.
+const googleProvider = new GoogleAuthProvider();
 
 // configuration for google 
-provider.setCustomParameters({
+googleProvider.setCustomParameters({
     prompt: 'select_account',
 })
 
+// auth is a singleton that tracks all authentication in our app
 export const auth = getAuth(); // returns the Auth instance
 
 // imported in sign-in component
-export const signInWithGooglePopUp = () => signInWithPopup(auth, provider); // returns the authentication object
+export const signInWithGooglePopUp = () => signInWithPopup(auth, googleProvider); // returns the authentication object
+export const signInWithGoogleRedirect = () => signInWithRedirect(auth, googleProvider);
 // END AUTHENTICATION SECTION
 
 // DATABASE OPERATIONS
@@ -53,6 +55,8 @@ export const db = getFirestore(); // this directly points to our database in the
 // A function that takes data from the google authentication service 
 // and then store it in our firestore database
 // imported in sign-in component
+
+// https://firebase.google.com/docs/firestore/manage-data/add-data
 export const createUserDocumentFromAuth = async (userAuth) => {
     const userDecRef = doc(db, "users", userAuth.uid);
     console.log(userDecRef);

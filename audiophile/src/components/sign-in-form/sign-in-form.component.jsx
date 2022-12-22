@@ -1,6 +1,30 @@
-import { signInWithGooglePopUp, createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
+import { useEffect } from "react";
+import { getRedirectResult } from "firebase/auth";
+
+import {
+    auth,
+    signInWithGooglePopUp,
+    signInWithGoogleRedirect,
+    createUserDocumentFromAuth
+} from "../../utils/firebase/firebase.utils";
+
+import SignUpForm from "../sign-up-form/sign-up-form.component";
 
 const SignInForm = () => {
+
+    useEffect(() => {
+        // const response = await getRedirectResult(auth);
+        async function fetchData() {
+            const response = await getRedirectResult(auth);
+            console.log(response);
+            if (response) {
+                const useDocRef = createUserDocumentFromAuth(response.user);
+                return useDocRef;
+            }
+            return response;
+        }
+        fetchData();
+    }, []);
 
     const logGoogleUser = async () => {
         // get the authenticate user
@@ -36,36 +60,12 @@ const SignInForm = () => {
                             </div>
                             <div className="button-container">
                                 <button type="submit" onClick={logGoogleUser} className="form-button">Sign In with Google</button>
+                                <button type="submit" onClick={signInWithGoogleRedirect} className="form-button">Sign In with Google Redirect</button>
                             </div>
                         </div>
                     </form>
                 </div>
-
-                <div className="sign-up-container">
-                    <h2 className="heading">Don't have an account?</h2>
-                    <p className="sub-heading">Sign Up with your email and password.</p>
-                    <form action="">
-                        <div className="form-row">
-                            <label htmlFor="displayName" className="form-label">Display Name</label>
-                            <input type="text" className="form-input" required name="displayName" />
-                        </div>
-                        <div className="form-row">
-                            <label htmlFor="email" className="form-label">Email</label>
-                            <input type="email" className="form-input" required name="email" />
-                        </div>
-                        <div className="form-row">
-                            <label htmlFor="password" className="form-label">Password</label>
-                            <input type="password" className="form-input" required name="password" />
-                        </div>
-                        <div className="form-row">
-                            <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
-                            <input type="password" className="form-input" required name="confirmPassword" />
-                        </div>
-                        <div className="button-container">
-                            <button type="submit" className="form-button">Sign Up</button>
-                        </div>
-                    </form>
-                </div>
+                <SignUpForm />
             </section>
         </>
     );
