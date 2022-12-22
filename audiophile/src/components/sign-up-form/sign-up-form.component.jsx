@@ -4,26 +4,18 @@ const defaultFormFields = {
     displayName: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
 }
 
 const SignUpForm = () => {
-
     const [formFields, setFormFields] = useState(defaultFormFields);
-    const { displayName, email, password, confirmPassword } = formFields; // all typed charaters will be saved in formFields
-    // console.log(formFields);
-    // console.log('displayName -> ', displayName);
-    // console.log('email -> ', email);
-    // console.log('password -> ', password);
-    // console.log('confirmPassword -> ', confirmPassword);
+    const { displayName, email, password, confirmPassword } = formFields;
 
     const handleChange = (event) => {
-        const { name, value } = event.target; // event.target will give us everything in the input, like name, value, etc.
-        console.log(name);
-        // formFields contains all the previously typed characters in input fields
-        // [name]: value contains the last updated field
+        // name and event are passed from form input through the event.target
+        const { name, value } = event.target;
         setFormFields({ ...formFields, [name]: value });
-    };
+    }
 
     return (
         <>
