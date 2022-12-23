@@ -60,6 +60,8 @@ const SignInForm = () => {
                             </div>
                             <div className="button-container">
                                 <button type="submit" onClick={logGoogleUser} className="form-button">Sign In with Google</button>
+                            </div>
+                            <div className="button-container">
                                 <button type="submit" onClick={signInWithGoogleRedirect} className="form-button">Sign In with Google Redirect</button>
                             </div>
                         </div>
