@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { createAuthUserFromEmailAndPassword } from "../../utils/firebase/firebase.utils";
+
 const defaultFormFields = {
     displayName: '',
     email: '',
@@ -10,6 +12,23 @@ const defaultFormFields = {
 const SignUpForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { displayName, email, password, confirmPassword } = formFields;
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        if (password !== confirmPassword) {
+            alert('Passwords do not match.');
+            return;
+        }
+
+        try {
+            const response = await createAuthUserFromEmailAndPassword(email, password);
+            console.log(response);
+        } catch (error) {
+            console.log('User creation encountered an error.', error);
+        }
+
+    }
 
     const handleChange = (event) => {
         // name and event are passed from form input through the event.target
@@ -22,7 +41,7 @@ const SignUpForm = () => {
             <div className="sign-up-container">
                 <h2 className="heading">Don't have an account?</h2>
                 <p className="sub-heading">Sign Up with your email and password.</p>
-                <form action="">
+                <form onSubmit={handleSubmit}>
                     <div className="form-row">
                         <label htmlFor="displayName" className="form-label">Display Name</label>
                         <input type="text" className="form-input" onChange={handleChange} required name="displayName" value={displayName} />
