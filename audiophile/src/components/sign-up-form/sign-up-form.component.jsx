@@ -1,7 +1,9 @@
 import { useState } from "react";
-import FormInput from "../form-input/form-input.component";
 
 import { createAuthUserFromEmailAndPassword, createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
+
+import FormInput from "../form-input/form-input.component";
+import Button from "../button/button.component";
 
 const defaultFormFields = {
     displayName: '',
@@ -93,7 +95,7 @@ const SignUpForm = () => {
                     />
 
                     <div className="button-container">
-                        <button type="submit" className="form-button">Sign Up</button>
+                        <Button type="submit" className="form-button" label="Sign Up" />
                     </div>
                 </form>
             </div>

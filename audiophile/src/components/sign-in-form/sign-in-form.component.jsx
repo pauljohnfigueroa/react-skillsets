@@ -10,6 +10,7 @@ import {
 
 import SignUpForm from "../sign-up-form/sign-up-form.component";
 import FormInput from "../form-input/form-input.component";
+import Button from "../button/button.component";
 
 const defaultFormValues = {
     email: '',
@@ -53,7 +54,7 @@ const SignInForm = () => {
         //e.preventDefault();
         const { name, value } = event.target;
         setFormvalues({ ...formValues, [name]: value });
-        console.log({ ...formValues, [name]: value });
+        console.log({ ...formValues, [name]: value }); // ...formValues are the previous values, 
     }
 
     const resetFormValues = () => {
@@ -88,13 +89,13 @@ const SignInForm = () => {
                         />
                         <div className="buttons-outer-container">
                             <div className="button-container">
-                                <button type="submit" className="form-button">Sign In</button>
+                                <Button type="submit" className="form-button" label="Sign In" />
                             </div>
                             <div className="button-container">
-                                <button type="submit" onClick={logGoogleUser} className="form-button">Sign In with Google</button>
+                                <Button type="submit" className="form-button" onClick={logGoogleUser} label="Sign In with Google" />
                             </div>
                             <div className="button-container">
-                                <button type="submit" onClick={signInWithGoogleRedirect} className="form-button">Sign In with Google Redirect</button>
+                                <Button type="submit" className="form-button" onClick={signInWithGoogleRedirect} label="Sign In with Google Redirect" />
                             </div>
                         </div>
                     </form>
