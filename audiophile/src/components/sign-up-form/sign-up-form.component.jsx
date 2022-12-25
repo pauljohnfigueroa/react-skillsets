@@ -92,7 +92,7 @@ const SignUpForm = () => {
                 />
 
                 <div className="button-container">
-                    <Button buttonType="submit" label="Sign Up" />
+                    <Button type='button' label="Sign Up" />
                 </div>
             </form>
 

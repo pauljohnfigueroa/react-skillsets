@@ -8,9 +8,9 @@ import {
     createUserDocumentFromAuth
 } from "../../utils/firebase/firebase.utils";
 
-import SignUpForm from "../sign-up-form/sign-up-form.component";
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
+import { signInAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
 
 const defaultFormValues = {
     email: '',
@@ -57,13 +57,24 @@ const SignInForm = () => {
         console.log({ ...formValues, [name]: value }); // ...formValues are the previous values, 
     }
 
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            const response = await signInAuthUserWithEmailAndPassword(email, password);
+            console.log(response);
+            resetFormValues();
+        } catch (error) {
+            alert('Something went wrong, can not sign in the user.', error.message)
+        }
+    }
+
     const resetFormValues = () => {
         setFormvalues(defaultFormValues);
     }
 
     return (
         <>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <FormInput
                     label="Email"
                     type="email"
@@ -86,11 +97,11 @@ const SignInForm = () => {
                     <div className="button-container">
                         <Button type="submit" buttonType="inverted" label="Sign In" />
                     </div>
-                    <div className="button-container">
-                        <Button type="submit" onClick={logGoogleUser} buttonType="google" label="Sign In with Google" />
+                    <div type='button' className="button-container">
+                        <Button onClick={logGoogleUser} buttonType="google" label="Sign In with Google" />
                     </div>
-                    <div className="button-container">
-                        <Button type="submit" onClick={signInWithGoogleRedirect} buttonType="google" label="Sign In with Google Redirect" />
+                    <div type='button' className="button-container">
+                        <Button onClick={signInWithGoogleRedirect} buttonType="google" label="Sign In with Google Redirect" />
                     </div>
                 </div>
             </form>

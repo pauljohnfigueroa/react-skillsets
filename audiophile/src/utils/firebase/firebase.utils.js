@@ -6,6 +6,7 @@ import {
     signInWithRedirect,             // use with Google Authentication sign-in provider
     signInWithPopup,                // use with Google Authentication sign-in provider
     createUserWithEmailAndPassword, // use with email/password Sign-in provider
+    signInWithEmailAndPassword,
     GoogleAuthProvider,
 } from 'firebase/auth';
 
@@ -97,12 +98,17 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
     return userDocRef;
 }
 
+
 // wrap firebase functions to protect our app if google changes
 // how things work on their end.
 export const createAuthUserFromEmailAndPassword = async (email, password) => {
     if (!email || !password) return;
-
     return await createUserWithEmailAndPassword(auth, email, password);
+}
+
+export const signInAuthUserWithEmailAndPassword = async (email, password) => {
+    if (!email || !password) return;
+    return await signInWithEmailAndPassword(auth, email, password);
 }
 
 // Reference
