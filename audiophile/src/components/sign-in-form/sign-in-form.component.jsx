@@ -89,13 +89,13 @@ const SignInForm = () => {
                         />
                         <div className="buttons-outer-container">
                             <div className="button-container">
-                                <Button type="submit" className="form-button" label="Sign In" />
+                                <Button type="submit" buttonType="inverted" label="Sign In" />
                             </div>
                             <div className="button-container">
-                                <Button type="submit" className="form-button" onClick={logGoogleUser} label="Sign In with Google" />
+                                <Button type="submit" onClick={logGoogleUser} buttonType="google" label="Sign In with Google" />
                             </div>
                             <div className="button-container">
-                                <Button type="submit" className="form-button" onClick={signInWithGoogleRedirect} label="Sign In with Google Redirect" />
+                                <Button type="submit" onClick={signInWithGoogleRedirect} buttonType="google" label="Sign In with Google Redirect" />
                             </div>
                         </div>
                     </form>

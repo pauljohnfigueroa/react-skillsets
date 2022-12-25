@@ -1,14 +1,17 @@
 
-// const BUTTON_TYPES = {
-//     google: 'google',
-//     inverted: 'inverted'
-// };
+const BUTTON_TYPE_CLASSES = {
+    google: 'google',
+    inverted: 'inverted',
+};
 
-const Button = ({ label, ...otherProps }) => {
+const Button = ({ label, buttonType, ...otherProps }) => {
 
     return (
         <>
-            <button {...otherProps}>{label}</button>
+            <button
+                className={`button ${BUTTON_TYPE_CLASSES[buttonType]}`}
+                {...otherProps}
+            >{label}</button>
         </>
     );
 }

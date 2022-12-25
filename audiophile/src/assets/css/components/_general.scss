@@ -27,22 +27,50 @@ a:hover {
     flex-wrap: wrap;
 }
 
-
 .button-container {
     width: 90%;
     margin: 40px auto;
+}
 
-    button {
-        background-color: #d87d4a;
-        border: none;
-        font-size: 13px;
-        font-size: 700;
-        text-transform: uppercase;
-        color: white;
-        width: 100%;
-        min-height: 48px;
+button {
+    background-color: #d87d4a;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-size: 700;
+    text-transform: uppercase;
+    color: white;
+    width: 100%;
+    min-height: 48px;
+
+    &:hover {
+        background-color: transparent;
+        border: 1px solid #d87d4a;
+        color: #d87d4a;
     }
 }
+
+.google {
+    background-color: #006eff;
+
+    &:hover {
+        background-color: #00459e;
+        border: 1px solid #00459e;
+        color: #ffffff;
+    }
+}
+
+.inverted {
+    background-color: transparent;
+    color: #d87d4a;
+    border: 1px solid #d87d4a;
+
+    &:hover {
+        background-color: #d87d4a;
+        color: #ffffff;
+    }
+}
+
 
 // Forms
 .form-row {
