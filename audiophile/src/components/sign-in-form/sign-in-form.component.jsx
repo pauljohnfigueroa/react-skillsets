@@ -62,46 +62,39 @@ const SignInForm = () => {
     }
 
     return (
-
         <>
-            <section className="forms-container">
-                <div className="sign-in-container">
-                    <h2 className="heading">Already have an account?</h2>
-                    <p className="sub-heading">Sign up with your email and password.</p>
-                    <form>
-                        <FormInput
-                            label="Email"
-                            type="email"
-                            className="form-input"
-                            onChange={handleChange}
-                            required
-                            name="email"
-                            value={email}
-                        />
-                        <FormInput
-                            label="Password"
-                            type="password"
-                            className="form-input"
-                            onChange={handleChange}
-                            required
-                            name="password"
-                            value={password}
-                        />
-                        <div className="buttons-outer-container">
-                            <div className="button-container">
-                                <Button type="submit" buttonType="inverted" label="Sign In" />
-                            </div>
-                            <div className="button-container">
-                                <Button type="submit" onClick={logGoogleUser} buttonType="google" label="Sign In with Google" />
-                            </div>
-                            <div className="button-container">
-                                <Button type="submit" onClick={signInWithGoogleRedirect} buttonType="google" label="Sign In with Google Redirect" />
-                            </div>
-                        </div>
-                    </form>
+            <form>
+                <FormInput
+                    label="Email"
+                    type="email"
+                    className="form-input"
+                    onChange={handleChange}
+                    required
+                    name="email"
+                    value={email}
+                />
+                <FormInput
+                    label="Password"
+                    type="password"
+                    className="form-input"
+                    onChange={handleChange}
+                    required
+                    name="password"
+                    value={password}
+                />
+                <div className="buttons-outer-container">
+                    <div className="button-container">
+                        <Button type="submit" buttonType="inverted" label="Sign In" />
+                    </div>
+                    <div className="button-container">
+                        <Button type="submit" onClick={logGoogleUser} buttonType="google" label="Sign In with Google" />
+                    </div>
+                    <div className="button-container">
+                        <Button type="submit" onClick={signInWithGoogleRedirect} buttonType="google" label="Sign In with Google Redirect" />
+                    </div>
                 </div>
-                <SignUpForm />
-            </section>
+            </form>
+
         </>
     );
 }

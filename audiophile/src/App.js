@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Header from "./components/header/header.component";
 import Home from "./routes/home/home.component";
 
-import SignInForm from "./components/sign-in-form/sign-in-form.component";
+import Authentication from "./routes/authentication/authentication.component";
 import ShopCategory from "./routes/shop-category/shop-category.component";
 //import ProductDetailPage from "./components/product-detail-page/product-detail-page.component";
 
@@ -22,7 +22,7 @@ const App = () => {
         <Route path="/" element={<Header />} >
           <Route index element={<Home />} />
           <Route path="shop/*" element={<ShopCategory />} />
-          <Route path="sign-in" element={<SignInForm />} />
+          <Route path="authenticate" element={<Authentication />} />
         </Route>
       </Routes>
     </>

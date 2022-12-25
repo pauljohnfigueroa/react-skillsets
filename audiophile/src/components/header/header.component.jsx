@@ -30,7 +30,7 @@ const Header = () => {
                     <MainNavigation />
                     <CartIcon />
                     <div>
-                        <Link to="/sign-in">Sign In</Link>
+                        <Link to="/authenticate">Sign In</Link>
                     </div>
                 </div>
             </header>

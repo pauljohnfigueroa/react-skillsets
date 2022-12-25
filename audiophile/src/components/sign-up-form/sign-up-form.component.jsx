@@ -50,55 +50,52 @@ const SignUpForm = () => {
 
     return (
         <>
-            <div className="sign-up-container">
-                <h2 className="heading">Don't have an account?</h2>
-                <p className="sub-heading">Sign Up with your email and password.</p>
-                <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
 
-                    <FormInput
-                        label="Display Name"
-                        type="text"
-                        className="form-input"
-                        onChange={handleChange}
-                        required name="displayName"
-                        value={displayName}
-                    />
+                <FormInput
+                    label="Display Name"
+                    type="text"
+                    className="form-input"
+                    onChange={handleChange}
+                    required name="displayName"
+                    value={displayName}
+                />
 
 
-                    <FormInput
-                        label="Email"
-                        type="text"
-                        className="form-input"
-                        onChange={handleChange}
-                        required name="displayName"
-                        value={displayName}
-                    />
+                <FormInput
+                    label="Email"
+                    type="text"
+                    className="form-input"
+                    onChange={handleChange}
+                    required name="displayName"
+                    value={displayName}
+                />
 
 
-                    <FormInput
-                        label="Password"
-                        type="text"
-                        className="form-input"
-                        onChange={handleChange}
-                        required name="displayName"
-                        value={displayName}
-                    />
+                <FormInput
+                    label="Password"
+                    type="text"
+                    className="form-input"
+                    onChange={handleChange}
+                    required name="displayName"
+                    value={displayName}
+                />
 
 
-                    <FormInput
-                        label="Confirm Password"
-                        type="text"
-                        className="form-input"
-                        onChange={handleChange}
-                        required name="displayName"
-                        value={displayName}
-                    />
+                <FormInput
+                    label="Confirm Password"
+                    type="text"
+                    className="form-input"
+                    onChange={handleChange}
+                    required name="displayName"
+                    value={displayName}
+                />
 
-                    <div className="button-container">
-                        <Button buttonType="submit" label="Sign Up" />
-                    </div>
-                </form>
-            </div>
+                <div className="button-container">
+                    <Button buttonType="submit" label="Sign Up" />
+                </div>
+            </form>
+
         </>
     );
 }
