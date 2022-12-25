@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getRedirectResult } from "firebase/auth";
 
 import {
@@ -9,8 +9,17 @@ import {
 } from "../../utils/firebase/firebase.utils";
 
 import SignUpForm from "../sign-up-form/sign-up-form.component";
+import FormInput from "../form-input/form-input.component";
+
+const defaultFormValues = {
+    email: '',
+    password: '',
+};
 
 const SignInForm = () => {
+
+    const [formValues, setFormvalues] = useState(defaultFormValues);
+    const { email, password } = formValues;
 
     useEffect(() => {
         // const response = await getRedirectResult(auth);
@@ -37,23 +46,46 @@ const SignInForm = () => {
 
         const { user } = await signInWithGooglePopUp();
         const useDocRef = await createUserDocumentFromAuth(user);
+        resetFormValues();
+    }
+
+    const handleChange = (event) => {
+        //e.preventDefault();
+        const { name, value } = event.target;
+        setFormvalues({ ...formValues, [name]: value });
+        console.log({ ...formValues, [name]: value });
+    }
+
+    const resetFormValues = () => {
+        setFormvalues(defaultFormValues);
     }
 
     return (
+
         <>
             <section className="forms-container">
                 <div className="sign-in-container">
                     <h2 className="heading">Already have an account?</h2>
                     <p className="sub-heading">Sign up with your email and password.</p>
                     <form>
-                        <div className="form-row">
-                            <label htmlFor="email" className="form-label">Email</label>
-                            <input type="email" className="form-input" required name="email" />
-                        </div>
-                        <div className="form-row">
-                            <label htmlFor="password" className="form-label">Password</label>
-                            <input type="password" className="form-input" required name="password" />
-                        </div>
+                        <FormInput
+                            label="Email"
+                            type="email"
+                            className="form-input"
+                            onChange={handleChange}
+                            required
+                            name="email"
+                            value={email}
+                        />
+                        <FormInput
+                            label="Password"
+                            type="password"
+                            className="form-input"
+                            onChange={handleChange}
+                            required
+                            name="password"
+                            value={password}
+                        />
                         <div className="buttons-outer-container">
                             <div className="button-container">
                                 <button type="submit" className="form-button">Sign In</button>
