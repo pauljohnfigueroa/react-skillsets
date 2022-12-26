@@ -4,9 +4,6 @@ import Home from "./routes/home/home.component";
 
 import Authentication from "./routes/authentication/authentication.component";
 import ShopCategory from "./routes/shop-category/shop-category.component";
-//import ProductDetailPage from "./components/product-detail-page/product-detail-page.component";
-
-//import PRODUCTS from "./data/products.data";
 
 import './assets/css/main.scss';
 import './assets/css/categories.scss';
