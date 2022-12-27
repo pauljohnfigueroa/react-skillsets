@@ -96,7 +96,7 @@ const SignUpForm = () => {
                 />
 
                 <div className="button-container">
-                    <Button type='button' label="Sign Up" />
+                    <Button type='submit' label="Sign Up" />
                 </div>
             </form>
 

@@ -23,7 +23,6 @@ const SignInForm = () => {
 
     const [formValues, setFormvalues] = useState(defaultFormValues);
     const { email, password } = formValues;
-
     const { setCurrentUser } = useContext(UserContext);
 
     useEffect(() => {
@@ -66,7 +65,7 @@ const SignInForm = () => {
         try {
             // const response = await signInAuthUserWithEmailAndPassword(email, password);
             const { user } = await signInAuthUserWithEmailAndPassword(email, password);
-            setCurrentUser({ user });
+            setCurrentUser(user);
             //console.log(response);
             resetFormValues();
         } catch (error) {
