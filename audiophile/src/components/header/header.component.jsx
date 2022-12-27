@@ -7,6 +7,7 @@ import CartIcon from "../../components/cart/cart-icon/cart-icon.component";
 import CartDropDown from '../cart/cart-dropdown.component';
 
 import { CartContext } from '../../contexts/cart.context';
+import { UserContext } from '../../contexts/user.context';
 
 import { Outlet, Link } from 'react-router-dom';
 
@@ -14,7 +15,8 @@ import MainNavigation from "../../routes/main-navigation/main-navigation.compone
 
 const Header = () => {
     const { isCartOpen } = useContext(CartContext);
-
+    const { currentUser } = useContext(UserContext);
+    //console.log(currentUser);
     return (
         <>
             <header>
@@ -30,7 +32,11 @@ const Header = () => {
                     <MainNavigation />
                     <CartIcon />
                     <div>
-                        <Link to="/authenticate">Sign In</Link>
+                        {
+                            currentUser ?
+                                <Link to="/sign-out">Sign Out</Link> :
+                                <Link to="/authenticate">Sign In</Link>
+                        }
                     </div>
                 </div>
             </header>
