@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 
 // for authenticating process
 import {
-    getAuth,        // returns the Auth instance
+    getAuth,                        // returns the Auth instance
     signInWithRedirect,             // use with Google Authentication sign-in provider
     signInWithPopup,                // use with Google Authentication sign-in provider
     createUserWithEmailAndPassword, // use with email/password Sign-in provider
@@ -55,7 +55,7 @@ export const db = getFirestore(); // this directly points to our database in the
 // an sync function that receives an authenticated user's object
 // where userAuth is what we get from the Google authentication service above, (signInWithGooglePopUp).
 // A function that takes data from the google authentication service 
-// and then store it in our firestore database
+// and then store it to our firestore database
 // imported in sign-in component
 
 // https://firebase.google.com/docs/firestore/manage-data/add-data

@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { getRedirectResult } from "firebase/auth";
+
+import { UserContext } from "../../contexts/user.context";
 
 import {
     auth,
@@ -22,6 +24,8 @@ const SignInForm = () => {
     const [formValues, setFormvalues] = useState(defaultFormValues);
     const { email, password } = formValues;
 
+    const { setCurrentUser } = useContext(UserContext);
+
     useEffect(() => {
         // const response = await getRedirectResult(auth);
         async function fetchData() {
@@ -37,6 +41,13 @@ const SignInForm = () => {
     }, []);
 
     const logGoogleUser = async () => {
+        // get the authenticate user
+        //const response = await signInWithGooglePopUp();
+
+        // the object returned (response) contains the auth_token 
+        // and other credentials like the uid that we can use as a
+        // unique key to store this user in firestore
+        //console.log(response);
 
         const { user } = await signInWithGooglePopUp();
         const useDocRef = await createUserDocumentFromAuth(user);
@@ -44,6 +55,7 @@ const SignInForm = () => {
     }
 
     const handleChange = (event) => {
+        //e.preventDefault();
         const { name, value } = event.target;
         setFormvalues({ ...formValues, [name]: value });
         console.log({ ...formValues, [name]: value }); // ...formValues are the previous values, 
@@ -52,8 +64,10 @@ const SignInForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await signInAuthUserWithEmailAndPassword(email, password);
-            console.log(response);
+            // const response = await signInAuthUserWithEmailAndPassword(email, password);
+            const { user } = await signInAuthUserWithEmailAndPassword(email, password);
+            setCurrentUser({ user });
+            //console.log(response);
             resetFormValues();
         } catch (error) {
             alert('Something went wrong, can not sign in the user.', error.message)
