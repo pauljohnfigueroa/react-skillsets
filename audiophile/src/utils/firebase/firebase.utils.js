@@ -8,6 +8,7 @@ import {
     createUserWithEmailAndPassword, // use with email/password Sign-in provider
     signInWithEmailAndPassword,
     GoogleAuthProvider,
+    signOut,
 } from 'firebase/auth';
 
 // For database access and management processes
@@ -110,6 +111,8 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
     if (!email || !password) return;
     return await signInWithEmailAndPassword(auth, email, password);
 }
+
+export const signOutUser = () => signOut(auth);
 
 // Reference
 // https://firebase.google.com/docs/firestore/data-model

@@ -12,11 +12,18 @@ import { UserContext } from '../../contexts/user.context';
 import { Outlet, Link } from 'react-router-dom';
 
 import MainNavigation from "../../routes/main-navigation/main-navigation.component";
+import { signOutUser } from '../../utils/firebase/firebase.utils';
 
 const Header = () => {
+
     const { isCartOpen } = useContext(CartContext);
-    const { currentUser } = useContext(UserContext);
-    //console.log(currentUser);
+    const { currentUser, setCurrentUser } = useContext(UserContext);
+
+    const signOutHandler = async () => {
+        await signOutUser();
+        setCurrentUser(null);
+    }
+
     return (
         <>
             <header>
@@ -34,7 +41,7 @@ const Header = () => {
                     <div>
                         {
                             currentUser ?
-                                <Link to="/sign-out">Sign Out</Link> :
+                                <Link onClick={signOutHandler}>Sign Out</Link> :
                                 <Link to="/authenticate">Sign In</Link>
                         }
                     </div>
