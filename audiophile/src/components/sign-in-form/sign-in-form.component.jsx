@@ -37,13 +37,6 @@ const SignInForm = () => {
     }, []);
 
     const logGoogleUser = async () => {
-        // get the authenticate user
-        //const response = await signInWithGooglePopUp();
-
-        // the object returned (response) contains the auth_token 
-        // and other credentials like the uid that we can use as a
-        // unique key to store this user in firestore
-        //console.log(response);
 
         const { user } = await signInWithGooglePopUp();
         const useDocRef = await createUserDocumentFromAuth(user);
@@ -51,7 +44,6 @@ const SignInForm = () => {
     }
 
     const handleChange = (event) => {
-        //e.preventDefault();
         const { name, value } = event.target;
         setFormvalues({ ...formValues, [name]: value });
         console.log({ ...formValues, [name]: value }); // ...formValues are the previous values, 
