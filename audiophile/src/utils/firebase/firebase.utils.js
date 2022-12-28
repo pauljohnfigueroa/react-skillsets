@@ -1,5 +1,8 @@
 import { initializeApp } from "firebase/app";
 
+// Add Firebase to your JavaScript project
+// https://firebase.google.com/docs/web/setup
+
 // for authenticating process
 import {
     getAuth,                        // returns the Auth instance
@@ -9,6 +12,7 @@ import {
     signInWithEmailAndPassword,
     GoogleAuthProvider,
     signOut,
+    onAuthStateChanged,
 } from 'firebase/auth';
 
 // For database access and management processes
@@ -63,6 +67,7 @@ export const db = getFirestore(); // this directly points to our database in the
 
 // use with Google Authentication sign-in provider
 export const createUserDocumentFromAuth = async (userAuth, additionalInformation) => {
+
     if (!userAuth) return;
 
     const userDocRef = doc(db, "users", userAuth.uid);
@@ -99,7 +104,6 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
     return userDocRef;
 }
 
-
 // wrap firebase functions to protect our app if google changes
 // how things work on their end.
 export const createAuthUserFromEmailAndPassword = async (email, password) => {
@@ -113,6 +117,12 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 }
 
 export const signOutUser = () => signOut(auth);
+
+export const onAuthStateChangedListener = (callback) => {
+    onAuthStateChanged(auth, callback);
+}
+
+
 
 // Reference
 // https://firebase.google.com/docs/firestore/data-model
