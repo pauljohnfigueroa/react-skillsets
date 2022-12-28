@@ -5,7 +5,7 @@ import { createAuthUserFromEmailAndPassword, createUserDocumentFromAuth } from "
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 
-import { UserContext } from "../../contexts/user.context";
+// import { UserContext } from "../../contexts/user.context";
 
 const defaultFormFields = {
     displayName: '',
@@ -17,7 +17,7 @@ const defaultFormFields = {
 const SignUpForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { displayName, email, password, confirmPassword } = formFields;
-    const { setCurrentUser } = useContext(UserContext);
+    // const { setCurrentUser } = useContext(UserContext);
 
     const resetFormFields = () => {
         setFormFields(defaultFormFields);
@@ -34,9 +34,10 @@ const SignUpForm = () => {
         try {
             const { user } = await createAuthUserFromEmailAndPassword(email, password);
             await createUserDocumentFromAuth(user, { displayName });
-            setCurrentUser(user);
-            resetFormFields();
 
+            // setCurrentUser(user); // removed for onAuthStateChanged()
+
+            resetFormFields();
         } catch (error) {
             if (error.code === 'auth/email-already-in-use') {
                 alert('Cannot create user, email already in use.');
@@ -44,7 +45,6 @@ const SignUpForm = () => {
                 console.log('User creation encountered an error.', error);
             }
         }
-
     }
 
     const handleChange = (event) => {

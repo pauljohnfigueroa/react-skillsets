@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { getRedirectResult } from "firebase/auth";
 
-import { UserContext } from "../../contexts/user.context";
+// import { UserContext } from "../../contexts/user.context";
 
 import {
     auth,
@@ -23,13 +23,13 @@ const SignInForm = () => {
 
     const [formValues, setFormvalues] = useState(defaultFormValues);
     const { email, password } = formValues;
-    const { setCurrentUser } = useContext(UserContext);
+    // const { setCurrentUser } = useContext(UserContext);
 
     useEffect(() => {
         // const response = await getRedirectResult(auth);
         async function fetchData() {
             const response = await getRedirectResult(auth);
-            console.log(response);
+            // console.log(response);
             if (response) {
                 const useDocRef = createUserDocumentFromAuth(response.user);
                 return useDocRef;
@@ -65,7 +65,9 @@ const SignInForm = () => {
         try {
             // const response = await signInAuthUserWithEmailAndPassword(email, password);
             const { user } = await signInAuthUserWithEmailAndPassword(email, password);
-            setCurrentUser(user);
+
+            // setCurrentUser(user); // removed for onAuthStateChanged()
+
             //console.log(response);
             resetFormValues();
         } catch (error) {

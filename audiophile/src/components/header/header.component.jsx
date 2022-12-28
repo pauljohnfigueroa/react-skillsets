@@ -7,22 +7,26 @@ import CartIcon from "../../components/cart/cart-icon/cart-icon.component";
 import CartDropDown from '../cart/cart-dropdown.component';
 
 import { CartContext } from '../../contexts/cart.context';
+
 import { UserContext } from '../../contexts/user.context';
 
 import { Outlet, Link } from 'react-router-dom';
 
 import MainNavigation from "../../routes/main-navigation/main-navigation.component";
+
 import { signOutUser } from '../../utils/firebase/firebase.utils';
 
 const Header = () => {
 
     const { isCartOpen } = useContext(CartContext);
-    const { currentUser, setCurrentUser } = useContext(UserContext);
+    const { currentUser } = useContext(UserContext);
 
-    const signOutHandler = async () => {
-        await signOutUser();
-        setCurrentUser(null);
-    }
+    // replaced by onAuthStateChanged()
+
+    // const signOutHandler = async () => {
+    //     await signOutUser();
+    //     setCurrentUser(null);
+    // }
 
     return (
         <>
@@ -41,7 +45,7 @@ const Header = () => {
                     <div>
                         {
                             currentUser ?
-                                <Link onClick={signOutHandler}>Sign Out</Link> :
+                                <Link onClick={signOutUser} >Sign Out</Link> :
                                 <Link to="/authenticate">Sign In</Link>
                         }
                     </div>
