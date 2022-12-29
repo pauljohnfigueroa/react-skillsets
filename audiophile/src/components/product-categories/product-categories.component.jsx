@@ -1,8 +1,5 @@
 /* Product category cards */
-
-
 import prodCategories from '../../data/prod-categories.data';
-
 
 const ProductCategories = () => {
 

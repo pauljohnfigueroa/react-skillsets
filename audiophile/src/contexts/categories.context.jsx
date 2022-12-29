@@ -19,7 +19,6 @@ export const CategoriesProvider = ({ children }) => {
     // useEffect(() => {
     //     //setCategoriesMap(categoryMap);
     // }, []);
-
     const value = { categoriesMap }
 
     return <CategoriesContext.Provider value={value}>{children}</CategoriesContext.Provider>
