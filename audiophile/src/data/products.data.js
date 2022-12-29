@@ -1,7 +1,10 @@
+// HEADPHONES
+
+// XX99 Mark 2
 import imgUrlMobileXx99M2 from '../assets/images/product-xx99-mark-two-headphones/mobile/image-category-page-preview-2.png';
 import imgUrlDesktopXx99M2 from '../assets/images/product-xx99-mark-two-headphones/desktop/image-category-page-preview.jpg';
 
-// Gallery
+// Gallery 
 import photo1UrlMobileXx99M2 from '../assets/images/product-xx99-mark-two-headphones/mobile/image-gallery-1.jpg';
 import photo1UrlTabletXx99M2 from '../assets/images/product-xx99-mark-two-headphones/tablet/image-gallery-1.jpg';
 import photo1UrlDesktopXx99M2 from '../assets/images/product-xx99-mark-two-headphones/desktop/image-gallery-1.jpg';
@@ -24,6 +27,8 @@ import suggested2TabletXx99M2 from '../assets/images/product-xx59-headphones/tab
 import suggested3MobileXx99M2 from '../assets/images/product-zx9-speaker/mobile/image-removebg-preview.png';
 import suggested3TabletXx99M2 from '../assets/images/product-zx9-speaker/tablet/image-removebg-preview.png';
 
+
+// XX99 Mark 1
 import imgUrlMobileXx99M1 from '../assets/images/product-xx99-mark-one-headphones/mobile/image-category-page-preview-2.png';
 import imgUrlDesktopXx99M1 from '../assets/images/product-xx99-mark-one-headphones/desktop/image-category-page-preview.jpg';
 
@@ -45,19 +50,6 @@ import photo3UrlDesktopXx99M1 from '../assets/images/product-xx99-mark-one-headp
 import imgUrlMobileXx59 from '../assets/images/product-xx59-headphones/mobile/image-category-page-preview-2.png';
 import imgUrlDesktopXx59 from '../assets/images/product-xx59-headphones/desktop/image-category-page-preview.jpg';
 
-import photo1Xx59 from '../assets/images/product-xx99-mark-one-headphones/desktop/image-gallery-1.jpg';
-import photo2Xx59 from '../assets/images/product-xx99-mark-one-headphones/desktop/image-gallery-2.jpg';
-import photo3Xx59 from '../assets/images/product-xx99-mark-one-headphones/desktop/image-gallery-3.jpg';
-
-import imgUrlMobileZx9 from '../assets/images/product-zx9-speaker/mobile/image-product.jpg';
-import imgUrlDesktopZx9 from '../assets/images/product-zx9-speaker/desktop/image-product.jpg';
-
-import imgUrlMobileZx7 from '../assets/images/product-zx7-speaker/mobile/image-product.jpg';
-import imgUrlDesktopZx7 from '../assets/images/product-zx7-speaker/desktop/image-product.jpg';
-
-import imgUrlMobileYx1 from '../assets/images/product-yx1-earphones/mobile/image-product.jpg';
-import imgUrlDesktopYx1 from '../assets/images/product-yx1-earphones/desktop/image-product.jpg';
-
 // Gallery
 import photo1UrlMobileXx59 from '../assets/images/product-xx59-headphones/mobile/image-gallery-1.jpg';
 import photo1UrlTabletXx59 from '../assets/images/product-xx59-headphones/tablet/image-gallery-1.jpg';
@@ -70,6 +62,65 @@ import photo2UrlDesktopXx59 from '../assets/images/product-xx59-headphones/deskt
 import photo3UrlMobileXx59 from '../assets/images/product-xx59-headphones/mobile/image-gallery-3.jpg';
 import photo3UrlTabletXx59 from '../assets/images/product-xx59-headphones/tablet/image-gallery-3.jpg';
 import photo3UrlDesktopXx59 from '../assets/images/product-xx59-headphones/desktop/image-gallery-3.jpg';
+// End gallery
+
+
+// SPEAKERS
+
+// Zx9
+import imgUrlMobileZx9 from '../assets/images/product-zx9-speaker/mobile/image-product.jpg';
+import imgUrlDesktopZx9 from '../assets/images/product-zx9-speaker/desktop/image-product.jpg';
+// Gallery
+import photo1UrlMobileZx9 from '../assets/images/product-zx9-speaker/mobile/image-gallery-1.jpg';
+import photo1UrlTabletZx9 from '../assets/images/product-zx9-speaker/tablet/image-gallery-1.jpg';
+import photo1UrlDesktopZx9 from '../assets/images/product-zx9-speaker/desktop/image-gallery-1.jpg';
+
+import photo2UrlMobileZx9 from '../assets/images/product-zx9-speaker/mobile/image-gallery-2.jpg';
+import photo2UrlTabletZx9 from '../assets/images/product-zx9-speaker/tablet/image-gallery-2.jpg';
+import photo2UrlDesktopZx9 from '../assets/images/product-zx9-speaker/desktop/image-gallery-2.jpg';
+
+import photo3UrlMobileZx9 from '../assets/images/product-zx9-speaker/mobile/image-gallery-3.jpg';
+import photo3UrlTabletZx9 from '../assets/images/product-zx9-speaker/tablet/image-gallery-3.jpg';
+import photo3UrlDesktopZx9 from '../assets/images/product-zx9-speaker/desktop/image-gallery-3.jpg';
+// End gallery
+
+
+// Zx7
+import imgUrlMobileZx7 from '../assets/images/product-zx7-speaker/mobile/image-product.jpg';
+import imgUrlDesktopZx7 from '../assets/images/product-zx7-speaker/desktop/image-product.jpg';
+// Gallery
+import photo1UrlMobileZx7 from '../assets/images/product-zx7-speaker/mobile/image-gallery-1.jpg';
+import photo1UrlTabletZx7 from '../assets/images/product-zx7-speaker/tablet/image-gallery-1.jpg';
+import photo1UrlDesktopZx7 from '../assets/images/product-zx7-speaker/desktop/image-gallery-1.jpg';
+
+import photo2UrlMobileZx7 from '../assets/images/product-zx7-speaker/mobile/image-gallery-2.jpg';
+import photo2UrlTabletZx7 from '../assets/images/product-zx7-speaker/tablet/image-gallery-2.jpg';
+import photo2UrlDesktopZx7 from '../assets/images/product-zx7-speaker/desktop/image-gallery-2.jpg';
+
+import photo3UrlMobileZx7 from '../assets/images/product-zx7-speaker/mobile/image-gallery-3.jpg';
+import photo3UrlTabletZx7 from '../assets/images/product-zx7-speaker/tablet/image-gallery-3.jpg';
+import photo3UrlDesktopZx7 from '../assets/images/product-zx7-speaker/desktop/image-gallery-3.jpg';
+// End gallery
+
+
+
+// EARPHONES
+
+// Yx1
+import imgUrlMobileYx1 from '../assets/images/product-yx1-earphones/mobile/image-product.jpg';
+import imgUrlDesktopYx1 from '../assets/images/product-yx1-earphones/desktop/image-product.jpg';
+// Gallery
+import photo1UrlMobileYx1 from '../assets/images/product-yx1-earphones/mobile/image-gallery-1.jpg';
+import photo1UrlTabletYx1 from '../assets/images/product-yx1-earphones/tablet/image-gallery-1.jpg';
+import photo1UrlDesktopYx1 from '../assets/images/product-yx1-earphones/desktop/image-gallery-1.jpg';
+
+import photo2UrlMobileYx1 from '../assets/images/product-yx1-earphones/mobile/image-gallery-2.jpg';
+import photo2UrlTabletYx1 from '../assets/images/product-yx1-earphones/tablet/image-gallery-2.jpg';
+import photo2UrlDesktopYx1 from '../assets/images/product-yx1-earphones/desktop/image-gallery-2.jpg';
+
+import photo3UrlMobileYx1 from '../assets/images/product-yx1-earphones/mobile/image-gallery-3.jpg';
+import photo3UrlTabletYx1 from '../assets/images/product-yx1-earphones/tablet/image-gallery-3.jpg';
+import photo3UrlDesktopYx1 from '../assets/images/product-yx1-earphones/desktop/image-gallery-3.jpg';
 // End gallery
 
 
@@ -426,9 +477,27 @@ const PRODUCTS = [
                     },
                 ],
                 galleryPhotos: {
-                    photo1: '',
-                    photo2: '',
-                    photo3: '',
+                    photo1Mobile: photo1UrlMobileZx9,
+                    photo1MobileWidth: '654w',
+                    photo1Tablet: photo1UrlTabletZx9,
+                    photo1TabletWidth: '831w',
+                    photo1Desktop: photo1UrlDesktopZx9,
+                    photo1DesktopWidth: '445w',
+
+                    photo2Mobile: photo2UrlMobileZx9,
+                    photo2MobileWidth: '654w',
+                    photo2Tablet: photo2UrlTabletZx9,
+                    photo2TabletWidth: '831w',
+                    photo2Desktop: photo2UrlDesktopZx9,
+                    photo2DesktopWidth: '445w',
+
+                    photo3Mobile: photo3UrlMobileZx9,
+                    photo3MobileWidth: '491w',
+                    photo3Tablet: photo3UrlTabletZx9,
+                    photo3TabletWidth: '1185w',
+                    photo3Desktop: photo3UrlDesktopZx9,
+                    photo3DesktopWidth: '1270w',
+
                 },
                 relatedProducts: [
                     {
@@ -508,9 +577,27 @@ const PRODUCTS = [
                     },
                 ],
                 galleryPhotos: {
-                    photo1: '',
-                    photo2: '',
-                    photo3: '',
+                    photo1Mobile: photo1UrlMobileZx7,
+                    photo1MobileWidth: '654w',
+                    photo1Tablet: photo1UrlTabletZx7,
+                    photo1TabletWidth: '831w',
+                    photo1Desktop: photo1UrlDesktopZx7,
+                    photo1DesktopWidth: '445w',
+
+                    photo2Mobile: photo2UrlMobileZx7,
+                    photo2MobileWidth: '654w',
+                    photo2Tablet: photo2UrlTabletZx7,
+                    photo2TabletWidth: '831w',
+                    photo2Desktop: photo2UrlDesktopZx7,
+                    photo2DesktopWidth: '445w',
+
+                    photo3Mobile: photo3UrlMobileZx7,
+                    photo3MobileWidth: '491w',
+                    photo3Tablet: photo3UrlTabletZx7,
+                    photo3TabletWidth: '1185w',
+                    photo3Desktop: photo3UrlDesktopZx7,
+                    photo3DesktopWidth: '1270w',
+
                 },
                 relatedProducts: [
                     {
@@ -537,7 +624,7 @@ const PRODUCTS = [
                     },
                     {
                         id: 3,
-                        name: 'ZX9 SPEAKER',
+                        name: 'Zx7 SPEAKER',
                         photoMobile: suggested3MobileXx99M2,
                         photoMobileWidth: '144w',
                         photoTablet: suggested3TabletXx99M2,
@@ -595,9 +682,27 @@ const PRODUCTS = [
                     },
                 ],
                 galleryPhotos: {
-                    photo1: '',
-                    photo2: '',
-                    photo3: '',
+                    photo1Mobile: photo1UrlMobileYx1,
+                    photo1MobileWidth: '654w',
+                    photo1Tablet: photo1UrlTabletYx1,
+                    photo1TabletWidth: '831w',
+                    photo1Desktop: photo1UrlDesktopYx1,
+                    photo1DesktopWidth: '445w',
+
+                    photo2Mobile: photo2UrlMobileYx1,
+                    photo2MobileWidth: '654w',
+                    photo2Tablet: photo2UrlTabletYx1,
+                    photo2TabletWidth: '831w',
+                    photo2Desktop: photo2UrlDesktopYx1,
+                    photo2DesktopWidth: '445w',
+
+                    photo3Mobile: photo3UrlMobileYx1,
+                    photo3MobileWidth: '491w',
+                    photo3Tablet: photo3UrlTabletYx1,
+                    photo3TabletWidth: '1185w',
+                    photo3Desktop: photo3UrlDesktopYx1,
+                    photo3DesktopWidth: '1270w',
+
                 },
                 relatedProducts: [
                     {
