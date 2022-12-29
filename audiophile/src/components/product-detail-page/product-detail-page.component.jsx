@@ -1,14 +1,32 @@
+import { useParams } from "react-router-dom";
+
+import PRODUCTS from "../../data/products.data";
+
 import ProductFeatures from "./product-features/product-features.component";
 import ProductInTheBox from "./product-in-the-box/product-in-the-box.component";
 import ProductGalleryItem from "./product-gallery-item/product-gallery-item.component";
 import ProductSuggestionCard from "./product-suggestion-card/product-suggestion-card.component";
 
-
 import ProductCategories from "../product-categories/product-categories.component";
 import Marketing from "../marketing/marketing.component";
 import Footer from "../footer/footer.component";
 
-const ProductDetailPage = ({ product }) => {
+const ProductDetailPage = () => { // pass category, productId
+    const category = "headphones"
+    const { productId } = useParams();
+
+    console.log('ProductDetailPage');
+    //const product = PRODUCTS[0]["items"][productId];
+    const prods = PRODUCTS.map(product => product);
+    const categs = prods.map(categs => categs);
+    const categ = categs.filter(item => item.category === category);
+    const items = categ.map(categ => categ.items);
+    const p = items[0].filter(item => item.id === Number(productId));
+
+    console.log('p => ', p[0].id);
+    const product = p[0];
+
+    //console.log(product);
 
     let isNewProduct = <p className="sub-heading">NEW PRODUCT</p>;
     if (!product.isNewProduct) {
@@ -18,7 +36,6 @@ const ProductDetailPage = ({ product }) => {
     const onChangeHandler = () => {
         console.log('value changed');
     }
-
 
     return (
         <>

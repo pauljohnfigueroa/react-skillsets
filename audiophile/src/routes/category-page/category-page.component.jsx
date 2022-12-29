@@ -20,8 +20,8 @@ const CategoryPage = () => {
 
     return (
         <>
-            <ProductCategoryTitle categoryTitle={category} />
-            <ProductCategoryListing products={products} />
+            <ProductCategoryTitle category={category} />
+            <ProductCategoryListing category={category} products={products} />
             <ProductCategories />
             <Marketing />
             <Footer />

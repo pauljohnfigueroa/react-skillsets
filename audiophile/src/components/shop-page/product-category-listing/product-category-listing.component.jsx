@@ -1,18 +1,15 @@
-const ProductCategoryListing = ({ products }) => {
+import { useNavigate } from "react-router-dom";
 
-    //const { categoriesMap } = useContext(CategoriesContext);
+const ProductCategoryListing = ({ category, products }) => {
 
-    //const navigate = useNavigate();
+    const navigate = useNavigate();
 
-    // const onClickHandlerSeeProduct = (e, productPageSlug) => {
-    //     e.preventDefault();
+    const seeProductClickHandler = (productId) => {
+        navigate(`/shop/${category}/${productId}`);
+    }
 
-    //     //navigate('/');
-    //     console.log(productPageSlug);
-    // }
-
-    //console.log('CATEGORIES MAP', categoriesMap);
     let orientation = 1;
+
     return (
         <>
             <section className="product-section">
@@ -47,15 +44,15 @@ const ProductCategoryListing = ({ products }) => {
                                 {isNewProduct}
                                 <h2 className="heading">{product.name}</h2>
                                 <p className="sub-text">{product.description}</p>
-                                <button type="button" className="button" >See Product</button>
+                                <button type="button" className="button" onClick={() => seeProductClickHandler(product.id)}>See Product</button>
                             </div>
                         </div>
-                    </div>)
+                    </div >)
 
                 })
 
                 }
-            </section>
+            </section >
         </>
     );
 

@@ -12,7 +12,7 @@ const CartIcon = () => {
     return (<>
         <div className="cart-icon-container">
             <ShoppingIcon className="shopping-cart-icon" onClick={toggleIsCartOpen} />
-            <span className="item-count">100</span>
+            <span className="item-count">0</span>
         </div>
     </>);
 }

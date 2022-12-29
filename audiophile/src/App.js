@@ -4,6 +4,7 @@ import Home from "./routes/home/home.component";
 
 import Authentication from "./routes/authentication/authentication.component";
 import ShopCategory from "./routes/shop-category/shop-category.component";
+import ProductDetailPage from "./components/product-detail-page/product-detail-page.component";
 
 import './assets/css/main.scss';
 import './assets/css/categories.scss';
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/" element={<Header />} >
           <Route index element={<Home />} />
           <Route path="shop/*" element={<ShopCategory />} />
+          <Route path="product" element={<ProductDetailPage />} />
           <Route path="authenticate" element={<Authentication />} />
         </Route>
       </Routes>
