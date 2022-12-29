@@ -11,22 +11,18 @@ import ProductCategories from "../product-categories/product-categories.componen
 import Marketing from "../marketing/marketing.component";
 import Footer from "../footer/footer.component";
 
-const ProductDetailPage = () => { // pass category, productId
-    const category = "headphones"
-    const { productId } = useParams();
+const ProductDetailPage = () => {
 
-    console.log('ProductDetailPage');
-    //const product = PRODUCTS[0]["items"][productId];
+    const { category, productId } = useParams();
+
     const prods = PRODUCTS.map(product => product);
     const categs = prods.map(categs => categs);
     const categ = categs.filter(item => item.category === category);
     const items = categ.map(categ => categ.items);
-    const p = items[0].filter(item => item.id === Number(productId));
+    const p = items[0].filter(item => Number(item.id) === Number(productId));
 
-    console.log('p => ', p[0].id);
+    //console.log('p => ', p[0].id);
     const product = p[0];
-
-    //console.log(product);
 
     let isNewProduct = <p className="sub-heading">NEW PRODUCT</p>;
     if (!product.isNewProduct) {
@@ -96,6 +92,7 @@ const ProductDetailPage = () => { // pass category, productId
                             <>
                                 <li>
                                     <ProductInTheBox
+                                        key={item.id}
                                         quantity={item.quantity}
                                         description={item.description}
                                     />
@@ -149,6 +146,7 @@ const ProductDetailPage = () => { // pass category, productId
                 <div className="product-suggestions-cards">
                     {product.relatedProducts.map(item => (
                         <ProductSuggestionCard
+                            key={item.id}
                             photoMobile={item.photoMobile}
                             photoMobileWidth={item.photoMobileWidth}
                             relatedProductName={item.relatedProductName}

@@ -8,6 +8,7 @@ const ProductCategoryListing = ({ category, products }) => {
         navigate(`/shop/${category}/${productId}`);
     }
 
+    // check for odd/even rows
     let orientation = 1;
 
     return (
@@ -18,7 +19,7 @@ const ProductCategoryListing = ({ category, products }) => {
                     let reversedCss = 'product-card-reversed';
                     let isNewProduct = <p className="sub-heading">NEW PRODUCT</p>; // remember, we are working in JSX here and not HTML
 
-                    // Even, not display in reversed direction
+                    // Even, not displayed in reversed direction
                     // The product id might not be always a series of numbers.
                     // using a counter (orientation) will ensure that we have a continuous series of numbers
                     // for determining if we should display the product in normal or reversed.
@@ -27,11 +28,10 @@ const ProductCategoryListing = ({ category, products }) => {
                     }
                     orientation++;
 
-                    // do not display the NEW PRODCUT label
+                    // do not display the NEW PRODUCT label
                     if (!product.isNewProduct) {
                         isNewProduct = '';
                     }
-
 
                     return (<div key={product.id} className={`product-card ${reversedCss}`}>
                         <div className="product-card-header">

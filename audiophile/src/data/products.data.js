@@ -1,6 +1,7 @@
 import imgUrlMobileXx99M2 from '../assets/images/product-xx99-mark-two-headphones/mobile/image-category-page-preview-2.png';
 import imgUrlDesktopXx99M2 from '../assets/images/product-xx99-mark-two-headphones/desktop/image-category-page-preview.jpg';
 
+// Gallery
 import photo1UrlMobileXx99M2 from '../assets/images/product-xx99-mark-two-headphones/mobile/image-gallery-1.jpg';
 import photo1UrlTabletXx99M2 from '../assets/images/product-xx99-mark-two-headphones/tablet/image-gallery-1.jpg';
 import photo1UrlDesktopXx99M2 from '../assets/images/product-xx99-mark-two-headphones/desktop/image-gallery-1.jpg';
@@ -12,6 +13,7 @@ import photo2UrlDesktopXx99M2 from '../assets/images/product-xx99-mark-two-headp
 import photo3UrlMobileXx99M2 from '../assets/images/product-xx99-mark-two-headphones/mobile/image-gallery-3.jpg';
 import photo3UrlTabletXx99M2 from '../assets/images/product-xx99-mark-two-headphones/tablet/image-gallery-3.jpg';
 import photo3UrlDesktopXx99M2 from '../assets/images/product-xx99-mark-two-headphones/desktop/image-gallery-3.jpg';
+// End gallery
 
 import suggested1MobileXx99M2 from '../assets/images/product-xx99-mark-one-headphones/mobile/image-removebg-preview.png';
 import suggested1TabletXx99M2 from '../assets/images/product-xx99-mark-one-headphones/tablet/image-removebg-preview.png';
@@ -25,12 +27,21 @@ import suggested3TabletXx99M2 from '../assets/images/product-zx9-speaker/tablet/
 import imgUrlMobileXx99M1 from '../assets/images/product-xx99-mark-one-headphones/mobile/image-category-page-preview-2.png';
 import imgUrlDesktopXx99M1 from '../assets/images/product-xx99-mark-one-headphones/desktop/image-category-page-preview.jpg';
 
-import photo1Xx99M1 from '../assets/images/product-xx99-mark-one-headphones/desktop/image-gallery-1.jpg';
-import photo2Xx99M1 from '../assets/images/product-xx99-mark-one-headphones/desktop/image-gallery-2.jpg';
-import photo3Xx99M1 from '../assets/images/product-xx99-mark-one-headphones/desktop/image-gallery-3.jpg';
+// Gallery
+import photo1UrlMobileXx99M1 from '../assets/images/product-xx99-mark-one-headphones/mobile/image-gallery-1.jpg';
+import photo1UrlTabletXx99M1 from '../assets/images/product-xx99-mark-one-headphones/tablet/image-gallery-1.jpg';
+import photo1UrlDesktopXx99M1 from '../assets/images/product-xx99-mark-one-headphones/desktop/image-gallery-1.jpg';
 
+import photo2UrlMobileXx99M1 from '../assets/images/product-xx99-mark-one-headphones/mobile/image-gallery-2.jpg';
+import photo2UrlTabletXx99M1 from '../assets/images/product-xx99-mark-one-headphones/tablet/image-gallery-2.jpg';
+import photo2UrlDesktopXx99M1 from '../assets/images/product-xx99-mark-one-headphones/desktop/image-gallery-2.jpg';
 
+import photo3UrlMobileXx99M1 from '../assets/images/product-xx99-mark-one-headphones/mobile/image-gallery-3.jpg';
+import photo3UrlTabletXx99M1 from '../assets/images/product-xx99-mark-one-headphones/tablet/image-gallery-3.jpg';
+import photo3UrlDesktopXx99M1 from '../assets/images/product-xx99-mark-one-headphones/desktop/image-gallery-3.jpg';
+// End gallery
 
+// XX59
 import imgUrlMobileXx59 from '../assets/images/product-xx59-headphones/mobile/image-category-page-preview-2.png';
 import imgUrlDesktopXx59 from '../assets/images/product-xx59-headphones/desktop/image-category-page-preview.jpg';
 
@@ -46,6 +57,21 @@ import imgUrlDesktopZx7 from '../assets/images/product-zx7-speaker/desktop/image
 
 import imgUrlMobileYx1 from '../assets/images/product-yx1-earphones/mobile/image-product.jpg';
 import imgUrlDesktopYx1 from '../assets/images/product-yx1-earphones/desktop/image-product.jpg';
+
+// Gallery
+import photo1UrlMobileXx59 from '../assets/images/product-xx59-headphones/mobile/image-gallery-1.jpg';
+import photo1UrlTabletXx59 from '../assets/images/product-xx59-headphones/tablet/image-gallery-1.jpg';
+import photo1UrlDesktopXx59 from '../assets/images/product-xx59-headphones/desktop/image-gallery-1.jpg';
+
+import photo2UrlMobileXx59 from '../assets/images/product-xx59-headphones/mobile/image-gallery-2.jpg';
+import photo2UrlTabletXx59 from '../assets/images/product-xx59-headphones/tablet/image-gallery-2.jpg';
+import photo2UrlDesktopXx59 from '../assets/images/product-xx59-headphones/desktop/image-gallery-2.jpg';
+
+import photo3UrlMobileXx59 from '../assets/images/product-xx59-headphones/mobile/image-gallery-3.jpg';
+import photo3UrlTabletXx59 from '../assets/images/product-xx59-headphones/tablet/image-gallery-3.jpg';
+import photo3UrlDesktopXx59 from '../assets/images/product-xx59-headphones/desktop/image-gallery-3.jpg';
+// End gallery
+
 
 const PRODUCTS = [
     {
@@ -129,6 +155,7 @@ const PRODUCTS = [
 
                     },
                     {
+                        id: 2,
                         name: 'XX59',
                         photoMobile: suggested2MobileXx99M2,
                         photoMobileWidth: '293w',
@@ -139,6 +166,7 @@ const PRODUCTS = [
 
                     },
                     {
+                        id: 3,
                         name: 'ZX9 SPEAKER',
                         photoMobile: suggested3MobileXx99M2,
                         photoMobileWidth: '144w',
@@ -193,9 +221,27 @@ const PRODUCTS = [
                     },
                 ],
                 galleryPhotos: {
-                    photo1: photo1Xx99M1,
-                    photo2: photo2Xx99M1,
-                    photo3: photo3Xx99M1,
+                    photo1Mobile: photo1UrlMobileXx99M1,
+                    photo1MobileWidth: '654w',
+                    photo1Tablet: photo1UrlTabletXx99M1,
+                    photo1TabletWidth: '831w',
+                    photo1Desktop: photo1UrlDesktopXx99M1,
+                    photo1DesktopWidth: '445w',
+
+                    photo2Mobile: photo2UrlMobileXx99M1,
+                    photo2MobileWidth: '654w',
+                    photo2Tablet: photo2UrlTabletXx99M1,
+                    photo2TabletWidth: '831w',
+                    photo2Desktop: photo2UrlDesktopXx99M1,
+                    photo2DesktopWidth: '445w',
+
+                    photo3Mobile: photo3UrlMobileXx99M1,
+                    photo3MobileWidth: '491w',
+                    photo3Tablet: photo3UrlTabletXx99M1,
+                    photo3TabletWidth: '1185w',
+                    photo3Desktop: photo3UrlDesktopXx99M1,
+                    photo3DesktopWidth: '1270w',
+
                 },
                 relatedProducts: [
                     {
@@ -210,6 +256,7 @@ const PRODUCTS = [
 
                     },
                     {
+                        id: 2,
                         name: 'XX59',
                         photoMobile: suggested2MobileXx99M2,
                         photoMobileWidth: '293w',
@@ -220,6 +267,7 @@ const PRODUCTS = [
 
                     },
                     {
+                        id: 3,
                         name: 'ZX9 SPEAKER',
                         photoMobile: suggested3MobileXx99M2,
                         photoMobileWidth: '144w',
@@ -273,9 +321,27 @@ const PRODUCTS = [
                     },
                 ],
                 galleryPhotos: {
-                    photo1: photo1Xx59,
-                    photo2: photo2Xx59,
-                    photo3: photo3Xx59,
+                    photo1Mobile: photo1UrlMobileXx59,
+                    photo1MobileWidth: '654w',
+                    photo1Tablet: photo1UrlTabletXx59,
+                    photo1TabletWidth: '831w',
+                    photo1Desktop: photo1UrlDesktopXx59,
+                    photo1DesktopWidth: '445w',
+
+                    photo2Mobile: photo2UrlMobileXx59,
+                    photo2MobileWidth: '654w',
+                    photo2Tablet: photo2UrlTabletXx59,
+                    photo2TabletWidth: '831w',
+                    photo2Desktop: photo2UrlDesktopXx59,
+                    photo2DesktopWidth: '445w',
+
+                    photo3Mobile: photo3UrlMobileXx59,
+                    photo3MobileWidth: '491w',
+                    photo3Tablet: photo3UrlTabletXx59,
+                    photo3TabletWidth: '1185w',
+                    photo3Desktop: photo3UrlDesktopXx59,
+                    photo3DesktopWidth: '1270w',
+
                 },
                 relatedProducts: [
                     {
@@ -290,6 +356,7 @@ const PRODUCTS = [
 
                     },
                     {
+                        id: 2,
                         name: 'XX59',
                         photoMobile: suggested2MobileXx99M2,
                         photoMobileWidth: '293w',
@@ -300,6 +367,7 @@ const PRODUCTS = [
 
                     },
                     {
+                        id: 3,
                         name: 'ZX9 SPEAKER',
                         photoMobile: suggested3MobileXx99M2,
                         photoMobileWidth: '144w',
@@ -333,12 +401,12 @@ const PRODUCTS = [
                 inTheBox: [
                     {
                         id: 1,
-                        description: 'Headphone Unit',
-                        quantity: 1
+                        description: 'Speaker Unit',
+                        quantity: 2
                     },
                     {
                         id: 2,
-                        description: 'Replacement Earcups',
+                        description: 'Speaker Cloth Panel',
                         quantity: 2
                     },
                     {
@@ -348,7 +416,7 @@ const PRODUCTS = [
                     },
                     {
                         id: 4,
-                        description: '3.5mm 5m Audio Cable',
+                        description: '3.5mm 10m Audio Cable',
                         quantity: 1
                     },
                     {
@@ -375,6 +443,7 @@ const PRODUCTS = [
 
                     },
                     {
+                        id: 2,
                         name: 'XX59',
                         photoMobile: suggested2MobileXx99M2,
                         photoMobileWidth: '293w',
@@ -385,6 +454,7 @@ const PRODUCTS = [
 
                     },
                     {
+                        id: 3,
                         name: 'ZX9 SPEAKER',
                         photoMobile: suggested3MobileXx99M2,
                         photoMobileWidth: '144w',
@@ -413,12 +483,12 @@ const PRODUCTS = [
                 inTheBox: [
                     {
                         id: 1,
-                        description: 'Headphone Unit',
-                        quantity: 1
+                        description: 'Speaker Unit',
+                        quantity: 2
                     },
                     {
                         id: 2,
-                        description: 'Replacement Earcups',
+                        description: 'Speaker Cloth Panel',
                         quantity: 2
                     },
                     {
@@ -428,7 +498,7 @@ const PRODUCTS = [
                     },
                     {
                         id: 4,
-                        description: '3.5mm 5m Audio Cable',
+                        description: '3.5mm 7.5m Audio Cable',
                         quantity: 1
                     },
                     {
@@ -455,6 +525,7 @@ const PRODUCTS = [
 
                     },
                     {
+                        id: 2,
                         name: 'XX59',
                         photoMobile: suggested2MobileXx99M2,
                         photoMobileWidth: '293w',
@@ -465,6 +536,7 @@ const PRODUCTS = [
 
                     },
                     {
+                        id: 3,
                         name: 'ZX9 SPEAKER',
                         photoMobile: suggested3MobileXx99M2,
                         photoMobileWidth: '144w',
@@ -503,7 +575,7 @@ const PRODUCTS = [
                     },
                     {
                         id: 2,
-                        description: 'Multi-sized earplugs',
+                        description: 'Multi-sized Earplugs',
                         quantity: 6
                     },
                     {
@@ -540,6 +612,7 @@ const PRODUCTS = [
 
                     },
                     {
+                        id: 2,
                         name: 'XX59',
                         photoMobile: suggested2MobileXx99M2,
                         photoMobileWidth: '293w',
@@ -550,6 +623,7 @@ const PRODUCTS = [
 
                     },
                     {
+                        id: 3,
                         name: 'ZX9 SPEAKER',
                         photoMobile: suggested3MobileXx99M2,
                         photoMobileWidth: '144w',
