@@ -11,6 +11,9 @@ import './assets/css/categories.scss';
 import './assets/css/product.scss';
 import './assets/css/cart.scss';
 import './assets/css/sign-in-form.scss';
+import './assets/css/checkout.scss';
+
+import CheckOut from "./components/checkout/checkout.component";
 
 const App = () => {
 
@@ -20,8 +23,9 @@ const App = () => {
         <Route path="/" element={<Header />} >
           <Route index element={<Home />} />
           <Route path="shop/*" element={<ShopCategory />} />
-          <Route path="product" element={<ProductDetailPage />} />
-          <Route path="authenticate" element={<Authentication />} />
+          <Route path="/product" element={<ProductDetailPage />} />
+          <Route path="/authenticate" element={<Authentication />} />
+          <Route path="/checkout" element={<CheckOut />} />
         </Route>
       </Routes>
     </>
