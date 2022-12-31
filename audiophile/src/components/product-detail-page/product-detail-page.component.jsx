@@ -1,6 +1,8 @@
+import { useContext } from "react";
 import { useParams } from "react-router-dom";
 
 import PRODUCTS from "../../data/products.data";
+import { CartContext } from "../../contexts/cart.context";
 
 import ProductFeatures from "./product-features/product-features.component";
 import ProductInTheBox from "./product-in-the-box/product-in-the-box.component";
@@ -14,6 +16,7 @@ import Footer from "../footer/footer.component";
 const ProductDetailPage = () => {
 
     const { category, productId } = useParams();
+    const { addItemToCart } = useContext(CartContext);
 
     const prods = PRODUCTS.map(product => product);
     const categs = prods.map(categs => categs);
@@ -71,7 +74,7 @@ const ProductDetailPage = () => {
                                     <div className="quantity-button quantity-up">+</div>
                                 </div>
 
-                                <button type="button" className="form-button">Add to Cart</button>
+                                <button type="button" className="form-button" onClick={addItemToCart}>Add to Cart</button>
                             </form>
                         </div>
 

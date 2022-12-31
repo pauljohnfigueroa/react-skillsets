@@ -1,21 +1,22 @@
 import { createContext, useState } from "react";
 
 const addCartItem = (cartItems, productToAdd) => {
+    // check if product to add already exists in the database
+    const existingItem = cartItems.find((cartItem) => cartItem.id === productToAdd.id);
 
-    //1.	Find if cartItems contains a productToAdd
-    const existingCartItem = cartItems.find((cartItem) => cartItem.id === productToAdd.id);
-
-    //2.	If found/existing product, just increment quantity
-    if (existingCartItem) {
-        return cartItems.map((cartItem) => cartItem.id === productToAdd.id
-            ? [...cartItem, cartItem.quantity + 1]
-            : cartItems
-        );
+    // check if the product to add actually exists then 
+    // if yes, just increase the quantity
+    // if no, return the current cartItems.
+    if (existingItem) {
+        // array.map returns true or false
+        // just update the quantity existing item which evaluates to true.
+        return cartItems.map((cartItem) => cartItem.id === productToAdd.id ?
+            { ...cartItem, quantity: cartItem.quantity + 1 }
+            : cartItem);
     }
 
-    //3.	If product is a new product.
-    //      Return a new array with the modified cartItems/new cart item
-    return [...cartItems, { ...productToAdd, quantity: 1 }]
+    // if this is a new cart Item, just set the quantity to 1
+    return [...cartItems, { ...productToAdd, quantity: 1 }];
 }
 
 export const CartContext = createContext({
@@ -31,9 +32,10 @@ export const CartProvider = ({ children }) => {
 
     const addItemToCart = (productToAdd) => {
         setCartItems(addCartItem(cartItems, productToAdd));
-    }
+    };
 
-    const value = { isCartOpen, setIsCartOpen, addItemToCart, cartItems };
+    const value = { isCartOpen, setIsCartOpen, cartItems, addItemToCart };
+
 
     // access in cart-dropdown as 
     // const { isCartOpen, setIsCartOpen } = useContext(CartContext);
