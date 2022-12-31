@@ -2,10 +2,9 @@ const CartItem = ({ cartItems }) => {
     if (cartItems.length) {
         return (
             cartItems.map((cartItem) => {
-
                 return (
                     <>
-                        <div class="item-row">
+                        <div key={cartItem.id} class="item-row">
                             <div class="item-image-container">
                                 <img src="./dist/assets/images/product-xx59-headphones/mobile/image-removebg-preview.png" alt="" />
                             </div>
@@ -20,7 +19,7 @@ const CartItem = ({ cartItems }) => {
                                     <div class="quantity-nav">
                                         <div class="quantity-button quantity-down">-</div>
                                     </div>
-                                    <input type="number" min="0" value="0" class="quantity" />
+                                    <input type="number" min="0" value={cartItem.quantity} class="quantity" />
                                     <div class="quantity-nav">
                                         <div class="quantity-button quantity-up">+</div>
                                     </div>
