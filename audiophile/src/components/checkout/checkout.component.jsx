@@ -1,4 +1,5 @@
-import FormInput from "../form-input/form-input.component";
+import FormInput from '../form-input/form-input.component';
+import Button from '../button/button.component';
 
 const CheckOut = () => {
     return (
@@ -148,8 +149,9 @@ const CheckOut = () => {
                     </div>
 
                     <div class="button-container">
-                        <button>Continue & Pay</button>
+                        <Button label="Continue & Pay" type="button" />
                     </div>
+
                 </section>
 
             </section>

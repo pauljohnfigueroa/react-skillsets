@@ -91,6 +91,7 @@ const SignUpForm = () => {
                         value={password}
                     />
                 </div>
+
                 <div className="form-row">
                     <FormInput
                         label="Confirm Password"
@@ -102,9 +103,11 @@ const SignUpForm = () => {
                         value={confirmPassword}
                     />
                 </div>
+
                 <div className="button-container">
                     <Button type='submit' label="Sign Up" />
                 </div>
+
             </form>
 
         </>
