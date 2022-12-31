@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 const addCartItem = (cartItems, productToAdd) => {
     // check if productToAdd exists in cartItems;
@@ -19,18 +19,27 @@ export const CartContext = createContext({
     isCartOpen: false,
     setIsCartOpen: () => { },
     cartItems: [],
-    addItemToCart: () => { }
+    addItemToCart: () => { },
+    cartTotal: 0
 });
 
 export const CartProvider = ({ children }) => {
     const [isCartOpen, setIsCartOpen] = useState(false);
     const [cartItems, setCartItems] = useState([]);
+    const [cartTotal, setCartTotal] = useState(0);
+
+    useEffect(() => {
+
+        const total = cartItems.reduce((total, currentItem) => total + currentItem.quantity, 0);
+        setCartTotal(total);
+
+    }, [cartItems]);
 
     const addItemToCart = (productToAdd) => {
         setCartItems(addCartItem(cartItems, productToAdd));
     }
 
-    const value = { isCartOpen, setIsCartOpen, cartItems, addItemToCart };
+    const value = { isCartOpen, setIsCartOpen, cartItems, addItemToCart, cartTotal };
 
     // access in cart-dropdown as 
     // const { isCartOpen, setIsCartOpen } = useContext(CartContext);
