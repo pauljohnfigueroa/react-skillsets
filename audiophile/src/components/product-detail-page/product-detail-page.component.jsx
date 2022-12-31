@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
 
-import PRODUCTS from "../../data/products.data";
 import { CartContext } from "../../contexts/cart.context";
+
+import PRODUCTS from "../../data/products.data";
 
 import ProductFeatures from "./product-features/product-features.component";
 import ProductInTheBox from "./product-in-the-box/product-in-the-box.component";
@@ -16,7 +17,7 @@ import Footer from "../footer/footer.component";
 const ProductDetailPage = () => {
 
     const { category, productId } = useParams();
-    const { cartItems, addItemToCart } = useContext(CartContext);
+    const { addItemToCart } = useContext(CartContext);
 
     const prods = PRODUCTS.map(product => product);
     const categs = prods.map(categs => categs);
@@ -26,7 +27,6 @@ const ProductDetailPage = () => {
 
     //console.log('p => ', p[0].id);
     const product = p[0];
-    console.log('the current product ', product);
 
     let isNewProduct = <p className="sub-heading">NEW PRODUCT</p>;
     if (!product.isNewProduct) {
@@ -37,17 +37,12 @@ const ProductDetailPage = () => {
         console.log('value changed');
     }
 
-    // const addToCartClickHandler = (product) => {
-    //     addItemToCart(product);
-    // }
-
-    // the same output but simpler than the above
     const addToCartClickHandler = () => addItemToCart(product);
 
     return (
         <>
             <section className="go-back-link">
-                <a href="#">Go Back</a>
+                <a href="http://">Go Back</a>
             </section>
 
             <section className="product-section">
@@ -82,7 +77,7 @@ const ProductDetailPage = () => {
                                     <div className="quantity-button quantity-up">+</div>
                                 </div>
 
-                                <button type="button" className="form-button" onClick={() => addToCartClickHandler(product)}>Add to Cart</button>
+                                <button type="button" className="form-button" onClick={addToCartClickHandler}>Add to Cart</button>
                             </form>
                         </div>
 

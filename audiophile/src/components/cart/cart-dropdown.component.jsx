@@ -1,4 +1,5 @@
 import { useContext } from "react";
+
 import { CartContext } from "../../contexts/cart.context";
 
 import CartItem from "./cart-item/cart-item.component";
@@ -6,22 +7,20 @@ import CartItem from "./cart-item/cart-item.component";
 const CartDropDown = () => {
 
     const { cartItems } = useContext(CartContext);
+    const cartItemsTotal = cartItems.reduce((sum, current) => sum + current.quantity + 1, 0);
 
-    console.log('cartItems in dropdown =>', cartItems);
-
-    const cartItemsTotal = cartItems.reduce((sum, current) => sum + current.quantity, 0);
     return (
         <>
-            <section class="cart-modal">
-                <aside class="cart">
-                    <div class="heading-container">
-                        <h2 class="heading">Cart<span>({cartItemsTotal})</span></h2>
+            <section className="cart-modal">
+                <aside className="cart">
+                    <div className="heading-container">
+                        <h2 className="heading">Cart<span>({cartItemsTotal})</span></h2>
                         <a href="#">Remove all</a>
                     </div>
 
                     <CartItem cartItems={cartItems} />
 
-                    <div class="button-container">
+                    <div className="button-container">
                         <button>Checkout</button>
                     </div>
                 </aside>

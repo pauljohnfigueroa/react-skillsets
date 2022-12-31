@@ -2,12 +2,13 @@ import { useContext } from 'react';
 import { ReactComponent as ShoppingIcon } from '../../../assets/images/icon-cart.svg';
 import { CartContext } from '../../../contexts/cart.context';
 
-
-const CartIcon = ({ cartItemsTotal }) => {
+const CartIcon = () => {
     // Context {value}
-    const { isCartOpen, setIsCartOpen } = useContext(CartContext);
+    const { isCartOpen, setIsCartOpen, cartItems } = useContext(CartContext);
 
-    const toggleIsCartOpen = () => setIsCartOpen(!isCartOpen)
+    const cartItemsTotal = cartItems.reduce((sum, current) => sum + current.quantity, 0)
+    // toggle
+    const toggleIsCartOpen = () => setIsCartOpen(!isCartOpen);
 
     return (<>
         <div className="cart-icon-container">

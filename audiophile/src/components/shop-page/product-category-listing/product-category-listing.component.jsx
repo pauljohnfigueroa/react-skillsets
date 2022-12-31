@@ -19,7 +19,7 @@ const ProductCategoryListing = ({ category, products }) => {
                     let reversedCss = 'product-card-reversed';
                     let isNewProduct = <p className="sub-heading">NEW PRODUCT</p>; // remember, we are working in JSX here and not HTML
 
-                    // Even, not displayed in reversed direction
+                    // Even numbered row, not displayed in reversed direction
                     // The product id might not be always a series of numbers.
                     // using a counter (orientation) will ensure that we have a continuous series of numbers
                     // for determining if we should display the product in normal or reversed.
