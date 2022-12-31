@@ -8,7 +8,7 @@ const CartItem = ({ cartItems }) => {
                     <>
                         <div key={cartItem.id} class="item-row">
                             <div class="item-image-container">
-                                <img src="./dist/assets/images/product-xx59-headphones/mobile/image-removebg-preview.png" alt="" />
+                                <img src={cartItem.thumbnail} alt="" />
                             </div>
 
                             <div className="item-details">

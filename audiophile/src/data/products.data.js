@@ -18,6 +18,10 @@ import photo3UrlTabletXx99M2 from '../assets/images/product-xx99-mark-two-headph
 import photo3UrlDesktopXx99M2 from '../assets/images/product-xx99-mark-two-headphones/desktop/image-gallery-3.jpg';
 // End gallery
 
+// thumbnail
+import thumbnailXx99M2 from '../assets/images/cart/image-xx99-mark-two-headphones.jpg';
+// end thumbnail
+
 import suggested1MobileXx99M2 from '../assets/images/product-xx99-mark-one-headphones/mobile/image-removebg-preview.png';
 import suggested1TabletXx99M2 from '../assets/images/product-xx99-mark-one-headphones/tablet/image-removebg-preview.png';
 
@@ -46,6 +50,10 @@ import photo3UrlTabletXx99M1 from '../assets/images/product-xx99-mark-one-headph
 import photo3UrlDesktopXx99M1 from '../assets/images/product-xx99-mark-one-headphones/desktop/image-gallery-3.jpg';
 // End gallery
 
+// thumbnail
+import thumbnailXx99M from '../assets/images/cart/image-xx99-mark-one-headphones.jpg';
+// end thumbnail
+
 // XX59
 import imgUrlMobileXx59 from '../assets/images/product-xx59-headphones/mobile/image-category-page-preview-2.png';
 import imgUrlDesktopXx59 from '../assets/images/product-xx59-headphones/desktop/image-category-page-preview.jpg';
@@ -63,6 +71,10 @@ import photo3UrlMobileXx59 from '../assets/images/product-xx59-headphones/mobile
 import photo3UrlTabletXx59 from '../assets/images/product-xx59-headphones/tablet/image-gallery-3.jpg';
 import photo3UrlDesktopXx59 from '../assets/images/product-xx59-headphones/desktop/image-gallery-3.jpg';
 // End gallery
+
+// thumbnail
+import thumbnailXx59 from '../assets/images/cart/image-xx59-headphones.jpg';
+// end thumbnail
 
 
 // SPEAKERS
@@ -84,6 +96,10 @@ import photo3UrlTabletZx9 from '../assets/images/product-zx9-speaker/tablet/imag
 import photo3UrlDesktopZx9 from '../assets/images/product-zx9-speaker/desktop/image-gallery-3.jpg';
 // End gallery
 
+// Thumbnail
+import thumbnailZx9 from '../assets/images/cart/image-zx9-speaker.jpg';
+// end thumbnail
+
 
 // Zx7
 import imgUrlMobileZx7 from '../assets/images/product-zx7-speaker/mobile/image-product.jpg';
@@ -101,6 +117,10 @@ import photo3UrlMobileZx7 from '../assets/images/product-zx7-speaker/mobile/imag
 import photo3UrlTabletZx7 from '../assets/images/product-zx7-speaker/tablet/image-gallery-3.jpg';
 import photo3UrlDesktopZx7 from '../assets/images/product-zx7-speaker/desktop/image-gallery-3.jpg';
 // End gallery
+
+// Thumbnail
+import thumbnailZx7 from '../assets/images/cart/image-zx7-speaker.jpg';
+// end thumbnail
 
 
 
@@ -123,6 +143,10 @@ import photo3UrlTabletYx1 from '../assets/images/product-yx1-earphones/tablet/im
 import photo3UrlDesktopYx1 from '../assets/images/product-yx1-earphones/desktop/image-gallery-3.jpg';
 // End gallery
 
+// Thumbnail
+import thumbnailYx1 from '../assets/images/cart/image-yx1-earphones.jpg';
+// end thumbnail
+
 
 const PRODUCTS = [
     {
@@ -134,7 +158,7 @@ const PRODUCTS = [
                 name: 'XX99 Mark II Headphones',
                 description: 'The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.',
                 price: 1214,
-                productUrl: '',
+                thumbnail: thumbnailXx99M2,
                 imgUrlMobile: imgUrlMobileXx99M2,
                 imgUrlMobileWidth: '491w',
                 imgUrlTablet: '',
@@ -236,6 +260,7 @@ const PRODUCTS = [
                 name: 'XX99 Mark I Headphones',
                 description: 'As the gold standard for headphones, the classic XX99 Mark I offers detailed and accurate audio reproduction for audiophiles, mixing engineers, and music aficionados alike in studios and on the go.',
                 price: 1021,
+                thumbnail: thumbnailXx99M,
                 imgUrlMobile: imgUrlMobileXx99M1,
                 imgUrlMobileWidth: '520w',
                 imgUrlTablet: '',
@@ -336,6 +361,7 @@ const PRODUCTS = [
                 name: 'XX59 Headphones',
                 description: 'Enjoy your audio almost anywhere and customize it to your specific tastes with the XX59 headphones. The stylish yet durable versatile wireless headset is a brilliant companion at home or on the move.',
                 price: 1987,
+                thumbnail: thumbnailXx59,
                 imgUrlMobile: imgUrlMobileXx59,
                 imgUrlMobileWidth: '649w',
                 imgUrlTablet: '',
@@ -441,6 +467,7 @@ const PRODUCTS = [
                 name: 'ZX9 Speaker',
                 description: 'Upgrade your sound system with the all new ZX9 active speaker. It’s a bookshelf speaker system that offers truly wireless connectivity -- creating new possibilities for more pleasing and practical audio setups.',
                 price: 1987,
+                thumbnail: thumbnailZx9,
                 imgUrlMobile: imgUrlMobileZx9,
                 imgUrlMobileWidth: '584w',
                 imgUrlTablet: '',
@@ -541,6 +568,7 @@ const PRODUCTS = [
                 name: 'ZX7 Speaker',
                 description: 'Stream high quality sound wirelessly with minimal loss. The ZX7 bookshelf speaker uses high-end audiophile components that represents the top of the line powered speakers for home or studio use.',
                 price: 1789,
+                thumbnail: thumbnailZx7,
                 imgUrlMobile: imgUrlMobileZx7,
                 imgUrlMobileWidth: '537w',
                 imgUrlTablet: '',
@@ -645,6 +673,7 @@ const PRODUCTS = [
                 isNewProduct: true,
                 name: 'YX1 Wireless Earphones',
                 price: 345,
+                thumbnail: thumbnailYx1,
                 description: 'Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature.',
                 imgUrlMobile: imgUrlMobileYx1,
                 imgUrlMobileWidth: '649w',
