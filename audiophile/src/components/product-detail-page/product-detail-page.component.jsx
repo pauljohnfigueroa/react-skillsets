@@ -37,9 +37,12 @@ const ProductDetailPage = () => {
         console.log('value changed');
     }
 
-    const addToCartClickHandler = (product) => {
-        addItemToCart(product);
-    }
+    // const addToCartClickHandler = (product) => {
+    //     addItemToCart(product);
+    // }
+
+    // the same output but simpler than the above
+    const addToCartClickHandler = () => addItemToCart(product);
 
     return (
         <>

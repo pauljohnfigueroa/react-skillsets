@@ -18,8 +18,10 @@ import { signOutUser } from '../../utils/firebase/firebase.utils';
 
 const Header = () => {
 
-    const { isCartOpen } = useContext(CartContext);
+    const { isCartOpen, cartItems } = useContext(CartContext);
     const { currentUser } = useContext(UserContext);
+
+    const cartItemsTotal = cartItems.reduce((sum, current) => sum + current.quantity, 0);
 
     // replaced by onAuthStateChanged()
 
@@ -41,7 +43,7 @@ const Header = () => {
                         </Link>
                     </div>
                     <MainNavigation />
-                    <CartIcon />
+                    <CartIcon cartItemsTotal={cartItemsTotal} />
                     <div>
                         {
                             currentUser ?
