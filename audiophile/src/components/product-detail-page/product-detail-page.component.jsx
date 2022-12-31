@@ -16,7 +16,7 @@ import Footer from "../footer/footer.component";
 const ProductDetailPage = () => {
 
     const { category, productId } = useParams();
-    const { addItemToCart } = useContext(CartContext);
+    const { cartItems, addItemToCart } = useContext(CartContext);
 
     const prods = PRODUCTS.map(product => product);
     const categs = prods.map(categs => categs);
@@ -26,6 +26,7 @@ const ProductDetailPage = () => {
 
     //console.log('p => ', p[0].id);
     const product = p[0];
+    console.log('the current product ', product);
 
     let isNewProduct = <p className="sub-heading">NEW PRODUCT</p>;
     if (!product.isNewProduct) {
@@ -34,6 +35,10 @@ const ProductDetailPage = () => {
 
     const onChangeHandler = () => {
         console.log('value changed');
+    }
+
+    const addToCartClickHandler = (product) => {
+        addItemToCart(product);
     }
 
     return (
@@ -74,7 +79,7 @@ const ProductDetailPage = () => {
                                     <div className="quantity-button quantity-up">+</div>
                                 </div>
 
-                                <button type="button" className="form-button" onClick={addItemToCart}>Add to Cart</button>
+                                <button type="button" className="form-button" onClick={() => addToCartClickHandler(product)}>Add to Cart</button>
                             </form>
                         </div>
 

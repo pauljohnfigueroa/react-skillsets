@@ -436,7 +436,7 @@ const PRODUCTS = [
         category: 'speakers',
         items: [
             {
-                id: 1,
+                id: 11,
                 isNewProduct: true,
                 name: 'ZX9 Speaker',
                 description: 'Upgrade your sound system with the all new ZX9 active speaker. It’s a bookshelf speaker system that offers truly wireless connectivity -- creating new possibilities for more pleasing and practical audio setups.',
@@ -536,7 +536,7 @@ const PRODUCTS = [
                 ],
             },
             {
-                id: 2,
+                id: 12,
                 isNewProduct: false,
                 name: 'ZX7 Speaker',
                 description: 'Stream high quality sound wirelessly with minimal loss. The ZX7 bookshelf speaker uses high-end audiophile components that represents the top of the line powered speakers for home or studio use.',
@@ -641,7 +641,7 @@ const PRODUCTS = [
         category: 'earphones',
         items: [
             {
-                id: 1,
+                id: 21,
                 isNewProduct: true,
                 name: 'YX1 Wireless Earphones',
                 price: 345,

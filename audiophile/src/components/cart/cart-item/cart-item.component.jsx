@@ -1,4 +1,8 @@
 const CartItem = ({ cartItems }) => {
+
+    console.log(`cartItems =>`, cartItems);
+
+
     if (cartItems.length) {
         return (
             cartItems.map((cartItem) => {

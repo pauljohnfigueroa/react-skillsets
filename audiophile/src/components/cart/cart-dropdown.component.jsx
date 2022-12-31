@@ -6,6 +6,9 @@ import CartItem from "./cart-item/cart-item.component";
 const CartDropDown = () => {
 
     const { cartItems } = useContext(CartContext);
+
+    console.log('cartItems in dropdown =>', cartItems);
+
     const cartItemsTotal = cartItems.reduce((sum, current) => sum + current.quantity, 0);
     return (
         <>

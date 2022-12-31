@@ -8,13 +8,16 @@ const addCartItem = (cartItems, productToAdd) => {
     // if yes, just increase the quantity
     // if no, return the current cartItems.
     if (existingItem) {
+        console.log("existing");
         // array.map returns true or false
         // just update the quantity existing item which evaluates to true.
         return cartItems.map((cartItem) => cartItem.id === productToAdd.id ?
             { ...cartItem, quantity: cartItem.quantity + 1 }
-            : cartItem);
+            : cartItem
+        );
     }
-
+    console.log("return");
+    console.log("productToAdd in addCartItem => ", productToAdd);
     // if this is a new cart Item, just set the quantity to 1
     return [...cartItems, { ...productToAdd, quantity: 1 }];
 }
@@ -31,6 +34,7 @@ export const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState([]);
 
     const addItemToCart = (productToAdd) => {
+        console.log('productToAdd in addItemToCart => ', productToAdd);
         setCartItems(addCartItem(cartItems, productToAdd));
     };
 
