@@ -82,24 +82,28 @@ const SignInForm = () => {
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <FormInput
-                    label="Email"
-                    type="email"
-                    className="form-input"
-                    onChange={handleChange}
-                    required
-                    name="email"
-                    value={email}
-                />
-                <FormInput
-                    label="Password"
-                    type="password"
-                    className="form-input"
-                    onChange={handleChange}
-                    required
-                    name="password"
-                    value={password}
-                />
+                <div className="form-row">
+                    <FormInput
+                        label="Email"
+                        type="email"
+                        className="form-input"
+                        onChange={handleChange}
+                        required
+                        name="email"
+                        value={email}
+                    />
+                </div>
+                <div className="form-row">
+                    <FormInput
+                        label="Password"
+                        type="password"
+                        className="form-input"
+                        onChange={handleChange}
+                        required
+                        name="password"
+                        value={password}
+                    />
+                </div>
                 <div className="buttons-outer-container">
                     <div className="button-container">
                         <Button type="submit" buttonType="inverted" label="Sign In" />
