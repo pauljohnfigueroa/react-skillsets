@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import { addCollectionAndDocuments } from "../utils/firebase/firebase.utils";
 
 import PRODUCTS from "../data/products.data";
 
@@ -8,6 +9,10 @@ export const CategoriesContext = createContext({
 
 export const CategoriesProvider = ({ children }) => {
 
+    useEffect(() => {
+        addCollectionAndDocuments('categories', PRODUCTS);
+    }, []);
+
     const categoryMap = PRODUCTS.reduce((acc, categ) => {
         const { category, items } = categ;
         acc[category.toLowerCase()] = items;
@@ -16,6 +21,7 @@ export const CategoriesProvider = ({ children }) => {
 
     const [categoriesMap] = useState(categoryMap);
 
+    console.log(categoriesMap);
     // useEffect(() => {
     //     //setCategoriesMap(categoryMap);
     // }, []);

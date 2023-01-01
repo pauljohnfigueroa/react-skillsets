@@ -22,6 +22,8 @@ import {
     doc,            // document reference instance
     getDoc,         // read the document
     setDoc,         // writes to the document
+    collection,
+    writeBatch,
 } from 'firebase/firestore';
 
 // Your web app's Firebase configuration
@@ -56,6 +58,19 @@ export const signInWithGoogleRedirect = () => signInWithRedirect(auth, googlePro
 
 // DATABASE OPERATIONS
 export const db = getFirestore(); // this directly points to our database in the firebase console.
+
+export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+    const collectionRef = collection(db, collectionKey);
+    const batch = writeBatch(db);
+
+    objectsToAdd.forEach((object) => {
+        const docRef = doc(collectionRef, object.category.toLowerCase());
+        batch.set(docRef, object);
+    });
+
+    await batch.commit();
+    console.log('done');
+}
 
 // an sync function that receives an authenticated user's object
 // where userAuth is what we get from the Google authentication service above, (signInWithGooglePopUp).

@@ -50,10 +50,12 @@ export const CartProvider = ({ children }) => {
     useEffect(() => {
         const total = cartItems.reduce((total, currentItem) => total + currentItem.quantity, 0);
         setCartTotal(total);
+    }, [cartItems]);
 
+    useEffect(() => {
         const totalAmount = cartItems.reduce((totalAmount, currentItem) => totalAmount + (currentItem.quantity * currentItem.price), 0);
         setCartTotalAmount(totalAmount);
-    }, [cartItems, cartTotalAmount]);
+    }, [cartItems]);
 
     const addItemToCart = (productToAdd) => {
         setCartItems(addCartItem(cartItems, productToAdd));
