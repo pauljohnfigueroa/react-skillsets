@@ -19,6 +19,14 @@ const CartDropDown = () => {
         navigate('/checkout');
     }
 
+    let cartItemsArray
+
+    if (cartItems.length) {
+        cartItemsArray = cartItems.map((cartItem) => <CartItem cartItem={cartItem} />)
+    } else {
+        cartItemsArray = <h2>Your cart is empty.</h2>
+    }
+
     return (
         <>
             <section className="cart-modal">
@@ -27,9 +35,7 @@ const CartDropDown = () => {
                         <h2 className="heading">Cart<span>({cartTotal})</span></h2>
                         <a href="http://">Remove all</a>
                     </div>
-
-                    {cartItems.map(cartItem => <CartItem cartItem={cartItem} />)}
-
+                    {cartItemsArray}
                     <div className="button-container">
                         <Button label="Checkout" type="button" onClick={goToCheckOutHandler} />
                     </div>
@@ -37,5 +43,6 @@ const CartDropDown = () => {
             </section>
         </>
     );
+
 }
 export default CartDropDown;

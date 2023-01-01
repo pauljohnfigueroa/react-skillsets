@@ -9,62 +9,70 @@ const CheckOut = () => {
 
     const { cartItems } = useContext(CartContext);
 
+    let cartItemsArray
+
+    if (cartItems.length) {
+        cartItemsArray = cartItems.map((cartItem) => <CartItem cartItem={cartItem} />)
+    } else {
+        cartItemsArray = <h2>Your cart is empty.</h2>
+    }
+
     return (
         <>
-            <section class="checkout">
+            <section className="checkout">
 
-                <section class="checkout-form">
+                <section className="checkout-form">
                     <h2>Checkout</h2>
                     <form action="#">
 
-                        <fieldset class="billing-details">
+                        <fieldset className="billing-details">
                             <legend>Billing Details</legend>
-                            <div class="text-input">
+                            <div className="text-input">
                                 <FormInput label="Name" type="text" name="name" id="name" />
                             </div>
-                            <div class="text-input">
+                            <div className="text-input">
                                 <FormInput label="Email Address" type="email" name="email" id="email" />
                             </div>
-                            <div class="text-input">
+                            <div className="text-input">
                                 <FormInput label="Phone Number" type="text" name="phone" id="phone" />
                             </div>
                         </fieldset>
 
-                        <fieldset class="shipping-info">
+                        <fieldset className="shipping-info">
                             <legend>Shipping info</legend>
-                            <div class="text-input address">
+                            <div className="text-input address">
                                 <FormInput label="Address" type="text" name="address" id="address" />
                             </div>
-                            <div class="address-details">
-                                <div class="text-input">
+                            <div className="address-details">
+                                <div className="text-input">
                                     <FormInput label="Zip Code" type="text" name="zipcode" id="zipcode" />
                                 </div>
-                                <div class="text-input">
+                                <div className="text-input">
                                     <FormInput label="City" type="text" name="city" id="city" />
                                 </div>
-                                <div class="text-input">
+                                <div className="text-input">
                                     <FormInput label="Country" type="text" name="country" id="country" />
                                 </div>
                             </div>
                         </fieldset>
 
-                        <fieldset class="payment-details">
+                        <fieldset className="payment-details">
                             <legend>Payment Details</legend>
-                            <div class="text-input">
-                                <label for="">Payment Method</label>
+                            <div className="text-input">
+                                <label htmlFor="">Payment Method</label>
                             </div>
-                            <div class="radio-group">
-                                <div class="radio-item">
+                            <div className="radio-group">
+                                <div className="radio-item">
                                     <FormInput label="e-Money" type="radio" id="e-money" name="payment-method" value="e-money" checked />
                                 </div>
-                                <div class="radio-item">
+                                <div className="radio-item">
                                     <FormInput label="Cash on Delivery" type="radio" id="cod" name="payment-method" value="cod" />
                                 </div>
                             </div>
-                            <div class="text-input">
+                            <div className="text-input">
                                 <FormInput label="e-Money Number" type="text" id="e-money-num" name="e-money-num" />
                             </div>
-                            <div class="text-input">
+                            <div className="text-input">
                                 <FormInput label="e-Money PIN" type="text" id="e-money-pin" name="e-money-pin" />
                             </div>
                         </fieldset>
@@ -72,31 +80,31 @@ const CheckOut = () => {
                     </form>
                 </section>
 
-                <section class="checkout-summary">
-                    <h2 class="heading">Summary</h2>
+                <section className="checkout-summary">
+                    <h2 className="heading">Summary</h2>
 
-                    {cartItems.map(cartItem => <CartItem cartItem={cartItem} />)}
+                    {cartItemsArray}
 
-                    <div class="price-details">
-                        <div class="price-row">
-                            <p class="label">Total</p>
-                            <p class="price">$ 5,000</p>
+                    <div className="price-details">
+                        <div className="price-row">
+                            <p className="label">Total</p>
+                            <p className="price">$ 5,000</p>
                         </div>
-                        <div class="price-row">
-                            <p class="label">Shipping</p>
-                            <p class="price">$ 50</p>
+                        <div className="price-row">
+                            <p className="label">Shipping</p>
+                            <p className="price">$ 50</p>
                         </div>
-                        <div class="price-row">
-                            <p class="label">VAT(Included)</p>
-                            <p class="price">$ 1,070</p>
+                        <div className="price-row">
+                            <p className="label">VAT(Included)</p>
+                            <p className="price">$ 1,070</p>
                         </div>
-                        <div class="price-row">
-                            <p class="label">Grand Total</p>
-                            <p class="price">$ 5,446</p>
+                        <div className="price-row">
+                            <p className="label">Grand Total</p>
+                            <p className="price">$ 5,446</p>
                         </div>
                     </div>
 
-                    <div class="button-container">
+                    <div className="button-container">
                         <Button label="Continue & Pay" type="button" />
                     </div>
 
