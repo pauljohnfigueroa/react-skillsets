@@ -7,12 +7,11 @@ import CartItem from '../cart/cart-item/cart-item.component';
 
 const CheckOut = () => {
 
-    const { cartItems } = useContext(CartContext);
+    const { cartItems, totalAmount } = useContext(CartContext);
 
-    let cartItemsArray
-
+    let cartItemsArray;
     if (cartItems.length) {
-        cartItemsArray = cartItems.map((cartItem) => <CartItem cartItem={cartItem} />)
+        cartItemsArray = cartItems.map(cartItem => <CartItem cartItem={cartItem} />);
     } else {
         cartItemsArray = <h2>Your cart is empty.</h2>
     }
@@ -20,7 +19,6 @@ const CheckOut = () => {
     return (
         <>
             <section className="checkout">
-
                 <section className="checkout-form">
                     <h2>Checkout</h2>
                     <form action="#">
@@ -88,7 +86,7 @@ const CheckOut = () => {
                     <div className="price-details">
                         <div className="price-row">
                             <p className="label">Total</p>
-                            <p className="price">$ 5,000</p>
+                            <p className="price">$ {totalAmount}</p>
                         </div>
                         <div className="price-row">
                             <p className="label">Shipping</p>
