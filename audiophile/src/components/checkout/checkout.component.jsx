@@ -7,7 +7,7 @@ import CartItem from '../cart/cart-item/cart-item.component';
 
 const CheckOut = () => {
 
-    const { cartItems, totalAmount } = useContext(CartContext);
+    const { cartItems, cartTotalAmount } = useContext(CartContext);
 
     let cartItemsArray;
     if (cartItems.length) {
@@ -86,19 +86,19 @@ const CheckOut = () => {
                     <div className="price-details">
                         <div className="price-row">
                             <p className="label">Total</p>
-                            <p className="price">$ {totalAmount}</p>
+                            <p className="price">$ {(cartTotalAmount).toFixed(2).toLocaleString()}</p>
                         </div>
                         <div className="price-row">
                             <p className="label">Shipping</p>
-                            <p className="price">$ 50</p>
+                            <p className="price">$ {(cartTotalAmount * 0.05).toFixed(2).toLocaleString()}</p>
                         </div>
                         <div className="price-row">
-                            <p className="label">VAT(Included)</p>
-                            <p className="price">$ 1,070</p>
+                            <p className="label">VAT</p>
+                            <p className="price">$ {(cartTotalAmount * 0.12).toFixed(2).toLocaleString()}</p>
                         </div>
                         <div className="price-row">
                             <p className="label">Grand Total</p>
-                            <p className="price">$ 5,446</p>
+                            <p className="price">$ {((cartTotalAmount * 1.12) + (cartTotalAmount * 0.05)).toFixed(2).toLocaleString("en")}</p>
                         </div>
                     </div>
 
