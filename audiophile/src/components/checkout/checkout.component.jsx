@@ -1,7 +1,14 @@
+import { useContext } from 'react';
+import { CartContext } from '../../contexts/cart.context';
+
 import FormInput from '../form-input/form-input.component';
 import Button from '../button/button.component';
+import CartItem from '../cart/cart-item/cart-item.component';
 
 const CheckOut = () => {
+
+    const { cartItems } = useContext(CartContext);
+
     return (
         <>
             <section class="checkout">
@@ -68,65 +75,7 @@ const CheckOut = () => {
                 <section class="checkout-summary">
                     <h2 class="heading">Summary</h2>
 
-                    <div class="item-row">
-                        <div class="item-image-container">
-                            <img src="./dist/assets/images/product-xx59-headphones/mobile/image-removebg-preview.png" alt="" />
-                        </div>
-
-                        <div class="item-details">
-                            <div class="item-title-price">
-                                <p class="item-title">XX99 MK II</p>
-                                <p class="item-price">$ 2,999</p>
-                            </div>
-                            <p class="item-count">x1</p>
-                        </div>
-
-                    </div>
-
-                    <div class="item-row">
-                        <div class="item-image-container">
-                            <img src="./dist/assets/images/product-xx59-headphones/mobile/image-removebg-preview.png" alt="" />
-                        </div>
-
-                        <div class="item-details">
-                            <div class="item-title-price">
-                                <p class="item-title">XX99 MK II</p>
-                                <p class="item-price">$ 2,999</p>
-                            </div>
-                            <p class="item-count">x1</p>
-                        </div>
-
-                    </div>
-
-                    <div class="item-row">
-                        <div class="item-image-container">
-                            <img src="./dist/assets/images/product-xx59-headphones/mobile/image-removebg-preview.png" alt="" />
-                        </div>
-
-                        <div class="item-details">
-                            <div class="item-title-price">
-                                <p class="item-title">XX99 MK II</p>
-                                <p class="item-price">$ 2,999</p>
-                            </div>
-                            <p class="item-count">x1</p>
-                        </div>
-
-                    </div>
-
-                    <div class="item-row">
-                        <div class="item-image-container">
-                            <img src="./dist/assets/images/product-xx59-headphones/mobile/image-removebg-preview.png" alt="" />
-                        </div>
-
-                        <div class="item-details">
-                            <div class="item-title-price">
-                                <p class="item-title">XX99 MK II</p>
-                                <p class="item-price">$ 2,999</p>
-                            </div>
-                            <p class="item-count">x1</p>
-                        </div>
-
-                    </div>
+                    <CartItem cartItems={cartItems} />
 
                     <div class="price-details">
                         <div class="price-row">
