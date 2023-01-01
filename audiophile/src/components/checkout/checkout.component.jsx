@@ -76,7 +76,6 @@ const CheckOut = () => {
                     <h2 class="heading">Summary</h2>
 
                     <CartItem cartItems={cartItems} />
-
                     <div class="price-details">
                         <div class="price-row">
                             <p class="label">Total</p>

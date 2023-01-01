@@ -1,5 +1,9 @@
+import { useContext } from "react";
+import { CartContext } from "../../../contexts/cart.context";
 
 const CartItem = ({ cartItems }) => {
+
+    const { addItemToCart } = useContext(CartContext);
 
     if (cartItems.length) {
         return (
@@ -23,10 +27,12 @@ const CartItem = ({ cartItems }) => {
                                     </div>
                                     <input type="number" min="0" value={cartItem.quantity} className="quantity" />
                                     <div className="quantity-nav">
-                                        <div className="quantity-button quantity-up">+</div>
+                                        <div className="quantity-button quantity-up" onClick={() => addItemToCart(cartItem)}>+</div>
                                     </div>
                                 </form>
-
+                            </div>
+                            <div>
+                                <p>remove</p>
                             </div>
                         </div>
                     </>
