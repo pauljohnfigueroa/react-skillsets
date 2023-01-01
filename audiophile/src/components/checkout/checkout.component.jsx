@@ -75,7 +75,8 @@ const CheckOut = () => {
                 <section class="checkout-summary">
                     <h2 class="heading">Summary</h2>
 
-                    <CartItem cartItems={cartItems} />
+                    {cartItems.map(cartItem => <CartItem cartItem={cartItem} />)}
+
                     <div class="price-details">
                         <div class="price-row">
                             <p class="label">Total</p>

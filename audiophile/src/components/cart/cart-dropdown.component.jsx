@@ -28,7 +28,7 @@ const CartDropDown = () => {
                         <a href="http://">Remove all</a>
                     </div>
 
-                    <CartItem cartItems={cartItems} />
+                    {cartItems.map(cartItem => <CartItem cartItem={cartItem} />)}
 
                     <div className="button-container">
                         <Button label="Checkout" type="button" onClick={goToCheckOutHandler} />
