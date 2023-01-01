@@ -93,7 +93,6 @@ const CheckOut = () => {
                             <p class="label">Grand Total</p>
                             <p class="price">$ 5,446</p>
                         </div>
-
                     </div>
 
                     <div class="button-container">

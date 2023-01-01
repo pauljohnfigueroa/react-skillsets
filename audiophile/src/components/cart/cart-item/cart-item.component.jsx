@@ -3,7 +3,7 @@ import { CartContext } from "../../../contexts/cart.context";
 
 const CartItem = ({ cartItems }) => {
 
-    const { addItemToCart, removeITemToCart } = useContext(CartContext);
+    const { addItemToCart, removeITemToCart, clearItemFromCart } = useContext(CartContext);
 
     if (cartItems.length) {
         return (
@@ -32,7 +32,7 @@ const CartItem = ({ cartItems }) => {
                                 </form>
                             </div>
                             <div>
-                                <p>remove</p>
+                                <p onClick={() => clearItemFromCart(cartItem)}>&#10005;</p>
                             </div>
                         </div>
                     </>
