@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { getCollectionsAndDocuments } from "../utils/firebase/firebase.utils";
 
+// Use this to upload data to firebase firestore
 // import PRODUCTS from "../data/products.data";
 
 export const CategoriesContext = createContext({
@@ -9,11 +10,12 @@ export const CategoriesContext = createContext({
 
 export const CategoriesProvider = ({ children }) => {
 
-    //Use to upload data to firestore
+    // Use this to upload data to firebase firestore
     // useEffect(() => {
     //     addCollectionAndDocuments('categories', PRODUCTS);
     // }, []);
 
+    // using local "../data/products.data"
     // const categoryMap = PRODUCTS.reduce((acc, categ) => {
     //     const { category, items } = categ;
     //     acc[category.toLowerCase()] = items;
@@ -25,16 +27,11 @@ export const CategoriesProvider = ({ children }) => {
     useEffect(() => {
         const getCategoriesMap = async () => {
             const categoryMap = await getCollectionsAndDocuments();
-            console.log(categoryMap);
             setCategoriesMap(categoryMap);
         };
         getCategoriesMap();
     }, []);
 
-    //console.log(categoriesMap);
-    // useEffect(() => {
-    //     //setCategoriesMap(categoryMap);
-    // }, []);
     const value = { categoriesMap }
 
     return <CategoriesContext.Provider value={value}>{children}</CategoriesContext.Provider>
