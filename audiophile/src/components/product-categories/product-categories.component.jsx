@@ -13,7 +13,7 @@ const ProductCategories = () => {
                                 <img src={prodCategory.imgUrl} alt={prodCategory.altText} />
                             </div>
                             <h2 className="category-heading">{prodCategory.heading}</h2>
-                            <div className="category-link"><a href={prodCategory.url}>Shop <span> &gt; </span></a></div>
+                            <div className="category-link"><a href={prodCategory.url}><span>Shop &gt; </span></a></div>
                         </div>
                     ))}
                 </div>
