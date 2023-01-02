@@ -24,6 +24,8 @@ import {
     setDoc,         // writes to the document
     collection,
     writeBatch,
+    query,          // query to be passed to getDocs
+    getDocs,        // the data
 } from 'firebase/firestore';
 
 // Your web app's Firebase configuration
@@ -59,6 +61,7 @@ export const signInWithGoogleRedirect = () => signInWithRedirect(auth, googlePro
 // DATABASE OPERATIONS
 export const db = getFirestore(); // this directly points to our database in the firebase console.
 
+// Use to upload data to firestore
 export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
     const collectionRef = collection(db, collectionKey);
     const batch = writeBatch(db);
@@ -71,6 +74,22 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
     await batch.commit();
     console.log('done');
 }
+
+// Get the products/categories data from firestore.
+export const getCollectionsAndDocuments = async () => {
+    const collectionRef = collection(db, 'categories');
+    const q = query(collectionRef);
+    const querySnapshot = await getDocs(q);
+
+    const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+        const { category, items } = docSnapshot.data();
+        acc[category.toLowerCase()] = items;
+        return acc;
+    }, {});
+
+    return categoryMap;
+}
+
 
 // an sync function that receives an authenticated user's object
 // where userAuth is what we get from the Google authentication service above, (signInWithGooglePopUp).

@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { addCollectionAndDocuments } from "../utils/firebase/firebase.utils";
+import { getCollectionsAndDocuments } from "../utils/firebase/firebase.utils";
 
 import PRODUCTS from "../data/products.data";
 
@@ -9,8 +9,17 @@ export const CategoriesContext = createContext({
 
 export const CategoriesProvider = ({ children }) => {
 
+    // Use to upload data to firestore
+    // useEffect(() => {
+    //     addCollectionAndDocuments('categories', PRODUCTS);
+    // }, []);
+
     useEffect(() => {
-        addCollectionAndDocuments('categories', PRODUCTS);
+        const getCategoriesMap = async () => {
+            const categoryMap = await getCollectionsAndDocuments();
+            console.log(categoryMap);
+        };
+        getCategoriesMap();
     }, []);
 
     const categoryMap = PRODUCTS.reduce((acc, categ) => {
@@ -21,7 +30,7 @@ export const CategoriesProvider = ({ children }) => {
 
     const [categoriesMap] = useState(categoryMap);
 
-    console.log(categoriesMap);
+    //console.log(categoriesMap);
     // useEffect(() => {
     //     //setCategoriesMap(categoryMap);
     // }, []);
