@@ -110,7 +110,7 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
     // In this object, we can use methods like .exists() 
     // to check if the data is already in the database
     const userSnapshot = await getDoc(userDocRef); // user data
-    console.log(userSnapshot.exists());
+    // console.log(userSnapshot.exists()); // return a boolean
 
     // Create User
 

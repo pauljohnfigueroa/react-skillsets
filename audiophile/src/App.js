@@ -1,5 +1,7 @@
-import { Route, Routes } from "react-router-dom";
 import { useEffect } from 'react';
+import { Route, Routes } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+
 import { onAuthStateChangedListener, createUserDocumentFromAuth } from './utils/firebase/firebase.utils';
 import { setCurrentUser } from "./store/user/user.action";
 
@@ -20,13 +22,14 @@ import './assets/css/checkout.scss';
 
 const App = () => {
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener(user => {
       if (user) {
         createUserDocumentFromAuth(user);
       }
-      setCurrentUser(user);
-      console.log('user.contenxt UserProvider', user);
+      dispatch(setCurrentUser(user));
     });
 
     return unsubscribe;
