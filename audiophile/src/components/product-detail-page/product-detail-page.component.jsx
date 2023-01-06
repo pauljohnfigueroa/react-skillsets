@@ -1,9 +1,12 @@
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import { CartContext } from "../../contexts/cart.context";
+import { selectCategoriesMap } from "../../store/category/category.selector";
 
-import PRODUCTS from "../../data/products.data";
+/* These was replaced by the redux store. */
+// import PRODUCTS from "../../data/products.data";
 
 import ProductFeatures from "./product-features/product-features.component";
 import ProductInTheBox from "./product-in-the-box/product-in-the-box.component";
@@ -19,14 +22,29 @@ const ProductDetailPage = () => {
     const { category, productId } = useParams();
     const { addItemToCart } = useContext(CartContext);
 
-    const prods = PRODUCTS.map(product => product);
-    const categs = prods.map(categs => categs);
-    const categ = categs.filter(item => item.category === category);
-    const items = categ.map(categ => categ.items);
-    const p = items[0].filter(item => Number(item.id) === Number(productId));
+    const categoriesMap = useSelector(selectCategoriesMap);
 
+    const items = categoriesMap[category];
+    console.log('items', items);
+    const p = items.filter(item => Number(item.id) === Number(productId));
+
+    /* These was replaced by the redux store. */
+    //console.log('categoriesMap', categoriesMap);
+    // const prods = PRODUCTS.map(product => product);
+    // console.log('prods', prods);
+    // const categs = prods.map(categs => categs);
+    // console.log('categs', categs);
+    // const categ = categs.filter(item => item.category === category);
+    // console.log('categ', categ);
+    // console.log('PRODUCTS', PRODUCTS);
+    // const categ = PRODUCTS.filter(item => item.category === category);
+    // const items = categ.map(categ => categ.items);
+    // console.log('categ', categ);
     //console.log('p => ', p[0].id);
+    /* End of code replaced by the redux store. */
+
     const product = p[0];
+    console.log('product', product);
 
     let isNewProduct = <p className="sub-heading">NEW PRODUCT</p>;
     if (!product.isNewProduct) {

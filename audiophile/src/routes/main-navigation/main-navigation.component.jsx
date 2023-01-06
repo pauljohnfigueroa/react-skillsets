@@ -10,13 +10,13 @@ const MainNavigation = () => {
         },
         {
             "id": 2,
-            "title": "Speakers",
-            "url": "/shop/speakers"
+            "title": "Headphones",
+            "url": "/shop/headphones"
         },
         {
             "id": 3,
-            "title": "Headphones",
-            "url": "/shop/headphones"
+            "title": "Speakers",
+            "url": "/shop/speakers"
         },
         {
             "id": 4,

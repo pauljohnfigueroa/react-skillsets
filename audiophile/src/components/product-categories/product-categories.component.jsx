@@ -1,4 +1,5 @@
 /* Product category cards */
+import { Link } from 'react-router-dom';
 import prodCategories from '../../data/prod-categories.data';
 
 const ProductCategories = () => {
@@ -13,7 +14,7 @@ const ProductCategories = () => {
                                 <img src={prodCategory.imgUrl} alt={prodCategory.altText} />
                             </div>
                             <h2 className="category-heading">{prodCategory.heading}</h2>
-                            <div className="category-link"><a href={prodCategory.url}><span>Shop &gt; </span></a></div>
+                            <div className="category-link"><Link to={prodCategory.url}><span>Shop &gt; </span></Link></div>
                         </div>
                     ))}
                 </div>
