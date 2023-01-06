@@ -11,7 +11,7 @@ const ProductSuggestionCard = ({ photoMobile, photoMobileWidth, relatedProductNa
                 </div>
                 <h2 className="title">{relatedProductName}</h2>
                 <div className="suggestion-link">
-                    <a href="#">See Product</a>
+                    <a href="http://">See Product</a>
                 </div>
             </div>
         </>

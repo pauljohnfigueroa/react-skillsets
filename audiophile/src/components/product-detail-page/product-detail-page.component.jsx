@@ -113,15 +113,11 @@ const ProductDetailPage = () => {
                     <h2>In the box</h2>
                     <ul>
                         {product.inTheBox.map(item => (
-                            <>
-                                <li>
-                                    <ProductInTheBox
-                                        key={item.id}
-                                        quantity={item.quantity}
-                                        description={item.description}
-                                    />
-                                </li>
-                            </>
+                            <ProductInTheBox
+                                key={item.id}
+                                quantity={item.quantity}
+                                description={item.description}
+                            />
                         )
                         )}
                     </ul>
