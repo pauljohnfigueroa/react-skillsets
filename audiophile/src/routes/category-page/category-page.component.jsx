@@ -1,7 +1,7 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { selectCategoriesMap } from '../../store/category/category.selector';
+import { setCategories } from '../../store/category/category.selector';
 
 //import { CategoriesContext } from '../../contexts/categories.context';
 
@@ -15,7 +15,7 @@ const CategoryPage = () => {
     const { category } = useParams(); // URL/Route parameter :category, /shop/headphones
     //const { categoriesMap } = useContext(CategoriesContext);
 
-    const categoriesMap = useSelector(selectCategoriesMap);
+    const categoriesMap = useSelector(setCategories);
     console.log('categoriesMap category-page', categoriesMap);
 
     const [products, setProducts] = useState(categoriesMap[category]);

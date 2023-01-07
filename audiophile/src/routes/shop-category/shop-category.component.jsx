@@ -4,6 +4,7 @@ import CategoryPage from "../category-page/category-page.component";
 import ProductDetailPage from "../../components/product-detail-page/product-detail-page.component";
 
 const ShopCategory = () => {
+
     return (
         <Routes>
             {/* <Route index element={<ShopPage />} /> */}

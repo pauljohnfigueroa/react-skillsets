@@ -3,10 +3,10 @@ import { Route, Routes } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 
 import { onAuthStateChangedListener, createUserDocumentFromAuth } from './utils/firebase/firebase.utils';
-import { getCollectionsAndDocuments } from './utils/firebase/firebase.utils';
-
 import { setCurrentUser } from "./store/user/user.action";
-import { setCategoriesMap } from "./store/category/category.action";
+
+import { getCollectionsAndDocuments } from "./utils/firebase/firebase.utils";
+import { setCategories } from "./store/category/category.action";
 
 import Header from "./components/header/header.component";
 import Home from "./routes/home/home.component";
@@ -27,7 +27,6 @@ const App = () => {
 
   const dispatch = useDispatch();
 
-
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener(user => {
       if (user) {
@@ -42,9 +41,11 @@ const App = () => {
 
   useEffect(() => {
     const getCategoriesMap = async () => {
-      const categoryMap = await getCollectionsAndDocuments();
-      dispatch(setCategoriesMap(categoryMap));
-      console.log('categoryMap', categoryMap);
+      //const categoryMap = await getCollectionsAndDocuments();
+      const categoriesArray = await getCollectionsAndDocuments();
+      console.log('Shop-category categoriesArray', categoriesArray);
+      dispatch(setCategories(categoriesArray));
+
     };
     getCategoriesMap();
   }, []);
