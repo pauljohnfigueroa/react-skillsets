@@ -1,3 +1,8 @@
+/*
+Replaced with Redux
+*/
+
+
 // import { createContext, useEffect, useReducer } from "react";
 
 // // import { onAuthStateChangedListener, createUserDocumentFromAuth } from "../utils/firebase/firebase.utils";

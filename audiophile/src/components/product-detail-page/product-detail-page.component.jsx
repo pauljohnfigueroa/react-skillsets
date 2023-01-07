@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import { CartContext } from "../../contexts/cart.context";
-import { setCategories } from "../../store/category/category.selector";
+import { selectCategoriesMap } from "../../store/category/category.selector";
 
 /* These was replaced by the redux store. */
 // import PRODUCTS from "../../data/products.data";
@@ -22,7 +22,7 @@ const ProductDetailPage = () => {
     const { category, productId } = useParams();
     const { addItemToCart } = useContext(CartContext);
 
-    const categoriesMap = useSelector(setCategories);
+    const categoriesMap = useSelector(selectCategoriesMap);
 
     const items = categoriesMap[category];
     console.log('items', items);

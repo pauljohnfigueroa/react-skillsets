@@ -1,3 +1,7 @@
+/*
+Replaced with Redux
+*/
+
 // import { createContext, useEffect, useState } from "react";
 // import { getCollectionsAndDocuments } from "../utils/firebase/firebase.utils";
 
