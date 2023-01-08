@@ -133,7 +133,6 @@ export const CartProvider = ({ children }) => {
         // setCartItems(clearCartItem(cartItems, cartItemToClear));
         const newCartItem = clearCartItem(cartItems, cartItemToClear);
         updateCartItemsReducer(newCartItem);
-
     }
 
     const value = {
