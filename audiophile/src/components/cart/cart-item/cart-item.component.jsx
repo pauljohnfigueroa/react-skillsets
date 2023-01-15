@@ -1,13 +1,21 @@
-import { useContext } from "react";
-import { CartContext } from "../../../contexts/cart.context";
+// import { useContext } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import { selectCartItems } from "../../../store/cart/cart.selector";
+import { addItemToCart, removeItemFromCart, clearItemFromCart } from "../../../store/cart/cart.action";
+// import { CartContext } from "../../../contexts/cart.context";
+
 
 const CartItem = ({ cartItem }) => {
 
-    const { addItemToCart, removeITemToCart, clearItemFromCart } = useContext(CartContext);
+    const dispatch = useDispatch();
 
-    const addItemFromCartHandler = () => addItemToCart(cartItem)
-    const removeITemFromCartHandler = () => removeITemToCart(cartItem);
-    const clearItemFromCartHandler = () => clearItemFromCart(cartItem);
+    const cartItems = useSelector(selectCartItems);
+    // const { addItemToCart, removeITemToCart, clearItemFromCart } = useContext(CartContext);
+
+    const addItemFromCartHandler = () => dispatch(addItemToCart(cartItems, cartItem));
+    const removeITemFromCartHandler = () => dispatch(removeItemFromCart(cartItems, cartItem));
+    const clearItemFromCartHandler = () => dispatch(clearItemFromCart(cartItems, cartItem));
 
     return (
         <>

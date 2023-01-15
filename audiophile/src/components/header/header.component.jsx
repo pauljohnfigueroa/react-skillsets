@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+//import { useContext } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { ReactComponent as AudiophileLogo } from '../../assets/images/logo.svg';
 import { ReactComponent as MobileNavIcon } from '../../assets/images/icon-hamburger.svg';
 
-import { CartContext } from '../../contexts/cart.context';
+//import { CartContext } from '../../contexts/cart.context';
 // import { UserContext } from '../../contexts/user.context';
 import { selectCurrentUser } from '../../store/user/user.selector';
 
@@ -15,13 +15,14 @@ import CartDropDown from '../cart/cart-dropdown.component';
 import MainNavigation from "../../routes/main-navigation/main-navigation.component";
 
 import { signOutUser } from '../../utils/firebase/firebase.utils';
+import { selectIsCartOpen } from '../../store/cart/cart.selector';
 
 const Header = () => {
 
     //const { currentUser } = useContext(UserContext);
     const currentUser = useSelector(selectCurrentUser);
-    const { isCartOpen } = useContext(CartContext);
-
+    // const { isCartOpen } = useContext(CartContext);
+    const isCartOpen = useSelector(selectIsCartOpen);
 
     // replaced by onAuthStateChanged()
 

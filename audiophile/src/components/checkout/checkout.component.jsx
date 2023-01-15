@@ -1,19 +1,23 @@
-import { useContext } from 'react';
-import { CartContext } from '../../contexts/cart.context';
+// import { useContext } from 'react';
+import { useSelector } from 'react-redux';
+//import { CartContext } from '../../contexts/cart.context';
 
+import { selectCartItems, selectCartTotalAmount } from '../../store/cart/cart.selector';
 import FormInput from '../form-input/form-input.component';
 import Button from '../button/button.component';
 import CartItem from '../cart/cart-item/cart-item.component';
 
 const CheckOut = () => {
 
-    const { cartItems, cartTotalAmount } = useContext(CartContext);
+    // const { cartItems, cartTotalAmount } = useContext(CartContext);
+    const cartItems = useSelector(selectCartItems);
+    const cartTotalAmount = useSelector(selectCartTotalAmount);
 
     let cartItemsArray;
     if (cartItems.length) {
         cartItemsArray = cartItems.map(cartItem => <CartItem cartItem={cartItem} />);
     } else {
-        cartItemsArray = <h2>Your cart is empty.</h2>
+        cartItemsArray = <h2>Your Cart is Empty.</h2>
     }
 
     return (
@@ -61,10 +65,10 @@ const CheckOut = () => {
                             </div>
                             <div className="radio-group">
                                 <div className="radio-item">
-                                    <FormInput label="e-Money" type="radio" id="e-money" name="payment-method" value="e-money" checked />
+                                    <FormInput label="e-Money" type="radio" id="e-money" name="payment-method" value="e-money" onChange={() => { }} checked />
                                 </div>
                                 <div className="radio-item">
-                                    <FormInput label="Cash on Delivery" type="radio" id="cod" name="payment-method" value="cod" />
+                                    <FormInput label="Cash on Delivery" type="radio" id="cod" name="payment-method" onChange={() => { }} value="cod" />
                                 </div>
                             </div>
                             <div className="text-input">

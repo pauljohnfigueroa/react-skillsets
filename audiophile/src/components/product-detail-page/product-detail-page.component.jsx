@@ -1,10 +1,12 @@
-import { useContext } from "react";
+//import { useContext } from "react";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
-import { CartContext } from "../../contexts/cart.context";
+//import { CartContext } from "../../contexts/cart.context";
+import { addItemToCart } from "../../store/cart/cart.action";
+
 import { selectCategoriesMap } from "../../store/category/category.selector";
-
+import { selectCartItems } from "../../store/cart/cart.selector";
 /* These was replaced by the redux store. */
 // import PRODUCTS from "../../data/products.data";
 
@@ -19,10 +21,13 @@ import Footer from "../footer/footer.component";
 
 const ProductDetailPage = () => {
 
+    const dispatch = useDispatch();
+
     const { category, productId } = useParams();
-    const { addItemToCart } = useContext(CartContext);
+    // const { addItemToCart } = useContext(CartContext);
 
     const categoriesMap = useSelector(selectCategoriesMap);
+    const cartItems = useSelector(selectCartItems);
 
     const items = categoriesMap[category];
     console.log('items', items);
@@ -45,6 +50,7 @@ const ProductDetailPage = () => {
 
     const product = p[0];
     console.log('product', product);
+    console.log('cartItems', cartItems);
 
     let isNewProduct = <p className="sub-heading">NEW PRODUCT</p>;
     if (!product.isNewProduct) {
@@ -55,7 +61,7 @@ const ProductDetailPage = () => {
         console.log('value changed');
     }
 
-    const addToCartClickHandler = () => addItemToCart(product);
+    const addToCartClickHandler = () => dispatch(addItemToCart(cartItems, product));
 
     return (
         <>
