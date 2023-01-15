@@ -7,7 +7,7 @@ import Button from "../button/button.component";
 import CartItem from "./cart-item/cart-item.component";
 
 import { selectCartItems, selectIsCartOpen, selectCartTotal } from "../../store/cart/cart.selector";
-import { setIsCartOpen } from "../../store/cart/cart.action";
+import { setIsCartOpen, removeAllItemsFromCart } from "../../store/cart/cart.action";
 
 const CartDropDown = () => {
 
@@ -37,13 +37,16 @@ const CartDropDown = () => {
         cartItemsArray = <h2>Your cart is empty.</h2>
     }
 
+    const removeAllFromCartHandler = () => dispatch(removeAllItemsFromCart(cartItems));
+
     return (
+
         <>
             <section className="cart-modal">
                 <aside className="cart">
                     <div className="heading-container">
                         <h2 className="heading">Cart<span>({cartTotal})</span></h2>
-                        <a href="http://">Remove all</a>
+                        <Button onClick={removeAllFromCartHandler}>Remove all</Button>
                     </div>
                     {cartItemsArray}
                     <div className="button-container">
