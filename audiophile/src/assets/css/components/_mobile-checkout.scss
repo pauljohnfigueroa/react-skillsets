@@ -102,61 +102,6 @@
             margin: 30px auto;
         }
 
-        .item-row {
-            display: flex;
-            width: 90%;
-            margin: 30px auto;
-
-            .item-image-container {
-                background-color: #cfcfcf;
-                border-radius: 8px;
-                min-width: 64px;
-                width: 64px;
-
-                img {
-                    width: 100%;
-                    height: auto;
-                }
-            }
-
-            .item-details {
-                display: flex;
-                width: 100%;
-
-                .item-title-price {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    width: 80%;
-                }
-
-                .item-title,
-                .item-price {
-                    font-size: 15px;
-                    font-weight: 700;
-                    line-height: 25px;
-                    margin: 3px 20px;
-                }
-
-                .item-title {
-                    color: black;
-                }
-
-                .item-price,
-                .item-count {
-                    color: rgba(0, 0, 0, .5);
-                }
-
-                .item-count {
-                    font-size: 15px;
-                    font-weight: 700;
-                    line-height: 25px;
-                    text-align: right;
-                    width: 20%;
-                }
-            }
-        }
-
         .price-details {
 
             .price-row {

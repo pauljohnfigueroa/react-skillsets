@@ -29,8 +29,7 @@ const CartItem = ({ cartItem }) => {
                         <p className="item-title">{cartItem.name}</p>
                         <p className="item-price">${cartItem.price}</p>
                     </div>
-
-                    <form action="#">
+                    <form action="#" className="cart-quantity">
                         <div className="quantity-nav">
                             <div className="quantity-button quantity-down" onClick={removeITemFromCartHandler}>-</div>
                         </div>
@@ -39,10 +38,9 @@ const CartItem = ({ cartItem }) => {
                             <div className="quantity-button quantity-up" onClick={addItemFromCartHandler}>+</div>
                         </div>
                     </form>
+                    <span onClick={clearItemFromCartHandler} className="clear-cart-item">&#10005;</span>
                 </div>
-                <div>
-                    <p onClick={clearItemFromCartHandler}>&#10005;</p>
-                </div>
+
             </div>
         </>
     );

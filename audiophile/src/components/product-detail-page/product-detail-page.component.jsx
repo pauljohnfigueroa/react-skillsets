@@ -1,4 +1,4 @@
-//import { useContext } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -20,6 +20,8 @@ import Marketing from "../marketing/marketing.component";
 import Footer from "../footer/footer.component";
 
 const ProductDetailPage = () => {
+
+    let [itemQuantity, setItemQuantity] = useState(1);
 
     const dispatch = useDispatch();
 
@@ -57,11 +59,37 @@ const ProductDetailPage = () => {
         isNewProduct = '';
     }
 
+
     const onChangeHandler = () => {
         console.log('value changed');
     }
 
-    const addToCartClickHandler = () => dispatch(addItemToCart(cartItems, product));
+    const increaseItemToCart = () => {
+        console.log('increase');
+        itemQuantity = itemQuantity + 1;
+        setItemQuantity(itemQuantity);
+    }
+
+    const dereaseItemToCart = () => {
+        console.log('decrease');
+        if (itemQuantity > 1) {
+            itemQuantity = itemQuantity - 1;
+            setItemQuantity(itemQuantity);
+        } else {
+            itemQuantity = 1;
+            setItemQuantity(itemQuantity);
+        }
+    }
+
+    const resetQuantity = () => {
+        setItemQuantity(1);
+    }
+    const addToCartClickHandler = (event) => {
+        event.preventDefault();
+        console.log('addToCartClickHandler');
+        dispatch(addItemToCart(cartItems, product, itemQuantity));
+        resetQuantity();
+    }
 
     return (
         <>
@@ -92,16 +120,17 @@ const ProductDetailPage = () => {
 
                         <div className="product-form">
                             <p className="price">$ {product.price}</p>
-                            <form action="#">
+
+                            <form action="#" onSubmit={addToCartClickHandler}>
                                 <div className="quantity-nav">
-                                    <div className="quantity-button quantity-down">-</div>
+                                    <div className="quantity-button quantity-down" onClick={dereaseItemToCart}>-</div>
                                 </div>
-                                <input type="number" min="0" value="0" onChange={onChangeHandler} className="quantity" />
+                                <input name="quantity" type="number" min="1" value={itemQuantity} onChange={() => { }} className="quantity" />
                                 <div className="quantity-nav">
-                                    <div className="quantity-button quantity-up">+</div>
+                                    <div className="quantity-button quantity-up" onClick={increaseItemToCart}>+</div>
                                 </div>
 
-                                <button type="button" className="form-button" onClick={addToCartClickHandler}>Add to Cart</button>
+                                <button type="submit" className="form-button">Add to Cart</button>
                             </form>
                         </div>
 

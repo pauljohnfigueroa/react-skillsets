@@ -3,19 +3,34 @@ import { CART_ACTION_TYPES } from "./cart.types";
 
 export const setIsCartOpen = (bool) => createAction(CART_ACTION_TYPES.SET_IS_CART_OPEN, bool);
 
-export const addCartItem = (cartItems, productToAdd) => {
+export const addCartItem = (cartItems, productToAdd, itemQuantity) => {
     // check if productToAdd exists in cartItems;
     const existingItem = cartItems.find(cartItem => cartItem.id === productToAdd.id);
 
     // if it exists, update quantity
     if (existingItem) {
-        return cartItems.map(cartItem => cartItem.id === productToAdd.id ?
-            { ...cartItem, quantity: cartItem.quantity + 1 } :
-            cartItem
-        )
+
+        if (itemQuantity > 1) {
+            return cartItems.map(cartItem => cartItem.id === productToAdd.id ?
+                { ...cartItem, quantity: cartItem.quantity + itemQuantity } :
+                cartItem
+            )
+        } else {
+            return cartItems.map(cartItem => cartItem.id === productToAdd.id ?
+                { ...cartItem, quantity: cartItem.quantity + 1 } :
+                cartItem
+            )
+        }
+
+
     }
     // else, it means that this is a new product, set the quantity to 1
-    return [...cartItems, { ...productToAdd, quantity: 1 }];
+    if (itemQuantity > 1) {
+        return [...cartItems, { ...productToAdd, quantity: itemQuantity }];
+    }
+    else {
+        return [...cartItems, { ...productToAdd, quantity: 1 }];
+    }
 }
 
 
@@ -36,9 +51,10 @@ export const removeCartItem = (cartItems, cartItemToRemove) => {
 export const clearCartItem = (cartItems, cartItemToClear) => cartItems.filter((cartItem) => cartItem.id !== cartItemToClear.id)
 
 
-export const addItemToCart = (cartItems, productToAdd) => {
-    // setCartItems(addCartItem(cartItems, productToAdd));
-    const newCartItem = addCartItem(cartItems, productToAdd);
+
+// setCartItems(addCartItem(cartItems, productToAdd));
+export const addItemToCart = (cartItems, productToAdd, itemQuantity) => {
+    const newCartItem = addCartItem(cartItems, productToAdd, itemQuantity);
     // updateCartItemsReducer(newCartItem);
     return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, newCartItem);
 }
