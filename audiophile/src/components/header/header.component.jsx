@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { ReactComponent as AudiophileLogo } from '../../assets/images/logo.svg';
 import { ReactComponent as MobileNavIcon } from '../../assets/images/icon-hamburger.svg';
 
-//import { CartContext } from '../../contexts/cart.context';
+// import { CartContext } from '../../contexts/cart.context';
 // import { UserContext } from '../../contexts/user.context';
 import { selectCurrentUser } from '../../store/user/user.selector';
 
