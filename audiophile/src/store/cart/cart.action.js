@@ -10,20 +10,19 @@ export const addCartItem = (cartItems, productToAdd, itemQuantity) => {
     // if it exists, update quantity
     if (existingItem) {
 
+        let qty = 1;
+
         if (itemQuantity > 1) {
-            return cartItems.map(cartItem => cartItem.id === productToAdd.id ?
-                { ...cartItem, quantity: cartItem.quantity + itemQuantity } :
-                cartItem
-            )
-        } else {
-            return cartItems.map(cartItem => cartItem.id === productToAdd.id ?
-                { ...cartItem, quantity: cartItem.quantity + 1 } :
-                cartItem
-            )
+            qty = itemQuantity;
         }
 
+        return cartItems.map(cartItem => cartItem.id === productToAdd.id ?
+            { ...cartItem, quantity: cartItem.quantity + qty } :
+            cartItem
+        )
 
     }
+
     // else, it means that this is a new product, set the quantity to 1
     if (itemQuantity > 1) {
         return [...cartItems, { ...productToAdd, quantity: itemQuantity }];
@@ -47,9 +46,12 @@ export const removeCartItem = (cartItems, cartItemToRemove) => {
     )
 }
 
+
 export const clearCartItem = (cartItems, cartItemToClear) => cartItems.filter((cartItem) => cartItem.id !== cartItemToClear.id)
 
+
 export const removeAllCartItems = (cartItems) => cartItems.filter((cartItem) => cartItem.quantity === 0)
+
 
 // setCartItems(addCartItem(cartItems, productToAdd));
 export const addItemToCart = (cartItems, productToAdd, itemQuantity) => {

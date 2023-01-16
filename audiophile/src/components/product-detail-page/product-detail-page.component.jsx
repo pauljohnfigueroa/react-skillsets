@@ -19,9 +19,11 @@ import ProductCategories from "../product-categories/product-categories.componen
 import Marketing from "../marketing/marketing.component";
 import Footer from "../footer/footer.component";
 
+const INITIAL_CART_QUANTITY = 1;
+
 const ProductDetailPage = () => {
 
-    let [itemQuantity, setItemQuantity] = useState(1);
+    let [itemQuantity, setItemQuantity] = useState(INITIAL_CART_QUANTITY);
 
     const dispatch = useDispatch();
 
@@ -60,15 +62,12 @@ const ProductDetailPage = () => {
     }
 
 
-    const onChangeHandler = () => {
-        console.log('value changed');
-    }
-
     const increaseItemToCart = () => {
         console.log('increase');
         itemQuantity = itemQuantity + 1;
         setItemQuantity(itemQuantity);
     }
+
 
     const dereaseItemToCart = () => {
         console.log('decrease');
@@ -81,11 +80,14 @@ const ProductDetailPage = () => {
         }
     }
 
+
     const resetQuantity = () => {
-        setItemQuantity(1);
+        setItemQuantity(INITIAL_CART_QUANTITY);
     }
-    const addToCartClickHandler = (event) => {
-        event.preventDefault();
+
+
+    const addToCartClickHandler = (e) => {
+        e.preventDefault();
         console.log('addToCartClickHandler');
         dispatch(addItemToCart(cartItems, product, itemQuantity));
         resetQuantity();
@@ -121,7 +123,7 @@ const ProductDetailPage = () => {
                         <div className="product-form">
                             <p className="price">$ {product.price}</p>
 
-                            <form action="#" onSubmit={addToCartClickHandler}>
+                            <form onSubmit={addToCartClickHandler}>
                                 <div className="quantity-nav">
                                     <div className="quantity-button quantity-down" onClick={dereaseItemToCart}>-</div>
                                 </div>
