@@ -119,14 +119,12 @@
         .item-price,
         .item-count {
             color: rgba(0, 0, 0, .5);
-        }
-
-        .item-count {
             font-size: 15px;
             font-weight: 700;
             line-height: 25px;
             text-align: right;
             width: 20%;
+
         }
 
     }
@@ -203,4 +201,20 @@
 
 .cart-checkout-btn {
     width: 100%;
+}
+
+.cart-icon-container {
+
+    &:hover {
+
+        .item-count {
+            color: #d87d4a;
+        }
+
+        svg {
+            path {
+                fill: #d87d4a;
+            }
+        }
+    }
 }

@@ -1,4 +1,6 @@
 import { ReactComponent as AudiophileLogo } from '../../assets/images/logo.svg';
+import { Link } from 'react-router-dom';
+
 import MainNavigation from '../../routes/main-navigation/main-navigation.component';
 
 const Footer = () => {
@@ -11,7 +13,9 @@ const Footer = () => {
 
                 <div className="footer-group-1">
                     <div className="logo">
-                        <AudiophileLogo />
+                        <Link to="/">
+                            <AudiophileLogo />
+                        </Link>
                     </div>
                     <MainNavigation />
                 </div>

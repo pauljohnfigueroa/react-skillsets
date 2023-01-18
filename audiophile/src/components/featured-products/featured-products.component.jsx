@@ -69,7 +69,7 @@ const FeaturedProducts = () => {
                     <div className="featured-product-texts">
                         <h2 className="featured-product-heading">{featuredProducts[0].heading}</h2>
                         <p className="featured-product-subtext">{featuredProducts[0].subText}</p>
-                        <div className="featured-product-button"><a href="#">See Product</a></div>
+                        <div className="featured-product-button"><a href="shop/speakers/11">See Product</a></div>
                     </div>
                 </div>
 
@@ -81,8 +81,8 @@ const FeaturedProducts = () => {
                             src={featuredProducts[1].desktopImageUrl} alt={featuredProducts[1].altText} />
                     </div>
                     <div className="featured-product-texts">
-                        <h2 className="featured-product-heading">{featuredProducts[0].heading}</h2>
-                        <div className="featured-product-button"><a href="#">See Product</a></div>
+                        <h2 className="featured-product-heading">{featuredProducts[1].heading}</h2>
+                        <div className="featured-product-button"><a href="shop/speakers/12">See Product</a></div>
                     </div>
                 </div>
 
@@ -96,7 +96,7 @@ const FeaturedProducts = () => {
                     <div className="featured-product-texts-container">
                         <div className="featured-product-texts">
                             <h2 className="featured-product-heading">{featuredProducts[2].heading}</h2>
-                            <div className="featured-product-button"><a href="#">See Product</a></div>
+                            <div className="featured-product-button"><a href="shop/earphones/21">See Product</a></div>
                         </div>
                     </div>
                 </div>
