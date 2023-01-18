@@ -25,14 +25,8 @@ a:hover {
 .buttons-outer-container {
     display: flex;
     flex-wrap: wrap;
-    border: 1px dashed rgb(21, 255, 0);
 }
 
-.button-container {
-    width: 90%;
-    margin: 2rem auto;
-    border: 1px dashed blue;
-}
 
 button {
     background-color: #d87d4a;
@@ -44,6 +38,7 @@ button {
     color: white;
     width: 100%;
     min-height: 48px;
+
 
     &:hover {
         background-color: transparent;
@@ -101,10 +96,25 @@ button {
 
 
 // Alignments
-.align-right {
+.text-align-right {
     text-align: right;
 }
 
+.text-align-center {
+    text-align: center;
+}
+
+.mt-1rem {
+    margin-top: 1rem;
+}
+
+.mb-1rem {
+    margin-bottom: 1rem;
+}
+
+.p-1rem {
+    padding: 1rem;
+}
 
 // Dimension
 .width-50pct {

@@ -34,19 +34,18 @@ const CartDropDown = () => {
     if (cartItems.length) {
         cartItemsArray = cartItems.map((cartItem) => <CartItem key={cartItem.id} cartItem={cartItem} />)
     } else {
-        cartItemsArray = <h2>Your cart is empty.</h2>
+        cartItemsArray = <h2 class="text-align-center">Your cart is empty.</h2>
     }
 
     const removeAllFromCartHandler = () => dispatch(removeAllItemsFromCart(cartItems));
 
     return (
-
         <>
             <section className="cart-modal">
-                <aside className="cart">
-                    <div className="heading-container">
+                <aside className="cart p-1rem">
+                    <div className="heading-container mb-1rem">
                         <h2 className="heading cart-total">Cart<span>({cartTotal})</span></h2>
-                        <span onClick={() => { }} className="x-button align-right width-50pct">&#10005;</span>
+                        <p onClick={toggleIsCartOpen} className="text-align-right width-50pct"><span className="x-button">&#10005;</span></p>
                     </div>
                     {cartItemsArray.length &&
                         <div className="button-container">
@@ -56,7 +55,7 @@ const CartDropDown = () => {
 
                     {cartItemsArray}
 
-                    <div className="button-container">
+                    <div className="button-container mt-1rem">
                         {cartItemsArray.length
                             ?
                             <Button label="Checkout" type="button" className="cart-checkout-btn" onClick={goToCheckOutHandler} />
@@ -64,6 +63,7 @@ const CartDropDown = () => {
                             <Button label="Checkout" className="cart-checkout-btn-disabled" />
                         }
                     </div>
+
                 </aside>
             </section>
         </>
