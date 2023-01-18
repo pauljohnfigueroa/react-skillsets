@@ -48,8 +48,8 @@ const CartDropDown = () => {
                         <p onClick={toggleIsCartOpen} className="text-align-right width-50pct"><span className="x-button">&#10005;</span></p>
                     </div>
                     {cartItemsArray.length &&
-                        <div className="button-container">
-                            <Button label="Remove All" type="button" className="cart-remove-all-btn" onClick={removeAllFromCartHandler} />
+                        <div className="text-align-right">
+                            <Button label="Remove All" className="cart-remove-all-btn" onClick={removeAllFromCartHandler} />
                         </div>
                     }
 

@@ -1,14 +1,16 @@
 .checkout {
     padding-top: 100px;
+    width: 80%;
 
     .checkout-form {
+        width: 100%;
 
         h2 {
             font-size: 28px;
             letter-spacing: 1px;
             text-transform: uppercase;
             width: 90%;
-            margin: 30px auto;
+            margin: 1rem auto;
         }
 
         form {
@@ -96,10 +98,13 @@
     }
 
     .checkout-summary {
+        width: 90%;
 
         .heading {
-            width: 90%;
-            margin: 30px auto;
+            font-size: 28px;
+            letter-spacing: 1px;
+            width: 100%;
+            margin: 1rem auto;
         }
 
         .price-details {
@@ -108,8 +113,8 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                width: 90%;
-                margin: 10px auto;
+                width: 100%;
+                margin: 10px 0;
             }
 
             .label {
@@ -136,8 +141,8 @@
         }
 
         .button-container {
-            width: 90%;
-            margin: 40px auto;
+            width: 100%;
+            margin: 40px 0;
 
             button {
                 background-color: #d87d4a;

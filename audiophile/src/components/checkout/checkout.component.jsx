@@ -17,7 +17,7 @@ const CheckOut = () => {
     if (cartItems.length) {
         cartItemsArray = cartItems.map(cartItem => <CartItem cartItem={cartItem} />);
     } else {
-        cartItemsArray = <h2>Your Cart is Empty.</h2>
+        cartItemsArray = <h2 class="text-align-center">Your Cart is Empty.</h2>
     }
 
     return (
@@ -87,7 +87,7 @@ const CheckOut = () => {
 
                     {cartItemsArray}
 
-                    <div className="price-details">
+                    <div className="price-details mt-2rem">
                         <div className="price-row">
                             <p className="label">Total</p>
                             <p className="price">$ {(cartTotalAmount).toFixed(2).toLocaleString()}</p>
