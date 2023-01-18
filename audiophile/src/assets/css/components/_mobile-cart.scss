@@ -7,13 +7,13 @@
     visibility: visible;
 
     .cart {
-
         position: fixed;
         top: 110px;
         left: 10%;
         width: 80%;
         background-color: #ffffff;
         border-radius: 8px;
+        border: 1px dashed blue;
 
         .heading-container {
             display: flex;
@@ -28,6 +28,10 @@
                 letter-spacing: 1.2px;
             }
 
+            .cart-total {
+                width: 50%;
+            }
+
             a {
                 color: rgba(0, 0, 0, .5);
                 font-size: 15px;
@@ -36,6 +40,7 @@
                     color: #d87d4a
                 }
             }
+
         }
 
 
@@ -72,21 +77,21 @@
             }
         }
 
-        .button-container {
-            width: 90%;
-            margin: 40px auto;
+        // .button-container {
+        //     width: 90%;
+        //     margin: 40px auto;
 
-            button {
-                background-color: #d87d4a;
-                border: none;
-                font-size: 13px;
-                font-size: 700;
-                text-transform: uppercase;
-                color: white;
-                width: 100%;
-                min-height: 48px;
-            }
-        }
+        //     button {
+        //         background-color: #d87d4a;
+        //         border: none;
+        //         font-size: 13px;
+        //         font-size: 700;
+        //         text-transform: uppercase;
+        //         color: white;
+        //         width: 100%;
+        //         min-height: 48px;
+        //     }
+        // }
 
     }
 }
@@ -149,18 +154,6 @@
 
 }
 
-// remove a cart or checkout item
-.clear-cart-item {
-    margin: auto;
-    padding: 0 10px;
-
-    &:hover {
-        cursor: pointer;
-        color: #d87d4a;
-    }
-}
-
-
 .cart-quantity {
     margin: 20px auto;
     display: flex;
@@ -222,3 +215,35 @@
 }
 
 // + / - buttons
+
+// Cart Remove all button
+.cart-remove-all-btn {
+    background-color: transparent;
+    color: #D87D4A;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    border: 1px solid #D87D4A;
+    width: auto;
+    padding: .8rem;
+
+    &:hover {
+        background-color: #D87D4A;
+        color: white;
+    }
+}
+
+.cart-checkout-btn {
+    width: 100%;
+    border: 1px dashed green;
+}
+
+.cart-checkout-btn-disabled {
+    color: #c7c7c7;
+    background-color: #757575;
+
+    &:hover {
+        cursor: not-allowed;
+        color: #c7c7c7;
+        background-color: #757575;
+    }
+}

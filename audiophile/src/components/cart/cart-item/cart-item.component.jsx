@@ -38,7 +38,7 @@ const CartItem = ({ cartItem }) => {
                             <div className="quantity-button quantity-up" onClick={addItemFromCartHandler}>+</div>
                         </div>
                     </form>
-                    <span onClick={clearItemFromCartHandler} className="clear-cart-item">&#10005;</span>
+                    <span onClick={clearItemFromCartHandler} className="x-button">&#10005;</span>
                 </div>
 
             </div>

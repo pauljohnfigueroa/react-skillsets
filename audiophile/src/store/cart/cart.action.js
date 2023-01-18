@@ -52,6 +52,7 @@ export const clearCartItem = (cartItems, cartItemToClear) => cartItems.filter((c
 
 export const removeAllCartItems = (cartItems) => cartItems.filter((cartItem) => cartItem.quantity === 0)
 
+/** Action Creators */
 
 // setCartItems(addCartItem(cartItems, productToAdd));
 export const addItemToCart = (cartItems, productToAdd, itemQuantity) => {

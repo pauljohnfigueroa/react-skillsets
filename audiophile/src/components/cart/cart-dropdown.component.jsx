@@ -45,12 +45,24 @@ const CartDropDown = () => {
             <section className="cart-modal">
                 <aside className="cart">
                     <div className="heading-container">
-                        <h2 className="heading">Cart<span>({cartTotal})</span></h2>
-                        <Button onClick={removeAllFromCartHandler}>Remove all</Button>
+                        <h2 className="heading cart-total">Cart<span>({cartTotal})</span></h2>
+                        <span onClick={() => { }} className="x-button align-right width-50pct">&#10005;</span>
                     </div>
+                    {cartItemsArray.length &&
+                        <div className="button-container">
+                            <Button label="Remove All" type="button" className="cart-remove-all-btn" onClick={removeAllFromCartHandler} />
+                        </div>
+                    }
+
                     {cartItemsArray}
+
                     <div className="button-container">
-                        <Button label="Checkout" type="button" onClick={goToCheckOutHandler} />
+                        {cartItemsArray.length
+                            ?
+                            <Button label="Checkout" type="button" className="cart-checkout-btn" onClick={goToCheckOutHandler} />
+                            :
+                            <Button label="Checkout" className="cart-checkout-btn-disabled" />
+                        }
                     </div>
                 </aside>
             </section>
