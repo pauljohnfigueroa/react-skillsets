@@ -54,8 +54,9 @@ const Header = () => {
                     </div>
                 </div>
             </header>
-            <Outlet />
             {isCartOpen && <CartDropDown />}
+            <Outlet />
+
         </>
 
     );

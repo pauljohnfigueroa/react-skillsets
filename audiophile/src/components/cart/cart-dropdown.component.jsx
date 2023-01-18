@@ -60,7 +60,7 @@ const CartDropDown = () => {
                             ?
                             <Button label="Checkout" type="button" className="cart-checkout-btn" onClick={goToCheckOutHandler} />
                             :
-                            <Button label="Checkout" className="cart-checkout-btn-disabled" />
+                            <Button label="Checkout" disabled={true} />
                         }
                     </div>
 

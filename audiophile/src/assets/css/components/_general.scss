@@ -32,18 +32,25 @@ button {
     background-color: #d87d4a;
     border: none;
     cursor: pointer;
-    font-size: 13px;
-    font-size: 700;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .1rem;
     text-transform: uppercase;
     color: white;
     width: 100%;
     min-height: 48px;
 
-
     &:hover {
         background-color: transparent;
         border: 1px solid #d87d4a;
         color: #d87d4a;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        color: #626262;
+        background-color: #c7c7c7;
+        border: 1px solid #c7c7c7;
     }
 }
 
