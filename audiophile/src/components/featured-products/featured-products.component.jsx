@@ -35,7 +35,7 @@ const FeaturedProducts = () => {
             tabletImageUrlWidth: '1034w',
             desktopImageUrl: desktopImageUrl2,
             desktopImageUrlWidth: '1110w',
-            heading: 'ZX9 SPEAKER',
+            heading: 'ZX7 SPEAKER',
             subText: '',
             altText: 'Audio speaker model ZX9',
         },

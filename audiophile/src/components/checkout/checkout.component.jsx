@@ -13,12 +13,15 @@ const CheckOut = () => {
     const cartItems = useSelector(selectCartItems);
     const cartTotalAmount = useSelector(selectCartTotalAmount);
 
-    let cartItemsArray;
-    if (cartItems.length) {
-        cartItemsArray = cartItems.map(cartItem => <CartItem cartItem={cartItem} />);
-    } else {
-        cartItemsArray = <h2 class="text-align-center">Your Cart is Empty.</h2>
-    }
+    let cartItemsArray = cartItems.length ?
+        cartItems.map(cartItem => <CartItem cartItem={cartItem} />) :
+        <h2 class="text-align-center">Your Cart is Empty.</h2>
+
+    // if (cartItems.length) {
+    //     cartItemsArray = cartItems.map(cartItem => <CartItem cartItem={cartItem} />);
+    // } else {
+    //     cartItemsArray = <h2 class="text-align-center">Your Cart is Empty.</h2>
+    // }
 
     return (
         <>

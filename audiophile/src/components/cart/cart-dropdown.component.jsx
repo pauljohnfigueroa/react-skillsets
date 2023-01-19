@@ -29,13 +29,15 @@ const CartDropDown = () => {
         navigate('/checkout');
     }
 
-    let cartItemsArray
+    let cartItemsArray = cartItems.length ?
+        cartItems.map((cartItem) => <CartItem key={cartItem.id} cartItem={cartItem} />) :
+        <h2 class="text-align-center">Your cart is empty.</h2>
 
-    if (cartItems.length) {
-        cartItemsArray = cartItems.map((cartItem) => <CartItem key={cartItem.id} cartItem={cartItem} />)
-    } else {
-        cartItemsArray = <h2 class="text-align-center">Your cart is empty.</h2>
-    }
+    // if (cartItems.length) {
+    //     cartItemsArray = cartItems.map((cartItem) => <CartItem key={cartItem.id} cartItem={cartItem} />)
+    // } else {
+    //     cartItemsArray = <h2 class="text-align-center">Your cart is empty.</h2>
+    // }
 
     const removeAllFromCartHandler = () => dispatch(removeAllItemsFromCart(cartItems));
 
@@ -49,7 +51,7 @@ const CartDropDown = () => {
                     </div>
                     {cartItemsArray.length &&
                         <div className="text-align-right">
-                            <Button label="Remove All" className="cart-remove-all-btn" onClick={removeAllFromCartHandler} />
+                            <Button label="Remove All" className="cart-remove-all-btn" onClick={removeAllFromCartHandler} >I am a child of button</Button>
                         </div>
                     }
 
