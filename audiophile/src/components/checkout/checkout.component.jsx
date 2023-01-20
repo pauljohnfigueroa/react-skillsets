@@ -1,4 +1,4 @@
-// import { useContext } from 'react';
+import { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 //import { CartContext } from '../../contexts/cart.context';
 
@@ -7,6 +7,27 @@ import FormInput from '../form-input/form-input.component';
 import Button from '../button/button.component';
 import CartItem from '../cart/cart-item/cart-item.component';
 
+
+/* 
+We can split this component into two and keep the code in this file.
+This is not always considered best practice because it seems more obvious to split the
+component into smaller ones. However, sometimes it helps to keep the
+render method cleaner.
+
+    const renderUserMenu = () => {
+    // JSX for user menu
+    }
+    const renderAdminMenu = () => {
+    // JSX for admin menu
+    }
+    return (
+        <div>
+        <h1>Welcome back!</h1>
+        {userExists && renderUserMenu()}
+        {userIsAdmin && renderAdminMenu()}
+        </div>
+    )
+*/
 const CheckOut = () => {
 
     // const { cartItems, cartTotalAmount } = useContext(CartContext);
@@ -24,7 +45,7 @@ const CheckOut = () => {
     // }
 
     return (
-        <>
+        <Fragment>
             <section className="checkout">
                 <section className="checkout-form">
                     <h2>Checkout</h2>
@@ -33,13 +54,28 @@ const CheckOut = () => {
                         <fieldset className="billing-details">
                             <legend>Billing Details</legend>
                             <div className="text-input">
-                                <FormInput label="Name" type="text" name="name" id="name" />
+                                <FormInput
+                                    label="Name"
+                                    type="text"
+                                    name="name"
+                                    id="name"
+                                />
                             </div>
                             <div className="text-input">
-                                <FormInput label="Email Address" type="email" name="email" id="email" />
+                                <FormInput
+                                    label="Email Address"
+                                    type="email"
+                                    name="email"
+                                    id="email"
+                                />
                             </div>
                             <div className="text-input">
-                                <FormInput label="Phone Number" type="text" name="phone" id="phone" />
+                                <FormInput
+                                    label="Phone Number"
+                                    type="text"
+                                    name="phone"
+                                    id="phone"
+                                />
                             </div>
                         </fieldset>
 
@@ -116,7 +152,7 @@ const CheckOut = () => {
                 </section>
 
             </section>
-        </>
+        </Fragment>
     );
 }
 export default CheckOut;
