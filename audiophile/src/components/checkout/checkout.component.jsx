@@ -28,6 +28,25 @@ render method cleaner.
         </div>
     )
 */
+
+const validate = values => {
+  const errors = {}
+
+  if (!values.name) {
+    errors.name = 'Required'
+  } else if (values.name.length > 15) {
+    errors.name = 'Must be 15 characters or less'
+  }
+
+  if (!values.email) {
+    errors.email = 'Requird'
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Please give a valid email address.'
+  }
+
+  return errors
+}
+
 const CheckOut = () => {
   // const { cartItems, cartTotalAmount } = useContext(CartContext);
   const cartItems = useSelector(selectCartItems)
@@ -57,8 +76,9 @@ const CheckOut = () => {
       eMoneyNum: '',
       eMoneyPin: ''
     },
+    validate,
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2))
+      console.log(JSON.stringify(values, null, 2))
     }
   })
 
@@ -80,6 +100,8 @@ const CheckOut = () => {
                   value={formik.values.name}
                 />
               </div>
+              {formik.errors.name ? <div>{formik.errors.name}</div> : null}
+
               <div className="text-input">
                 <FormInput
                   label="Email Address"
@@ -90,6 +112,8 @@ const CheckOut = () => {
                   value={formik.values.email}
                 />
               </div>
+              {formik.errors.email ? <div>{formik.errors.email}</div> : null}
+
               <div className="text-input">
                 <FormInput
                   label="Phone Number"
