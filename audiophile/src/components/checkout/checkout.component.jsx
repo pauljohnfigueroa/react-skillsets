@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import { useSelector } from 'react-redux'
 //import { CartContext } from '../../contexts/cart.context';
-import { useFormik } from 'formik'
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup'
 
 import { selectCartItems, selectCartTotalAmount } from '../../store/cart/cart.selector'
@@ -30,30 +30,6 @@ render method cleaner.
     )
 */
 
-// const validate = values => {
-//   const errors = {}
-
-//   if (!values.name) {
-//     errors.name = 'Required'
-//   } else if (values.name.length > 15) {
-//     errors.name = 'Must be 15 characters or less'
-//   }
-
-//   if (!values.email) {
-//     errors.email = 'Requird'
-//   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-//     errors.email = 'Please give a valid email address.'
-//   }
-
-//   if (!values.phone) {
-//     errors.phone = 'Requird'
-//   } else if (!/^[0-9]/.test(values.phone)) {
-//     errors.phone = 'Numbers only.'
-//   }
-
-//   return errors
-// }
-
 const CheckOut = () => {
     // const { cartItems, cartTotalAmount } = useContext(CartContext);
     const cartItems = useSelector(selectCartItems)
@@ -65,145 +41,147 @@ const CheckOut = () => {
         <h2 class="text-align-center">Your Cart is Empty.</h2>
     )
 
-    // if (cartItems.length) {
-    //     cartItemsArray = cartItems.map(cartItem => <CartItem cartItem={cartItem} />);
-    // } else {
-    //     cartItemsArray = <h2 class="text-align-center">Your Cart is Empty.</h2>
-    // }
+    // const formik = useFormik({
+    //     initialValues: {
+    //         name: '',
+    //         email: '',
+    //         phone: '',
+    //         address: '',
+    //         zipcode: '',
+    //         city: '',
+    //         country: '',
+    //         eMoneyNum: '',
+    //         eMoneyPin: ''
+    //     },
+    //     validationSchema: Yup.object({
+    //         name: Yup.string().max(15, 'Must be 15 characters or less').required('Required'),
+    //         email: Yup.string().email('Please give a valid email address.').required('Required'),
+    //         phone: Yup.string().matches(/^[0-9]+$/, 'Must be numbers only.').required('Required')
+    //     }),
+    //     onSubmit: values => {
+    //         console.log(JSON.stringify(values, null, 2))
+    //     }
+    // })
 
-    const formik = useFormik({
-        initialValues: {
-            name: '',
-            email: '',
-            phone: '',
-            address: '',
-            zipcode: '',
-            city: '',
-            country: '',
-            eMoneyNum: '',
-            eMoneyPin: ''
-        },
-        validationSchema: Yup.object({
-            name: Yup.string().max(15, 'Must be 15 characters or less').required('Required'),
-            email: Yup.string().email('Please give a valid email address.').required('Required'),
-            phone: Yup.string().matches(/^[0-9]+$/, 'Must be numbers only.').required('Required')
-        }),
-        onSubmit: values => {
-            console.log(JSON.stringify(values, null, 2))
-        }
-    })
+
 
     return (
         <Fragment>
             <section className="checkout">
-                <section className="checkout-form">
-                    <h2>Checkout</h2>
-                    <form onSubmit={formik.handleSubmit}>
-                        <fieldset className="billing-details">
-                            <legend>Billing Details</legend>
-                            <div className="text-input">
-                                <FormInput
-                                    label="Name"
-                                    type="text"
-                                    name="name"
-                                    id="name"
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    value={formik.values.name}
-                                />
-                                {formik.touched.name && formik.errors.name ? <div>{formik.errors.name}</div> : null}
-                            </div>
+                < Formik
 
-                            <div className="text-input">
-                                <FormInput
-                                    label="Email Address"
-                                    type="email"
-                                    name="email"
-                                    id="email"
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    value={formik.values.email}
-                                />
-                                {formik.touched.email && formik.errors.email ? (
-                                    <div>{formik.errors.email}</div>
-                                ) : null}
-                            </div>
+                    initialValues={{
+                        name: '',
+                        email: '',
+                        phone: '',
+                        address: '',
+                        zipcode: '',
+                        city: '',
+                        country: '',
+                        eMoneyNum: '',
+                        eMoneyPin: ''
+                    }}
 
-                            <div className="text-input">
-                                <FormInput
-                                    label="Phone Number"
-                                    type="text"
-                                    name="phone"
-                                    id="phone"
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    value={formik.values.phone}
-                                />
-                                {formik.touched.phone && formik.errors.phone ? (
-                                    <div>{formik.errors.phone}</div>
-                                ) : null}
-                            </div>
-                        </fieldset>
+                    validationSchema={Yup.object({
+                        name: Yup.string().max(15, 'Must be 15 characters or less').required('Required'),
+                        email: Yup.string().email('Please give a valid email address.').required('Required'),
+                        phone: Yup.string().matches(/^[0-9]+$/, 'Must be numbers only.').required('Required')
+                    })}
 
-                        <fieldset className="shipping-info">
-                            <legend>Shipping info</legend>
-                            <div className="text-input address">
-                                <FormInput label="Address" type="text" name="address" id="address" />
-                            </div>
-                            <div className="address-details">
-                                <div className="text-input">
-                                    <FormInput label="Zip Code" type="text" name="zipcode" id="zipcode" />
-                                </div>
-                                <div className="text-input">
-                                    <FormInput label="City" type="text" name="city" id="city" />
-                                </div>
-                                <div className="text-input">
-                                    <FormInput label="Country" type="text" name="country" id="country" />
-                                </div>
-                            </div>
-                        </fieldset>
+                    onSubmit={values => {
+                        console.log(JSON.stringify(values, null, 2))
+                    }}
+                >
+                    {formik => (
+                        <section className="checkout-form">
+                            <h2>Checkout</h2>
 
-                        <fieldset className="payment-details">
-                            <legend>Payment Details</legend>
-                            <div className="text-input">
-                                <label htmlFor="">Payment Method</label>
-                            </div>
-                            <div className="radio-group">
-                                <div className="radio-item">
-                                    <FormInput
-                                        label="e-Money"
-                                        type="radio"
-                                        id="e-money"
-                                        name="payment-method"
-                                        value="e-money"
-                                        onChange={() => { }}
-                                        checked
-                                    />
-                                </div>
-                                <div className="radio-item">
-                                    <FormInput
-                                        label="Cash on Delivery"
-                                        type="radio"
-                                        id="cod"
-                                        name="payment-method"
-                                        onChange={() => { }}
-                                        value="cod"
-                                    />
-                                </div>
-                            </div>
-                            <div className="text-input">
-                                <FormInput label="e-Money Number" type="text" id="eMoneyNum" name="eMoneyNum" />
-                            </div>
-                            <div className="text-input">
-                                <FormInput label="e-Money PIN" type="text" id="eMoneyPin" name="eMoneyPin" />
-                            </div>
-                        </fieldset>
+                            <Form>
+                                <fieldset className="billing-details">
+                                    <legend>Billing Details</legend>
+                                    <div className="text-input">
+                                        <label htmlFor="name">Name</label>
+                                        <Field name="name" type="text" />
+                                        <ErrorMessage name="name" />
+                                    </div>
 
-                        <div className="button-container">
-                            <Button type="submit" label="Continue & Pay" />
-                        </div>
-                    </form>
-                </section>
+                                    <div className="text-input">
+                                        <label htmlFor="name">Email Address</label>
+                                        <Field name="email" type="email" />
+                                        <ErrorMessage name="email" />
+                                    </div>
+
+                                    <div className="text-input">
+                                        <label htmlFor="phone">Phone</label>
+                                        <Field name="phone" type="text" />
+                                        <ErrorMessage name="phone" />
+                                    </div>
+                                </fieldset>
+
+                                <fieldset className="shipping-info">
+                                    <legend>Shipping info</legend>
+                                    <div className="text-input address">
+                                        <FormInput label="Address" type="text" name="address" id="address" />
+                                    </div>
+                                    <div className="address-details">
+                                        <div className="text-input">
+                                            <FormInput label="Zip Code" type="text" name="zipcode" id="zipcode" />
+                                        </div>
+                                        <div className="text-input">
+                                            <FormInput label="City" type="text" name="city" id="city" />
+                                        </div>
+                                        <div className="text-input">
+                                            <FormInput label="Country" type="text" name="country" id="country" />
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset className="payment-details">
+                                    <legend>Payment Details</legend>
+                                    <div className="text-input">
+                                        <label htmlFor="">Payment Method</label>
+                                    </div>
+                                    <div className="radio-group">
+                                        <div className="radio-item">
+                                            <FormInput
+                                                label="e-Money"
+                                                type="radio"
+                                                id="e-money"
+                                                name="payment-method"
+                                                value="e-money"
+                                                onChange={() => { }}
+                                                checked
+                                            />
+                                        </div>
+                                        <div className="radio-item">
+                                            <FormInput
+                                                label="Cash on Delivery"
+                                                type="radio"
+                                                id="cod"
+                                                name="payment-method"
+                                                onChange={() => { }}
+                                                value="cod"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="text-input">
+                                        <FormInput label="e-Money Number" type="text" id="eMoneyNum" name="eMoneyNum" />
+                                    </div>
+                                    <div className="text-input">
+                                        <FormInput label="e-Money PIN" type="text" id="eMoneyPin" name="eMoneyPin" />
+                                    </div>
+                                </fieldset>
+
+                                <div className="button-container">
+                                    <Button type="submit" label="Continue & Pay" />
+                                </div>
+
+
+
+                            </Form>
+                        </section>
+                    )}
+                </Formik >
 
                 <section className="checkout-summary">
                     <h2 className="heading">Summary</h2>
@@ -236,7 +214,7 @@ const CheckOut = () => {
                     </div>
                 </section>
             </section>
-        </Fragment>
+        </Fragment >
     )
 }
 export default CheckOut
