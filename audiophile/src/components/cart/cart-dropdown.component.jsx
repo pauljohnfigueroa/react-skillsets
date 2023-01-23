@@ -17,7 +17,7 @@ const CartDropDown = () => {
 
     // const { isCartOpen, setIsCartOpen, cartItems, cartTotal } = useContext(CartContext);
     const cartItems = useSelector(selectCartItems)
-    const isCartOpen = useSelector(selectIsCartOpen)
+    // const isCartOpen = useSelector(selectIsCartOpen)
     const cartTotal = useSelector(selectCartTotal)
 
     useEffect(() => {
