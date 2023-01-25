@@ -209,7 +209,7 @@ export const useMode = () => {
         }),
         []
     )
-
+    //Generate a theme base on the options received. Then, pass it as a prop to ThemeProvider.
     const theme = useMemo(() => createTheme(themeSettings(mode)), [mode])
 
     return [theme, colorMode]
