@@ -118,7 +118,7 @@ export const tokens = (mode) => ({
                 900: "#e1e2fe",
             },
         }),
-});
+})
 
 // theme settings
 export const themeSettings = (mode) => {
