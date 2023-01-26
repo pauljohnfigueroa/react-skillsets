@@ -27,6 +27,10 @@ const SideBar = () => {
     const [isCollapsed, setIsCollapsed] = useState(false)
     const [selected, setSelected] = useState('Dashboard')
 
+    console.log(theme.palette.mode);
+
+    const menuItemColor = (theme.palette.mode === 'dark') ? colors.primary[400] : colors.primary[500]
+
     return (
         <Box style={({ height: "100vh" }, { display: "flex", flexDirection: "row" })}>
             <Sidebar
@@ -37,7 +41,23 @@ const SideBar = () => {
                 breakPoint="sm"
                 transitionDuration={800}
             >
-                <Menu>
+                <Menu
+                    menuItemStyles={{
+                        button: ({ level, active, disabled }) => {
+                            if (level === 0) {
+                                return {
+                                    color: disabled ? colors.primary[700] : menuItemColor,
+                                    backgroundColor: active ? "#fff" : undefined,
+                                    "&:hover": {
+                                        backgroundColor: `${colors.blueAccent[100]} !important`,
+                                        color: "white !important",
+                                        fontWeight: "bold !important"
+                                    },
+                                };
+                            }
+                        },
+                    }}
+                >
                     <MenuItem
                         icon={<MenuOutlinedIcon />}
                         style={{ textAlign: "right" }}
@@ -48,13 +68,13 @@ const SideBar = () => {
 
                     <MenuItem icon={<HomeOutlinedIcon />} component={<Link to="/" />}>Home</MenuItem>
                     <MenuItem icon={<PeopleOutlinedIcon />} component={<Link to="/team" />}>Team</MenuItem>
-                    <MenuItem icon={<ContactsOutlinedIcon />}>Contacts</MenuItem>
-                    <MenuItem icon={<ReceiptOutlinedIcon />}>Profile</MenuItem>
-                    <MenuItem icon={<HelpOutlineOutlinedIcon />}>FAQ</MenuItem>
-                    <MenuItem icon={<CalendarTodayOutlinedIcon />}>Calendar</MenuItem>
+                    <MenuItem icon={<ContactsOutlinedIcon />} component={<Link to="/contacts" />}>Contacts</MenuItem>
+                    <MenuItem icon={<ReceiptOutlinedIcon />} component={<Link to="/profile" />}>Profile</MenuItem>
+                    <MenuItem icon={<HelpOutlineOutlinedIcon />} component={<Link to="/faq" />}>FAQ</MenuItem>
+                    <MenuItem icon={<CalendarTodayOutlinedIcon />} component={<Link to="/calendar" />}>Calendar</MenuItem>
                     <SubMenu label="Charts" icon={<CalendarTodayOutlinedIcon />}>
-                        <MenuItem> Pie charts </MenuItem>
-                        <MenuItem> Line charts </MenuItem>
+                        <MenuItem icon={<CalendarTodayOutlinedIcon />} component={<Link to="/pie" />}> Pie charts </MenuItem>
+                        <MenuItem icon={<CalendarTodayOutlinedIcon />} component={<Link to="/line" />}> Line charts </MenuItem>
                     </SubMenu>
                 </Menu>
             </Sidebar>
