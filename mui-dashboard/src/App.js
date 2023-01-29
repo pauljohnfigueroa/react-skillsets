@@ -44,7 +44,9 @@ function App() {
           <SideBar />
           <main className="content">
             <Topbar />
-            <h1
+            <Dashboard />
+
+            {/* <h1
               onClick={() => {
                 toggle();
               }}
@@ -60,7 +62,7 @@ function App() {
 
             {broken && (
               <h1 style={{ color: "white", marginLeft: "5rem" }}>Small screen</h1>
-            )}
+            )} */}
 
             <Routes>
               <Route path="/" element={<Dashboard />} />
