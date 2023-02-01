@@ -6,8 +6,8 @@ import Topbar from './scenes/global/topbar.component'
 import SideBar from './scenes/global/sidebar.component'
 import Dashboard from './scenes/dashboard/dashboard.component'
 import Team from './scenes/team/team.component'
+import Contacts from './scenes/contacts/contacts.component'
 // import Invoices from './scenes/invoices/invoices.component'
-// import Contacts from './scenes/contacts/contacts.component'
 // import Bar from './scenes/bar/bar.component'
 // import Form from './scenes/form/form.component'
 // import Line from './scenes/line/line.component'
@@ -65,7 +65,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/team" element={<Team />} />
-              {/* <Route path="/contacts" element={<Contacts />} /> */}
+              <Route path="/contacts" element={<Contacts />} />
               {/* <Route path="/invoices" element={<Invoices />} /> */}
               {/* <Route path="/form" element={<Form />} /> */}
               {/* <Route path="/bar" element={<Bar />} /> */}
