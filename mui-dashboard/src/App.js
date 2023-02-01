@@ -44,8 +44,6 @@ function App() {
           <SideBar />
           <main className="content">
             <Topbar />
-            <Dashboard />
-
             {/* <h1
               onClick={() => {
                 toggle();
