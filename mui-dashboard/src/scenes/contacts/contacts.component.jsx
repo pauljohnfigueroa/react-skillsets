@@ -14,7 +14,7 @@ const Contacts = () => {
         {
             field: 'id',
             headerName: 'ID',
-            flex: "0.5"
+            flex: 0.5
         },
         {
             field: "registrarId",
