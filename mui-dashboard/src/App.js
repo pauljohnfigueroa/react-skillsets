@@ -9,32 +9,32 @@ import Team from './scenes/team/team.component'
 import Contacts from './scenes/contacts/contacts.component'
 import Invoices from './scenes/invoices/invoices.component'
 import ProfileForm from './scenes/form/profile-form.component'
+import Calendar from './scenes/calendar/calendar.component'
 // import Bar from './scenes/bar/bar.component'
 // import Line from './scenes/line/line.component'
 // import Pie from './scenes/pie/pie.component'
 // import FAQ from './scenes/faq/faq.component'
 // import Geography from './scenes/geography/geography.component'
-// import Calendar from './scenes/calendar/calendar.component'
 
 
-import { useProSidebar } from 'react-pro-sidebar'
+// import { useProSidebar } from 'react-pro-sidebar'
 
 function App() {
 
   const [theme, colorMode] = useMode()
-  const { toggled, toggleSidebar, collapseSidebar, broken } = useProSidebar()
+  // const { toggled, toggleSidebar, collapseSidebar, broken } = useProSidebar()
 
-  const toggle = () => {
-    toggleSidebar();
+  // const toggle = () => {
+  //   toggleSidebar();
 
-    if (toggled) {
-      console.log(toggled)
-      collapseSidebar();
-    } else {
-      console.log(toggled)
-      collapseSidebar();
-    }
-  }
+  //   if (toggled) {
+  //     console.log(toggled)
+  //     collapseSidebar();
+  //   } else {
+  //     console.log(toggled)
+  //     collapseSidebar();
+  //   }
+  // }
 
   return (
     <ColorModeContext.Provider value={colorMode}>
@@ -68,12 +68,12 @@ function App() {
               <Route path="/contacts" element={<Contacts />} />
               <Route path="/invoices" element={<Invoices />} />
               <Route path="/profile-form" element={<ProfileForm />} />
+              <Route path="/calendar" element={<Calendar />} />
               {/* <Route path="/bar" element={<Bar />} /> */}
               {/* <Route path="/pie" element={<Pie />} /> */}
               {/* <Route path="/line" element={<Line />} /> */}
               {/* <Route path="/FAQ" element={<FAQ />} /> */}
               {/* <Route path="/geography" element={<Geography />} /> */}
-              {/* <Route path="/calendar" element={<Calendar />} /> */}
             </Routes>
           </main>
         </div>
