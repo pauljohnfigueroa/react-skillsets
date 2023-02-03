@@ -1,8 +1,6 @@
-import { useState } from 'react'
-
 import { Sidebar, Menu, MenuItem, SubMenu, useProSidebar } from 'react-pro-sidebar'
 
-import { Box, IconButton, Typography, useTheme } from '@mui/material'
+import { Box, Typography, useTheme } from '@mui/material'
 
 import { Link } from 'react-router-dom'
 import { tokens } from '../../theme'
@@ -11,25 +9,25 @@ import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
 import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined'
 import ContactsOutlinedIcon from '@mui/icons-material/ContactsOutlined'
 import ReceiptOutlinedIcon from '@mui/icons-material/ReceiptOutlined'
-import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined'
+// import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined'
 import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined'
 import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlined'
 import ShowChartOutlinedIcon from '@mui/icons-material/ShowChartOutlined';
 import BarChartOutlinedIcon from '@mui/icons-material/BarChartOutlined'
 import PieChartOutlineOutlinedIcon from '@mui/icons-material/PieChartOutlineOutlined';
-import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined'
+// import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined'
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined'
-import MapOutlinedIcon from '@mui/icons-material/MapOutlined'
+// import MapOutlinedIcon from '@mui/icons-material/MapOutlined'
 
 const SideBar = () => {
 
     const theme = useTheme()
     const colors = tokens(theme.palette.mode)
 
-    const { collapseSidebar, toggleSidebar, broken, collapsed, toggled } = useProSidebar()
+    const { collapseSidebar, collapsed } = useProSidebar()
 
     // const [isCollapsed, setIsCollapsed] = useState(false)
-    const [selected, setSelected] = useState('Dashboard')
+    // const [selected, setSelected] = useState('Dashboard')
 
     console.log(theme.palette.mode);
 
@@ -40,14 +38,12 @@ const SideBar = () => {
 
             <Sidebar
                 rootStyles={{
-                    background:
-                        `${colors.primary[400]}`
+                    backgroundColor:
+                        `${colors.primary[500]}`
                 }}
                 breakPoint="sm"
                 transitionDuration={800}
             >
-
-
                 <Menu
                     menuItemStyles={{
                         button: ({ level, active, disabled }) => {
