@@ -9,7 +9,7 @@ import Team from './scenes/team/team.component'
 import Contacts from './scenes/contacts/contacts.component'
 import Invoices from './scenes/invoices/invoices.component'
 import ProfileForm from './scenes/form/profile-form.component'
-import Calendar from './scenes/calendar/calendar.component'
+import EventCalendar from './scenes/event-calendar/event-calendar.component'
 // import Bar from './scenes/bar/bar.component'
 // import Line from './scenes/line/line.component'
 // import Pie from './scenes/pie/pie.component'
@@ -68,7 +68,7 @@ function App() {
               <Route path="/contacts" element={<Contacts />} />
               <Route path="/invoices" element={<Invoices />} />
               <Route path="/profile-form" element={<ProfileForm />} />
-              <Route path="/calendar" element={<Calendar />} />
+              <Route path="/event-calendar" element={<EventCalendar />} />
               {/* <Route path="/bar" element={<Bar />} /> */}
               {/* <Route path="/pie" element={<Pie />} /> */}
               {/* <Route path="/line" element={<Line />} /> */}
