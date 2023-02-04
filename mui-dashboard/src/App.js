@@ -12,8 +12,8 @@ import ProfileForm from './scenes/form/profile-form.component'
 import EventCalendar from './scenes/event-calendar/event-calendar.component'
 import Faq from './scenes/faq/faq.component'
 import Bar from './scenes/bar/bar.component'
+import Pie from './scenes/pie/pie.component'
 // import Line from './scenes/line/line.component'
-// import Pie from './scenes/pie/pie.component'
 // import Geography from './scenes/geography/geography.component'
 
 
@@ -71,7 +71,7 @@ function App() {
               <Route path="/event-calendar" element={<EventCalendar />} />
               <Route path="/faq" element={<Faq />} />
               <Route path="/bar-chart" element={<Bar />} />
-              {/* <Route path="/pie" element={<Pie />} /> */}
+              <Route path="/pie-chart" element={<Pie />} />
               {/* <Route path="/line" element={<Line />} /> */}
               {/* <Route path="/geography" element={<Geography />} /> */}
             </Routes>
