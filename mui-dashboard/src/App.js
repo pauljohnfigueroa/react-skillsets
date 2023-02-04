@@ -10,10 +10,10 @@ import Contacts from './scenes/contacts/contacts.component'
 import Invoices from './scenes/invoices/invoices.component'
 import ProfileForm from './scenes/form/profile-form.component'
 import EventCalendar from './scenes/event-calendar/event-calendar.component'
+import Faq from './scenes/faq/faq.component'
 // import Bar from './scenes/bar/bar.component'
 // import Line from './scenes/line/line.component'
 // import Pie from './scenes/pie/pie.component'
-// import FAQ from './scenes/faq/faq.component'
 // import Geography from './scenes/geography/geography.component'
 
 
@@ -69,10 +69,10 @@ function App() {
               <Route path="/invoices" element={<Invoices />} />
               <Route path="/profile-form" element={<ProfileForm />} />
               <Route path="/event-calendar" element={<EventCalendar />} />
+              <Route path="/faq" element={<Faq />} />
               {/* <Route path="/bar" element={<Bar />} /> */}
               {/* <Route path="/pie" element={<Pie />} /> */}
               {/* <Route path="/line" element={<Line />} /> */}
-              {/* <Route path="/FAQ" element={<FAQ />} /> */}
               {/* <Route path="/geography" element={<Geography />} /> */}
             </Routes>
           </main>
