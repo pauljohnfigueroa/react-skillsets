@@ -15,7 +15,7 @@ import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlined'
 import ShowChartOutlinedIcon from '@mui/icons-material/ShowChartOutlined'
 import BarChartOutlinedIcon from '@mui/icons-material/BarChartOutlined'
 import PieChartOutlineOutlinedIcon from '@mui/icons-material/PieChartOutlineOutlined'
-// import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined'
+import StackedLineChartOutlinedIcon from '@mui/icons-material/StackedLineChartOutlined' // import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined'
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined'
 // import MapOutlinedIcon from '@mui/icons-material/MapOutlined'
 
@@ -116,11 +116,14 @@ const SideBar = () => {
             Calendar
           </MenuItem>
           <SubMenu label="Charts" icon={<ShowChartOutlinedIcon />}>
-            <MenuItem icon={<PieChartOutlineOutlinedIcon />} component={<Link to="/pie-chart" />}>
-              Pie charts
-            </MenuItem>
             <MenuItem icon={<BarChartOutlinedIcon />} component={<Link to="/bar-chart" />}>
-              Bar charts
+              Bar Chart
+            </MenuItem>
+            <MenuItem icon={<PieChartOutlineOutlinedIcon />} component={<Link to="/pie-chart" />}>
+              Pie Chart
+            </MenuItem>
+            <MenuItem icon={<StackedLineChartOutlinedIcon />} component={<Link to="/line-chart" />}>
+              Line Chart
             </MenuItem>
           </SubMenu>
           <MenuItem icon={<HelpOutlineOutlinedIcon />} component={<Link to="/faq" />}>

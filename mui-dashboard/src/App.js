@@ -13,7 +13,7 @@ import EventCalendar from './scenes/event-calendar/event-calendar.component'
 import Faq from './scenes/faq/faq.component'
 import Bar from './scenes/bar/bar.component'
 import Pie from './scenes/pie/pie.component'
-// import Line from './scenes/line/line.component'
+import Line from './scenes/line/line.component'
 // import Geography from './scenes/geography/geography.component'
 
 
@@ -72,7 +72,7 @@ function App() {
               <Route path="/faq" element={<Faq />} />
               <Route path="/bar-chart" element={<Bar />} />
               <Route path="/pie-chart" element={<Pie />} />
-              {/* <Route path="/line" element={<Line />} /> */}
+              <Route path="/line-chart" element={<Line />} />
               {/* <Route path="/geography" element={<Geography />} /> */}
             </Routes>
           </main>
