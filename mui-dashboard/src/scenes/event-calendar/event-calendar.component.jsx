@@ -63,11 +63,7 @@ const EventCalendar = () => {
                       {formatDate(event.startStr, {
                         year: 'numeric',
                         month: 'short',
-<<<<<<< HEAD
                         day: 'numeric'
-=======
-                        day: 'numberic'
->>>>>>> 1ebab6aec9656ab42db3860a799d83dea683cc4f
                       })}
                     </Typography>
                   }
@@ -76,7 +72,6 @@ const EventCalendar = () => {
             ))}
           </List>
         </Box>
-<<<<<<< HEAD
         <Box flex="1 1 100%" ml="15px">
           <FullCalendar
             height="75vh"
@@ -101,8 +96,6 @@ const EventCalendar = () => {
             ]}
           />
         </Box>
-=======
->>>>>>> 1ebab6aec9656ab42db3860a799d83dea683cc4f
       </Box>
     </Box>
   )
