@@ -117,12 +117,10 @@ const SideBar = () => {
           </MenuItem>
           <SubMenu label="Charts" icon={<ShowChartOutlinedIcon />}>
             <MenuItem icon={<PieChartOutlineOutlinedIcon />} component={<Link to="/pie-chart" />}>
-              {' '}
-              Pie charts{' '}
+              Pie charts
             </MenuItem>
             <MenuItem icon={<BarChartOutlinedIcon />} component={<Link to="/bar-chart" />}>
-              {' '}
-              Bar charts{' '}
+              Bar charts
             </MenuItem>
           </SubMenu>
           <MenuItem icon={<HelpOutlineOutlinedIcon />} component={<Link to="/faq" />}>
