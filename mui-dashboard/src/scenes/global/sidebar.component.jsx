@@ -17,7 +17,7 @@ import BarChartOutlinedIcon from '@mui/icons-material/BarChartOutlined'
 import PieChartOutlineOutlinedIcon from '@mui/icons-material/PieChartOutlineOutlined'
 import StackedLineChartOutlinedIcon from '@mui/icons-material/StackedLineChartOutlined' // import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined'
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined'
-// import MapOutlinedIcon from '@mui/icons-material/MapOutlined'
+import MapOutlinedIcon from '@mui/icons-material/MapOutlined'
 
 const SideBar = () => {
   const theme = useTheme()
@@ -124,6 +124,9 @@ const SideBar = () => {
             </MenuItem>
             <MenuItem icon={<StackedLineChartOutlinedIcon />} component={<Link to="/line-chart" />}>
               Line Chart
+            </MenuItem>
+            <MenuItem icon={<MapOutlinedIcon />} component={<Link to="/geography-chart" />}>
+              Geography Chart
             </MenuItem>
           </SubMenu>
           <MenuItem icon={<HelpOutlineOutlinedIcon />} component={<Link to="/faq" />}>
