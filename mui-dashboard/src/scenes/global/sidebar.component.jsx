@@ -28,7 +28,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
   return (
     <MenuItem
       active={selected === title}
-      style={{ color: colors.grey[500] }}
+      style={{ color: colors.primary[500] }}
       onClick={() => setSelected(title)}
       icon={icon}
       component={<Link to={to} />}
@@ -52,7 +52,7 @@ const SideBar = () => {
     <Box style={({ height: '100vh' }, { display: 'flex', flexDirection: 'row' })}>
       <Sidebar
         rootStyles={{
-          backgroundColor: `${colors.primary[500]}`
+          backgroundColor: `${colors.primary[600]}`
         }}
         breakPoint="sm"
         transitionDuration={800}
@@ -62,10 +62,10 @@ const SideBar = () => {
             button: ({ level, active, disabled }) => {
               if (level === 0 || level === 1) {
                 return {
-                  color: disabled ? colors.primary[300] : menuItemColor,
-                  backgroundColor: active ? '#eecef9' : undefined,
+                  color: disabled ? colors.grey[100] : menuItemColor,
+                  backgroundColor: active ? colors.grey[400] : undefined,
                   '&:hover': {
-                    backgroundColor: `${colors.blueAccent[700]} !important`,
+                    backgroundColor: `${colors.grey[600]} !important`,
                     color: '#ffffff !important',
                     fontWeight: '500 !important'
                   }
@@ -99,13 +99,13 @@ const SideBar = () => {
               <Box textAlign="center">
                 <Typography
                   variant="h2"
-                  color={colors.greenAccent[100]}
+                  color={colors.primary[500]}
                   fontWeight="bold"
                   sx={{ m: '10px 0 0 0' }}
                 >
                   Paul Figueroa
                 </Typography>
-                <Typography variant="h5" color={colors.greenAccent[600]}>
+                <Typography variant="h5" color={colors.primary[500]}>
                   Software Engineer
                 </Typography>
               </Box>
@@ -119,14 +119,21 @@ const SideBar = () => {
             setSelected={setSelected}
             to="/"
           />
-
-          <Item
+          <MenuItem
+            active={selected === 'Profile'}
+            onClick={() => setSelected('Profile')}
+            icon={<PeopleOutlinedIcon />}
+            component={<Link to="/profile-form" />}
+          >
+            Profile
+          </MenuItem>
+          {/* <Item
             title="Profile"
             icon={<PeopleOutlinedIcon />}
             selected={selected}
             setSelected={setSelected}
             to="/profile-form"
-          />
+          /> */}
           <Item
             title="Manage Team"
             icon={<PeopleOutlinedIcon />}
