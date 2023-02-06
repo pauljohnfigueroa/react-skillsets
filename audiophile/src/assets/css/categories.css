@@ -1,0 +1,165 @@
+/* Categories - Mobile */
+.category-heading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #131313;
+  margin-bottom: 80px;
+  padding: 150px 0 50px 0;
+}
+.category-heading-container .heading {
+  color: #FFF;
+  text-transform: uppercase;
+}
+
+.product-section {
+  width: 100%;
+  margin-top: 40px;
+}
+.product-section .product-card,
+.product-section .product-card-reversed {
+  width: 90%;
+  margin: auto;
+}
+.product-section .product-card .product-card-header,
+.product-section .product-card-reversed .product-card-header {
+  border-radius: 8px;
+  background-color: #f1f1f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  min-height: 350px;
+}
+.product-section .product-card .product-card-header img,
+.product-section .product-card-reversed .product-card-header img {
+  width: 60%;
+}
+.product-section .product-card .product-card-description-container .product-card-description,
+.product-section .product-card-reversed .product-card-description-container .product-card-description {
+  width: 90%;
+  text-align: center;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.product-section .product-card .product-card-description-container .product-card-description .sub-heading,
+.product-section .product-card-reversed .product-card-description-container .product-card-description .sub-heading {
+  font-size: 14px;
+  letter-spacing: 10px;
+  color: #d87d4a;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+.product-section .product-card .product-card-description-container .product-card-description .heading,
+.product-section .product-card-reversed .product-card-description-container .product-card-description .heading {
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #000;
+  width: 80%;
+  margin: 20px 0;
+}
+.product-section .product-card .product-card-description-container .product-card-description .sub-text,
+.product-section .product-card-reversed .product-card-description-container .product-card-description .sub-text {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 15px;
+  line-height: 25px;
+  margin: 10px 0;
+}
+.product-section .product-card .product-card-description-container .product-card-description .button,
+.product-section .product-card-reversed .product-card-description-container .product-card-description .button {
+  background-color: #D87D4A;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  width: 160px;
+  height: 48px;
+  padding: 10px 5px;
+  margin: 15px 0;
+  border: none;
+  cursor: pointer;
+}
+
+/* Categories - Tablet */
+@media screen and (min-width: 578px) and (max-width: 1017px) {
+  .product-section .product-card .product-card-header img {
+    width: 45%;
+    height: auto;
+  }
+  .product-section .product-card .product-card-description {
+    width: 80%;
+  }
+  .product-section .product-card .product-card-description .heading {
+    font-size: 40px;
+    letter-spacing: 1.5px;
+    line-height: 44px;
+    width: 60%;
+  }
+}
+/* Categories - Desktop */
+@media screen and (min-width: 1018px) {
+  .product-section {
+    width: 84%;
+    margin: auto;
+    padding-bottom: 100px;
+  }
+  .product-section .product-card {
+    display: flex;
+    margin-top: 100px;
+  }
+  .product-section .product-card .product-card-header {
+    width: 50%;
+    margin-right: 20px;
+  }
+  .product-section .product-card .product-card-description-container {
+    width: 50%;
+    padding: 0 50px;
+  }
+  .product-section .product-card .product-card-description-container .product-card-description {
+    text-align: left;
+    display: unset;
+    flex-direction: unset;
+    align-items: unset;
+    justify-content: unset;
+  }
+  .product-section .product-card .product-card-description-container .product-card-description .heading {
+    width: 40%;
+  }
+  .product-section .product-card .product-card-description-container .product-card-description .sub-text {
+    width: 90%;
+  }
+  .product-section .product-card-reversed {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 100px;
+  }
+  .product-section .product-card-reversed .product-card-header {
+    width: 50%;
+    margin-left: 20px;
+  }
+  .product-section .product-card-reversed .product-card-description-container {
+    width: 50%;
+    padding: 0 50px;
+  }
+  .product-section .product-card-reversed .product-card-description-container .product-card-description {
+    text-align: left;
+    display: unset;
+    flex-direction: unset;
+    align-items: unset;
+    justify-content: unset;
+  }
+  .product-section .product-card-reversed .product-card-description-container .product-card-description .heading {
+    width: 100%;
+    text-align: left;
+  }
+  .product-section .product-card-reversed .product-card-description-container .product-card-description .sub-text {
+    width: 100%;
+    text-align: left;
+  }
+}/*# sourceMappingURL=categories.css.map */

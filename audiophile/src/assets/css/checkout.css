@@ -1,0 +1,231 @@
+.checkout {
+  padding-top: 100px;
+  width: 80%;
+}
+.checkout .checkout-form {
+  width: 100%;
+}
+.checkout .checkout-form h2 {
+  font-size: 28px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  width: 90%;
+  margin: 1rem auto;
+}
+.checkout .checkout-form form {
+  display: flex;
+  flex-direction: column;
+}
+.checkout .checkout-form form .billing-details,
+.checkout .checkout-form form .shipping-info,
+.checkout .checkout-form form .payment-details {
+  border: none;
+  margin: 0 auto;
+  padding-top: 20px;
+  width: 90%;
+}
+.checkout .checkout-form form .billing-details legend,
+.checkout .checkout-form form .shipping-info legend,
+.checkout .checkout-form form .payment-details legend {
+  color: #d87d4a;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.9px;
+  line-height: 25px;
+  text-transform: uppercase;
+}
+.checkout .checkout-form form .billing-details .text-input,
+.checkout .checkout-form form .shipping-info .text-input,
+.checkout .checkout-form form .payment-details .text-input {
+  display: flex;
+  flex-direction: column;
+}
+.checkout .checkout-form form .billing-details .text-input label,
+.checkout .checkout-form form .shipping-info .text-input label,
+.checkout .checkout-form form .payment-details .text-input label {
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.checkout .checkout-form form .billing-details .text-input input,
+.checkout .checkout-form form .shipping-info .text-input input,
+.checkout .checkout-form form .payment-details .text-input input {
+  border: 1px solid #cfcfcf;
+  border-radius: 8px;
+  height: 56px;
+  font-size: 14px;
+  padding: 5px 25px;
+  margin-bottom: 25px;
+}
+.checkout .checkout-form form .billing-details .radio-group,
+.checkout .checkout-form form .shipping-info .radio-group,
+.checkout .checkout-form form .payment-details .radio-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.checkout .checkout-form form .billing-details .radio-group .radio-item,
+.checkout .checkout-form form .shipping-info .radio-group .radio-item,
+.checkout .checkout-form form .payment-details .radio-group .radio-item {
+  border: 1px solid #cfcfcf;
+  border-radius: 8px;
+  width: 100%;
+  padding: 20px 0;
+  margin-left: 0;
+  margin-top: 15px;
+  text-align: left;
+}
+.checkout .checkout-form form .billing-details .radio-group .radio-item label,
+.checkout .checkout-form form .shipping-info .radio-group .radio-item label,
+.checkout .checkout-form form .payment-details .radio-group .radio-item label {
+  width: 85%;
+}
+.checkout .checkout-form form .billing-details .radio-group .radio-item input[type=radio],
+.checkout .checkout-form form .shipping-info .radio-group .radio-item input[type=radio],
+.checkout .checkout-form form .payment-details .radio-group .radio-item input[type=radio] {
+  width: 15%;
+  height: 20px;
+  vertical-align: middle;
+}
+.checkout .checkout-form form .billing-details .radio-group .radio-item input[type=radio]:checked,
+.checkout .checkout-form form .shipping-info .radio-group .radio-item input[type=radio]:checked,
+.checkout .checkout-form form .payment-details .radio-group .radio-item input[type=radio]:checked {
+  accent-color: #d87d4a;
+}
+.checkout .checkout-form form .billing-details .radio-group .radio-item:last-child,
+.checkout .checkout-form form .shipping-info .radio-group .radio-item:last-child,
+.checkout .checkout-form form .payment-details .radio-group .radio-item:last-child {
+  margin-bottom: 30px;
+}
+.checkout .checkout-summary {
+  width: 90%;
+}
+.checkout .checkout-summary .heading {
+  font-size: 28px;
+  letter-spacing: 1px;
+  width: 100%;
+  margin: 1rem auto;
+}
+.checkout .checkout-summary .price-details .price-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 10px 0;
+}
+.checkout .checkout-summary .price-details .label {
+  width: 50%;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+}
+.checkout .checkout-summary .price-details .price {
+  width: 50%;
+  text-align: right;
+  font-size: 18px;
+  font-weight: 700;
+}
+.checkout .checkout-summary .price-details .price-row:last-child {
+  margin-top: 20px;
+}
+.checkout .checkout-summary .price-details .price-row:last-child .price {
+  color: #d87d4a;
+}
+.checkout .checkout-summary .button-container {
+  width: 100%;
+  margin: 40px 0;
+}
+.checkout .checkout-summary .button-container button {
+  background-color: #d87d4a;
+  border: none;
+  font-size: 13px;
+  font-size: 700;
+  text-transform: uppercase;
+  color: white;
+  width: 100%;
+  min-height: 48px;
+}
+
+/* Checkout - Tablet */
+@media screen and (min-width: 578px) {
+  .checkout .checkout-form form .billing-details {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .checkout .checkout-form form .billing-details .text-input {
+    width: 49%;
+  }
+  .checkout .checkout-form form .billing-details .text-input:nth-of-type(even) {
+    margin-left: 1%;
+  }
+  .checkout .checkout-form form .billing-details .text-input:nth-of-type(odd) {
+    margin-right: 1%;
+  }
+  .checkout .checkout-form form .shipping-info .address {
+    width: 100%;
+  }
+  .checkout .checkout-form form .shipping-info .address-details {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .checkout .checkout-form form .shipping-info .address-details .text-input {
+    width: 49%;
+  }
+  .checkout .checkout-form form .shipping-info .address-details .text-input:nth-of-type(even) {
+    margin-left: 1%;
+  }
+  .checkout .checkout-form form .shipping-info .address-details .text-input:nth-of-type(odd) {
+    margin-right: 1%;
+  }
+  .checkout .checkout-form form .payment-details {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .checkout .checkout-form form .payment-details .text-input {
+    width: 49%;
+  }
+  .checkout .checkout-form form .payment-details .radio-group {
+    width: 49%;
+  }
+  .checkout .checkout-form form .payment-details .radio-group .radio-item:first-child {
+    margin-top: 0;
+  }
+  .checkout .checkout-form form .payment-details div:nth-of-type(odd) {
+    margin-right: 1%;
+  }
+  .checkout .checkout-form form .payment-details div:nth-of-type(even) {
+    margin-left: 1%;
+  }
+}
+@media screen and (max-width: 1017px) {
+  .checkout {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+  }
+  .checkout .checkout-form {
+    width: 100%;
+  }
+  .checkout .checkout-summary {
+    width: 100%;
+  }
+}
+/* Checkout - Desktop */
+@media screen and (min-width: 1018px) {
+  .checkout {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin: 0 auto;
+  }
+  .checkout .checkout-form {
+    width: 65%;
+  }
+  .checkout .checkout-summary {
+    width: 35%;
+    padding: 0 2.5%;
+  }
+}/*# sourceMappingURL=checkout.css.map */

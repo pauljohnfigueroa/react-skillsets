@@ -1,0 +1,34 @@
+.forms-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 120px;
+}
+.forms-container .sign-in-container {
+  width: 90%;
+  margin-bottom: 3rem;
+}
+.forms-container .sign-up-container {
+  width: 90%;
+}
+
+@media screen and (min-width: 1018px) {
+  .forms-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: unset;
+  }
+  .forms-container .sign-in-container {
+    width: 50%;
+    padding: 0 10%;
+    margin-bottom: 3rem;
+  }
+  .forms-container .sign-up-container {
+    width: 50%;
+    padding: 0 10%;
+  }
+  .button-container {
+    width: 49%;
+  }
+}/*# sourceMappingURL=sign-in-form.css.map */
