@@ -4,8 +4,8 @@ import { tokens } from '../../theme'
 import ProgressCircle from '../progress-circle/progress-circle.component'
 
 const StatBox = ({ icon, title, subtitle, progress, increase }) => {
-  const theme = useTheme
-  const colors = tokens(theme.pallete.mode)
+  const theme = useTheme()
+  const colors = tokens(theme.palette.mode)
 
   return (
     <Box width="1005" m="0 30px">
