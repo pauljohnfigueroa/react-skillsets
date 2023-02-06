@@ -14,7 +14,7 @@ import Faq from './scenes/faq/faq.component'
 import Bar from './scenes/bar/bar.component'
 import Pie from './scenes/pie/pie.component'
 import Line from './scenes/line/line.component'
-// import Geography from './scenes/geography/geography.component'
+import Geography from './scenes/geography/geography.component'
 
 
 // import { useProSidebar } from 'react-pro-sidebar'
@@ -73,7 +73,7 @@ function App() {
               <Route path="/bar-chart" element={<Bar />} />
               <Route path="/pie-chart" element={<Pie />} />
               <Route path="/line-chart" element={<Line />} />
-              {/* <Route path="/geography" element={<Geography />} /> */}
+              <Route path="/geography-chart" element={<Geography />} />
             </Routes>
           </main>
         </div>
