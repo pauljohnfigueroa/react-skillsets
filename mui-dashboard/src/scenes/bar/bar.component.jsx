@@ -1,4 +1,4 @@
-import { Box, useTheme, Typography } from '@mui/material'
+import { Box } from '@mui/material'
 import Header from '../../components/header/header.component'
 import BarChart from '../../components/bar-chart/bar-chart.component'
 

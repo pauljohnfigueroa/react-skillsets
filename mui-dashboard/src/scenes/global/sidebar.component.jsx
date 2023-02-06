@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Sidebar, Menu, MenuItem, SubMenu, useProSidebar } from 'react-pro-sidebar'
 
 import { Box, Typography, useTheme } from '@mui/material'
@@ -19,16 +20,31 @@ import StackedLineChartOutlinedIcon from '@mui/icons-material/StackedLineChartOu
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined'
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined'
 
+// with set active MenuItem
+const Item = ({ title, to, icon, selected, setSelected }) => {
+  const theme = useTheme()
+  const colors = tokens(theme.palette.mode)
+
+  return (
+    <MenuItem
+      active={selected === title}
+      style={{ color: colors.grey[500] }}
+      onClick={() => setSelected(title)}
+      icon={icon}
+      component={<Link to={to} />}
+    >
+      <Typography>{title}</Typography>
+    </MenuItem>
+  )
+}
+
 const SideBar = () => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
   const { collapseSidebar, collapsed } = useProSidebar()
 
-  // const [isCollapsed, setIsCollapsed] = useState(false)
-  // const [selected, setSelected] = useState('Dashboard')
-
-  console.log(theme.palette.mode)
+  const [selected, setSelected] = useState('Dashboard')
 
   const menuItemColor = theme.palette.mode === 'dark' ? colors.primary[400] : colors.primary[500]
 
@@ -47,10 +63,10 @@ const SideBar = () => {
               if (level === 0 || level === 1) {
                 return {
                   color: disabled ? colors.primary[300] : menuItemColor,
-                  backgroundColor: active ? '#fff' : undefined,
+                  backgroundColor: active ? '#eecef9' : undefined,
                   '&:hover': {
                     backgroundColor: `${colors.blueAccent[700]} !important`,
-                    color: 'white !important',
+                    color: '#ffffff !important',
                     fontWeight: '500 !important'
                   }
                 }
@@ -96,42 +112,80 @@ const SideBar = () => {
             </Box>
           )}
 
-          <MenuItem active={true} icon={<HomeOutlinedIcon />} component={<Link to="/" />}>
-            Dashboard
-          </MenuItem>
-          <MenuItem
-            disabled={false}
-            icon={<ReceiptOutlinedIcon />}
-            component={<Link to="/profile-form" />}
-          >
-            Profile
-          </MenuItem>
-          <MenuItem icon={<PeopleOutlinedIcon />} component={<Link to="/team" />}>
-            Manage Team
-          </MenuItem>
-          <MenuItem icon={<ContactsOutlinedIcon />} component={<Link to="/contacts" />}>
-            Contacts
-          </MenuItem>
-          <MenuItem icon={<CalendarTodayOutlinedIcon />} component={<Link to="/event-calendar" />}>
-            Calendar
-          </MenuItem>
+          <Item
+            title="Dashboard"
+            icon={<HomeOutlinedIcon />}
+            selected={selected}
+            setSelected={setSelected}
+            to="/"
+          />
+
+          <Item
+            title="Profile"
+            icon={<PeopleOutlinedIcon />}
+            selected={selected}
+            setSelected={setSelected}
+            to="/profile-form"
+          />
+          <Item
+            title="Manage Team"
+            icon={<PeopleOutlinedIcon />}
+            selected={selected}
+            setSelected={setSelected}
+            to="/team"
+          />
+          <Item
+            title="Contacts"
+            icon={<ContactsOutlinedIcon />}
+            selected={selected}
+            setSelected={setSelected}
+            to="/contacts"
+          />
+          <Item
+            title="Calendar"
+            icon={<CalendarTodayOutlinedIcon />}
+            selected={selected}
+            setSelected={setSelected}
+            to="/event-calendar"
+          />
+
           <SubMenu label="Charts" icon={<ShowChartOutlinedIcon />}>
-            <MenuItem icon={<BarChartOutlinedIcon />} component={<Link to="/bar-chart" />}>
-              Bar Chart
-            </MenuItem>
-            <MenuItem icon={<PieChartOutlineOutlinedIcon />} component={<Link to="/pie-chart" />}>
-              Pie Chart
-            </MenuItem>
-            <MenuItem icon={<StackedLineChartOutlinedIcon />} component={<Link to="/line-chart" />}>
-              Line Chart
-            </MenuItem>
-            <MenuItem icon={<MapOutlinedIcon />} component={<Link to="/geography-chart" />}>
-              Geography Chart
-            </MenuItem>
+            <Item
+              title="Bar Chart"
+              icon={<BarChartOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              to="/bar-chart"
+            />
+            <Item
+              title="Pie Chart"
+              icon={<PieChartOutlineOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              to="/pie-chart"
+            />
+            <Item
+              title="Line Chart"
+              icon={<StackedLineChartOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              to="/line-chart"
+            />
+            <Item
+              title="Geography Chart"
+              icon={<MapOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              to="/geography-chart"
+            />
           </SubMenu>
-          <MenuItem icon={<HelpOutlineOutlinedIcon />} component={<Link to="/faq" />}>
-            FAQ
-          </MenuItem>
+          <Item
+            title="FAQ"
+            icon={<HelpOutlineOutlinedIcon />}
+            selected={selected}
+            setSelected={setSelected}
+            to="/faq"
+          />
         </Menu>
       </Sidebar>
     </Box>
