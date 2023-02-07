@@ -35,7 +35,8 @@ const Dashboard = () => {
             color: colors.grey[100],
             fontSize: '14px',
             fontWeight: 'bold',
-            padding: '10px 20px'
+            padding: '10px 20px',
+            margin: '10px 0'
           }}
         >
           <DownloadOutlinedIcon sx={{ mr: '10px' }} />
@@ -60,10 +61,79 @@ const Dashboard = () => {
                 }}
               />
             }
-            title="23,122"
+            title="4,302"
             subtitle="Emails Sent"
-            progress="89%"
-            increase="+34%"
+            progress="0.84"
+            increase="+84%"
+          />
+        </Box>
+
+        <Box
+          gridColumn="span 3"
+          backgroundColor={colors.primary[400]}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <StatBox
+            icon={
+              <EmailIcon
+                sx={{
+                  color: colors.greenAccent[600],
+                  fontSize: '26px'
+                }}
+              />
+            }
+            title="9,768"
+            subtitle="Emails Sent"
+            progress="0.20"
+            increase="+20%"
+          />
+        </Box>
+
+        <Box
+          gridColumn="span 3"
+          backgroundColor={colors.primary[400]}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <StatBox
+            icon={
+              <EmailIcon
+                sx={{
+                  color: colors.greenAccent[600],
+                  fontSize: '26px'
+                }}
+              />
+            }
+            title="1,222"
+            subtitle="Emails Sent"
+            progress="0.46"
+            increase="+46%"
+          />
+        </Box>
+
+        <Box
+          gridColumn="span 3"
+          backgroundColor={colors.primary[400]}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <StatBox
+            icon={
+              <EmailIcon
+                sx={{
+                  color: colors.greenAccent[600],
+                  fontSize: '26px'
+                }}
+              />
+            }
+            title="2,189"
+            subtitle="Emails Sent"
+            progress="0.56"
+            increase="+56%"
           />
         </Box>
       </Box>

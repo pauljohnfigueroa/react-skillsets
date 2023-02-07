@@ -191,6 +191,14 @@ const SideBar = () => {
               to="/geography-chart"
             />
           </SubMenu>
+
+          <Item
+            title="Invoices"
+            icon={<ReceiptOutlinedIcon />}
+            selected={selected}
+            setSelected={setSelected}
+            to="/invoices"
+          />
           <Item
             title="FAQ"
             icon={<HelpOutlineOutlinedIcon />}
