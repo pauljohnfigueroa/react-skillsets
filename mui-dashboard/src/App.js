@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import { ColorModeContext, useMode } from './theme'
-import { CssBaseline, ThemeProvider } from '@mui/material'
+import { CssBaseline, ThemeProvider, Box } from '@mui/material'
 
 import Topbar from './scenes/global/topbar.component'
 import SideBar from './scenes/global/sidebar.component'
@@ -16,12 +16,12 @@ import Pie from './scenes/pie/pie.component'
 import Line from './scenes/line/line.component'
 import Geography from './scenes/geography/geography.component'
 
-
-// import { useProSidebar } from 'react-pro-sidebar'
+import { tokens } from './theme'
 
 function App() {
 
   const [theme, colorMode] = useMode()
+
   // const { toggled, toggleSidebar, collapseSidebar, broken } = useProSidebar()
 
   // const toggle = () => {
@@ -42,6 +42,7 @@ function App() {
         <CssBaseline />
         <div className="app">
           <SideBar />
+
           <main className="content">
             <Topbar />
             {/* <h1

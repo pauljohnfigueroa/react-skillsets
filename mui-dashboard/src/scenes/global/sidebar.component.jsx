@@ -49,10 +49,15 @@ const SideBar = () => {
   const menuItemColor = theme.palette.mode === 'dark' ? colors.primary[400] : colors.primary[500]
 
   return (
-    <Box style={({ height: '100vh' }, { display: 'flex', flexDirection: 'row' })}>
+    <Box
+      style={
+        ({ display: 'flex', flexDirection: 'row' },
+        { backgroundColor: `${colors.blueAccent[600]}` })
+      }
+    >
       <Sidebar
         rootStyles={{
-          backgroundColor: `${colors.primary[600]}`
+          backgroundColor: 'none'
         }}
         breakPoint="sm"
         transitionDuration={800}
