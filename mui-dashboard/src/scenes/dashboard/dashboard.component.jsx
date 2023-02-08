@@ -136,6 +136,26 @@ const Dashboard = () => {
             increase="+56%"
           />
         </Box>
+
+        {/* Row 2 */}
+        <Box gridColumn="span 8" gridRow="span 2" backgroundColor={colors.primary[400]}>
+          <Box
+            mt="25px"
+            p="0 30px"
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Box>
+              <Typography variant="h5" fontWeight="600" color={colors.grey[100]}>
+                Revenue Generated
+              </Typography>
+              <Typography variant="h5" fontWeight="600" color={colors.greenAccent[100]}>
+                $902,044.00
+              </Typography>
+            </Box>
+          </Box>
+        </Box>
       </Box>
     </Box>
   )

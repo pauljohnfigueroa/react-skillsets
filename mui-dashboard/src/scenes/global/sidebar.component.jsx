@@ -28,7 +28,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
   return (
     <MenuItem
       active={selected === title}
-      style={{ color: colors.primary[500] }}
+      style={{ color: colors.primary[200] }}
       onClick={() => setSelected(title)}
       icon={icon}
       component={<Link to={to} />}
@@ -46,32 +46,30 @@ const SideBar = () => {
 
   const [selected, setSelected] = useState('Dashboard')
 
-  const menuItemColor = theme.palette.mode === 'dark' ? colors.primary[400] : colors.primary[500]
+  const menuItemColor = theme.palette.mode === 'dark' ? colors.primary[500] : colors.primary[500]
 
   return (
-    <Box
-      style={
-        ({ display: 'flex', flexDirection: 'row' },
-        { backgroundColor: `${colors.blueAccent[600]}` })
-      }
-    >
+    <Box style={{ backgroundColor: colors.primary[700] }}>
       <Sidebar
         rootStyles={{
-          backgroundColor: 'none'
+          [`.ps-sidebar-root`]: {
+            backgroundColor: 'red'
+          }
         }}
+        backgroundColor={colors.primary[700]}
         breakPoint="sm"
-        transitionDuration={800}
+        transitionDuration={1000}
       >
         <Menu
           menuItemStyles={{
             button: ({ level, active, disabled }) => {
-              if (level === 0 || level === 1) {
+              if (level === 0) {
                 return {
-                  color: disabled ? colors.grey[100] : menuItemColor,
-                  backgroundColor: active ? colors.grey[400] : undefined,
+                  color: disabled ? colors.blueAccent[600] : menuItemColor,
+                  backgroundColor: active ? colors.blueAccent[700] : undefined,
                   '&:hover': {
-                    backgroundColor: `${colors.grey[600]} !important`,
-                    color: '#ffffff !important',
+                    backgroundColor: `${colors.blueAccent[700]} !important`,
+                    color: `${colors.blueAccent[100]} !important`,
                     fontWeight: '500 !important'
                   }
                 }
@@ -81,7 +79,7 @@ const SideBar = () => {
         >
           <MenuItem
             icon={<MenuOutlinedIcon />}
-            style={{ textAlign: 'right' }}
+            style={{ textAlign: 'right', color: colors.primary[200] }}
             onClick={() => {
               collapseSidebar()
             }}
@@ -104,13 +102,13 @@ const SideBar = () => {
               <Box textAlign="center">
                 <Typography
                   variant="h2"
-                  color={colors.primary[500]}
+                  color={colors.greenAccent[400]}
                   fontWeight="bold"
                   sx={{ m: '10px 0 0 0' }}
                 >
                   Paul Figueroa
                 </Typography>
-                <Typography variant="h5" color={colors.primary[500]}>
+                <Typography variant="h5" color={colors.primary[200]}>
                   Software Engineer
                 </Typography>
               </Box>
@@ -124,21 +122,13 @@ const SideBar = () => {
             setSelected={setSelected}
             to="/"
           />
-          <MenuItem
-            active={selected === 'Profile'}
-            onClick={() => setSelected('Profile')}
-            icon={<PeopleOutlinedIcon />}
-            component={<Link to="/profile-form" />}
-          >
-            Profile
-          </MenuItem>
-          {/* <Item
+          <Item
             title="Profile"
             icon={<PeopleOutlinedIcon />}
             selected={selected}
             setSelected={setSelected}
             to="/profile-form"
-          /> */}
+          />
           <Item
             title="Manage Team"
             icon={<PeopleOutlinedIcon />}
