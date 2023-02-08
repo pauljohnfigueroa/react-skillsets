@@ -45,6 +45,7 @@ const Dashboard = () => {
       </Box>
 
       <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gridAutoRows="140px" gap="20px">
+        {/* Row 1 */}
         <Box
           gridColumn="span 3"
           backgroundColor={colors.primary[400]}
@@ -212,6 +213,55 @@ const Dashboard = () => {
             </Box>
           ))}
         </Box>
+
+        {/* Row 3 */}
+
+        <Box
+          gridColumn="span 4"
+          gridRow="span 2"
+          backgroundColor={colors.primary[400]}
+          padding="30px"
+        >
+          <Typography variant="h5" fontWeight="600">
+            Campaign
+          </Typography>
+          <Box display="flex" flexDirection="column" alignItems="center" mt="25px">
+            <ProgressCircle size="125" progress="0.60" />
+            <Typography variant="h5" color={colors.greenAccent[500]} sx={{ mt: '15px' }}>
+              $86,342
+            </Typography>
+            <Typography>including other payables</Typography>
+          </Box>
+        </Box>
+
+        <Box
+          gridColumn="span 4"
+          gridRow="span 2"
+          backgroundColor={colors.primary[400]}
+          padding="30px"
+        >
+          <Typography variant="h5" fontWeight="600" sx={{ p: '0 30px 0 0' }}>
+            Sales Quantity
+          </Typography>
+          <Box height="250px" mt="-20px">
+            <PieChart isDashboard={true} />
+          </Box>
+        </Box>
+
+        <Box
+          gridColumn="span 4"
+          gridRow="span 2"
+          backgroundColor={colors.primary[400]}
+          padding="30px"
+        >
+          <Typography variant="h5" fontWeight="600">
+            Geography Based Traffic
+          </Typography>
+          <Box height="250px" mt="-20px">
+            <GeographyChart isDashboard={true} />
+          </Box>
+        </Box>
+        {/* Closing */}
       </Box>
     </Box>
   )

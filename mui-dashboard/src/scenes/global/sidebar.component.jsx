@@ -58,7 +58,7 @@ const SideBar = () => {
         }}
         backgroundColor={colors.primary[700]}
         breakPoint="sm"
-        transitionDuration={1000}
+        transitionDuration={300}
       >
         <Menu
           menuItemStyles={{
