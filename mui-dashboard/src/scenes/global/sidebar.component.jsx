@@ -63,27 +63,39 @@ const SideBar = () => {
       }
     },
 
+    button: ({ level, active }) => {
+      if (level === 0)
+        return {
+          [`&.${menuClasses.disabled}`]: {
+            color: colors.greenAccent[700]
+          },
+          [`&.${menuClasses.active}`]: {
+            //backgroundColor: colors.blueAccent[700],
+            color: colors.grey[100],
+            fontWeight: 700,
+            fontSize: '25px'
+            // backgroundColor: active ? colors.blueAccent[700] : undefined,
+            // color: active ? colors.grey[100] : undefined,
+            // fontWeight: active ? 700 : undefined,
+            // fontSize: active ? 25 : undefined
+          },
+          '&:hover': {
+            backgroundColor: 'transparent',
+            color: colors.greenAccent[500]
+          }
+        }
+    },
+
+    label: ({ open }) => ({
+      fontWeight: open ? 700 : undefined
+    }),
+
     SubMenuExpandIcon: {
       color: colors.greenAccent[500]
     },
 
     subMenuContent: ({ level }) => ({
-      backgroundColor: level === 0 ? colors.grey[100] : 'transparent'
-    }),
-
-    button: {
-      [`&.${menuClasses.disabled}`]: {
-        color: colors.greenAccent[700]
-      },
-
-      '&:hover': {
-        backgroundColor: colors.blueAccent[600],
-        color: colors.grey[100]
-      }
-    },
-
-    label: ({ open }) => ({
-      fontWeight: open ? 600 : undefined
+      backgroundColor: level === 0 ? colors.blueAccent[100] : 'transparent'
     })
   }
 
@@ -182,6 +194,43 @@ const SideBar = () => {
           setSelected={setSelected}
           to="/invoices"
         />
+        <Menu menuItemStyles={menuItemStyles}>
+          <SubMenu
+            //onOpenChange={() => console.log('onOpenChange')}
+            label="Charts"
+            icon={<ShowChartOutlinedIcon />}
+          >
+            <Item
+              title="Bar Chart"
+              icon={<BarChartOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              to="/bar-chart"
+            />
+            <Item
+              title="Pie Chart"
+              icon={<PieChartOutlineOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              to="/pie-chart"
+            />
+            <Item
+              title="Line Chart"
+              icon={<StackedLineChartOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              to="/line-chart"
+            />
+            <Item
+              title="Geography Chart"
+              icon={<MapOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              to="/geography-chart"
+            />
+          </SubMenu>
+        </Menu>
+
         <Item
           title="FAQ"
           icon={<HelpOutlineOutlinedIcon />}
@@ -189,42 +238,6 @@ const SideBar = () => {
           setSelected={setSelected}
           to="/faq"
         />
-      </Menu>
-      <Menu menuItemStyles={menuItemStyles}>
-        <SubMenu
-          //onOpenChange={() => console.log('onOpenChange')}
-          label="Charts"
-          icon={<ShowChartOutlinedIcon />}
-        >
-          <Item
-            title="Bar Chart"
-            icon={<BarChartOutlinedIcon />}
-            selected={selected}
-            setSelected={setSelected}
-            to="/bar-chart"
-          />
-          <Item
-            title="Pie Chart"
-            icon={<PieChartOutlineOutlinedIcon />}
-            selected={selected}
-            setSelected={setSelected}
-            to="/pie-chart"
-          />
-          <Item
-            title="Line Chart"
-            icon={<StackedLineChartOutlinedIcon />}
-            selected={selected}
-            setSelected={setSelected}
-            to="/line-chart"
-          />
-          <Item
-            title="Geography Chart"
-            icon={<MapOutlinedIcon />}
-            selected={selected}
-            setSelected={setSelected}
-            to="/geography-chart"
-          />
-        </SubMenu>
       </Menu>
     </Sidebar>
   )
