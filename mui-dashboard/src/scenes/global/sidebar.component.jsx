@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Sidebar, Menu, MenuItem, SubMenu, useProSidebar } from 'react-pro-sidebar'
+import { Sidebar, Menu, MenuItem, SubMenu, useProSidebar, sidebarClasses } from 'react-pro-sidebar'
 
 import { Box, Typography, useTheme } from '@mui/material'
 
@@ -49,156 +49,153 @@ const SideBar = () => {
   const menuItemColor = theme.palette.mode === 'dark' ? colors.primary[500] : colors.primary[500]
 
   return (
-    <Box style={{ backgroundColor: colors.primary[700] }}>
-      <Sidebar
-        rootStyles={{
-          [`.ps-sidebar-root`]: {
-            backgroundColor: 'red'
-          }
-        }}
-        backgroundColor={colors.primary[700]}
-        breakPoint="sm"
-        transitionDuration={300}
-      >
-        <Menu
-          menuItemStyles={{
-            button: ({ level, active, disabled }) => {
-              if (level === 0) {
-                return {
-                  color: disabled ? colors.blueAccent[600] : menuItemColor,
-                  backgroundColor: active ? colors.blueAccent[700] : undefined,
-                  '&:hover': {
-                    backgroundColor: `${colors.blueAccent[700]} !important`,
-                    color: `${colors.blueAccent[100]} !important`,
-                    fontWeight: '500 !important'
-                  }
+    <Sidebar
+      rootStyles={{
+        [`.${sidebarClasses.container}`]: {}
+      }}
+      backgroundColor={colors.primary[700]}
+      breakPoint="sm"
+      transitionDuration={300}
+      width="280px"
+    >
+      <Menu
+        menuItemStyles={{
+          button: ({ level, active, disabled }) => {
+            if (level === 0) {
+              return {
+                color: disabled ? colors.blueAccent[600] : menuItemColor,
+                backgroundColor: active ? colors.blueAccent[700] : undefined,
+                '&:hover': {
+                  backgroundColor: `${colors.blueAccent[700]} !important`,
+                  color: `${colors.blueAccent[100]} !important`,
+                  fontWeight: '500 !important'
                 }
               }
             }
+          }
+        }}
+      >
+        <MenuItem
+          icon={<MenuOutlinedIcon />}
+          style={{ textAlign: 'right', color: colors.primary[200] }}
+          onClick={() => {
+            collapseSidebar()
           }}
         >
-          <MenuItem
-            icon={<MenuOutlinedIcon />}
-            style={{ textAlign: 'right', color: colors.primary[200] }}
-            onClick={() => {
-              collapseSidebar()
-            }}
-          >
-            <h2>HapiCodr</h2>
-          </MenuItem>
+          <h2>HapiCodr</h2>
+        </MenuItem>
 
-          {/* User Image */}
-          {!collapsed && (
-            <Box mb="25px">
-              <Box display="flex" justifyContent="center" alignItems="center">
-                <img
-                  src={`../../../../assets/images/paul.png`}
-                  alt="User"
-                  width="100px"
-                  height="100px"
-                  style={{ cursor: 'pointer', borderRadius: '50%' }}
-                />
-              </Box>
-              <Box textAlign="center">
-                <Typography
-                  variant="h2"
-                  color={colors.greenAccent[400]}
-                  fontWeight="bold"
-                  sx={{ m: '10px 0 0 0' }}
-                >
-                  Paul Figueroa
-                </Typography>
-                <Typography variant="h5" color={colors.primary[200]}>
-                  Software Engineer
-                </Typography>
-              </Box>
+        {/* User Image */}
+        {!collapsed && (
+          <Box m="25px 0">
+            <Box display="flex" justifyContent="center" alignItems="center">
+              <img
+                src={`../../../../assets/images/paul.png`}
+                alt="User"
+                width="100px"
+                height="100px"
+                style={{ cursor: 'pointer', borderRadius: '50%' }}
+              />
             </Box>
-          )}
+            <Box textAlign="center">
+              <Typography
+                variant="h2"
+                color={colors.greenAccent[400]}
+                fontWeight="bold"
+                sx={{ m: '10px 0 0 0' }}
+              >
+                Paul Figueroa
+              </Typography>
+              <Typography variant="h5" color={colors.primary[200]}>
+                Software Engineer
+              </Typography>
+            </Box>
+          </Box>
+        )}
 
-          <Item
-            title="Dashboard"
-            icon={<HomeOutlinedIcon />}
-            selected={selected}
-            setSelected={setSelected}
-            to="/"
-          />
-          <Item
-            title="Profile"
-            icon={<PeopleOutlinedIcon />}
-            selected={selected}
-            setSelected={setSelected}
-            to="/profile-form"
-          />
-          <Item
-            title="Manage Team"
-            icon={<PeopleOutlinedIcon />}
-            selected={selected}
-            setSelected={setSelected}
-            to="/team"
-          />
-          <Item
-            title="Contacts"
-            icon={<ContactsOutlinedIcon />}
-            selected={selected}
-            setSelected={setSelected}
-            to="/contacts"
-          />
-          <Item
-            title="Calendar"
-            icon={<CalendarTodayOutlinedIcon />}
-            selected={selected}
-            setSelected={setSelected}
-            to="/event-calendar"
-          />
+        <Item
+          title="Dashboard"
+          icon={<HomeOutlinedIcon />}
+          selected={selected}
+          setSelected={setSelected}
+          to="/"
+        />
+        <Item
+          title="Profile"
+          icon={<PeopleOutlinedIcon />}
+          selected={selected}
+          setSelected={setSelected}
+          to="/profile-form"
+        />
+        <Item
+          title="Manage Team"
+          icon={<PeopleOutlinedIcon />}
+          selected={selected}
+          setSelected={setSelected}
+          to="/team"
+        />
+        <Item
+          title="Contacts"
+          icon={<ContactsOutlinedIcon />}
+          selected={selected}
+          setSelected={setSelected}
+          to="/contacts"
+        />
+        <Item
+          title="Calendar"
+          icon={<CalendarTodayOutlinedIcon />}
+          selected={selected}
+          setSelected={setSelected}
+          to="/event-calendar"
+        />
 
-          <SubMenu label="Charts" icon={<ShowChartOutlinedIcon />}>
-            <Item
-              title="Bar Chart"
-              icon={<BarChartOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-              to="/bar-chart"
-            />
-            <Item
-              title="Pie Chart"
-              icon={<PieChartOutlineOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-              to="/pie-chart"
-            />
-            <Item
-              title="Line Chart"
-              icon={<StackedLineChartOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-              to="/line-chart"
-            />
-            <Item
-              title="Geography Chart"
-              icon={<MapOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-              to="/geography-chart"
-            />
-          </SubMenu>
+        <SubMenu label="Charts" icon={<ShowChartOutlinedIcon />}>
+          <Item
+            title="Bar Chart"
+            icon={<BarChartOutlinedIcon />}
+            selected={selected}
+            setSelected={setSelected}
+            to="/bar-chart"
+          />
+          <Item
+            title="Pie Chart"
+            icon={<PieChartOutlineOutlinedIcon />}
+            selected={selected}
+            setSelected={setSelected}
+            to="/pie-chart"
+          />
+          <Item
+            title="Line Chart"
+            icon={<StackedLineChartOutlinedIcon />}
+            selected={selected}
+            setSelected={setSelected}
+            to="/line-chart"
+          />
+          <Item
+            title="Geography Chart"
+            icon={<MapOutlinedIcon />}
+            selected={selected}
+            setSelected={setSelected}
+            to="/geography-chart"
+          />
+        </SubMenu>
 
-          <Item
-            title="Invoices"
-            icon={<ReceiptOutlinedIcon />}
-            selected={selected}
-            setSelected={setSelected}
-            to="/invoices"
-          />
-          <Item
-            title="FAQ"
-            icon={<HelpOutlineOutlinedIcon />}
-            selected={selected}
-            setSelected={setSelected}
-            to="/faq"
-          />
-        </Menu>
-      </Sidebar>
-    </Box>
+        <Item
+          title="Invoices"
+          icon={<ReceiptOutlinedIcon />}
+          selected={selected}
+          setSelected={setSelected}
+          to="/invoices"
+        />
+        <Item
+          title="FAQ"
+          icon={<HelpOutlineOutlinedIcon />}
+          selected={selected}
+          setSelected={setSelected}
+          to="/faq"
+        />
+      </Menu>
+    </Sidebar>
   )
 }
 export default SideBar

@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import { ColorModeContext, useMode } from './theme'
-import { CssBaseline, ThemeProvider, Box } from '@mui/material'
+import { CssBaseline, ThemeProvider } from '@mui/material'
 
 import Topbar from './scenes/global/topbar.component'
 import SideBar from './scenes/global/sidebar.component'
@@ -16,52 +16,23 @@ import Pie from './scenes/pie/pie.component'
 import Line from './scenes/line/line.component'
 import Geography from './scenes/geography/geography.component'
 
-import { tokens } from './theme'
-
 function App() {
 
   const [theme, colorMode] = useMode()
 
-  // const { toggled, toggleSidebar, collapseSidebar, broken } = useProSidebar()
-
-  // const toggle = () => {
-  //   toggleSidebar();
-
-  //   if (toggled) {
-  //     console.log(toggled)
-  //     collapseSidebar();
-  //   } else {
-  //     console.log(toggled)
-  //     collapseSidebar();
-  //   }
-  // }
-
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
+
         <CssBaseline />
+
         <div className="app">
+
           <SideBar />
 
           <main className="content">
+
             <Topbar />
-            {/* <h1
-              onClick={() => {
-                toggle();
-              }}
-              style={{ color: "white", marginLeft: "5rem" }}>
-              React-Pro-Sidebar
-            </h1>
-
-            {
-              toggled
-                ? <h2 style={{ color: "white", marginLeft: "5rem" }}>Toggled</h2>
-                : <h2 style={{ color: "white", marginLeft: "5rem" }}>Not Toggled</h2>
-            }
-
-            {broken && (
-              <h1 style={{ color: "white", marginLeft: "5rem" }}>Small screen</h1>
-            )} */}
 
             <Routes>
               <Route path="/" element={<Dashboard />} />
@@ -76,6 +47,7 @@ function App() {
               <Route path="/line-chart" element={<Line />} />
               <Route path="/geography-chart" element={<Geography />} />
             </Routes>
+
           </main>
         </div>
       </ThemeProvider>
