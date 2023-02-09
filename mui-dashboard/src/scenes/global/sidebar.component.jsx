@@ -1,5 +1,13 @@
 import { useState } from 'react'
-import { Sidebar, Menu, MenuItem, SubMenu, useProSidebar, sidebarClasses } from 'react-pro-sidebar'
+import {
+  Sidebar,
+  Menu,
+  MenuItem,
+  SubMenu,
+  useProSidebar,
+  sidebarClasses,
+  menuClasses
+} from 'react-pro-sidebar'
 
 import { Box, Typography, useTheme } from '@mui/material'
 
@@ -28,7 +36,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
   return (
     <MenuItem
       active={selected === title}
-      style={{ color: colors.primary[200] }}
+      // style={{ color: colors.primary[200] }}
       onClick={() => setSelected(title)}
       icon={icon}
       component={<Link to={to} />}
@@ -42,39 +50,57 @@ const SideBar = () => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
+  const menuItemStyles = {
+    root: {
+      fontSize: '13px',
+      fontWeight: 400
+    },
+
+    icon: {
+      color: colors.greenAccent[500],
+      [`&.${menuClasses.disabled}`]: {
+        color: colors.grey[100]
+      }
+    },
+
+    SubMenuExpandIcon: {
+      color: colors.greenAccent[500]
+    },
+
+    subMenuContent: ({ level }) => ({
+      backgroundColor: level === 0 ? colors.grey[100] : 'transparent'
+    }),
+
+    button: {
+      [`&.${menuClasses.disabled}`]: {
+        color: colors.greenAccent[700]
+      },
+
+      '&:hover': {
+        backgroundColor: colors.blueAccent[600],
+        color: colors.grey[100]
+      }
+    },
+
+    label: ({ open }) => ({
+      fontWeight: open ? 600 : undefined
+    })
+  }
+
   const { collapseSidebar, collapsed } = useProSidebar()
-
   const [selected, setSelected] = useState('Dashboard')
-
-  const menuItemColor = theme.palette.mode === 'dark' ? colors.primary[500] : colors.primary[500]
 
   return (
     <Sidebar
       rootStyles={{
-        [`.${sidebarClasses.container}`]: {}
+        color: colors.greenAccent[700]
       }}
       backgroundColor={colors.primary[700]}
       breakPoint="sm"
       transitionDuration={300}
       width="280px"
     >
-      <Menu
-        menuItemStyles={{
-          button: ({ level, active, disabled }) => {
-            if (level === 0) {
-              return {
-                color: disabled ? colors.blueAccent[600] : menuItemColor,
-                backgroundColor: active ? colors.blueAccent[700] : undefined,
-                '&:hover': {
-                  backgroundColor: `${colors.blueAccent[700]} !important`,
-                  color: `${colors.blueAccent[100]} !important`,
-                  fontWeight: '500 !important'
-                }
-              }
-            }
-          }
-        }}
-      >
+      <Menu menuItemStyles={menuItemStyles}>
         <MenuItem
           icon={<MenuOutlinedIcon />}
           style={{ textAlign: 'right', color: colors.primary[200] }}
@@ -149,7 +175,27 @@ const SideBar = () => {
           to="/event-calendar"
         />
 
-        <SubMenu label="Charts" icon={<ShowChartOutlinedIcon />}>
+        <Item
+          title="Invoices"
+          icon={<ReceiptOutlinedIcon />}
+          selected={selected}
+          setSelected={setSelected}
+          to="/invoices"
+        />
+        <Item
+          title="FAQ"
+          icon={<HelpOutlineOutlinedIcon />}
+          selected={selected}
+          setSelected={setSelected}
+          to="/faq"
+        />
+      </Menu>
+      <Menu menuItemStyles={menuItemStyles}>
+        <SubMenu
+          //onOpenChange={() => console.log('onOpenChange')}
+          label="Charts"
+          icon={<ShowChartOutlinedIcon />}
+        >
           <Item
             title="Bar Chart"
             icon={<BarChartOutlinedIcon />}
@@ -179,21 +225,6 @@ const SideBar = () => {
             to="/geography-chart"
           />
         </SubMenu>
-
-        <Item
-          title="Invoices"
-          icon={<ReceiptOutlinedIcon />}
-          selected={selected}
-          setSelected={setSelected}
-          to="/invoices"
-        />
-        <Item
-          title="FAQ"
-          icon={<HelpOutlineOutlinedIcon />}
-          selected={selected}
-          setSelected={setSelected}
-          to="/faq"
-        />
       </Menu>
     </Sidebar>
   )
