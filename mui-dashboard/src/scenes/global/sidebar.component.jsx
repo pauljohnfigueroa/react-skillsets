@@ -1,13 +1,5 @@
 import { useState } from 'react'
-import {
-  Sidebar,
-  Menu,
-  MenuItem,
-  SubMenu,
-  useProSidebar,
-  sidebarClasses,
-  menuClasses
-} from 'react-pro-sidebar'
+import { Sidebar, Menu, MenuItem, SubMenu, useProSidebar, menuClasses } from 'react-pro-sidebar'
 
 import { Box, Typography, useTheme } from '@mui/material'
 
@@ -18,7 +10,6 @@ import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
 import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined'
 import ContactsOutlinedIcon from '@mui/icons-material/ContactsOutlined'
 import ReceiptOutlinedIcon from '@mui/icons-material/ReceiptOutlined'
-// import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined'
 import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined'
 import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlined'
 import ShowChartOutlinedIcon from '@mui/icons-material/ShowChartOutlined'
@@ -30,16 +21,15 @@ import MapOutlinedIcon from '@mui/icons-material/MapOutlined'
 
 // with set active MenuItem
 const Item = ({ title, to, icon, selected, setSelected }) => {
-  const theme = useTheme()
-  const colors = tokens(theme.palette.mode)
-
+  // const theme = useTheme()
+  // const colors = tokens(theme.palette.mode)
   return (
     <MenuItem
       active={selected === title}
-      // style={{ color: colors.primary[200] }}
       onClick={() => setSelected(title)}
       icon={icon}
       component={<Link to={to} />}
+      // style={{ color: colors.primary[200] }}
     >
       <Typography>{title}</Typography>
     </MenuItem>
@@ -63,21 +53,15 @@ const SideBar = () => {
       }
     },
 
-    button: ({ level, active }) => {
+    button: ({ level }) => {
       if (level === 0)
         return {
           [`&.${menuClasses.disabled}`]: {
-            color: colors.greenAccent[700]
+            color: colors.grey[400]
           },
           [`&.${menuClasses.active}`]: {
             //backgroundColor: colors.blueAccent[700],
-            color: colors.grey[100],
-            fontWeight: 700,
-            fontSize: '25px'
-            // backgroundColor: active ? colors.blueAccent[700] : undefined,
-            // color: active ? colors.grey[100] : undefined,
-            // fontWeight: active ? 700 : undefined,
-            // fontSize: active ? 25 : undefined
+            color: colors.greenAccent[400]
           },
           '&:hover': {
             backgroundColor: 'transparent',
@@ -107,7 +91,7 @@ const SideBar = () => {
       rootStyles={{
         color: colors.greenAccent[700]
       }}
-      backgroundColor={colors.primary[700]}
+      backgroundColor={colors.primary[600]}
       breakPoint="sm"
       transitionDuration={300}
       width="280px"
@@ -115,7 +99,7 @@ const SideBar = () => {
       <Menu menuItemStyles={menuItemStyles}>
         <MenuItem
           icon={<MenuOutlinedIcon />}
-          style={{ textAlign: 'right', color: colors.primary[200] }}
+          style={{ textAlign: 'right', color: colors.greenAccent[600] }}
           onClick={() => {
             collapseSidebar()
           }}
@@ -144,7 +128,7 @@ const SideBar = () => {
               >
                 Paul Figueroa
               </Typography>
-              <Typography variant="h5" color={colors.primary[200]}>
+              <Typography variant="h5" color={colors.grey[500]}>
                 Software Engineer
               </Typography>
             </Box>

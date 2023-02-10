@@ -16,6 +16,8 @@ import Pie from './scenes/pie/pie.component'
 import Line from './scenes/line/line.component'
 import Geography from './scenes/geography/geography.component'
 
+import Settings from './scenes/settings/settings.component'
+
 function App() {
 
   const [theme, colorMode] = useMode()
@@ -46,6 +48,7 @@ function App() {
               <Route path="/pie-chart" element={<Pie />} />
               <Route path="/line-chart" element={<Line />} />
               <Route path="/geography-chart" element={<Geography />} />
+              <Route path="/settings" element={<Settings />} />
             </Routes>
 
           </main>
