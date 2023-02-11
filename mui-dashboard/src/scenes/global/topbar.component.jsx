@@ -17,21 +17,11 @@ const Topbar = () => {
   const colors = tokens(theme.palette.mode)
   const colorMode = useContext(ColorModeContext)
 
-  const navigate = useNavigate()
+  //const navigate = useNavigate()
 
-  const handleClickNotifications = () => {
-    alert('handleClickNotifications')
-    // navigate('/settings')
-  }
-
-  const handleClickSettings = () => {
-    alert('handleClickSettings')
-    navigate('/settings')
-  }
-
-  const handleClickUser = () => {
-    alert('handleClickUser')
-    //navigate('/user')
+  const handleClick = (e, path) => {
+    alert(path)
+    //navigate(path)
   }
 
   return (
@@ -48,12 +38,12 @@ const Topbar = () => {
           {theme.palette.mode === 'dark' ? <LightModeOutlinedIcon /> : <DarkModeOutlinedIcon />}
         </IconButton>
         <IconButton>
-          <NotificationsOutlinedIcon onClick={handleClickNotifications} />
+          <NotificationsOutlinedIcon onClick={e => handleClick(e, '/notifications')} />
         </IconButton>
-        <IconButton onClick={handleClickSettings}>
+        <IconButton onClick={e => handleClick(e, '/settings')}>
           <SettingsOutlinedIcon />
         </IconButton>
-        <IconButton onClick={handleClickUser}>
+        <IconButton onClick={e => handleClick(e, '/user')}>
           <PersonOutlinedIcon />
         </IconButton>
       </Box>
