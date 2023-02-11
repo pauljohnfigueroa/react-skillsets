@@ -29,7 +29,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
       onClick={() => setSelected(title)}
       icon={icon}
       component={<Link to={to} />}
-      // style={{ color: colors.primary[200] }}
+    // style={{ color: colors.primary[200] }}
     >
       <Typography>{title}</Typography>
     </MenuItem>
@@ -79,7 +79,7 @@ const SideBar = () => {
     },
 
     subMenuContent: ({ level }) => ({
-      backgroundColor: level === 0 ? colors.blueAccent[100] : 'transparent'
+      backgroundColor: level === 0 ? colors.primary[500] : 'transparent'
     })
   }
 
@@ -91,7 +91,7 @@ const SideBar = () => {
       rootStyles={{
         color: colors.greenAccent[700]
       }}
-      backgroundColor={colors.primary[600]}
+      backgroundColor={colors.primary[400]}
       breakPoint="sm"
       transitionDuration={300}
       width="280px"
