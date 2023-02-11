@@ -37,8 +37,8 @@ const Topbar = () => {
         <IconButton onClick={colorMode.toggleColorMode}>
           {theme.palette.mode === 'dark' ? <LightModeOutlinedIcon /> : <DarkModeOutlinedIcon />}
         </IconButton>
-        <IconButton>
-          <NotificationsOutlinedIcon onClick={e => handleClick(e, '/notifications')} />
+        <IconButton onClick={e => handleClick(e, '/notifications')}>
+          <NotificationsOutlinedIcon />
         </IconButton>
         <IconButton onClick={e => handleClick(e, '/settings')}>
           <SettingsOutlinedIcon />
