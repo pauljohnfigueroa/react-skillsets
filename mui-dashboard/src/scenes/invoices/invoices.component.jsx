@@ -23,7 +23,7 @@ const Invoices = () => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await fetch(API_URL)
+        const response = await fetch(`${API_URL}?_sort=cost&_order=desc&_limit=10`)
         if (!response.ok) throw Error('Did not receive the expected data.')
         const listItems = await response.json()
         setGridData(listItems)
@@ -106,7 +106,7 @@ const Invoices = () => {
 
         <DataGrid
           components={{
-            Tollbar: GridToolbar,
+            Toolbar: GridToolbar,
             LoadingOverlay: LinearProgress,
             NoRowsOverlay: CustomNoRowsOverlay
           }}
