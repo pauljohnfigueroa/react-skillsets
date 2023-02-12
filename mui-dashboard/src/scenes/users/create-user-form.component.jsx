@@ -19,8 +19,6 @@ import { UsersContext } from '../../contexts/users.context'
 const CreateUserForm = ({ open }) => {
   const { isCreateUserFormOpen, setIsCreateUserFormOpen } = useContext(UsersContext)
 
-  //const [isOpen, setIsOpen] = useState(open)
-
   const handleClose = () => {
     setIsCreateUserFormOpen(false)
   }

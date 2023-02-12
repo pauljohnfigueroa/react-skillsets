@@ -1,17 +1,15 @@
-import { useState, useEffect, useContext } from 'react'
+import { useContext } from 'react'
 import { Box, Typography, useTheme } from '@mui/material'
 import Button from '@mui/material/Button'
 import { DataGrid, GridToolbar } from '@mui/x-data-grid'
 import LinearProgress from '@mui/material/LinearProgress'
 import { tokens } from '../../theme'
-// import { mockDataTeam } from '../../data/mockData'
 
 import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined'
 import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined'
 import SecurityOutlinedIcon from '@mui/icons-material/SecurityOutlined'
 
 import Header from '../../components/header/header.component'
-
 import CreateUserForm from './create-user-form.component'
 
 import { UsersContext } from '../../contexts/users.context'
@@ -20,13 +18,8 @@ const Users = () => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
-  const { isloading, isCreateUserFormOpen, setIsCreateUserFormOpen, fetchError, gridData } =
+  const { isLoading, isCreateUserFormOpen, setIsCreateUserFormOpen, fetchError, gridData } =
     useContext(UsersContext)
-
-  // const [gridData, setGridData] = useState([])
-  // const [fetchError, setFetchError] = useState(null)
-  // const [isLoading, setIsLoading] = useState(true)
-  // const [isCreateUserFormOpen, setIsCreateUserFormOpen] = useState(false)
 
   const CustomNoRowsOverlay = () => {
     return fetchError ? <Box sx={{ mt: 1 }}>{fetchError}</Box> : <Box sx={{ mt: 1 }}>No Data.</Box>
@@ -136,7 +129,7 @@ const Users = () => {
             NoRowsOverlay: CustomNoRowsOverlay
           }}
           experimentalFeatures={{ newEditingApi: true }}
-          loading={isloading}
+          loading={isLoading}
           rows={gridData}
           columns={columns}
         />

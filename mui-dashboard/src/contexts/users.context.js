@@ -1,6 +1,5 @@
 import { createContext, useState, useEffect } from 'react'
 
-
 export const UsersContext = createContext({
     isLoading: true,
     setIsLoading: () => { },
@@ -9,7 +8,6 @@ export const UsersContext = createContext({
     gridData: [],
     fetchError: null
 })
-
 
 export const UsersProvider = ({ children }) => {
 
