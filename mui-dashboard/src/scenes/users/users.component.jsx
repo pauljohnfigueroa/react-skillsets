@@ -26,7 +26,6 @@ const Users = () => {
   }
 
   const showAddUserModal = () => {
-    console.log('showAddUserModal')
     setIsCreateUserFormOpen(true)
   }
 
@@ -90,10 +89,16 @@ const Users = () => {
     <Box m="20px">
       <Header
         title="User Management Console"
-        subtitle="Manage  user accounts, access, and authorization."
+        subtitle="Manage user accounts, access, and authorization."
       />
+      <Box m="10px 0 0 0">
+        <Button onClick={showAddUserModal} variant="outlined">
+          Add User
+        </Button>
+        {isCreateUserFormOpen && <CreateUserForm open={isCreateUserFormOpen} />}
+      </Box>
       <Box
-        m="40px 0 0 0"
+        m="10px 0 0 0"
         height="100vh"
         sx={{
           '& .MuiDataGrid-root': {
@@ -119,8 +124,6 @@ const Users = () => {
           }
         }}
       >
-        <Button onClick={showAddUserModal}>Add User</Button>
-        {isCreateUserFormOpen && <CreateUserForm open={isCreateUserFormOpen} />}
         {fetchError && <p>Error: {fetchError} </p>}
         <DataGrid
           components={{
