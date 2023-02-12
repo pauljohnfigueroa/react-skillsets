@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { Box, Typography, useTheme } from '@mui/material'
+import Button from '@mui/material/Button'
 import { DataGrid, GridToolbar } from '@mui/x-data-grid'
 import LinearProgress from '@mui/material/LinearProgress'
 import { tokens } from '../../theme'
@@ -11,37 +12,30 @@ import SecurityOutlinedIcon from '@mui/icons-material/SecurityOutlined'
 
 import Header from '../../components/header/header.component'
 
-const API_URL = 'http://localhost:3500/mockDataTeam'
-const Team = () => {
+import CreateUserForm from './create-user-form.component'
+
+import { UsersContext } from '../../contexts/users.context'
+
+const Users = () => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
-  const [gridData, setGridData] = useState([])
-  const [fetchError, setFetchError] = useState(null)
-  const [isLoading, setIsLoading] = useState(true)
+  const { isloading, isCreateUserFormOpen, setIsCreateUserFormOpen, fetchError, gridData } =
+    useContext(UsersContext)
+
+  // const [gridData, setGridData] = useState([])
+  // const [fetchError, setFetchError] = useState(null)
+  // const [isLoading, setIsLoading] = useState(true)
+  // const [isCreateUserFormOpen, setIsCreateUserFormOpen] = useState(false)
 
   const CustomNoRowsOverlay = () => {
     return fetchError ? <Box sx={{ mt: 1 }}>{fetchError}</Box> : <Box sx={{ mt: 1 }}>No Data.</Box>
   }
 
-  useEffect(() => {
-    const fetchItems = async () => {
-      try {
-        const response = await fetch(`${API_URL}?_sort=name&_order=asc&_limit=10`)
-        if (!response.ok) throw Error('Did not receive expected data.')
-        const listItems = await response.json()
-        setGridData(listItems)
-        setFetchError(null)
-      } catch (err) {
-        setFetchError(err.message)
-      } finally {
-        setIsLoading(false)
-      }
-    }
-    setTimeout(() => {
-      fetchItems()
-    }, 5000)
-  }, [])
+  const showAddUserModal = () => {
+    console.log('showAddUserModal')
+    setIsCreateUserFormOpen(true)
+  }
 
   const columns = [
     {
@@ -52,7 +46,8 @@ const Team = () => {
       field: 'name',
       headerName: 'Name',
       flex: 1,
-      cellClassName: 'name-column--cell'
+      cellClassName: 'name-column--cell',
+      editable: true
     },
     {
       field: 'email',
@@ -100,7 +95,10 @@ const Team = () => {
 
   return (
     <Box m="20px">
-      <Header title="Team" subtitle='There is no "I" in Team' />
+      <Header
+        title="User Management Console"
+        subtitle="Manage  user accounts, access, and authorization."
+      />
       <Box
         m="40px 0 0 0"
         height="100vh"
@@ -128,15 +126,17 @@ const Team = () => {
           }
         }}
       >
+        <Button onClick={showAddUserModal}>Add User</Button>
+        {isCreateUserFormOpen && <CreateUserForm open={isCreateUserFormOpen} />}
         {fetchError && <p>Error: {fetchError} </p>}
-
         <DataGrid
           components={{
             Toolbar: GridToolbar,
             LoadingOverlay: LinearProgress,
             NoRowsOverlay: CustomNoRowsOverlay
           }}
-          loading={isLoading}
+          experimentalFeatures={{ newEditingApi: true }}
+          loading={isloading}
           rows={gridData}
           columns={columns}
         />
@@ -144,4 +144,4 @@ const Team = () => {
     </Box>
   )
 }
-export default Team
+export default Users

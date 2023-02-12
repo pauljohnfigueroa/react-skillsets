@@ -29,7 +29,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
       onClick={() => setSelected(title)}
       icon={icon}
       component={<Link to={to} />}
-    // style={{ color: colors.primary[200] }}
+      // style={{ color: colors.primary[200] }}
     >
       <Typography>{title}</Typography>
     </MenuItem>
@@ -150,11 +150,11 @@ const SideBar = () => {
           to="/profile-form"
         />
         <Item
-          title="Manage Team"
+          title="User Management"
           icon={<PeopleOutlinedIcon />}
           selected={selected}
           setSelected={setSelected}
-          to="/team"
+          to="/users"
         />
         <Item
           title="Contacts"
