@@ -1,44 +1,21 @@
-import { useEffect, useState } from 'react'
+import { useContext } from 'react'
 import { Box, LinearProgress, Typography, useTheme } from '@mui/material'
 import { DataGrid, GridToolbar } from '@mui/x-data-grid'
 import { tokens } from '../../theme'
-// import { mockDataInvoices } from '../../data/mockData'
 
 import Header from '../../components/header/header.component'
 
-const API_URL = 'http://localhost:3500/mockDataInvoices'
+import { InvoicesContext } from '../../contexts/invoices.context'
 
 const Invoices = () => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
-  const [gridData, setGridData] = useState([])
-  const [fetchError, setFetchError] = useState(null)
-  const [isLoading, setIsLoading] = useState(true)
+  const { gridData, fetchError, isLoading } = useContext(InvoicesContext)
 
   const CustomNoRowsOverlay = () => {
     return fetchError ? <Box sx={{ mt: 1 }}>{fetchError}</Box> : <Box sx={{ mt: 1 }}>No Data.</Box>
   }
-
-  useEffect(() => {
-    const fetchItems = async () => {
-      try {
-        const response = await fetch(`${API_URL}?_sort=cost&_order=desc&_limit=10`)
-        if (!response.ok) throw Error('Did not receive the expected data.')
-        const listItems = await response.json()
-        setGridData(listItems)
-        setFetchError(null)
-      } catch (err) {
-        setFetchError(err.message)
-      } finally {
-        setIsLoading(false)
-      }
-    }
-
-    setTimeout(() => {
-      fetchItems()
-    }, 5000)
-  }, [])
 
   const columns = [
     {

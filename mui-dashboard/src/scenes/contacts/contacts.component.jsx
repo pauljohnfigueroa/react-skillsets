@@ -38,7 +38,7 @@ const Contacts = () => {
 
     setTimeout(() => {
       fetchItems()
-    }, 5000)
+    }, 1000)
   }, [])
 
   const columns = [
