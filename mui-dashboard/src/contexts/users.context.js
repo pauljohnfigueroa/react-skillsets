@@ -21,7 +21,7 @@ export const UsersProvider = ({ children }) => {
     useEffect(() => {
         const fetchItems = async () => {
             try {
-                const response = await fetch(`${API_URL}?_sort=name&_order=asc&_limit=10`)
+                const response = await fetch(`${API_URL}?_sort=name&_order=asc&_limit=3`)
                 if (!response.ok) throw Error('Did not receive expected data.')
                 const listItems = await response.json()
                 setGridData(listItems)
@@ -36,7 +36,7 @@ export const UsersProvider = ({ children }) => {
 
         setTimeout(() => {
             fetchItems()
-        }, 2000)
+        }, 1000)
 
     }, [])
 

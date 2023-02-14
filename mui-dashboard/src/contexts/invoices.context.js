@@ -1,15 +1,14 @@
 import { createContext, useEffect, useState } from "react";
 
-const API_URL = 'http://localhost:3500/mockDataInvoices'
-
 export const InvoicesContext = createContext({
     gridData: [],
     fetchError: null,
     isLoading: true
 })
 
-
 export const InvoicesProvider = ({ children }) => {
+
+    const API_URL = 'http://localhost:3500/mockDataInvoices'
 
     const [gridData, setGridData] = useState([])
     const [fetchError, setFetchError] = useState(null)
@@ -18,7 +17,7 @@ export const InvoicesProvider = ({ children }) => {
     useEffect(() => {
         const fetchItems = async () => {
             try {
-                const response = await fetch(`${API_URL}?_sort=cost&_order=desc&_limit=10`)
+                const response = await fetch(`${API_URL}?_sort=cost&_order=desc&_limit=3`)
                 if (!response.ok) throw Error('Did not receive the expected data.')
                 const listItems = await response.json()
                 setGridData(listItems)
@@ -32,7 +31,7 @@ export const InvoicesProvider = ({ children }) => {
 
         setTimeout(() => {
             fetchItems()
-        }, 2000)
+        }, 5000)
     }, [])
 
     const value = { gridData, fetchError, isLoading }
