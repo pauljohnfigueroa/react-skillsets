@@ -1,15 +1,14 @@
 import { createContext, useEffect, useState } from "react";
 
-const API_URL = 'http://localhost:3500/mockDataInvoices'
+const API_URL = 'http://localhost:3500/mockDataContacts'
 
-export const InvoicesContext = createContext({
+export const ContactsContext = createContext({
     gridData: [],
     fetchError: null,
     isLoading: true
 })
 
-
-export const InvoicesProvider = ({ children }) => {
+export const ContactsProvider = ({ children }) => {
 
     const [gridData, setGridData] = useState([])
     const [fetchError, setFetchError] = useState(null)
@@ -37,7 +36,5 @@ export const InvoicesProvider = ({ children }) => {
 
     const value = { gridData, fetchError, isLoading }
 
-
-    return <InvoicesContext.Provider value={value}>{children}</InvoicesContext.Provider>
+    return <ContactsContext.Provider value={value}>{children}</ContactsContext.Provider>
 }
-

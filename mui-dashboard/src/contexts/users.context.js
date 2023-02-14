@@ -40,7 +40,7 @@ export const UsersProvider = ({ children }) => {
 
     }, [])
 
-    const value = { isLoading, fetchError, gridData, isCreateUserFormOpen, setIsCreateUserFormOpen, setIsLoading }
+    const value = { isLoading, fetchError, gridData, isCreateUserFormOpen, setIsCreateUserFormOpen }
 
     return <UsersContext.Provider value={value}>{children}</UsersContext.Provider>
 }
