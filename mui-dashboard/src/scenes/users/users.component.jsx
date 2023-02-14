@@ -18,8 +18,15 @@ const Users = () => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
-  const { isLoading, isCreateUserFormOpen, setIsCreateUserFormOpen, fetchError, gridData } =
-    useContext(UsersContext)
+  const {
+    isLoading,
+    isCreateUserFormOpen,
+    setIsCreateUserFormOpen,
+    fetchError,
+    gridData,
+    pageSize,
+    setPageSize
+  } = useContext(UsersContext)
 
   const CustomNoRowsOverlay = () => {
     return fetchError ? <Box sx={{ mt: 1 }}>{fetchError}</Box> : <Box sx={{ mt: 1 }}>No Data.</Box>
@@ -133,6 +140,9 @@ const Users = () => {
           }}
           experimentalFeatures={{ newEditingApi: true }}
           loading={isLoading}
+          pageSize={pageSize}
+          onPageSizeChange={newPageSize => setPageSize(newPageSize)}
+          rowsPerPageOptions={[5, 10, 20]}
           rows={gridData}
           columns={columns}
         />
