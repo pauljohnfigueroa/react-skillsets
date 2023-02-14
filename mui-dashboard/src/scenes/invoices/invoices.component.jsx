@@ -11,7 +11,7 @@ const Invoices = () => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
-  const { gridData, fetchError, isLoading } = useContext(InvoicesContext)
+  const { gridData, fetchError, isLoading, pageSize, setPageSize } = useContext(InvoicesContext)
 
   const CustomNoRowsOverlay = () => {
     return fetchError ? <Box sx={{ mt: 1 }}>{fetchError}</Box> : <Box sx={{ mt: 1 }}>No Data.</Box>
@@ -88,6 +88,9 @@ const Invoices = () => {
             NoRowsOverlay: CustomNoRowsOverlay
           }}
           loading={isLoading}
+          pageSize={pageSize}
+          onPageSizeChange={newPageSize => setPageSize(newPageSize)}
+          rowsPerPageOptions={[5, 10, 20]}
           checkboxSelection
           rows={gridData}
           columns={columns}
