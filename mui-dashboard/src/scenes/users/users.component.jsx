@@ -13,6 +13,7 @@ import Header from '../../components/header/Header.component'
 import CreateUserForm from './CreateUserForm.component'
 
 import { UsersContext } from '../../contexts/users.context'
+import apiRequest from '../../api/apiRequest.api'
 
 const Users = () => {
   const theme = useTheme()

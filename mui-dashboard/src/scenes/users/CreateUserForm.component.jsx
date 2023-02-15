@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { Box } from '@mui/material'
+import { Box, useMediaQuery } from '@mui/material'
 import { Formik, Form } from 'formik'
 import * as yup from 'yup'
 
@@ -23,6 +23,7 @@ const initialValues = {
 }
 
 const CreateUserForm = ({ open }) => {
+  const isNonMobile = useMediaQuery('(min-width: 600px)')
   const { isCreateUserFormOpen, setIsCreateUserFormOpen } = useContext(UsersContext)
 
   const handleClose = () => {
@@ -38,33 +39,44 @@ const CreateUserForm = ({ open }) => {
           <Formik>
             {() => (
               <Form>
-                <Box>
+                <Box
+                  display="grid"
+                  gap="30px"
+                  gridTemplateColumns="repeat(4, minmax(0, 1fr))"
+                  sx={{
+                    '& > div': { gridColumn: isNonMobile ? undefined : 'span 4' }
+                  }}
+                >
                   <TextField
+                    fullWidth
                     autoFocus
                     margin="dense"
                     id="name"
                     label="Name"
                     type="text"
                     variant="outlined"
+                    sx={{ gridColumn: 'span 4' }}
                   />
-                </Box>
-                <Box>
+
                   <TextField
+                    fullWidth
                     margin="dense"
                     id="email"
                     label="Email"
                     type="email"
                     variant="standard"
+                    sx={{ gridColumn: 'span 4' }}
                   />
-                </Box>
-                <Box>
+
                   <TextField
+                    fullWidth
                     autoFocus
                     margin="dense"
                     id="phone"
                     label="Phone"
                     type="text"
                     variant="filled"
+                    sx={{ gridColumn: 'span 4' }}
                   />
                 </Box>
               </Form>
