@@ -133,6 +133,9 @@ const Users = () => {
       >
         {fetchError && <p>Error: {fetchError} </p>}
         <DataGrid
+          sx={{
+            boxShadow: 4
+          }}
           components={{
             Toolbar: GridToolbar,
             LoadingOverlay: LinearProgress,
