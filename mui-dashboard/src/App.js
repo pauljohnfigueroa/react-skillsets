@@ -2,28 +2,27 @@ import { Routes, Route } from 'react-router-dom'
 import { ColorModeContext, useMode } from './theme'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 
-import Topbar from './scenes/global/topbar.component'
-import SideBar from './scenes/global/sidebar.component'
-import Dashboard from './scenes/dashboard/dashboard.component'
-import Users from './scenes/users/users.component'
-import Contacts from './scenes/contacts/contacts.component'
-import Invoices from './scenes/invoices/invoices.component'
-import ProfileForm from './scenes/form/profile-form.component'
-import EventCalendar from './scenes/event-calendar/event-calendar.component'
-import Faq from './scenes/faq/faq.component'
-import Bar from './scenes/bar/bar.component'
-import Pie from './scenes/pie/pie.component'
-import Line from './scenes/line/line.component'
-import Geography from './scenes/geography/geography.component'
+import Topbar from './scenes/global/Topbar.component'
+import SideBar from './scenes/global/Sidebar.component'
+import Dashboard from './scenes/dashboard/Dashboard.component'
+import Users from './scenes/users/Users.component'
+import Contacts from './scenes/contacts/Contacts.component'
+import Invoices from './scenes/invoices/Invoices.component'
+import ProfileForm from './scenes/form/ProfileForm.component'
+import EventCalendar from './scenes/event-calendar/EventCalendar.component'
+import Faq from './scenes/faq/Faq.component'
+import Bar from './scenes/bar/Bar.component'
+import Pie from './scenes/pie/Pie.component'
+import Line from './scenes/line/Line.component'
+import Geography from './scenes/geography/Geography.component'
 
-import Settings from './scenes/settings/settings.component'
+import Settings from './scenes/settings/Settings.component'
 
 import { UsersProvider } from './contexts/users.context'
 import { ContactsProvider } from './contexts/contacts.context'
 import { InvoicesProvider } from './contexts/invoices.context'
 
 function App() {
-
   const [theme, colorMode] = useMode()
 
   return (
@@ -34,11 +33,9 @@ function App() {
           <ContactsProvider>
             <InvoicesProvider>
               <div className="app">
-
                 <SideBar />
 
                 <main className="content">
-
                   <Topbar />
 
                   <Routes>
@@ -55,14 +52,13 @@ function App() {
                     <Route path="/geography-chart" element={<Geography />} />
                     <Route path="/settings" element={<Settings />} />
                   </Routes>
-
                 </main>
               </div>
             </InvoicesProvider>
           </ContactsProvider>
         </UsersProvider>
       </ThemeProvider>
-    </ColorModeContext.Provider >
+    </ColorModeContext.Provider>
   )
 }
 

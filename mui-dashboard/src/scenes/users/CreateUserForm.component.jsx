@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { Box } from '@mui/material'
-import { Formik } from 'formik'
+import { Formik, Form } from 'formik'
 import * as yup from 'yup'
 
 import Button from '@mui/material/Button'
@@ -37,7 +37,7 @@ const CreateUserForm = ({ open }) => {
           <DialogContentText>Please fill up all the required fields.</DialogContentText>
           <Formik>
             {() => (
-              <form>
+              <Form>
                 <Box>
                   <TextField
                     autoFocus
@@ -45,7 +45,7 @@ const CreateUserForm = ({ open }) => {
                     id="name"
                     label="Name"
                     type="text"
-                    variant="standard"
+                    variant="outlined"
                   />
                 </Box>
                 <Box>
@@ -64,10 +64,10 @@ const CreateUserForm = ({ open }) => {
                     id="phone"
                     label="Phone"
                     type="text"
-                    variant="standard"
+                    variant="filled"
                   />
                 </Box>
-              </form>
+              </Form>
             )}
           </Formik>
         </DialogContent>

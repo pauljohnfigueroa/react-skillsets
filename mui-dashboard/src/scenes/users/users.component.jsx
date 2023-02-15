@@ -9,8 +9,8 @@ import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettin
 import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined'
 import SecurityOutlinedIcon from '@mui/icons-material/SecurityOutlined'
 
-import Header from '../../components/header/header.component'
-import CreateUserForm from './create-user-form.component'
+import Header from '../../components/header/Header.component'
+import CreateUserForm from './CreateUserForm.component'
 
 import { UsersContext } from '../../contexts/users.context'
 

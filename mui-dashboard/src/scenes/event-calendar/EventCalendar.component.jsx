@@ -9,7 +9,7 @@ import listPlugin from '@fullcalendar/list'
 
 import { Box, List, ListItem, ListItemText, Typography, useTheme } from '@mui/material'
 
-import Header from '../../components/header/header.component'
+import Header from '../../components/header/Header.component'
 import { tokens } from '../../theme'
 
 const EventCalendar = () => {

@@ -1,6 +1,6 @@
 import { Box, useTheme, Typography } from '@mui/material'
-import Header from '../../components/header/header.component'
-import LineChart from '../../components/line-chart/line-chart.component'
+import Header from '../../components/header/Header.component'
+import LineChart from '../../components/line-chart/LineChart.component'
 
 const Line = () => {
   return (

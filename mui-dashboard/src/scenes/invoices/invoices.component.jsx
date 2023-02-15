@@ -3,7 +3,7 @@ import { Box, LinearProgress, Typography, useTheme } from '@mui/material'
 import { DataGrid, GridToolbar } from '@mui/x-data-grid'
 import { tokens } from '../../theme'
 
-import Header from '../../components/header/header.component'
+import Header from '../../components/header/Header.component'
 
 import { InvoicesContext } from '../../contexts/invoices.context'
 

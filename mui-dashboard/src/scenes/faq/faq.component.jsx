@@ -1,5 +1,5 @@
 import { Box, Typography, useTheme } from '@mui/material'
-import Header from '../../components/header/header.component'
+import Header from '../../components/header/Header.component'
 import Accordion from '@mui/material/Accordion'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'

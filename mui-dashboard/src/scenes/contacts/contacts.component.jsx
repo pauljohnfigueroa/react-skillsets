@@ -4,7 +4,7 @@ import { DataGrid, GridToolbar } from '@mui/x-data-grid'
 import LinearProgress from '@mui/material/LinearProgress'
 import { tokens } from '../../theme'
 
-import Header from '../../components/header/header.component'
+import Header from '../../components/header/Header.component'
 
 import { ContactsContext } from '../../contexts/contacts.context'
 

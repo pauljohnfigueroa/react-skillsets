@@ -9,15 +9,15 @@ import PointOfSaleIcon from '@mui/icons-material/PointOfSale'
 import PersonAddIcon from '@mui/icons-material/PersonAdd'
 import TrafficIcon from '@mui/icons-material/Traffic'
 
-import LineChart from '../../components/line-chart/line-chart.component'
-import PieChart from '../../components/pie-chart/pie-chart.component'
-import GeographyChart from '../../components/geography-chart/geography-chart.component'
-import BarChart from '../../components/bar-chart/bar-chart.component'
+import LineChart from '../../components/line-chart/LineChart.component'
+import PieChart from '../../components/pie-chart/PieChart.component'
+import GeographyChart from '../../components/geography-chart/GeographyChart.component'
+import BarChart from '../../components/bar-chart/BarChart.component'
 
-import ProgressCircle from '../../components/progress-circle/progress-circle.component'
-import StatBox from '../../components/stat-box/stat-box.component'
+import ProgressCircle from '../../components/progress-circle/ProgressCircle.component'
+import StatBox from '../../components/stat-box/StatBox.component'
 
-import Header from '../../components/header/header.component'
+import Header from '../../components/header/Header.component'
 
 const Dashboard = () => {
   const theme = useTheme()

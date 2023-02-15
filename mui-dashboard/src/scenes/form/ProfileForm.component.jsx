@@ -1,7 +1,7 @@
 import { Box, Button, TextField, useMediaQuery } from '@mui/material'
-import { Formik } from 'formik'
+import { Formik, Form } from 'formik'
 import * as yup from 'yup'
-import Header from '../../components/header/header.component'
+import Header from '../../components/header/Header.component'
 
 const initialValues = {
   firstName: '',
@@ -40,7 +40,7 @@ const ProfileForm = () => {
         validationSchema={userSchema}
       >
         {({ values, errors, touched, handleBlur, handleChange, handleSubmit }) => (
-          <form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit}>
             <Box
               display="grid"
               gap="30px"
@@ -51,7 +51,7 @@ const ProfileForm = () => {
             >
               <TextField
                 fullWidth
-                variant="filled"
+                variant="outlined"
                 type="text"
                 label="First Name"
                 onBlur={handleBlur}
@@ -64,7 +64,7 @@ const ProfileForm = () => {
               />
               <TextField
                 fullWidth
-                variant="filled"
+                variant="outlined"
                 type="text"
                 label="Last Name"
                 onBlur={handleBlur}
@@ -77,7 +77,7 @@ const ProfileForm = () => {
               />
               <TextField
                 fullWidth
-                variant="filled"
+                variant="outlined"
                 type="email"
                 label="Email Address"
                 onBlur={handleBlur}
@@ -90,7 +90,7 @@ const ProfileForm = () => {
               />
               <TextField
                 fullWidth
-                variant="filled"
+                variant="outlined"
                 type="text"
                 label="Contact Number"
                 onBlur={handleBlur}
@@ -103,7 +103,7 @@ const ProfileForm = () => {
               />
               <TextField
                 fullWidth
-                variant="filled"
+                variant="outlined"
                 type="text"
                 label="Address 1"
                 onBlur={handleBlur}
@@ -116,7 +116,7 @@ const ProfileForm = () => {
               />
               <TextField
                 fullWidth
-                variant="filled"
+                variant="outlined"
                 type="text"
                 label="Address 2"
                 onBlur={handleBlur}
@@ -133,7 +133,7 @@ const ProfileForm = () => {
                 Create New User
               </Button>
             </Box>
-          </form>
+          </Form>
         )}
       </Formik>
     </Box>
