@@ -26,7 +26,8 @@ const Users = () => {
     fetchError,
     gridData,
     pageSize,
-    setPageSize
+    setPageSize,
+    handleSubmit
   } = useContext(UsersContext)
 
   const CustomNoRowsOverlay = () => {
@@ -103,7 +104,7 @@ const Users = () => {
         <Button onClick={showAddUserModal} variant="outlined">
           Add User
         </Button>
-        {isCreateUserFormOpen && <CreateUserForm open={isCreateUserFormOpen} />}
+        {isCreateUserFormOpen && <CreateUserForm handleSubmit={handleSubmit} />}
       </Box>
       <Box
         m="10px 0 0 0"

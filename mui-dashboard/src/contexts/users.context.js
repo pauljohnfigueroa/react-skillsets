@@ -8,7 +8,8 @@ export const UsersContext = createContext({
   gridData: [],
   fetchError: null,
   pageSize: 5,
-  setPageSize: () => {}
+  setPageSize: () => {},
+  handleSubmit: () => {}
 })
 
 export const UsersProvider = ({ children }) => {
@@ -41,6 +42,10 @@ export const UsersProvider = ({ children }) => {
     }, 1000)
   }, [])
 
+  const handleSubmit = () => {
+    console.log('New User Form Submitted')
+  }
+
   const value = {
     isLoading,
     fetchError,
@@ -48,7 +53,8 @@ export const UsersProvider = ({ children }) => {
     isCreateUserFormOpen,
     setIsCreateUserFormOpen,
     pageSize,
-    setPageSize
+    setPageSize,
+    handleSubmit
   }
 
   return <UsersContext.Provider value={value}>{children}</UsersContext.Provider>

@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { Box, useMediaQuery } from '@mui/material'
+import { Box, useMediaQuery, Typography } from '@mui/material'
 import { Formik, Form } from 'formik'
 import * as yup from 'yup'
 
@@ -22,9 +22,9 @@ const initialValues = {
   access: 'user'
 }
 
-const CreateUserForm = ({ open }) => {
+const CreateUserForm = () => {
   const isNonMobile = useMediaQuery('(min-width: 600px)')
-  const { isCreateUserFormOpen, setIsCreateUserFormOpen } = useContext(UsersContext)
+  const { isCreateUserFormOpen, setIsCreateUserFormOpen, handleSubmit } = useContext(UsersContext)
 
   const handleClose = () => {
     setIsCreateUserFormOpen(false)
@@ -33,10 +33,10 @@ const CreateUserForm = ({ open }) => {
   return (
     <div>
       <Dialog open={isCreateUserFormOpen} onClose={handleClose} fullWidth>
-        <DialogTitle>Create a New User Account</DialogTitle>
+        <DialogTitle>Create a New User</DialogTitle>
         <DialogContent>
           <DialogContentText>Please fill up all the required fields.</DialogContentText>
-          <Formik>
+          <Formik onSubmit={handleSubmit}>
             {() => (
               <Form>
                 <Box
@@ -64,7 +64,7 @@ const CreateUserForm = ({ open }) => {
                     id="email"
                     label="Email"
                     type="email"
-                    variant="standard"
+                    variant="outlined"
                     sx={{ gridColumn: 'span 4' }}
                   />
 
@@ -75,18 +75,18 @@ const CreateUserForm = ({ open }) => {
                     id="phone"
                     label="Phone"
                     type="text"
-                    variant="filled"
+                    variant="outlined"
                     sx={{ gridColumn: 'span 4' }}
                   />
                 </Box>
+                <DialogActions>
+                  <Button onClick={handleClose}>Cancel</Button>
+                  <Button type="submit">Save</Button>
+                </DialogActions>
               </Form>
             )}
           </Formik>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Save</Button>
-        </DialogActions>
       </Dialog>
     </div>
   )
