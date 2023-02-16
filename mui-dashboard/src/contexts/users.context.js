@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect } from 'react'
 
+const API_URL = 'http://localhost:3500/mockDataUsers'
+
 export const UsersContext = createContext({
   isLoading: true,
   setIsLoading: () => {},
@@ -10,12 +12,11 @@ export const UsersContext = createContext({
   pageSize: 5,
   setPageSize: () => {},
   setFetchError: () => {},
-  handleSubmit: () => {}
+  handleSubmit: () => {},
+  API_URL: ''
 })
 
 export const UsersProvider = ({ children }) => {
-  const API_URL = 'http://localhost:3500/mockDataUsers'
-
   const [gridData, setGridData] = useState([])
   const [isCreateUserFormOpen, setIsCreateUserFormOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
@@ -57,7 +58,8 @@ export const UsersProvider = ({ children }) => {
     setPageSize,
     setFetchError,
     setGridData,
-    handleSubmit
+    handleSubmit,
+    API_URL
   }
 
   return <UsersContext.Provider value={value}>{children}</UsersContext.Provider>

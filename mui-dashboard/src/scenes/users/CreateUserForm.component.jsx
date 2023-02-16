@@ -1,5 +1,13 @@
 import { useContext } from 'react'
-import { Box, useMediaQuery, InputLabel, MenuItem, Select, FormControl } from '@mui/material'
+import {
+  Box,
+  useMediaQuery,
+  InputLabel,
+  MenuItem,
+  Select,
+  FormControl,
+  FormHelperText
+} from '@mui/material'
 import { Formik, Form } from 'formik'
 import * as yup from 'yup'
 
@@ -16,8 +24,6 @@ import { json } from 'react-router-dom'
 
 import apiRequest from '../../api/apiRequest.api'
 
-const API_URL = 'http://localhost:3500/mockDataUsers'
-
 const initialValues = {
   name: '',
   email: '',
@@ -28,8 +34,14 @@ const initialValues = {
 
 const CreateUserForm = () => {
   const isNonMobile = useMediaQuery('(min-width: 600px)')
-  const { gridData, isCreateUserFormOpen, setIsCreateUserFormOpen, setGridData, setFetchError } =
-    useContext(UsersContext)
+  const {
+    gridData,
+    isCreateUserFormOpen,
+    setIsCreateUserFormOpen,
+    setGridData,
+    setFetchError,
+    API_URL
+  } = useContext(UsersContext)
 
   const handleClose = () => {
     setIsCreateUserFormOpen(false)
@@ -39,7 +51,6 @@ const CreateUserForm = () => {
     const response = await fetch(API_URL)
     const data = await response.json()
     const id = data.length ? data[data.length - 1].id + 1 : 1
-    console.log(values)
     const newItem = { id, ...values }
     const listItems = [...data, newItem]
     // update the front-end
@@ -131,6 +142,25 @@ const CreateUserForm = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
+                  <FormControl sx={{ m: 1, minWidth: 120 }}>
+                    <InputLabel id="demo-simple-select-helper-label">Access Level</InputLabel>
+                    <Select
+                      labelId="demo-simple-select-helper-label"
+                      id="access"
+                      name="access"
+                      value={values.access}
+                      label="Access Level"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value="admin">Admin</MenuItem>
+                      <MenuItem value="user">User</MenuItem>
+                      <MenuItem value="manager">Manager</MenuItem>
+                    </Select>
+                  </FormControl>
                 </Box>
                 <DialogActions>
                   <Button onClick={handleClose} variant="outlined">
