@@ -36,11 +36,12 @@ const CreateUserForm = () => {
   }
 
   const add = async values => {
-    const lastItem = gridData.length - 1
-    const id = gridData.length ? gridData[lastItem].id + 1 : 1
+    const response = await fetch(API_URL)
+    const data = await response.json()
+    const id = data.length ? data[data.length - 1].id + 1 : 1
     console.log(values)
     const newItem = { id, ...values }
-    const listItems = [...gridData, newItem]
+    const listItems = [...data, newItem]
     // update the front-end
     setGridData(listItems)
 
@@ -52,7 +53,6 @@ const CreateUserForm = () => {
       },
       body: JSON.stringify(newItem)
     }
-
     const result = await apiRequest(API_URL, postOptions)
     if (result) setFetchError(result)
   }

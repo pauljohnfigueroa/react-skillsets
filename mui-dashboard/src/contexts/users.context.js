@@ -10,8 +10,7 @@ export const UsersContext = createContext({
   pageSize: 5,
   setPageSize: () => {},
   setFetchError: () => {},
-  handleSubmit: () => {},
-  getLastId: () => {}
+  handleSubmit: () => {}
 })
 
 export const UsersProvider = ({ children }) => {
@@ -26,7 +25,7 @@ export const UsersProvider = ({ children }) => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await fetch(`${API_URL}?_sort=name&_order=asc`)
+        const response = await fetch(`${API_URL}?_sort=name&_order=desc`)
         if (!response.ok) throw Error('Did not receive expected data.')
         const listItems = await response.json()
         setGridData(listItems)
@@ -48,10 +47,6 @@ export const UsersProvider = ({ children }) => {
     console.log('New User Form Submitted')
   }
 
-  const getLastId = () => {
-    return gridData.length
-  }
-
   const value = {
     isLoading,
     fetchError,
@@ -62,8 +57,7 @@ export const UsersProvider = ({ children }) => {
     setPageSize,
     setFetchError,
     setGridData,
-    handleSubmit,
-    getLastId
+    handleSubmit
   }
 
   return <UsersContext.Provider value={value}>{children}</UsersContext.Provider>
