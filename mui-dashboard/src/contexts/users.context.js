@@ -9,6 +9,7 @@ export const UsersContext = createContext({
   fetchError: null,
   pageSize: 5,
   setPageSize: () => {},
+  setFetchError: () => {},
   handleSubmit: () => {},
   getLastId: () => {}
 })
@@ -59,6 +60,7 @@ export const UsersProvider = ({ children }) => {
     setIsCreateUserFormOpen,
     pageSize,
     setPageSize,
+    setFetchError,
     setGridData,
     handleSubmit,
     getLastId

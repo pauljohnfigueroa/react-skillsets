@@ -12,6 +12,11 @@ import DialogContentText from '@mui/material/DialogContentText'
 import DialogTitle from '@mui/material/DialogTitle'
 
 import { UsersContext } from '../../contexts/users.context'
+import { json } from 'react-router-dom'
+
+import apiRequest from '../../api/apiRequest.api'
+
+const API_URL = 'http://localhost:3500/mockDataUsers'
 
 const initialValues = {
   name: '',
@@ -23,21 +28,33 @@ const initialValues = {
 
 const CreateUserForm = () => {
   const isNonMobile = useMediaQuery('(min-width: 600px)')
-  const { gridData, isCreateUserFormOpen, setIsCreateUserFormOpen, setGridData } =
+  const { gridData, isCreateUserFormOpen, setIsCreateUserFormOpen, setGridData, setFetchError } =
     useContext(UsersContext)
 
   const handleClose = () => {
     setIsCreateUserFormOpen(false)
   }
 
-  const add = values => {
-    const id = gridData.length ? gridData[gridData.length - 1].id + 2 : 1
-    // console.log('gridData.length', gridData[gridData.length - 1].id)
-    // console.log('add user - new id', id)
+  const add = async values => {
+    const lastItem = gridData.length - 1
+    const id = gridData.length ? gridData[lastItem].id + 1 : 1
     console.log(values)
-    const newItem = { id, values }
+    const newItem = { id, ...values }
     const listItems = [...gridData, newItem]
+    // update the front-end
     setGridData(listItems)
+
+    // Insert record in the backend
+    const postOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newItem)
+    }
+
+    const result = await apiRequest(API_URL, postOptions)
+    if (result) setFetchError(result)
   }
 
   return (
