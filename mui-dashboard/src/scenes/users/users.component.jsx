@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { Box, Typography, useTheme } from '@mui/material'
+import { Box, IconButton, Typography, useTheme } from '@mui/material'
 import Button from '@mui/material/Button'
 import { DataGrid, GridToolbar } from '@mui/x-data-grid'
 import LinearProgress from '@mui/material/LinearProgress'
@@ -8,6 +8,10 @@ import { tokens } from '../../theme'
 import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined'
 import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined'
 import SecurityOutlinedIcon from '@mui/icons-material/SecurityOutlined'
+
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
+import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined'
+import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined'
 
 import Header from '../../components/header/Header.component'
 import CreateUserForm from './CreateUserForm.component'
@@ -87,15 +91,32 @@ const Users = () => {
             p="5px"
             display="flex"
             justifyContent="center"
-            backgroundColor={access === 'admin' ? colors.greenAccent[600] : colors.greenAccent[700]}
             borderRadius="4px"
           >
-            {access === 'admin' && <AdminPanelSettingsOutlinedIcon />}
+            {/* {access === 'admin' && <AdminPanelSettingsOutlinedIcon />}
             {access === 'manager' && <SecurityOutlinedIcon />}
-            {access === 'user' && <LockOpenOutlinedIcon />}
-            <Typography color={colors.grey[100]} sx={{ ml: '5px' }}>
-              {access}
-            </Typography>
+            {access === 'user' && <LockOpenOutlinedIcon />} */}
+            <Typography color={colors.grey[100]}>{access}</Typography>
+          </Box>
+        )
+      }
+    },
+    {
+      field: 'action',
+      headerName: 'Action',
+      flex: 1,
+      renderCell: () => {
+        return (
+          <Box>
+            <IconButton>
+              <SaveOutlinedIcon />
+            </IconButton>
+            <IconButton>
+              <ModeEditOutlineOutlinedIcon />
+            </IconButton>
+            <IconButton>
+              <DeleteOutlineOutlinedIcon />
+            </IconButton>
           </Box>
         )
       }
@@ -158,6 +179,7 @@ const Users = () => {
           rowsPerPageOptions={[5, 10, 20]}
           rows={gridData}
           columns={columns}
+          disableSelectionOnClick
         />
       </Box>
     </Box>
