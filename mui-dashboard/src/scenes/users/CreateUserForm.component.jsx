@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { Box, useMediaQuery, Typography } from '@mui/material'
+import { Box, useMediaQuery, InputLabel, MenuItem, Select, FormControl } from '@mui/material'
 import { Formik, Form } from 'formik'
 import * as yup from 'yup'
 
@@ -14,20 +14,30 @@ import DialogTitle from '@mui/material/DialogTitle'
 import { UsersContext } from '../../contexts/users.context'
 
 const initialValues = {
-  id: null,
-  name: null,
-  email: null,
+  name: '',
+  email: '',
   age: 0,
-  phone: null,
-  access: 'user'
+  phone: '',
+  access: ''
 }
 
 const CreateUserForm = () => {
   const isNonMobile = useMediaQuery('(min-width: 600px)')
-  const { isCreateUserFormOpen, setIsCreateUserFormOpen, handleSubmit } = useContext(UsersContext)
+  const { gridData, isCreateUserFormOpen, setIsCreateUserFormOpen, setGridData } =
+    useContext(UsersContext)
 
   const handleClose = () => {
     setIsCreateUserFormOpen(false)
+  }
+
+  const add = values => {
+    const id = gridData.length ? gridData[gridData.length - 1].id + 2 : 1
+    // console.log('gridData.length', gridData[gridData.length - 1].id)
+    // console.log('add user - new id', id)
+    console.log(values)
+    const newItem = { id, values }
+    const listItems = [...gridData, newItem]
+    setGridData(listItems)
   }
 
   return (
@@ -36,8 +46,8 @@ const CreateUserForm = () => {
         <DialogTitle>Create a New User</DialogTitle>
         <DialogContent>
           <DialogContentText>Please fill up all the required fields.</DialogContentText>
-          <Formik onSubmit={handleSubmit}>
-            {() => (
+          <Formik onSubmit={add} initialValues={initialValues}>
+            {({ values, errors, touched, handleBlur, handleChange, handleSubmit }) => (
               <Form>
                 <Box
                   display="grid"
@@ -51,37 +61,67 @@ const CreateUserForm = () => {
                     fullWidth
                     autoFocus
                     margin="dense"
+                    name="name"
                     id="name"
+                    value={values.name}
                     label="Name"
                     type="text"
                     variant="outlined"
                     sx={{ gridColumn: 'span 4' }}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                   />
 
                   <TextField
                     fullWidth
                     margin="dense"
+                    name="email"
                     id="email"
+                    value={values.email}
                     label="Email"
                     type="email"
                     variant="outlined"
                     sx={{ gridColumn: 'span 4' }}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                   />
 
                   <TextField
                     fullWidth
                     autoFocus
                     margin="dense"
+                    name="phone"
                     id="phone"
+                    value={values.phone}
                     label="Phone"
                     type="text"
                     variant="outlined"
                     sx={{ gridColumn: 'span 4' }}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  <TextField
+                    fullWidth
+                    margin="dense"
+                    name="age"
+                    id="age"
+                    value={values.age}
+                    label="Age"
+                    type="number"
+                    variant="outlined"
+                    sx={{ gridColumn: 'span 4' }}
+                    InputProps={{ inputProps: { min: 0, max: 150 } }}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                   />
                 </Box>
                 <DialogActions>
-                  <Button onClick={handleClose}>Cancel</Button>
-                  <Button type="submit">Save</Button>
+                  <Button onClick={handleClose} variant="outlined">
+                    Cancel
+                  </Button>
+                  <Button type="submit" variant="contained">
+                    Save
+                  </Button>
                 </DialogActions>
               </Form>
             )}

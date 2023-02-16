@@ -1,5 +1,5 @@
 {
-    "mockDataTeam": [
+    "mockDataUsers": [
         {
           "id": 1,
           "name": "Jon Snow from JSON",
@@ -76,7 +76,7 @@
           "id": 10,
           "name": "Joe Satriani",
           "email": "josat@gmail.com",
-          "age": 933,
+          "age": 93,
           "phone": "(444)432-6239",
           "access": "manager"
         },
@@ -90,10 +90,10 @@
         },
         {
           "id": 12,
-          "name": "Neil Schon",
-          "email": "morsecode@gmail.com",
-          "age": 87,
-          "phone": "(432)432-2342",
+          "name": "Steve Lukather",
+          "email": "luk@gmail.com",
+          "age": 70,
+          "phone": "(442)432-2362",
           "access": "manager"
         }
       ],

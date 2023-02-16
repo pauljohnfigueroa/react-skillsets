@@ -9,11 +9,12 @@ export const UsersContext = createContext({
   fetchError: null,
   pageSize: 5,
   setPageSize: () => {},
-  handleSubmit: () => {}
+  handleSubmit: () => {},
+  getLastId: () => {}
 })
 
 export const UsersProvider = ({ children }) => {
-  const API_URL = 'http://localhost:3500/mockDataTeam'
+  const API_URL = 'http://localhost:3500/mockDataUsers'
 
   const [gridData, setGridData] = useState([])
   const [isCreateUserFormOpen, setIsCreateUserFormOpen] = useState(false)
@@ -46,6 +47,10 @@ export const UsersProvider = ({ children }) => {
     console.log('New User Form Submitted')
   }
 
+  const getLastId = () => {
+    return gridData.length
+  }
+
   const value = {
     isLoading,
     fetchError,
@@ -54,7 +59,9 @@ export const UsersProvider = ({ children }) => {
     setIsCreateUserFormOpen,
     pageSize,
     setPageSize,
-    handleSubmit
+    setGridData,
+    handleSubmit,
+    getLastId
   }
 
   return <UsersContext.Provider value={value}>{children}</UsersContext.Provider>

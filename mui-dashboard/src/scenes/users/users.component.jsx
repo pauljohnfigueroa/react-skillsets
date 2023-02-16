@@ -38,6 +38,14 @@ const Users = () => {
     setIsCreateUserFormOpen(true)
   }
 
+  const update = () => {
+    console.log('update user')
+  }
+
+  const remove = () => {
+    console.log('remove user')
+  }
+
   const columns = [
     {
       field: 'id',
@@ -104,7 +112,7 @@ const Users = () => {
         <Button onClick={showAddUserModal} variant="outlined">
           Add User
         </Button>
-        {isCreateUserFormOpen && <CreateUserForm handleSubmit={handleSubmit} />}
+        {isCreateUserFormOpen && <CreateUserForm />}
       </Box>
       <Box
         m="10px 0 0 0"
