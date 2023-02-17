@@ -95,22 +95,6 @@
       "age": 70,
       "phone": "(442)432-2362",
       "access": "manager"
-    },
-    {
-      "id": 13,
-      "name": "Top Rural Bank",
-      "email": "test@test.com",
-      "age": 44,
-      "phone": "123-123-1234",
-      "access": "manager"
-    },
-    {
-      "id": 14,
-      "name": "Paul Figueroa",
-      "email": "mike@gmail.com",
-      "age": 23,
-      "phone": "123-123-1234",
-      "access": "user"
     }
   ],
   "mockDataContacts": [

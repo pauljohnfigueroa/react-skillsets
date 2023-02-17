@@ -34,7 +34,8 @@ const Users = () => {
     setGridData,
     pageSize,
     setPageSize,
-    handleSubmit
+    setFetchError,
+    API_URL
   } = useContext(UsersContext)
 
   const CustomNoRowsOverlay = () => {
@@ -45,11 +46,14 @@ const Users = () => {
     setIsCreateUserFormOpen(true)
   }
 
-  const handleDeleteSelected = () => {
+  const handleDeleteSelected = async () => {
     const items = gridData.filter(item => !checkedItemsIds.includes(item.id))
     // remove the item/s from the front-end
     setGridData(items)
     // delete items from the backend
+    const deleteOptions = { method: 'DELETE' }
+    const results = await apiRequest(`${API_URL}/${checkedItemsIds}`, deleteOptions)
+    if (results) return setFetchError(results)
   }
 
   const update = () => {
