@@ -46,14 +46,17 @@ const Users = () => {
     setIsCreateUserFormOpen(true)
   }
 
-  const handleDeleteSelected = async () => {
+  const handleDeleteSelected = () => {
     const items = gridData.filter(item => !checkedItemsIds.includes(item.id))
     // remove the item/s from the front-end
     setGridData(items)
+    //console.log(checkedItemsIds)
     // delete items from the backend
     const deleteOptions = { method: 'DELETE' }
-    const results = await apiRequest(`${API_URL}/${checkedItemsIds}`, deleteOptions)
-    if (results) return setFetchError(results)
+    const result = checkedItemsIds.map(async id => {
+      const results = await apiRequest(`${API_URL}/${id}`, deleteOptions)
+      if (results) setFetchError(results)
+    })
   }
 
   const update = () => {
