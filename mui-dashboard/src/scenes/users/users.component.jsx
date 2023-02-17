@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { Box, IconButton, Typography, useTheme } from '@mui/material'
 import Button from '@mui/material/Button'
 import { DataGrid, GridToolbar } from '@mui/x-data-grid'
@@ -23,6 +23,8 @@ const Users = () => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
+  const [checkedItemsIds, setCheckedItemsIds] = useState([])
+
   const {
     isLoading,
     isCreateUserFormOpen,
@@ -40,6 +42,10 @@ const Users = () => {
 
   const showAddUserModal = () => {
     setIsCreateUserFormOpen(true)
+  }
+
+  const handleDeleteSelected = () => {
+    console.log(checkedItemsIds)
   }
 
   const update = () => {
@@ -108,13 +114,13 @@ const Users = () => {
       renderCell: () => {
         return (
           <Box>
-            <IconButton>
+            <IconButton onClick={() => alert('Save')}>
               <SaveOutlinedIcon />
             </IconButton>
-            <IconButton>
+            <IconButton onClick={() => alert('Edit')}>
               <ModeEditOutlineOutlinedIcon />
             </IconButton>
-            <IconButton>
+            <IconButton onClick={() => alert('Delete')}>
               <DeleteOutlineOutlinedIcon />
             </IconButton>
           </Box>
@@ -130,11 +136,14 @@ const Users = () => {
         subtitle="Manage user accounts, access, and authorization."
       />
       <Box m="10px 0 0 0">
-        <Button onClick={showAddUserModal} variant="outlined">
+        <Button m="2" onClick={showAddUserModal} variant="outlined">
           Add User
         </Button>
-        {isCreateUserFormOpen && <CreateUserForm />}
+        <Button m="2" onClick={handleDeleteSelected} variant="outlined">
+          Delete Selected
+        </Button>
       </Box>
+      {isCreateUserFormOpen && <CreateUserForm />}
       <Box
         m="10px 0 0 0"
         height="100vh"
@@ -179,7 +188,13 @@ const Users = () => {
           rowsPerPageOptions={[5, 10, 20]}
           rows={gridData}
           columns={columns}
+          checkboxSelection
           disableSelectionOnClick
+          onSelectionModelChange={ids => {
+            // pass the ids to a state
+            // console.log(ids)
+            setCheckedItemsIds(ids)
+          }}
         />
       </Box>
     </Box>
