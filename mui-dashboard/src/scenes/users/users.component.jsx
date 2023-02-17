@@ -31,6 +31,7 @@ const Users = () => {
     setIsCreateUserFormOpen,
     fetchError,
     gridData,
+    setGridData,
     pageSize,
     setPageSize,
     handleSubmit
@@ -45,14 +46,17 @@ const Users = () => {
   }
 
   const handleDeleteSelected = () => {
-    console.log(checkedItemsIds)
+    const items = gridData.filter(item => !checkedItemsIds.includes(item.id))
+    // remove the item/s from the front-end
+    setGridData(items)
+    // delete items from the backend
   }
 
   const update = () => {
     console.log('update user')
   }
 
-  const remove = () => {
+  const remove = ids => {
     console.log('remove user')
   }
 

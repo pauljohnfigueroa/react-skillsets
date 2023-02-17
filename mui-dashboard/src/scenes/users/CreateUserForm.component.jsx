@@ -47,7 +47,7 @@ const CreateUserForm = () => {
     setIsCreateUserFormOpen(false)
   }
 
-  const add = async values => {
+  const addItem = async values => {
     const response = await fetch(API_URL)
     const data = await response.json()
     const id = data.length ? data[data.length - 1].id + 1 : 1
@@ -68,13 +68,17 @@ const CreateUserForm = () => {
     if (result) setFetchError(result)
   }
 
+  const deleteItem = () => {
+    console.log('deleteItem')
+  }
+
   return (
     <div>
       <Dialog open={isCreateUserFormOpen} onClose={handleClose} fullWidth>
         <DialogTitle>Create a New User</DialogTitle>
         <DialogContent>
           <DialogContentText>Please fill up all the required fields.</DialogContentText>
-          <Formik onSubmit={add} initialValues={initialValues}>
+          <Formik onSubmit={addItem} initialValues={initialValues}>
             {({ values, errors, touched, handleBlur, handleChange, handleSubmit }) => (
               <Form>
                 <Box

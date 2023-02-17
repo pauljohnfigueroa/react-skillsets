@@ -8,6 +8,7 @@ export const UsersContext = createContext({
   isCreateUserFormOpen: false,
   setIsCreateUserFormOpen: () => {},
   gridData: [],
+  setGridData: () => {},
   fetchError: null,
   pageSize: 5,
   setPageSize: () => {},
