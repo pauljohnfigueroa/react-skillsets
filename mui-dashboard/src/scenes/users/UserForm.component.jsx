@@ -23,12 +23,14 @@ import { UsersContext } from '../../contexts/users.context'
 
 const UserForm = () => {
   const isNonMobile = useMediaQuery('(min-width: 600px)')
+
   const {
     initFormValues,
     isCreateUserFormOpen,
     setIsCreateUserFormOpen,
     handleAddItem,
-    handleEditItem
+    handleEditItem,
+    setFormValues
   } = useContext(UsersContext)
 
   const handleClose = () => {
@@ -42,7 +44,7 @@ const UserForm = () => {
         <DialogContent>
           <DialogContentText>Please fill up all the required fields.</DialogContentText>
           <Formik
-            onSubmit={initFormValues.id ? () => handleEditItem(initFormValues.id) : handleAddItem}
+            onSubmit={initFormValues.id ? handleEditItem : handleAddItem}
             initialValues={initFormValues}
           >
             {({ values, errors, touched, handleBlur, handleChange, handleSubmit }) => (
@@ -136,8 +138,12 @@ const UserForm = () => {
                   <Button onClick={handleClose} variant="outlined">
                     Cancel
                   </Button>
-                  <Button type="submit" variant="contained">
-                    Save
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    onClick={values.id ? () => setFormValues(values) : undefined}
+                  >
+                    {values.id ? 'Update' : 'Save'}
                   </Button>
                 </DialogActions>
               </Form>

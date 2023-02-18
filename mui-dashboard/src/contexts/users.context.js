@@ -32,6 +32,8 @@ export const UsersContext = createContext({
   showEditForm: () => {},
   checkedItemsIds: [],
   showCreateForm: () => {},
+  formValues: [],
+  setFormValues: () => {},
   API_URL: API_URL
 })
 
@@ -43,6 +45,7 @@ export const UsersProvider = ({ children }) => {
   const [pageSize, setPageSize] = useState(5)
   const [checkedItemsIds, setCheckedItemsIds] = useState([])
   const [initFormValues, setInitFormValues] = useState(initialValues)
+  const [formValues, setFormValues] = useState([])
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -69,7 +72,7 @@ export const UsersProvider = ({ children }) => {
     const response = await fetch(API_URL)
     const data = await response.json()
     const id = data.length ? data[data.length - 1].id + 1 : 1
-    const newItem = { id, ...values }
+    const newItem = { ...values, id }
     const listItems = [...data, newItem]
     // update the front-end
     setGridData(listItems)
@@ -99,8 +102,8 @@ export const UsersProvider = ({ children }) => {
     })
   }
 
-  const handleEditItem = id => {
-    console.log('handleEditItem', id)
+  const handleEditItem = () => {
+    console.log('handleEditItem', formValues)
   }
 
   const showEditForm = row => {
@@ -133,6 +136,8 @@ export const UsersProvider = ({ children }) => {
     showEditForm,
     setCheckedItemsIds,
     showCreateForm,
+    formValues,
+    setFormValues,
     API_URL
   }
 
