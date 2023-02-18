@@ -31,15 +31,8 @@ const initialValues = {
 
 const CreateUserForm = () => {
   const isNonMobile = useMediaQuery('(min-width: 600px)')
-  const {
-    gridData,
-    isCreateUserFormOpen,
-    setIsCreateUserFormOpen,
-    setGridData,
-    setFetchError,
-    handleAddItem,
-    API_URL
-  } = useContext(UsersContext)
+  const { gridData, isCreateUserFormOpen, setIsCreateUserFormOpen, handleAddItem } =
+    useContext(UsersContext)
 
   const handleClose = () => {
     setIsCreateUserFormOpen(false)

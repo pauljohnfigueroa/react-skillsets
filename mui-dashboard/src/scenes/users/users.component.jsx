@@ -1,5 +1,5 @@
-import { useContext, useState } from 'react'
-import { Box, IconButton, Typography, useTheme } from '@mui/material'
+import { useContext } from 'react'
+import { Box, Stack, IconButton, Typography, useTheme } from '@mui/material'
 import { DataGrid, GridToolbar } from '@mui/x-data-grid'
 import Button from '@mui/material/Button'
 import LinearProgress from '@mui/material/LinearProgress'
@@ -24,14 +24,11 @@ const Users = () => {
     setIsCreateUserFormOpen,
     fetchError,
     gridData,
-    setGridData,
     pageSize,
     setPageSize,
-    setFetchError,
-    handleDeleteSelected,
+    handleDeleteMultiple,
     handleAddItem,
-    setCheckedItemsIds,
-    API_URL
+    setCheckedItemsIds
   } = useContext(UsersContext)
 
   const CustomNoRowsOverlay = () => {
@@ -97,17 +94,14 @@ const Users = () => {
       field: 'action',
       headerName: 'Action',
       flex: 1,
-      renderCell: () => {
+      renderCell: rowdata => {
         return (
           <Box>
-            <IconButton onClick={() => alert('Save')}>
-              <SaveOutlinedIcon />
-            </IconButton>
-            <IconButton onClick={() => alert('Edit')}>
+            <IconButton onClick={() => console.log('Edit row', rowdata.row.id)}>
               <ModeEditOutlineOutlinedIcon />
             </IconButton>
-            <IconButton onClick={() => alert('Delete')}>
-              <DeleteOutlineOutlinedIcon />
+            <IconButton onClick={() => console.log('Save row', rowdata.row.id)}>
+              <SaveOutlinedIcon />
             </IconButton>
           </Box>
         )
@@ -122,13 +116,16 @@ const Users = () => {
         subtitle="Manage user accounts, access, and authorization."
       />
       <Box m="10px 0 0 0">
-        <Button m="2" onClick={showAddUserModal} variant="outlined">
-          Add User
-        </Button>
-        <Button m="2" onClick={handleDeleteSelected} variant="outlined">
-          Delete Selected
-        </Button>
+        <Stack spacing={2} direction="row">
+          <Button onClick={showAddUserModal} variant="outlined">
+            Add User
+          </Button>
+          <Button onClick={handleDeleteMultiple} variant="outlined">
+            Delete Selected
+          </Button>
+        </Stack>
       </Box>
+
       {isCreateUserFormOpen && <CreateUserForm handleAddItem={handleAddItem} />}
       <Box
         m="10px 0 0 0"

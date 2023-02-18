@@ -17,7 +17,7 @@ export const UsersContext = createContext({
   setPageSize: () => {},
   handleSubmit: () => {},
   handleAddItem: () => {},
-  handleDeleteSelected: () => {},
+  handleDeleteMultiple: () => {},
   checkedItemsIds: [],
   API_URL: API_URL
 })
@@ -51,9 +51,9 @@ export const UsersProvider = ({ children }) => {
     }, 1000)
   }, [])
 
-  const handleSubmit = () => {
-    console.log('New User Form Submitted')
-  }
+  // const handleSubmit = () => {
+  //   console.log('New User Form Submitted')
+  // }
 
   const handleAddItem = async values => {
     const response = await fetch(API_URL)
@@ -76,7 +76,7 @@ export const UsersProvider = ({ children }) => {
     if (result) setFetchError(result)
   }
 
-  const handleDeleteSelected = () => {
+  const handleDeleteMultiple = () => {
     const items = gridData.filter(item => !checkedItemsIds.includes(item.id))
     // remove the item/s from the front-end
     setGridData(items)
@@ -99,9 +99,8 @@ export const UsersProvider = ({ children }) => {
     setPageSize,
     setFetchError,
     setGridData,
-    handleSubmit,
     handleAddItem,
-    handleDeleteSelected,
+    handleDeleteMultiple,
     setCheckedItemsIds,
     API_URL
   }
