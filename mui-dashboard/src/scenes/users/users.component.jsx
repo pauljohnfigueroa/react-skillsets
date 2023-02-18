@@ -9,7 +9,7 @@ import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutl
 import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined'
 
 import Header from '../../components/header/Header.component'
-import CreateUserForm from './CreateUserForm.component'
+import UserForm from './UserForm.component'
 
 import { UsersContext } from '../../contexts/users.context'
 import { tokens } from '../../theme'
@@ -32,17 +32,13 @@ const Users = () => {
     handleEdit,
     handleAddItem,
     setCheckedItemsIds,
-    showForm
+    showEditForm,
+    showCreateForm
   } = useContext(UsersContext)
 
   const CustomNoRowsOverlay = () => {
     return fetchError ? <Box sx={{ mt: 1 }}>{fetchError}</Box> : <Box sx={{ mt: 1 }}>No Data.</Box>
   }
-
-  // const showAddUserModal = () => {
-  //   setIsCreateUserFormOpen(true)
-  //   setInitFormValues(initialValues)
-  // }
 
   const columns = [
     {
@@ -102,7 +98,7 @@ const Users = () => {
       renderCell: rowdata => {
         return (
           <Box>
-            <IconButton onClick={() => handleEdit(rowdata.row)}>
+            <IconButton onClick={() => showEditForm(rowdata.row)}>
               <ModeEditOutlineOutlinedIcon />
             </IconButton>
             <IconButton onClick={() => console.log('Save row', rowdata.row.id)}>
@@ -122,7 +118,7 @@ const Users = () => {
       />
       <Box m="10px 0 0 0">
         <Stack spacing={2} direction="row">
-          <Button onClick={showForm} variant="outlined">
+          <Button onClick={showCreateForm} variant="outlined">
             Add User
           </Button>
           <Button onClick={handleDeleteMultiple} variant="outlined">
@@ -131,7 +127,7 @@ const Users = () => {
         </Stack>
       </Box>
 
-      {isCreateUserFormOpen && <CreateUserForm handleAddItem={handleAddItem} />}
+      {isCreateUserFormOpen && <UserForm />}
       <Box
         m="10px 0 0 0"
         height="100vh"

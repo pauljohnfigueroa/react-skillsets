@@ -5,6 +5,7 @@ import apiRequest from '../api/apiRequest.api'
 const API_URL = 'http://localhost:3500/mockDataUsers'
 
 const initialValues = {
+  id: null,
   name: '',
   email: '',
   age: 0,
@@ -26,10 +27,11 @@ export const UsersContext = createContext({
   setPageSize: () => {},
   handleSubmit: () => {},
   handleAddItem: () => {},
+  handleEditItem: () => {},
   handleDeleteMultiple: () => {},
-  handleEdit: () => {},
+  showEditForm: () => {},
   checkedItemsIds: [],
-  showForm: () => {},
+  showCreateForm: () => {},
   API_URL: API_URL
 })
 
@@ -97,12 +99,17 @@ export const UsersProvider = ({ children }) => {
     })
   }
 
-  const handleEdit = row => {
-    console.log('HANDLE EDIT', row)
-    setInitFormValues(row)
+  const handleEditItem = id => {
+    console.log('handleEditItem', id)
   }
 
-  const showForm = () => {
+  const showEditForm = row => {
+    console.log('Row', row)
+    setInitFormValues(row)
+    setIsCreateUserFormOpen(true)
+  }
+
+  const showCreateForm = () => {
     setIsCreateUserFormOpen(true)
     setInitFormValues(initialValues)
   }
@@ -121,10 +128,11 @@ export const UsersProvider = ({ children }) => {
     setFetchError,
     setGridData,
     handleAddItem,
+    handleEditItem,
     handleDeleteMultiple,
-    handleEdit,
+    showEditForm,
     setCheckedItemsIds,
-    showForm,
+    showCreateForm,
     API_URL
   }
 
