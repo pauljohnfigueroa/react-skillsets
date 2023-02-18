@@ -93,21 +93,22 @@ export const UsersProvider = ({ children }) => {
     console.log('handleUpdateItem', formValues)
     const updatedItem = { ...formValues }
     const listItems = [...gridData, updatedItem]
+
     // update the front-end
     setGridData(listItems)
 
-    // const item = gridData.filter(row => row.id === formValues.id)
+    // update the backend
+    const item = gridData.filter(row => row.id === formValues.id)
+    const updateOptions = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ ...item[0], ...formValues })
+    }
 
-    // const updateOptions = {
-    //   method: 'PATCH',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({ item, ...formValues })
-    // }
-
-    // const result = apiRequest(`${API_URL}/${formValues.id}`, updateOptions)
-    // if (result) setFetchError(result)
+    const result = await apiRequest(`${API_URL}/${formValues.id}`, updateOptions)
+    if (result) setFetchError(result)
   }
 
   const handleDeleteMultiple = () => {

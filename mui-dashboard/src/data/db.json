@@ -98,21 +98,11 @@
     },
     {
       "id": 13,
-      "name": "Top Rural Bank test",
-      "email": "mike@gmail.com",
-      "age": 44,
-      "phone": "123-123-1234",
-      "access": "manager",
-      "item": [
-        {
-          "id": 13,
-          "name": "Top Rural Bank",
-          "email": "mike@gmail.com",
-          "age": 44,
-          "phone": "123-123-1234",
-          "access": "manager"
-        }
-      ]
+      "name": "Top Rural Bank updated",
+      "email": "toprb1000@gmail.com",
+      "age": 22,
+      "phone": "333-222-888",
+      "access": "user"
     }
   ],
   "mockDataContacts": [
