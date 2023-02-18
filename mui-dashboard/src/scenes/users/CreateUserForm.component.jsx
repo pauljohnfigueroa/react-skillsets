@@ -21,17 +21,17 @@ import DialogTitle from '@mui/material/DialogTitle'
 
 import { UsersContext } from '../../contexts/users.context'
 
-const initialValues = {
-  name: '',
-  email: '',
-  age: 0,
-  phone: '',
-  access: ''
-}
+// const initialValues = {
+//   name: 'TEst initial Name',
+//   email: '',
+//   age: 0,
+//   phone: '',
+//   access: ''
+// }
 
 const CreateUserForm = () => {
   const isNonMobile = useMediaQuery('(min-width: 600px)')
-  const { gridData, isCreateUserFormOpen, setIsCreateUserFormOpen, handleAddItem } =
+  const { initFormValues, isCreateUserFormOpen, setIsCreateUserFormOpen, handleAddItem } =
     useContext(UsersContext)
 
   const handleClose = () => {
@@ -44,7 +44,7 @@ const CreateUserForm = () => {
         <DialogTitle>Create a New User</DialogTitle>
         <DialogContent>
           <DialogContentText>Please fill up all the required fields.</DialogContentText>
-          <Formik onSubmit={handleAddItem} initialValues={initialValues}>
+          <Formik onSubmit={handleAddItem} initialValues={initFormValues}>
             {({ values, errors, touched, handleBlur, handleChange, handleSubmit }) => (
               <Form>
                 <Box

@@ -19,6 +19,8 @@ const Users = () => {
   const colors = tokens(theme.palette.mode)
 
   const {
+    initialValues,
+    setInitFormValues,
     isLoading,
     isCreateUserFormOpen,
     setIsCreateUserFormOpen,
@@ -27,17 +29,20 @@ const Users = () => {
     pageSize,
     setPageSize,
     handleDeleteMultiple,
+    handleEdit,
     handleAddItem,
-    setCheckedItemsIds
+    setCheckedItemsIds,
+    showForm
   } = useContext(UsersContext)
 
   const CustomNoRowsOverlay = () => {
     return fetchError ? <Box sx={{ mt: 1 }}>{fetchError}</Box> : <Box sx={{ mt: 1 }}>No Data.</Box>
   }
 
-  const showAddUserModal = () => {
-    setIsCreateUserFormOpen(true)
-  }
+  // const showAddUserModal = () => {
+  //   setIsCreateUserFormOpen(true)
+  //   setInitFormValues(initialValues)
+  // }
 
   const columns = [
     {
@@ -97,7 +102,7 @@ const Users = () => {
       renderCell: rowdata => {
         return (
           <Box>
-            <IconButton onClick={() => console.log('Edit row', rowdata.row.id)}>
+            <IconButton onClick={() => handleEdit(rowdata.row)}>
               <ModeEditOutlineOutlinedIcon />
             </IconButton>
             <IconButton onClick={() => console.log('Save row', rowdata.row.id)}>
@@ -117,7 +122,7 @@ const Users = () => {
       />
       <Box m="10px 0 0 0">
         <Stack spacing={2} direction="row">
-          <Button onClick={showAddUserModal} variant="outlined">
+          <Button onClick={showForm} variant="outlined">
             Add User
           </Button>
           <Button onClick={handleDeleteMultiple} variant="outlined">

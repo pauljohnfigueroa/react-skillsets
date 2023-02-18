@@ -4,7 +4,16 @@ import apiRequest from '../api/apiRequest.api'
 
 const API_URL = 'http://localhost:3500/mockDataUsers'
 
+const initialValues = {
+  name: '',
+  email: '',
+  age: 0,
+  phone: '',
+  access: ''
+}
+
 export const UsersContext = createContext({
+  initFormValues: initialValues,
   isLoading: true,
   setIsLoading: () => {},
   isCreateUserFormOpen: false,
@@ -18,7 +27,9 @@ export const UsersContext = createContext({
   handleSubmit: () => {},
   handleAddItem: () => {},
   handleDeleteMultiple: () => {},
+  handleEdit: () => {},
   checkedItemsIds: [],
+  showForm: () => {},
   API_URL: API_URL
 })
 
@@ -29,6 +40,7 @@ export const UsersProvider = ({ children }) => {
   const [fetchError, setFetchError] = useState(null)
   const [pageSize, setPageSize] = useState(5)
   const [checkedItemsIds, setCheckedItemsIds] = useState([])
+  const [initFormValues, setInitFormValues] = useState(initialValues)
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -50,10 +62,6 @@ export const UsersProvider = ({ children }) => {
       fetchItems()
     }, 1000)
   }, [])
-
-  // const handleSubmit = () => {
-  //   console.log('New User Form Submitted')
-  // }
 
   const handleAddItem = async values => {
     const response = await fetch(API_URL)
@@ -89,7 +97,20 @@ export const UsersProvider = ({ children }) => {
     })
   }
 
+  const handleEdit = row => {
+    console.log('HANDLE EDIT', row)
+    setInitFormValues(row)
+  }
+
+  const showForm = () => {
+    setIsCreateUserFormOpen(true)
+    setInitFormValues(initialValues)
+  }
+
   const value = {
+    initialValues,
+    initFormValues,
+    setInitFormValues,
     isLoading,
     fetchError,
     gridData,
@@ -101,7 +122,9 @@ export const UsersProvider = ({ children }) => {
     setGridData,
     handleAddItem,
     handleDeleteMultiple,
+    handleEdit,
     setCheckedItemsIds,
+    showForm,
     API_URL
   }
 
