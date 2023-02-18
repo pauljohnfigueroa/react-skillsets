@@ -29,7 +29,7 @@ const UserForm = () => {
     isCreateUserFormOpen,
     setIsCreateUserFormOpen,
     handleAddItem,
-    handleEditItem,
+    handleUpdateItem,
     setFormValues
   } = useContext(UsersContext)
 
@@ -44,7 +44,7 @@ const UserForm = () => {
         <DialogContent>
           <DialogContentText>Please fill up all the required fields.</DialogContentText>
           <Formik
-            onSubmit={initFormValues.id ? handleEditItem : handleAddItem}
+            onSubmit={initFormValues.id ? handleUpdateItem : handleAddItem}
             initialValues={initFormValues}
           >
             {({ values, errors, touched, handleBlur, handleChange, handleSubmit }) => (

@@ -27,7 +27,7 @@ export const UsersContext = createContext({
   setPageSize: () => {},
   handleSubmit: () => {},
   handleAddItem: () => {},
-  handleEditItem: () => {},
+  handleUpdateItem: () => {},
   handleDeleteMultiple: () => {},
   showEditForm: () => {},
   checkedItemsIds: [],
@@ -89,6 +89,27 @@ export const UsersProvider = ({ children }) => {
     if (result) setFetchError(result)
   }
 
+  const handleUpdateItem = async () => {
+    console.log('handleUpdateItem', formValues)
+    const updatedItem = { ...formValues }
+    const listItems = [...gridData, updatedItem]
+    // update the front-end
+    setGridData(listItems)
+
+    // const item = gridData.filter(row => row.id === formValues.id)
+
+    // const updateOptions = {
+    //   method: 'PATCH',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({ item, ...formValues })
+    // }
+
+    // const result = apiRequest(`${API_URL}/${formValues.id}`, updateOptions)
+    // if (result) setFetchError(result)
+  }
+
   const handleDeleteMultiple = () => {
     const items = gridData.filter(item => !checkedItemsIds.includes(item.id))
     // remove the item/s from the front-end
@@ -102,19 +123,14 @@ export const UsersProvider = ({ children }) => {
     })
   }
 
-  const handleEditItem = () => {
-    console.log('handleEditItem', formValues)
-  }
-
   const showEditForm = row => {
-    console.log('Row', row)
     setInitFormValues(row)
     setIsCreateUserFormOpen(true)
   }
 
   const showCreateForm = () => {
-    setIsCreateUserFormOpen(true)
     setInitFormValues(initialValues)
+    setIsCreateUserFormOpen(true)
   }
 
   const value = {
@@ -131,7 +147,7 @@ export const UsersProvider = ({ children }) => {
     setFetchError,
     setGridData,
     handleAddItem,
-    handleEditItem,
+    handleUpdateItem,
     handleDeleteMultiple,
     showEditForm,
     setCheckedItemsIds,
