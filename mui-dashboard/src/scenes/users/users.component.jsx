@@ -1,13 +1,8 @@
 import { useContext, useState } from 'react'
 import { Box, IconButton, Typography, useTheme } from '@mui/material'
-import Button from '@mui/material/Button'
 import { DataGrid, GridToolbar } from '@mui/x-data-grid'
+import Button from '@mui/material/Button'
 import LinearProgress from '@mui/material/LinearProgress'
-import { tokens } from '../../theme'
-
-import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined'
-import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined'
-import SecurityOutlinedIcon from '@mui/icons-material/SecurityOutlined'
 
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined'
@@ -17,13 +12,11 @@ import Header from '../../components/header/Header.component'
 import CreateUserForm from './CreateUserForm.component'
 
 import { UsersContext } from '../../contexts/users.context'
-import apiRequest from '../../api/apiRequest.api'
+import { tokens } from '../../theme'
 
 const Users = () => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
-
-  const [checkedItemsIds, setCheckedItemsIds] = useState([])
 
   const {
     isLoading,
@@ -35,6 +28,9 @@ const Users = () => {
     pageSize,
     setPageSize,
     setFetchError,
+    handleDeleteSelected,
+    handleAddItem,
+    setCheckedItemsIds,
     API_URL
   } = useContext(UsersContext)
 
@@ -44,40 +40,6 @@ const Users = () => {
 
   const showAddUserModal = () => {
     setIsCreateUserFormOpen(true)
-  }
-
-  const handleAddItem = async values => {
-    const response = await fetch(API_URL)
-    const data = await response.json()
-    const id = data.length ? data[data.length - 1].id + 1 : 1
-    const newItem = { id, ...values }
-    const listItems = [...data, newItem]
-    // update the front-end
-    setGridData(listItems)
-
-    // Insert record in the backend
-    const postOptions = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newItem)
-    }
-    const result = await apiRequest(API_URL, postOptions)
-    if (result) setFetchError(result)
-  }
-
-  const handleDeleteSelected = () => {
-    const items = gridData.filter(item => !checkedItemsIds.includes(item.id))
-    // remove the item/s from the front-end
-    setGridData(items)
-    //console.log(checkedItemsIds)
-    // delete items from the backend
-    const deleteOptions = { method: 'DELETE' }
-    const result = checkedItemsIds.map(async id => {
-      const results = await apiRequest(`${API_URL}/${id}`, deleteOptions)
-      if (results) setFetchError(results)
-    })
   }
 
   const columns = [

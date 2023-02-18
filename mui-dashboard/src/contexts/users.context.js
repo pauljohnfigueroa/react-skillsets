@@ -17,6 +17,8 @@ export const UsersContext = createContext({
   setPageSize: () => {},
   handleSubmit: () => {},
   handleAddItem: () => {},
+  handleDeleteSelected: () => {},
+  checkedItemsIds: [],
   API_URL: API_URL
 })
 
@@ -26,6 +28,7 @@ export const UsersProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true)
   const [fetchError, setFetchError] = useState(null)
   const [pageSize, setPageSize] = useState(5)
+  const [checkedItemsIds, setCheckedItemsIds] = useState([])
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -73,6 +76,19 @@ export const UsersProvider = ({ children }) => {
     if (result) setFetchError(result)
   }
 
+  const handleDeleteSelected = () => {
+    const items = gridData.filter(item => !checkedItemsIds.includes(item.id))
+    // remove the item/s from the front-end
+    setGridData(items)
+    //console.log(checkedItemsIds)
+    // delete items from the backend
+    const deleteOptions = { method: 'DELETE' }
+    const result = checkedItemsIds.map(async id => {
+      const results = await apiRequest(`${API_URL}/${id}`, deleteOptions)
+      if (results) setFetchError(results)
+    })
+  }
+
   const value = {
     isLoading,
     fetchError,
@@ -85,6 +101,8 @@ export const UsersProvider = ({ children }) => {
     setGridData,
     handleSubmit,
     handleAddItem,
+    handleDeleteSelected,
+    setCheckedItemsIds,
     API_URL
   }
 
