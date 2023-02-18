@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect } from 'react'
 
+import apiRequest from '../api/apiRequest.api'
+
 const API_URL = 'http://localhost:3500/mockDataUsers'
 
 export const UsersContext = createContext({
@@ -10,11 +12,12 @@ export const UsersContext = createContext({
   gridData: [],
   setGridData: () => {},
   fetchError: null,
+  setFetchError: () => {},
   pageSize: 5,
   setPageSize: () => {},
-  setFetchError: () => {},
   handleSubmit: () => {},
-  API_URL: ''
+  handleAddItem: () => {},
+  API_URL: API_URL
 })
 
 export const UsersProvider = ({ children }) => {
@@ -28,7 +31,7 @@ export const UsersProvider = ({ children }) => {
     const fetchItems = async () => {
       try {
         const response = await fetch(`${API_URL}?_sort=name&_order=desc`)
-        if (!response.ok) throw Error('Did not receive expected data.')
+        if (!response.ok) throw Error('Did not receive the expected data.')
         const listItems = await response.json()
         setGridData(listItems)
         setFetchError(null)
@@ -49,6 +52,27 @@ export const UsersProvider = ({ children }) => {
     console.log('New User Form Submitted')
   }
 
+  const handleAddItem = async values => {
+    const response = await fetch(API_URL)
+    const data = await response.json()
+    const id = data.length ? data[data.length - 1].id + 1 : 1
+    const newItem = { id, ...values }
+    const listItems = [...data, newItem]
+    // update the front-end
+    setGridData(listItems)
+
+    // Insert record in the backend
+    const postOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newItem)
+    }
+    const result = await apiRequest(API_URL, postOptions)
+    if (result) setFetchError(result)
+  }
+
   const value = {
     isLoading,
     fetchError,
@@ -60,6 +84,7 @@ export const UsersProvider = ({ children }) => {
     setFetchError,
     setGridData,
     handleSubmit,
+    handleAddItem,
     API_URL
   }
 

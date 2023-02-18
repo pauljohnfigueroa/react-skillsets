@@ -46,6 +46,27 @@ const Users = () => {
     setIsCreateUserFormOpen(true)
   }
 
+  const handleAddItem = async values => {
+    const response = await fetch(API_URL)
+    const data = await response.json()
+    const id = data.length ? data[data.length - 1].id + 1 : 1
+    const newItem = { id, ...values }
+    const listItems = [...data, newItem]
+    // update the front-end
+    setGridData(listItems)
+
+    // Insert record in the backend
+    const postOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newItem)
+    }
+    const result = await apiRequest(API_URL, postOptions)
+    if (result) setFetchError(result)
+  }
+
   const handleDeleteSelected = () => {
     const items = gridData.filter(item => !checkedItemsIds.includes(item.id))
     // remove the item/s from the front-end
@@ -57,14 +78,6 @@ const Users = () => {
       const results = await apiRequest(`${API_URL}/${id}`, deleteOptions)
       if (results) setFetchError(results)
     })
-  }
-
-  const update = () => {
-    console.log('update user')
-  }
-
-  const remove = ids => {
-    console.log('remove user')
   }
 
   const columns = [
@@ -154,7 +167,7 @@ const Users = () => {
           Delete Selected
         </Button>
       </Box>
-      {isCreateUserFormOpen && <CreateUserForm />}
+      {isCreateUserFormOpen && <CreateUserForm handleAddItem={handleAddItem} />}
       <Box
         m="10px 0 0 0"
         height="100vh"

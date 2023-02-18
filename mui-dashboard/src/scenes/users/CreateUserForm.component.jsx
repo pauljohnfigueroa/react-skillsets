@@ -20,9 +20,6 @@ import DialogContentText from '@mui/material/DialogContentText'
 import DialogTitle from '@mui/material/DialogTitle'
 
 import { UsersContext } from '../../contexts/users.context'
-import { json } from 'react-router-dom'
-
-import apiRequest from '../../api/apiRequest.api'
 
 const initialValues = {
   name: '',
@@ -40,36 +37,12 @@ const CreateUserForm = () => {
     setIsCreateUserFormOpen,
     setGridData,
     setFetchError,
+    handleAddItem,
     API_URL
   } = useContext(UsersContext)
 
   const handleClose = () => {
     setIsCreateUserFormOpen(false)
-  }
-
-  const addItem = async values => {
-    const response = await fetch(API_URL)
-    const data = await response.json()
-    const id = data.length ? data[data.length - 1].id + 1 : 1
-    const newItem = { id, ...values }
-    const listItems = [...data, newItem]
-    // update the front-end
-    setGridData(listItems)
-
-    // Insert record in the backend
-    const postOptions = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newItem)
-    }
-    const result = await apiRequest(API_URL, postOptions)
-    if (result) setFetchError(result)
-  }
-
-  const deleteItem = () => {
-    console.log('deleteItem')
   }
 
   return (
@@ -78,7 +51,7 @@ const CreateUserForm = () => {
         <DialogTitle>Create a New User</DialogTitle>
         <DialogContent>
           <DialogContentText>Please fill up all the required fields.</DialogContentText>
-          <Formik onSubmit={addItem} initialValues={initialValues}>
+          <Formik onSubmit={handleAddItem} initialValues={initialValues}>
             {({ values, errors, touched, handleBlur, handleChange, handleSubmit }) => (
               <Form>
                 <Box
