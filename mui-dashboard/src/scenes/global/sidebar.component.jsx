@@ -140,7 +140,7 @@ const SideBar = () => {
           icon={<HomeOutlinedIcon />}
           selected={selected}
           setSelected={setSelected}
-          to="/"
+          to="/dashboard"
         />
         <Item
           title="Profile"

@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ColorModeContext, useMode } from './theme'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 
@@ -22,6 +22,9 @@ import { UsersProvider } from './contexts/users.context'
 import { ContactsProvider } from './contexts/contacts.context'
 import { InvoicesProvider } from './contexts/invoices.context'
 
+import Layout from './components/layout/Layout.component'
+import Login from './scenes/login/Login.component'
+
 function App() {
   const [theme, colorMode] = useMode()
 
@@ -32,28 +35,23 @@ function App() {
         <UsersProvider>
           <ContactsProvider>
             <InvoicesProvider>
-              <div className="app">
-                <SideBar />
-
-                <main className="content">
-                  <Topbar />
-
-                  <Routes>
-                    <Route path="/" element={<Dashboard />} />
-                    <Route path="/users" element={<Users />} />
-                    <Route path="/contacts" element={<Contacts />} />
-                    <Route path="/invoices" element={<Invoices />} />
-                    <Route path="/profile-form" element={<ProfileForm />} />
-                    <Route path="/event-calendar" element={<EventCalendar />} />
-                    <Route path="/faq" element={<Faq />} />
-                    <Route path="/bar-chart" element={<Bar />} />
-                    <Route path="/pie-chart" element={<Pie />} />
-                    <Route path="/line-chart" element={<Line />} />
-                    <Route path="/geography-chart" element={<Geography />} />
-                    <Route path="/settings" element={<Settings />} />
-                  </Routes>
-                </main>
-              </div>
+              <Routes>
+                <Route path="/" element={<Login />} />
+                <Route path="/" element={<Layout />}>
+                  <Route path="dashboard" element={<Dashboard />} />
+                  <Route path="users" element={<Users />} />
+                  <Route path="contacts" element={<Contacts />} />
+                  <Route path="invoices" element={<Invoices />} />
+                  <Route path="profile-form" element={<ProfileForm />} />
+                  <Route path="event-calendar" element={<EventCalendar />} />
+                  <Route path="faq" element={<Faq />} />
+                  <Route path="bar-chart" element={<Bar />} />
+                  <Route path="pie-chart" element={<Pie />} />
+                  <Route path="line-chart" element={<Line />} />
+                  <Route path="geography-chart" element={<Geography />} />
+                  <Route path="settings" element={<Settings />} />
+                </Route>
+              </Routes>
             </InvoicesProvider>
           </ContactsProvider>
         </UsersProvider>

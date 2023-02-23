@@ -69,13 +69,11 @@ export const UsersProvider = ({ children }) => {
   }, [])
 
   const handleAddItem = async values => {
+    // get the last id
     const response = await fetch(API_URL)
     const data = await response.json()
     const id = data.length ? data[data.length - 1].id + 1 : 1
     const newItem = { ...values, id }
-    const listItems = [...data, newItem]
-    // update the front-end
-    setGridData(listItems)
 
     // Insert record in the backend
     const postOptions = {
@@ -87,28 +85,33 @@ export const UsersProvider = ({ children }) => {
     }
     const result = await apiRequest(API_URL, postOptions)
     if (result) setFetchError(result)
+    setIsCreateUserFormOpen(false)
+
+    // update the front-end
+    const listItems = [...data, newItem]
+    setGridData(listItems)
   }
 
   const handleUpdateItem = async () => {
-    console.log('handleUpdateItem', formValues)
-    const updatedItem = { ...formValues }
-    const listItems = [...gridData, updatedItem]
-
-    // update the front-end
-    setGridData(listItems)
-
     // update the backend
     const item = gridData.filter(row => row.id === formValues.id)
+    const updatedRow = JSON.stringify({ ...item[0], ...formValues })
     const updateOptions = {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ ...item[0], ...formValues })
+      body: updatedRow
     }
 
     const result = await apiRequest(`${API_URL}/${formValues.id}`, updateOptions)
     if (result) setFetchError(result)
+    setIsCreateUserFormOpen(false)
+
+    // update the front-end
+    const response = await fetch(API_URL)
+    const data = await response.json()
+    setGridData([...data])
   }
 
   const handleDeleteMultiple = () => {
@@ -122,6 +125,7 @@ export const UsersProvider = ({ children }) => {
       const results = await apiRequest(`${API_URL}/${id}`, deleteOptions)
       if (results) setFetchError(results)
     })
+    setIsCreateUserFormOpen(false)
   }
 
   const showEditForm = row => {
