@@ -7,6 +7,7 @@ const Layout = () => {
     <div className="app">
       <SideBar />
       <main className="content">
+        <Topbar />
         <Outlet />
       </main>
     </div>

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Box, Button, TextField, Typography } from '@mui/material'
 import Avatar from '@mui/material/Avatar'
 import { Formik, Form } from 'formik'
@@ -5,10 +6,16 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 
 const initialFormValues = {
   email: '',
-  passowrd: ''
+  password: ''
 }
 
 const LoginForm = () => {
+  const [formValues, setFormValues] = useState(initialFormValues)
+
+  const logInUser = () => {
+    alert(`Login form submitted, ${formValues.email}, ${formValues.password}`)
+  }
+
   return (
     <Box
       sx={{
@@ -29,24 +36,37 @@ const LoginForm = () => {
         <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
           <LockOutlinedIcon />
         </Avatar>
-        <Typography variant="h1">Sign in</Typography>
+        <Typography variant="h1">Sign In</Typography>
       </Box>
-      <Formik initialValues={initialFormValues}>
+      <Formik initialValues={initialFormValues} onSubmit={logInUser}>
         {({ values, errors, touched, handleBlur, handleChange, handleSubmit }) => (
           <Form>
             <Box display="grid" gap="30px" minWidth="300px">
-              <TextField fullWidth autoFocus name="email" id="email" value={values.email} />
               <TextField
                 fullWidth
                 autoFocus
+                name="email"
+                id="email"
+                label="Email"
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              <TextField
+                fullWidth
                 name="password"
                 id="password"
+                label="Password"
                 type="password"
                 value={values.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
             </Box>
             <Box display="grid" gap="30px" minWidth="300px" height="50px" marginTop="40px">
-              <Button variant="contained">Login</Button>
+              <Button type="submit" variant="contained" onClick={() => setFormValues(values)}>
+                Login
+              </Button>
             </Box>
           </Form>
         )}
