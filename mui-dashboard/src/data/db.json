@@ -13,7 +13,7 @@
       "id": 1,
       "name": "Jon Snow White",
       "email": "jonsnow@gmail.com",
-      "age": 35,
+      "password": "$2a$04$m5uB8UN3CfOR2FvzJcBSG.eQh/p2igGC1.YwJXNgJZm2iIOrA0wZm",
       "phone": "(665)121-5454",
       "access": "manager"
     },
@@ -21,7 +21,7 @@
       "id": 2,
       "name": "Cersei Lannister",
       "email": "cerseilannister@gmail.com",
-      "age": 42,
+      "password": "$2a$04$m5uB8UN3CfOR2FvzJcBSG.eQh/p2igGC1.YwJXNgJZm2iIOrA0wZm",
       "phone": "(421)314-2288",
       "access": "manager"
     },
@@ -29,7 +29,7 @@
       "id": 3,
       "name": "Jaime Lannister",
       "email": "jaimelannister@gmail.com",
-      "age": 45,
+      "password": "$2a$04$m5uB8UN3CfOR2FvzJcBSG.eQh/p2igGC1.YwJXNgJZm2iIOrA0wZm",
       "phone": "(422)982-6739",
       "access": "user"
     },
@@ -37,7 +37,7 @@
       "id": 4,
       "name": "Anya Stark",
       "email": "anyastark@gmail.com",
-      "age": 16,
+      "password": "$2a$04$m5uB8UN3CfOR2FvzJcBSG.eQh/p2igGC1.YwJXNgJZm2iIOrA0wZm",
       "phone": "(921)425-6742",
       "access": "admin"
     },
@@ -45,7 +45,7 @@
       "id": 5,
       "name": "Daenerys Targaryen",
       "email": "daenerystargaryen@gmail.com",
-      "age": 31,
+      "password": "$2a$04$m5uB8UN3CfOR2FvzJcBSG.eQh/p2igGC1.YwJXNgJZm2iIOrA0wZm",
       "phone": "(421)445-1189",
       "access": "user"
     },
@@ -53,7 +53,7 @@
       "id": 6,
       "name": "Ever Melisandre",
       "email": "evermelisandre@gmail.com",
-      "age": 150,
+      "password": "$2a$04$m5uB8UN3CfOR2FvzJcBSG.eQh/p2igGC1.YwJXNgJZm2iIOrA0wZm",
       "phone": "(232)545-6483",
       "access": "manager"
     },
@@ -61,7 +61,7 @@
       "id": 7,
       "name": "Ferrara Clifford",
       "email": "ferraraclifford@gmail.com",
-      "age": 44,
+      "password": "$2a$04$m5uB8UN3CfOR2FvzJcBSG.eQh/p2igGC1.YwJXNgJZm2iIOrA0wZm",
       "phone": "(543)124-0123",
       "access": "user"
     },
@@ -69,7 +69,7 @@
       "id": 8,
       "name": "Rossini Frances",
       "email": "rossinifrances@gmail.com",
-      "age": 36,
+      "password": "$2a$04$m5uB8UN3CfOR2FvzJcBSG.eQh/p2igGC1.YwJXNgJZm2iIOrA0wZm",
       "phone": "(222)444-5555",
       "access": "user"
     },
@@ -77,7 +77,7 @@
       "id": 9,
       "name": "Harvey Roxie",
       "email": "harveyroxie@gmail.com",
-      "age": 65,
+      "password": "$2a$04$m5uB8UN3CfOR2FvzJcBSG.eQh/p2igGC1.YwJXNgJZm2iIOrA0wZm",
       "phone": "(444)555-6239",
       "access": "admin"
     },
@@ -85,7 +85,7 @@
       "id": 10,
       "name": "Joe Satriani",
       "email": "josat@gmail.com",
-      "age": 93,
+      "password": "$2a$04$m5uB8UN3CfOR2FvzJcBSG.eQh/p2igGC1.YwJXNgJZm2iIOrA0wZm",
       "phone": "(444)432-6239",
       "access": "manager"
     },
@@ -93,7 +93,7 @@
       "id": 11,
       "name": "Steve Morse",
       "email": "morsecode@gmail.com",
-      "age": 90,
+      "password": "$2a$04$m5uB8UN3CfOR2FvzJcBSG.eQh/p2igGC1.YwJXNgJZm2iIOrA0wZm",
       "phone": "(444)432-2342",
       "access": "manager"
     },
@@ -101,7 +101,7 @@
       "id": 12,
       "name": "Steve Lukather",
       "email": "luk@gmail.com",
-      "age": 70,
+      "password": "$2a$04$m5uB8UN3CfOR2FvzJcBSG.eQh/p2igGC1.YwJXNgJZm2iIOrA0wZm",
       "phone": "(442)432-2362",
       "access": "manager"
     },
@@ -109,8 +109,16 @@
       "id": 13,
       "name": "Golden Bank",
       "email": "toprb1@gmail.com",
-      "age": 44,
+      "password": "$2a$04$m5uB8UN3CfOR2FvzJcBSG.eQh/p2igGC1.YwJXNgJZm2iIOrA0wZm",
       "phone": "555-222-888",
+      "access": "manager"
+    },
+    {
+      "id": 14,
+      "name": "Bcrypt Generated Password",
+      "email": "bc@hash.com",
+      "password": "$2a$05$6ZRLF/rhswz8.ZGE0MOAc.fT.hbRCW1nAqAWMk70uOSVd42iY5SsK",
+      "phone": "123-123-123",
       "access": "manager"
     }
   ],

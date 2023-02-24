@@ -2,8 +2,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ColorModeContext, useMode } from './theme'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 
-import Topbar from './scenes/global/Topbar.component'
-import SideBar from './scenes/global/Sidebar.component'
 import Dashboard from './scenes/dashboard/Dashboard.component'
 import Users from './scenes/users/Users.component'
 import Contacts from './scenes/contacts/Contacts.component'
@@ -24,6 +22,7 @@ import { InvoicesProvider } from './contexts/invoices.context'
 
 import Layout from './components/layout/Layout.component'
 import Login from './scenes/login/Login.component'
+import Missing from './components/missing/Missing.component'
 
 function App() {
   const [theme, colorMode] = useMode()
@@ -51,6 +50,7 @@ function App() {
                   <Route path="geography-chart" element={<Geography />} />
                   <Route path="settings" element={<Settings />} />
                 </Route>
+                <Route path="*" element={<Missing />} />
               </Routes>
             </InvoicesProvider>
           </ContactsProvider>

@@ -58,9 +58,8 @@ const Users = () => {
       flex: 1
     },
     {
-      field: 'age',
-      headerName: 'Age',
-      type: 'number',
+      field: 'password',
+      headerName: 'Password',
       headerAlign: 'left',
       align: 'left'
     },

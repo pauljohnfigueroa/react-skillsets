@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from 'react'
-
+import bcrypt from 'bcryptjs-react'
 import apiRequest from '../api/apiRequest.api'
 
 const API_URL = 'http://localhost:3500/mockDataUsers'
@@ -8,7 +8,7 @@ const initialValues = {
   id: null,
   name: '',
   email: '',
-  age: 0,
+  password: '',
   phone: '',
   access: ''
 }
@@ -73,7 +73,9 @@ export const UsersProvider = ({ children }) => {
     const response = await fetch(API_URL)
     const data = await response.json()
     const id = data.length ? data[data.length - 1].id + 1 : 1
-    const newItem = { ...values, id }
+    const salt = bcrypt.genSaltSync(5)
+    const hashedPassword = bcrypt.hashSync(values.password, salt)
+    const newItem = { ...values, password: hashedPassword, id }
 
     // Insert record in the backend
     const postOptions = {

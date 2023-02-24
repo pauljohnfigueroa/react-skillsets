@@ -42,7 +42,7 @@ const UserForm = () => {
       <Dialog open={isCreateUserFormOpen} onClose={handleClose} fullWidth>
         <DialogTitle>Create a New User</DialogTitle>
         <DialogContent>
-          <DialogContentText>Please fill up all the required fields.</DialogContentText>
+          <DialogContentText>Please fill up all the required ( * ) fields.</DialogContentText>
           <Formik
             onSubmit={initFormValues.id ? handleUpdateItem : handleAddItem}
             initialValues={initFormValues}
@@ -60,6 +60,7 @@ const UserForm = () => {
                   <TextField
                     fullWidth
                     autoFocus
+                    autoComplete="off"
                     margin="dense"
                     name="name"
                     id="name"
@@ -70,9 +71,11 @@ const UserForm = () => {
                     sx={{ gridColumn: 'span 4' }}
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    required
                   />
 
                   <TextField
+                    autoComplete="off"
                     fullWidth
                     margin="dense"
                     name="email"
@@ -84,9 +87,11 @@ const UserForm = () => {
                     sx={{ gridColumn: 'span 4' }}
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    required
                   />
 
                   <TextField
+                    autoComplete="off"
                     fullWidth
                     autoFocus
                     margin="dense"
@@ -99,22 +104,24 @@ const UserForm = () => {
                     sx={{ gridColumn: 'span 4' }}
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    required
                   />
                   <TextField
+                    autoComplete="off"
                     fullWidth
                     margin="dense"
-                    name="age"
-                    id="age"
-                    value={values.age}
-                    label="Age"
-                    type="number"
+                    name="password"
+                    id="password"
+                    value={values.password}
+                    label="Password"
+                    type="password"
                     variant="outlined"
                     sx={{ gridColumn: 'span 4' }}
-                    InputProps={{ inputProps: { min: 0, max: 150 } }}
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    required
                   />
-                  <FormControl sx={{ m: 1, minWidth: 120 }}>
+                  <FormControl sx={{ m: 1, minWidth: 150 }} required>
                     <InputLabel id="demo-simple-select-helper-label">Access Level</InputLabel>
                     <Select
                       labelId="demo-simple-select-helper-label"
@@ -135,11 +142,12 @@ const UserForm = () => {
                   </FormControl>
                 </Box>
                 <DialogActions>
-                  <Button onClick={handleClose} variant="outlined">
+                  <Button sx={{ minWidth: 100 }} onClick={handleClose} variant="outlined">
                     Cancel
                   </Button>
                   <Button
                     type="submit"
+                    sx={{ minWidth: 100 }}
                     variant="contained"
                     onClick={values.id ? () => setFormValues(values) : undefined}
                   >
