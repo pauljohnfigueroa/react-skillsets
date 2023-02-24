@@ -21,7 +21,7 @@ import { ContactsProvider } from './contexts/contacts.context'
 import { InvoicesProvider } from './contexts/invoices.context'
 
 import Layout from './components/layout/Layout.component'
-import Login from './scenes/login/Login.component'
+import LoginForm from './scenes/login/LoginForm.component'
 import Missing from './components/missing/Missing.component'
 
 function App() {
@@ -35,7 +35,7 @@ function App() {
           <ContactsProvider>
             <InvoicesProvider>
               <Routes>
-                <Route path="/" element={<Login />} />
+                <Route path="/" element={<LoginForm />} />
                 <Route path="/" element={<Layout />}>
                   <Route path="dashboard" element={<Dashboard />} />
                   <Route path="users" element={<Users />} />
