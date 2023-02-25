@@ -3,6 +3,9 @@ import { Box, Button, TextField, Typography } from '@mui/material'
 import Avatar from '@mui/material/Avatar'
 import { Formik, Form } from 'formik'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
+import { useContext } from 'react'
+
+import { UsersContext } from '../../contexts/users.context'
 
 const initialFormValues = {
   email: '',
@@ -10,6 +13,7 @@ const initialFormValues = {
 }
 
 const LoginForm = () => {
+  const { API_URL } = useContext(UsersContext)
   const [formValues, setFormValues] = useState(initialFormValues)
 
   const logInUser = () => {
