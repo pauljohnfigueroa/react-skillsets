@@ -8,7 +8,7 @@
       "CAN_UPDATE_USER": "update_user"
     }
   ],
-  "mockDataUsers": [
+  "users": [
     {
       "id": 1,
       "name": "Jon Snow White",
@@ -111,14 +111,6 @@
       "email": "toprb1@gmail.com",
       "password": "$2a$04$m5uB8UN3CfOR2FvzJcBSG.eQh/p2igGC1.YwJXNgJZm2iIOrA0wZm",
       "phone": "555-222-888",
-      "access": "manager"
-    },
-    {
-      "id": 14,
-      "name": "Bcrypt Generated Password",
-      "email": "bc@hash.com",
-      "password": "$2a$05$6ZRLF/rhswz8.ZGE0MOAc.fT.hbRCW1nAqAWMk70uOSVd42iY5SsK",
-      "phone": "123-123-123",
       "access": "manager"
     }
   ],

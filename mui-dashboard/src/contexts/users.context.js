@@ -2,7 +2,7 @@ import { createContext, useState, useEffect } from 'react'
 import bcrypt from 'bcryptjs-react'
 import apiRequest from '../api/apiRequest.api'
 
-const API_URL = 'http://localhost:3500/mockDataUsers'
+const API_URL = 'http://localhost:3500/users'
 
 const initialValues = {
   id: null,
