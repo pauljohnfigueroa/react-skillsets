@@ -17,7 +17,14 @@ const LoginForm = () => {
   const [formValues, setFormValues] = useState(initialFormValues)
 
   const logInUser = () => {
-    alert(`Login form submitted, ${formValues.email}, ${formValues.password}`)
+    fetch('http://localhost:3500/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formValues)
+    })
+      .then(res => res.json())
+      .then(data => console.log(data.user))
+    //alert(`Login form submitted, ${formValues.email}, ${formValues.password}`)
   }
 
   return (
