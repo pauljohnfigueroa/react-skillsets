@@ -1,26 +1,26 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { Box, Button, TextField, Typography } from '@mui/material'
 import Avatar from '@mui/material/Avatar'
 import { Formik, Form } from 'formik'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
-import { useContext } from 'react'
 
 import { UsersContext } from '../../contexts/users.context'
+import { AuthContext } from '../../contexts/auth.context'
 
-const initialFormValues = {
-  email: '',
-  password: ''
-}
+// const initialFormValues = {
+//   email: '',
+//   password: ''
+// }
 
 const LoginForm = () => {
   const { API_URL } = useContext(UsersContext)
-  const [formValues, setFormValues] = useState(initialFormValues)
+  const { userData, setUserData, initialFormValues } = useContext(AuthContext)
 
   const logInUser = () => {
     fetch('http://localhost:3500/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formValues)
+      body: JSON.stringify(userData)
     })
       .then(res => res.json())
       .then(data => console.log(data.user))
@@ -75,7 +75,7 @@ const LoginForm = () => {
               />
             </Box>
             <Box display="grid" gap="30px" minWidth="300px" height="50px" marginTop="40px">
-              <Button type="submit" variant="contained" onClick={() => setFormValues(values)}>
+              <Button type="submit" variant="contained" onClick={() => setUserData(values)}>
                 Login
               </Button>
             </Box>
