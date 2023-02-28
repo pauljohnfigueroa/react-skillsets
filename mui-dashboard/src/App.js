@@ -19,7 +19,6 @@ import Settings from './scenes/settings/Settings.component'
 import { UsersProvider } from './contexts/users.context'
 import { ContactsProvider } from './contexts/contacts.context'
 import { InvoicesProvider } from './contexts/invoices.context'
-import { AuthProvider } from './contexts/auth.context'
 import Layout from './components/layout/Layout.component'
 import LoginForm from './scenes/login/LoginForm.component'
 import Missing from './components/missing/Missing.component'
@@ -31,32 +30,30 @@ function App() {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <AuthProvider>
-          <UsersProvider>
-            <ContactsProvider>
-              <InvoicesProvider>
-                <Routes>
-                  <Route path="/" element={<LoginForm />} />
-                  <Route path="/" element={<Layout />}>
-                    <Route path="dashboard" element={<Dashboard />} />
-                    <Route path="users" element={<Users />} />
-                    <Route path="contacts" element={<Contacts />} />
-                    <Route path="invoices" element={<Invoices />} />
-                    <Route path="profile-form" element={<ProfileForm />} />
-                    <Route path="event-calendar" element={<EventCalendar />} />
-                    <Route path="faq" element={<Faq />} />
-                    <Route path="bar-chart" element={<Bar />} />
-                    <Route path="pie-chart" element={<Pie />} />
-                    <Route path="line-chart" element={<Line />} />
-                    <Route path="geography-chart" element={<Geography />} />
-                    <Route path="settings" element={<Settings />} />
-                  </Route>
-                  <Route path="*" element={<Missing />} />
-                </Routes>
-              </InvoicesProvider>
-            </ContactsProvider>
-          </UsersProvider>
-        </AuthProvider>
+        <UsersProvider>
+          <ContactsProvider>
+            <InvoicesProvider>
+              <Routes>
+                <Route path="/" element={<LoginForm />} />
+                <Route path="/" element={<Layout />}>
+                  <Route path="dashboard" element={<Dashboard />} />
+                  <Route path="users" element={<Users />} />
+                  <Route path="contacts" element={<Contacts />} />
+                  <Route path="invoices" element={<Invoices />} />
+                  <Route path="profile-form" element={<ProfileForm />} />
+                  <Route path="event-calendar" element={<EventCalendar />} />
+                  <Route path="faq" element={<Faq />} />
+                  <Route path="bar-chart" element={<Bar />} />
+                  <Route path="pie-chart" element={<Pie />} />
+                  <Route path="line-chart" element={<Line />} />
+                  <Route path="geography-chart" element={<Geography />} />
+                  <Route path="settings" element={<Settings />} />
+                </Route>
+                <Route path="*" element={<Missing />} />
+              </Routes>
+            </InvoicesProvider>
+          </ContactsProvider>
+        </UsersProvider>
       </ThemeProvider>
     </ColorModeContext.Provider>
   )

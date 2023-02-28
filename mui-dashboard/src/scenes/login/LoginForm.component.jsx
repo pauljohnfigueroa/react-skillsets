@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useContext } from 'react'
 import { Box, Button, TextField, Typography } from '@mui/material'
 import Avatar from '@mui/material/Avatar'
 import { Formik, Form } from 'formik'
@@ -7,23 +7,24 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import { UsersContext } from '../../contexts/users.context'
 import { AuthContext } from '../../contexts/auth.context'
 
-// const initialFormValues = {
-//   email: '',
-//   password: ''
-// }
-
 const LoginForm = () => {
   const { API_URL } = useContext(UsersContext)
   const { userData, setUserData, initialFormValues } = useContext(AuthContext)
 
   const logInUser = () => {
+    // we can use axios instead of fetch
     fetch('http://localhost:3500/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(userData)
     })
       .then(res => res.json())
-      .then(data => console.log(data.user))
+      .then(data => {
+        if (data.accessToken) {
+          localStorage.setItem('user', JSON.stringify(data))
+        }
+        console.log(data.user, data.accessToken)
+      })
     //alert(`Login form submitted, ${formValues.email}, ${formValues.password}`)
   }
 
