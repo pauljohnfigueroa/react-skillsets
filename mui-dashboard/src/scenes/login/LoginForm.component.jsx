@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { Box, Button, TextField, Typography } from '@mui/material'
 import Avatar from '@mui/material/Avatar'
 import { Formik, Form } from 'formik'
@@ -9,23 +10,33 @@ import { AuthContext } from '../../contexts/auth.context'
 
 const LoginForm = () => {
   const { API_URL } = useContext(UsersContext)
-  const { userData, setUserData, initialFormValues } = useContext(AuthContext)
+  const { auth, setAuth, userData, setUserData, initialFormValues } = useContext(AuthContext)
+
+  const navigate = useNavigate()
+  const location = useLocation()
+  const fromLoc = location.state?.from?.pathname || '/dashboard'
 
   const logInUser = () => {
-    // we can use axios instead of fetch
-    fetch('http://localhost:3500/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(userData)
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.accessToken) {
-          localStorage.setItem('user', JSON.stringify(data))
-        }
-        console.log(data.user, data.accessToken)
+    try {
+      // we can use axios instead of fetch
+      fetch('http://localhost:3500/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userData)
       })
-    //alert(`Login form submitted, ${formValues.email}, ${formValues.password}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.accessToken) {
+            //localStorage.setItem('user', JSON.stringify(data))
+            setAuth({ data })
+            navigate(fromLoc, { replace: true })
+          } else {
+            alert('Invalid Login')
+          }
+        })
+    } catch (err) {
+      alert(err)
+    }
   }
 
   return (
@@ -76,7 +87,12 @@ const LoginForm = () => {
               />
             </Box>
             <Box display="grid" gap="30px" minWidth="300px" height="50px" marginTop="40px">
-              <Button type="submit" variant="contained" onClick={() => setUserData(values)}>
+              <Button
+                type="submit"
+                onSubmit={handleSubmit}
+                variant="contained"
+                onClick={() => setUserData(values)}
+              >
                 Login
               </Button>
             </Box>

@@ -1,13 +1,25 @@
 {
   "userPermissions": [
     {
-      "CAN_VIEW_DASHBOARD": "view_dashboard",
-      "CAN_VIEW_USER": "view_user",
-      "CAN_ADD_USER": "add_user",
-      "CAN_DELETE_USER": "delete_user",
-      "CAN_UPDATE_USER": "update_user"
+      "CAN_VIEW_DASHBOARD": "Can VIEW dashboard",
+      "CAN_VIEW_USER": "Can VIEW the user information",
+      "CAN_ADD_USER": "Can ADD users in the system",
+      "CAN_DELETE_USER": "Can DELETE/DISABLE user accounts.",
+      "CAN_UPDATE_USER": "Can UPDATE user information."
     }
   ],
+
+  "permissions": [{
+    "admin": ["CAN_VIEW_DASHBOARD", "CAN_ADD_USER", "CAN_VIEW_USER", "CAN_DELETE_USER", "CAN_UPDATE_USER"],
+    "manager": ["CAN_VIEW_DASHBOARD"]
+  }],
+
+  "roles": [{
+    "DASHBOARD_PAGE": ["admin", "manager"],
+    "USERS_MANAGEMENT_PAGE": ["admin"],
+    "FAQ_PAGE": ["admin", "manager", "user"]
+  }],
+
   "users": [
     {
       "id": 1,
