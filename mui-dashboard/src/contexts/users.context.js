@@ -10,7 +10,7 @@ const initialValues = {
   email: '',
   password: '',
   phone: '',
-  access: ''
+  role: ''
 }
 
 export const UsersContext = createContext({

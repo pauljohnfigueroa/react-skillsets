@@ -69,10 +69,10 @@ const Users = () => {
       flex: 1
     },
     {
-      field: 'access',
-      headerName: 'Access Level',
+      field: 'role',
+      headerName: 'Role',
       flex: 1,
-      renderCell: ({ row: { access } }) => {
+      renderCell: ({ row: { role } }) => {
         return (
           <Box
             width="60%"
@@ -85,7 +85,7 @@ const Users = () => {
             {/* {access === 'admin' && <AdminPanelSettingsOutlinedIcon />}
             {access === 'manager' && <SecurityOutlinedIcon />}
             {access === 'user' && <LockOpenOutlinedIcon />} */}
-            <Typography color={colors.grey[100]}>{access}</Typography>
+            <Typography color={colors.grey[100]}>{role}</Typography>
           </Box>
         )
       }
@@ -113,7 +113,7 @@ const Users = () => {
     <Box m="20px">
       <Header
         title="User Management Console"
-        subtitle="Manage user accounts, access, and authorization."
+        subtitle="Manage user accounts, role, and authorization."
       />
       <Box m="10px 0 0 0">
         <Stack spacing={2} direction="row">

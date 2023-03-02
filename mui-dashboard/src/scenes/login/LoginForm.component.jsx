@@ -29,7 +29,8 @@ const LoginForm = () => {
           if (data.accessToken) {
             //localStorage.setItem('user', JSON.stringify(data))
             setAuth({ data })
-            navigate(fromLoc, { replace: true })
+            console.log({ data })
+            //navigate(fromLoc, { replace: true })
           } else {
             alert('Invalid Login')
           }

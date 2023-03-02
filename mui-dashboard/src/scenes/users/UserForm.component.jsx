@@ -122,13 +122,13 @@ const UserForm = () => {
                     required
                   />
                   <FormControl sx={{ m: 1, minWidth: 150 }} required>
-                    <InputLabel id="demo-simple-select-helper-label">Access Level</InputLabel>
+                    <InputLabel id="demo-simple-select-helper-label">Role</InputLabel>
                     <Select
                       labelId="demo-simple-select-helper-label"
-                      id="access"
-                      name="access"
-                      value={values.access}
-                      label="Access Level"
+                      id="role"
+                      name="role"
+                      value={values.role}
+                      label="Role"
                       onChange={handleChange}
                       onBlur={handleBlur}
                     >
