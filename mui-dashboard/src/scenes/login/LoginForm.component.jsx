@@ -1,16 +1,16 @@
-import { useContext } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { Box, Button, TextField, Typography } from '@mui/material'
-import Avatar from '@mui/material/Avatar'
+
 import { Formik, Form } from 'formik'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 
-import { UsersContext } from '../../contexts/users.context'
-import { AuthContext } from '../../contexts/auth.context'
+import Avatar from '@mui/material/Avatar'
+
+import useAuth from '../../hooks/useAuth'
 
 const LoginForm = () => {
-  const { API_URL } = useContext(UsersContext)
-  const { auth, setAuth, userData, setUserData, initialFormValues } = useContext(AuthContext)
+  // const { auth, setAuth, userData, setUserData, initialFormValues } = useContext(AuthContext)
+  const { auth, setAuth, userData, setUserData, initialFormValues } = useAuth()
 
   const navigate = useNavigate()
   const location = useLocation()
