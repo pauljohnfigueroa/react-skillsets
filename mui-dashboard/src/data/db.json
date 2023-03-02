@@ -27,7 +27,7 @@
       "email": "jonsnow@gmail.com",
       "password": "$2a$04$m5uB8UN3CfOR2FvzJcBSG.eQh/p2igGC1.YwJXNgJZm2iIOrA0wZm",
       "phone": "(665)121-5454",
-      "role": "manager"
+      "role": ["user"]
     },
     {
       "id": 2,
@@ -35,7 +35,7 @@
       "email": "cerseilannister@gmail.com",
       "password": "$2a$04$m5uB8UN3CfOR2FvzJcBSG.eQh/p2igGC1.YwJXNgJZm2iIOrA0wZm",
       "phone": "(421)314-2288",
-      "role": "manager"
+      "role": ["manager"]
     },
     {
       "id": 3,
@@ -43,7 +43,7 @@
       "email": "jaimelannister@gmail.com",
       "password": "$2a$04$m5uB8UN3CfOR2FvzJcBSG.eQh/p2igGC1.YwJXNgJZm2iIOrA0wZm",
       "phone": "(422)982-6739",
-      "role": "user"
+      "role": ["user", "manager"]
     },
     {
       "id": 4,
@@ -51,7 +51,7 @@
       "email": "anyastark@gmail.com",
       "password": "$2a$04$m5uB8UN3CfOR2FvzJcBSG.eQh/p2igGC1.YwJXNgJZm2iIOrA0wZm",
       "phone": "(921)425-6742",
-      "role": "admin"
+      "role": ["user"]
     },
     {
       "id": 5,
@@ -59,7 +59,7 @@
       "email": "daenerystargaryen@gmail.com",
       "password": "$2a$04$m5uB8UN3CfOR2FvzJcBSG.eQh/p2igGC1.YwJXNgJZm2iIOrA0wZm",
       "phone": "(421)445-1189",
-      "role": "user"
+      "role": ["user"]
     },
     {
       "id": 6,
@@ -67,7 +67,7 @@
       "email": "evermelisandre@gmail.com",
       "password": "$2a$04$m5uB8UN3CfOR2FvzJcBSG.eQh/p2igGC1.YwJXNgJZm2iIOrA0wZm",
       "phone": "(232)545-6483",
-      "role": "manager"
+      "role": ["user"]
     },
     {
       "id": 7,
@@ -75,7 +75,7 @@
       "email": "ferraraclifford@gmail.com",
       "password": "$2a$04$m5uB8UN3CfOR2FvzJcBSG.eQh/p2igGC1.YwJXNgJZm2iIOrA0wZm",
       "phone": "(543)124-0123",
-      "role": "user"
+      "role": ["user"]
     },
     {
       "id": 8,
@@ -83,7 +83,7 @@
       "email": "rossinifrances@gmail.com",
       "password": "$2a$04$m5uB8UN3CfOR2FvzJcBSG.eQh/p2igGC1.YwJXNgJZm2iIOrA0wZm",
       "phone": "(222)444-5555",
-      "role": "user"
+      "role": ["user"]
     },
     {
       "id": 9,
@@ -91,7 +91,7 @@
       "email": "harveyroxie@gmail.com",
       "password": "$2a$04$m5uB8UN3CfOR2FvzJcBSG.eQh/p2igGC1.YwJXNgJZm2iIOrA0wZm",
       "phone": "(444)555-6239",
-      "role": "admin"
+      "role": ["user"]
     },
     {
       "id": 10,
@@ -99,7 +99,7 @@
       "email": "josat@gmail.com",
       "password": "$2a$04$m5uB8UN3CfOR2FvzJcBSG.eQh/p2igGC1.YwJXNgJZm2iIOrA0wZm",
       "phone": "(444)432-6239",
-      "role": "manager"
+      "role": ["user"]
     },
     {
       "id": 11,
@@ -107,7 +107,7 @@
       "email": "morsecode@gmail.com",
       "password": "$2a$04$m5uB8UN3CfOR2FvzJcBSG.eQh/p2igGC1.YwJXNgJZm2iIOrA0wZm",
       "phone": "(444)432-2342",
-      "role": "manager"
+      "role": ["user"]
     },
     {
       "id": 12,
@@ -115,7 +115,7 @@
       "email": "luk@gmail.com",
       "password": "$2a$04$m5uB8UN3CfOR2FvzJcBSG.eQh/p2igGC1.YwJXNgJZm2iIOrA0wZm",
       "phone": "(442)432-2362",
-      "role": "manager"
+      "role": ["user"]
     },
     {
       "id": 13,
@@ -123,7 +123,7 @@
       "email": "toprb1@gmail.com",
       "password": "$2a$04$m5uB8UN3CfOR2FvzJcBSG.eQh/p2igGC1.YwJXNgJZm2iIOrA0wZm",
       "phone": "555-222-888",
-      "role": "manager"
+      "role": ["user"]
     }
   ],
   "mockDataContacts": [

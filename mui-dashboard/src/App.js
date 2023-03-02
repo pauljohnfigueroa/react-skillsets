@@ -22,6 +22,7 @@ import { InvoicesProvider } from './contexts/invoices.context'
 import Layout from './components/layout/Layout.component'
 import LoginForm from './scenes/login/LoginForm.component'
 import Missing from './components/missing/Missing.component'
+import RequireAuth from './utils/RequireAuth.utils'
 
 function App() {
   const [theme, colorMode] = useMode()
@@ -37,7 +38,11 @@ function App() {
                 <Route path="/" element={<LoginForm />} />
                 <Route path="/" element={<Layout />}>
                   <Route path="dashboard" element={<Dashboard />} />
-                  <Route path="users" element={<Users />} />
+
+                  <Route element={<RequireAuth allowedRoles={['manager']} />}>
+                    <Route path="users" element={<Users />} />
+                  </Route>
+
                   <Route path="contacts" element={<Contacts />} />
                   <Route path="invoices" element={<Invoices />} />
                   <Route path="profile-form" element={<ProfileForm />} />
