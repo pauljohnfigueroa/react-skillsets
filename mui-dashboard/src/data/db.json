@@ -3,18 +3,11 @@
  "scenePermissions": [
   {
     "USERS_MANAGEMENT_PAGE": ["admin"],
-    "ADMIN_DASHBOARD": ["admin"],
-    "USER_DASHBOARD": ["user", "manager"],
+    "DASHBOARD_PAGE": ["user", "manager", "admin"],
     "PROFILE_PAGE": ["user"],
     "CONTACTS_PAGE": ["manager"]
   }
  ],
-
-  "roles": [{
-    "DASHBOARD_PAGE": ["admin", "manager"],
-    "USERS_MANAGEMENT_PAGE": ["admin"],
-    "FAQ_PAGE": ["admin", "manager", "user"]
-  }],
 
   "users": [
     {

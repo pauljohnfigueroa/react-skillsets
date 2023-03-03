@@ -30,7 +30,8 @@ const UserForm = () => {
     setIsCreateUserFormOpen,
     handleAddItem,
     handleUpdateItem,
-    setFormValues
+    setFormValues,
+    formLabel
   } = useContext(UsersContext)
 
   const handleClose = () => {
@@ -40,7 +41,7 @@ const UserForm = () => {
   return (
     <div>
       <Dialog open={isCreateUserFormOpen} onClose={handleClose} fullWidth>
-        <DialogTitle>Create a New User</DialogTitle>
+        <DialogTitle>{formLabel}</DialogTitle>
         <DialogContent>
           <DialogContentText>Please fill up all the required ( * ) fields.</DialogContentText>
           <Formik

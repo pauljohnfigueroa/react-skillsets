@@ -33,6 +33,7 @@ export const UsersContext = createContext({
   checkedItemsIds: [],
   showCreateForm: () => {},
   formValues: [],
+  formLabel: '',
   setFormValues: () => {},
   API_URL: API_URL
 })
@@ -46,6 +47,7 @@ export const UsersProvider = ({ children }) => {
   const [checkedItemsIds, setCheckedItemsIds] = useState([])
   const [initFormValues, setInitFormValues] = useState(initialValues)
   const [formValues, setFormValues] = useState([])
+  const [formLabel, setFormLabel] = useState('')
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -131,11 +133,13 @@ export const UsersProvider = ({ children }) => {
   }
 
   const showEditForm = row => {
+    setFormLabel('Update User Information')
     setInitFormValues(row)
     setIsCreateUserFormOpen(true)
   }
 
   const showCreateForm = () => {
+    setFormLabel('Create a New User')
     setInitFormValues(initialValues)
     setIsCreateUserFormOpen(true)
   }
@@ -160,6 +164,7 @@ export const UsersProvider = ({ children }) => {
     setCheckedItemsIds,
     showCreateForm,
     formValues,
+    formLabel,
     setFormValues,
     API_URL
   }

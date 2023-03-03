@@ -82,9 +82,6 @@ const Users = () => {
             justifyContent="center"
             borderRadius="4px"
           >
-            {/* {access === 'admin' && <AdminPanelSettingsOutlinedIcon />}
-            {access === 'manager' && <SecurityOutlinedIcon />}
-            {access === 'user' && <LockOpenOutlinedIcon />} */}
             <Typography color={colors.grey[100]}>{role}</Typography>
           </Box>
         )
@@ -99,9 +96,6 @@ const Users = () => {
           <Box>
             <IconButton onClick={() => showEditForm(rowdata.row)}>
               <ModeEditOutlineOutlinedIcon />
-            </IconButton>
-            <IconButton onClick={() => console.log('Save row', rowdata.row.id)}>
-              <SaveOutlinedIcon />
             </IconButton>
           </Box>
         )

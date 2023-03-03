@@ -5,7 +5,6 @@ import { Formik, Form } from 'formik'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 
 import Avatar from '@mui/material/Avatar'
-
 import useAuth from '../../hooks/useAuth'
 
 const LoginForm = () => {
