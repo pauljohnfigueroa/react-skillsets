@@ -16,25 +16,25 @@ const initialValues = {
 export const UsersContext = createContext({
   initFormValues: initialValues,
   isLoading: true,
-  setIsLoading: () => {},
+  setIsLoading: () => { },
   isCreateUserFormOpen: false,
-  setIsCreateUserFormOpen: () => {},
+  setIsCreateUserFormOpen: () => { },
   gridData: [],
-  setGridData: () => {},
+  setGridData: () => { },
   fetchError: null,
-  setFetchError: () => {},
+  setFetchError: () => { },
   pageSize: 5,
-  setPageSize: () => {},
-  handleSubmit: () => {},
-  handleAddItem: () => {},
-  handleUpdateItem: () => {},
-  handleDeleteMultiple: () => {},
-  showEditForm: () => {},
+  setPageSize: () => { },
+  handleSubmit: () => { },
+  handleAddItem: () => { },
+  handleUpdateItem: () => { },
+  handleDeleteMultiple: () => { },
+  showEditForm: () => { },
   checkedItemsIds: [],
-  showCreateForm: () => {},
+  showCreateForm: () => { },
   formValues: [],
   formLabel: '',
-  setFormValues: () => {},
+  setFormValues: () => { },
   API_URL: API_URL
 })
 
@@ -80,14 +80,14 @@ export const UsersProvider = ({ children }) => {
     const newItem = { ...values, password: hashedPassword, id }
 
     // Insert record in the backend
-    const postOptions = {
+    const result = await apiRequest('/api/user/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(newItem)
-    }
-    const result = await apiRequest(API_URL, postOptions)
+    })
+
     if (result) setFetchError(result)
     setIsCreateUserFormOpen(false)
 

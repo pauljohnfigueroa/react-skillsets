@@ -56,19 +56,19 @@ function App() {
               <Routes>
                 <Route path="/" element={<LoginForm />} />
                 <Route path="/" element={<Layout />}>
-                  <Route element={<RequireAuth allowedRoles={allowedRoles?.DASHBOARD_PAGE} />}>
-                    <Route path="dashboard" element={<Dashboard />} />
-                  </Route>
+                  {/* <Route element={<RequireAuth allowedRoles={allowedRoles?.DASHBOARD_PAGE} />}> */}
+                  <Route path="dashboard" element={<Dashboard />} />
+                  {/* </Route> */}
 
-                  <Route
+                  {/* <Route
                     element={<RequireAuth allowedRoles={allowedRoles?.USERS_MANAGEMENT_PAGE} />}
-                  >
-                    <Route path="users" element={<Users />} />
-                  </Route>
+                  > */}
+                  <Route path="users" element={<Users />} />
+                  {/* </Route> */}
 
-                  <Route element={<RequireAuth allowedRoles={allowedRoles?.CONTACTS_PAGE} />}>
-                    <Route path="contacts" element={<Contacts />} />
-                  </Route>
+                  {/* <Route element={<RequireAuth allowedRoles={allowedRoles?.CONTACTS_PAGE} />}> */}
+                  <Route path="contacts" element={<Contacts />} />
+                  {/* </Route> */}
 
                   <Route path="invoices" element={<Invoices />} />
                   <Route path="profile-form" element={<ProfileForm />} />

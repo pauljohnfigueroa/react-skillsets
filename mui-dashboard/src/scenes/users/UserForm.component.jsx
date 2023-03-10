@@ -1,14 +1,16 @@
 import { useContext } from 'react'
+import { useRegisterUser } from '../../hooks/useRegisterUser'
+
 import { Formik, Form } from 'formik'
-import * as yup from 'yup'
+// import * as yup from 'yup'
 import {
   Box,
   useMediaQuery,
   InputLabel,
   MenuItem,
   Select,
-  FormControl,
-  FormHelperText
+  FormControl
+  // FormHelperText
 } from '@mui/material'
 
 import Button from '@mui/material/Button'
@@ -23,19 +25,32 @@ import { UsersContext } from '../../contexts/users.context'
 
 const UserForm = () => {
   const isNonMobile = useMediaQuery('(min-width: 600px)')
+  const { register } = useRegisterUser()
 
   const {
     initFormValues,
     isCreateUserFormOpen,
     setIsCreateUserFormOpen,
-    handleAddItem,
+    // handleAddItem,
     handleUpdateItem,
     setFormValues,
+    // formValues,
     formLabel
   } = useContext(UsersContext)
 
   const handleClose = () => {
     setIsCreateUserFormOpen(false)
+  }
+
+  const handleRegisterUser = async values => {
+    // const email = 'john@petrucci.com'
+    // const name = 'John Petrucci'
+    // const password = 'Pass1234!'
+    // const phone = '222-222-111'
+    // const roles = 'user'
+
+    console.log('values.name', values.name)
+    await register(values.email, values.name, values.password, values.phone, values.roles)
   }
 
   return (
@@ -45,7 +60,13 @@ const UserForm = () => {
         <DialogContent>
           <DialogContentText>Please fill up all the required ( * ) fields.</DialogContentText>
           <Formik
-            onSubmit={initFormValues.id ? handleUpdateItem : handleAddItem}
+            onSubmit={
+              initFormValues.id
+                ? handleUpdateItem
+                : (values, actions) => {
+                    handleRegisterUser(values)
+                  }
+            }
             initialValues={initFormValues}
           >
             {({ values, errors, touched, handleBlur, handleChange, handleSubmit }) => (
