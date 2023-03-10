@@ -130,10 +130,10 @@ const UserForm = () => {
                     <InputLabel id="demo-simple-select-helper-label">Role</InputLabel>
                     <Select
                       labelId="demo-simple-select-helper-label"
-                      id="role"
-                      name="role"
-                      value={values.role}
-                      label="Role"
+                      id="roles"
+                      name="roles"
+                      value={values.roles}
+                      label="Roles"
                       onChange={handleChange}
                       onBlur={handleBlur}
                     >

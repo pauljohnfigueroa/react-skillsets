@@ -4,9 +4,9 @@ import { DataGrid, GridToolbar } from '@mui/x-data-grid'
 import Button from '@mui/material/Button'
 import LinearProgress from '@mui/material/LinearProgress'
 
-import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
+// import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined'
-import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined'
+// import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined'
 
 import Header from '../../components/header/Header.component'
 import UserForm from './UserForm.component'
@@ -19,18 +19,13 @@ const Users = () => {
   const colors = tokens(theme.palette.mode)
 
   const {
-    initialValues,
-    setInitFormValues,
     isLoading,
     isCreateUserFormOpen,
-    setIsCreateUserFormOpen,
     fetchError,
     gridData,
     pageSize,
     setPageSize,
     handleDeleteMultiple,
-    handleEdit,
-    handleAddItem,
     setCheckedItemsIds,
     showEditForm,
     showCreateForm
@@ -69,10 +64,10 @@ const Users = () => {
       flex: 1
     },
     {
-      field: 'role',
-      headerName: 'Role',
+      field: 'roles',
+      headerName: 'Roles',
       flex: 1,
-      renderCell: ({ row: { role } }) => {
+      renderCell: ({ row: { roles } }) => {
         return (
           <Box
             width="60%"
@@ -82,7 +77,7 @@ const Users = () => {
             justifyContent="center"
             borderRadius="4px"
           >
-            <Typography color={colors.grey[100]}>{role}</Typography>
+            <Typography color={colors.grey[100]}>{roles}</Typography>
           </Box>
         )
       }
@@ -150,6 +145,7 @@ const Users = () => {
       >
         {fetchError && <p>Error: {fetchError} </p>}
         <DataGrid
+          getRowId={row => row._id}
           sx={{
             boxShadow: 4
           }}
@@ -172,7 +168,6 @@ const Users = () => {
             // console.log(ids)
             setCheckedItemsIds(ids)
           }}
-          getRowId={row => row._id}
         />
       </Box>
     </Box>

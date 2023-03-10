@@ -10,7 +10,7 @@ const initialValues = {
   email: '',
   password: '',
   phone: '',
-  role: ''
+  roles: ''
 }
 
 // export const UsersContext = createContext({
@@ -126,7 +126,7 @@ export const UsersProvider = ({ children }) => {
     //console.log(checkedItemsIds)
     // delete items from the backend
     const deleteOptions = { method: 'DELETE' }
-    const result = checkedItemsIds.map(async id => {
+    checkedItemsIds.map(async id => {
       const results = await apiRequest(`${API_URL}/${id}`, deleteOptions)
       if (results) setFetchError(results)
     })
