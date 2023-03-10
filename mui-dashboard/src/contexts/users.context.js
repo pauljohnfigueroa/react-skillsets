@@ -13,30 +13,32 @@ const initialValues = {
   role: ''
 }
 
-export const UsersContext = createContext({
-  initFormValues: initialValues,
-  isLoading: true,
-  setIsLoading: () => { },
-  isCreateUserFormOpen: false,
-  setIsCreateUserFormOpen: () => { },
-  gridData: [],
-  setGridData: () => { },
-  fetchError: null,
-  setFetchError: () => { },
-  pageSize: 5,
-  setPageSize: () => { },
-  handleSubmit: () => { },
-  handleAddItem: () => { },
-  handleUpdateItem: () => { },
-  handleDeleteMultiple: () => { },
-  showEditForm: () => { },
-  checkedItemsIds: [],
-  showCreateForm: () => { },
-  formValues: [],
-  formLabel: '',
-  setFormValues: () => { },
-  API_URL: API_URL
-})
+// export const UsersContext = createContext({
+//   initFormValues: initialValues,
+//   isLoading: true,
+//   setIsLoading: () => { },
+//   isCreateUserFormOpen: false,
+//   setIsCreateUserFormOpen: () => { },
+//   gridData: [],
+//   setGridData: () => { },
+//   fetchError: null,
+//   setFetchError: () => { },
+//   pageSize: 5,
+//   setPageSize: () => { },
+//   handleSubmit: () => { },
+//   handleAddItem: () => { },
+//   handleUpdateItem: () => { },
+//   handleDeleteMultiple: () => { },
+//   showEditForm: () => { },
+//   checkedItemsIds: [],
+//   showCreateForm: () => { },
+//   formValues: [],
+//   formLabel: '',
+//   setFormValues: () => { },
+//   API_URL: API_URL
+// })
+
+export const UsersContext = createContext()
 
 export const UsersProvider = ({ children }) => {
   const [gridData, setGridData] = useState([])
@@ -52,7 +54,7 @@ export const UsersProvider = ({ children }) => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await fetch(`${API_URL}?_sort=name&_order=desc`)
+        const response = await fetch(`http://localhost:4000/api/user`)
         if (!response.ok) throw Error('Did not receive the expected data.')
         const listItems = await response.json()
         setGridData(listItems)
@@ -65,9 +67,8 @@ export const UsersProvider = ({ children }) => {
       }
     }
 
-    setTimeout(() => {
-      fetchItems()
-    }, 1000)
+    fetchItems()
+
   }, [])
 
   const handleAddItem = async values => {

@@ -3,15 +3,7 @@ import { useRegisterUser } from '../../hooks/useRegisterUser'
 
 import { Formik, Form } from 'formik'
 // import * as yup from 'yup'
-import {
-  Box,
-  useMediaQuery,
-  InputLabel,
-  MenuItem,
-  Select,
-  FormControl
-  // FormHelperText
-} from '@mui/material'
+import { Box, useMediaQuery, InputLabel, MenuItem, Select, FormControl } from '@mui/material'
 
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
@@ -31,10 +23,8 @@ const UserForm = () => {
     initFormValues,
     isCreateUserFormOpen,
     setIsCreateUserFormOpen,
-    // handleAddItem,
     handleUpdateItem,
     setFormValues,
-    // formValues,
     formLabel
   } = useContext(UsersContext)
 
@@ -43,13 +33,6 @@ const UserForm = () => {
   }
 
   const handleRegisterUser = async values => {
-    // const email = 'john@petrucci.com'
-    // const name = 'John Petrucci'
-    // const password = 'Pass1234!'
-    // const phone = '222-222-111'
-    // const roles = 'user'
-
-    console.log('values.name', values.name)
     await register(values.email, values.name, values.password, values.phone, values.roles)
   }
 

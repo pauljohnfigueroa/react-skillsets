@@ -42,7 +42,7 @@ const Users = () => {
 
   const columns = [
     {
-      field: 'id',
+      field: '_id',
       headerName: 'ID'
     },
     {
@@ -172,6 +172,7 @@ const Users = () => {
             // console.log(ids)
             setCheckedItemsIds(ids)
           }}
+          getRowId={row => row._id}
         />
       </Box>
     </Box>

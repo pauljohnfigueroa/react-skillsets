@@ -5,7 +5,7 @@ export const ContactsContext = createContext({
   fetchError: null,
   isLoading: true,
   pageSize: 5,
-  setPageSize: () => {}
+  setPageSize: () => { }
 })
 
 export const ContactsProvider = ({ children }) => {
@@ -16,25 +16,25 @@ export const ContactsProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true)
   const [pageSize, setPageSize] = useState(5)
 
-  useEffect(() => {
-    const fetchItems = async () => {
-      try {
-        const response = await fetch(`${API_URL}?_sort=age&_order=desc`)
-        if (!response.ok) throw Error('Did not receive the expected data.')
-        const listItems = await response.json()
-        setGridData(listItems)
-        setFetchError(null)
-      } catch (err) {
-        setFetchError(err.message)
-      } finally {
-        setIsLoading(false)
-      }
-    }
+  // useEffect(() => {
+  //   const fetchItems = async () => {
+  //     try {
+  //       const response = await fetch(`${API_URL}?_sort=age&_order=desc`)
+  //       if (!response.ok) throw Error('Did not receive the expected data.')
+  //       const listItems = await response.json()
+  //       setGridData(listItems)
+  //       setFetchError(null)
+  //     } catch (err) {
+  //       setFetchError(err.message)
+  //     } finally {
+  //       setIsLoading(false)
+  //     }
+  //   }
 
-    setTimeout(() => {
-      fetchItems()
-    }, 5000)
-  }, [])
+  //   setTimeout(() => {
+  //     fetchItems()
+  //   }, 5000)
+  // }, [])
 
   const value = { gridData, fetchError, isLoading, pageSize, setPageSize }
 
