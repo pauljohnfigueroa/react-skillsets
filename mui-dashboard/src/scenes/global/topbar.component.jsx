@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 import { useTheme, Box, IconButton } from '@mui/material'
 import { ColorModeContext, tokens } from '../../theme'
 import InputBase from '@mui/material/InputBase'
@@ -12,16 +12,24 @@ import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined'
 import SearchIcon from '@mui/icons-material/Search'
 
+import { useLogoutUser } from '../../hooks/useLogoutUser'
+
 const Topbar = () => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
   const colorMode = useContext(ColorModeContext)
+
+  const { logoutUser } = useLogoutUser()
 
   //const navigate = useNavigate()
 
   const handleClick = (e, path) => {
     alert(path)
     //navigate(path)
+  }
+
+  const handleLogoutUser = async () => {
+    logoutUser()
   }
 
   return (
@@ -43,7 +51,7 @@ const Topbar = () => {
         <IconButton onClick={e => handleClick(e, '/settings')}>
           <SettingsOutlinedIcon />
         </IconButton>
-        <IconButton onClick={e => handleClick(e, '/user')}>
+        <IconButton onClick={handleLogoutUser}>
           <PersonOutlinedIcon />
         </IconButton>
       </Box>

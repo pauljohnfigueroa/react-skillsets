@@ -4,14 +4,11 @@ import { Formik, Form } from 'formik'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 
 import Avatar from '@mui/material/Avatar'
-import useAuth from '../../hooks/useAuth'
 
 import { useLoginUser } from '../../hooks/useLoginUser'
 
 const LoginForm = () => {
-  const { setUserData, initialFormValues } = useAuth()
-
-  const { loginUser } = useLoginUser()
+  const { loginUser, initialFormValues } = useLoginUser()
 
   const handleLoginUser = async values => {
     await loginUser(values.email, values.password)
@@ -72,7 +69,7 @@ const LoginForm = () => {
                 type="submit"
                 onSubmit={handleSubmit}
                 variant="contained"
-                onClick={() => setUserData(values)}
+                //onClick={() => setUserData(values)}
               >
                 Login
               </Button>

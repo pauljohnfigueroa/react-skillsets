@@ -5,6 +5,7 @@ import { Formik, Form } from 'formik'
 // import * as yup from 'yup'
 import { Box, useMediaQuery, InputLabel, MenuItem, Select, FormControl } from '@mui/material'
 
+// MUI
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import Dialog from '@mui/material/Dialog'
@@ -17,7 +18,7 @@ import { UsersContext } from '../../contexts/users.context'
 
 const UserForm = () => {
   const isNonMobile = useMediaQuery('(min-width: 600px)')
-  const { register } = useRegisterUser()
+  const { registerUser } = useRegisterUser()
 
   const {
     initFormValues,
@@ -33,7 +34,7 @@ const UserForm = () => {
   }
 
   const handleRegisterUser = async values => {
-    await register(values.email, values.name, values.password, values.phone, values.roles)
+    await registerUser(values.email, values.name, values.password, values.phone, values.roles)
   }
 
   return (

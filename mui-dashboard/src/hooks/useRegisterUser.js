@@ -6,11 +6,9 @@ export const useRegisterUser = () => {
     const [isLoading, setIsLoading] = useState(false)
     // const { dispatch } = useAuthContext()
 
-    const register = async (email, name, password, phone, roles) => {
+    const registerUser = async (email, name, password, phone, roles) => {
         setIsLoading(true)
         setError(null)
-
-        console.log('register method', email)
 
         const response = await fetch('http://localhost:4000/api/user/register', {
             method: 'POST',
@@ -39,5 +37,5 @@ export const useRegisterUser = () => {
         }
     }
 
-    return { register, isLoading, error }
+    return { registerUser, isLoading, error }
 }
