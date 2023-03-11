@@ -2,6 +2,8 @@ import { createContext, useState, useEffect } from 'react'
 import bcrypt from 'bcryptjs-react'
 import apiRequest from '../api/apiRequest.api'
 
+import { useAuthContext } from '../hooks/useAuthContext'
+
 const API_URL = 'http://localhost:3500/users'
 
 const initialValues = {
@@ -13,34 +15,12 @@ const initialValues = {
   roles: ''
 }
 
-// export const UsersContext = createContext({
-//   initFormValues: initialValues,
-//   isLoading: true,
-//   setIsLoading: () => { },
-//   isCreateUserFormOpen: false,
-//   setIsCreateUserFormOpen: () => { },
-//   gridData: [],
-//   setGridData: () => { },
-//   fetchError: null,
-//   setFetchError: () => { },
-//   pageSize: 5,
-//   setPageSize: () => { },
-//   handleSubmit: () => { },
-//   handleAddItem: () => { },
-//   handleUpdateItem: () => { },
-//   handleDeleteMultiple: () => { },
-//   showEditForm: () => { },
-//   checkedItemsIds: [],
-//   showCreateForm: () => { },
-//   formValues: [],
-//   formLabel: '',
-//   setFormValues: () => { },
-//   API_URL: API_URL
-// })
-
 export const UsersContext = createContext()
 
 export const UsersProvider = ({ children }) => {
+
+  const { user } = useAuthContext()
+
   const [gridData, setGridData] = useState([])
   const [isCreateUserFormOpen, setIsCreateUserFormOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
@@ -51,25 +31,33 @@ export const UsersProvider = ({ children }) => {
   const [formValues, setFormValues] = useState([])
   const [formLabel, setFormLabel] = useState('')
 
-  useEffect(() => {
-    const fetchItems = async () => {
-      try {
-        const response = await fetch(`http://localhost:4000/api/user`)
-        if (!response.ok) throw Error('Did not receive the expected data.')
-        const listItems = await response.json()
-        setGridData(listItems)
-        setFetchError(null)
-      } catch (err) {
-        console.log(err.message)
-        setFetchError(err.message)
-      } finally {
-        setIsLoading(false)
-      }
-    }
+  // useEffect(() => {
+  //   const fetchItems = async () => {
+  //     try {
+  //       const response = await fetch(`http://localhost:4000/api/user`, {
+  //         headers: {
+  //           Authorization: `Bearer ${user.token}`
+  //         }
+  //       })
+  //       if (!response.ok) throw Error('Did not receive the expected data.')
+  //       if (response.ok) {
+  //         //dispatch
+  //       }
+  //       const listItems = await response.json()
+  //       setGridData(listItems)
+  //       setFetchError(null)
+  //     } catch (err) {
+  //       console.log(err.message)
+  //       setFetchError(err.message)
+  //     } finally {
+  //       setIsLoading(false)
+  //     }
+  //   }
+  //   if (user) {
+  //     fetchItems()
+  //   }
 
-    fetchItems()
-
-  }, [])
+  // }, [user])
 
   const handleAddItem = async values => {
     // get the last id

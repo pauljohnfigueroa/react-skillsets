@@ -42,7 +42,7 @@ export const useLoginUser = () => {
             localStorage.setItem('user', JSON.stringify(json))
 
             // Login action
-            dispatch({ type: 'LOGIN', payload: json })
+            dispatch({ type: 'LOGIN_USER', payload: json })
             setIsLoading(false)
 
             // if login is successfull, redirect user

@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { Box, Stack, IconButton, Typography, useTheme } from '@mui/material'
 import { DataGrid, GridToolbar } from '@mui/x-data-grid'
 import Button from '@mui/material/Button'
@@ -14,15 +14,48 @@ import UserForm from './UserForm.component'
 import { UsersContext } from '../../contexts/users.context'
 import { tokens } from '../../theme'
 
+import { useAuthContext } from '../../hooks/useAuthContext'
+import { useUsersContext } from '../../hooks/useUsersContext'
+
 const Users = () => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
+  const [error, setError] = useState('')
+  const [isLoading, setIsLoading] = useState(true)
+  const { users, dispatch } = useUsersContext()
+  const { user } = useAuthContext()
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      setIsLoading(true)
+      const response = await fetch(`http://localhost:4000/api/user`, {
+        headers: {
+          Authorization: `Bearer ${user.token}`
+        }
+      })
+      const json = await response.json()
+
+      if (response.ok) {
+        //this will invoke the reducer function in UserContextProvider
+        dispatch({ type: 'GET_USERS', payload: json })
+        setIsLoading(false)
+        setError(null)
+      }
+    }
+
+    // if we don't have a logged in user,
+    // don't fetch the users from the database
+    if (user) {
+      fetchUsers()
+    }
+  }, [dispatch, user])
+
   const {
-    isLoading,
+    //isLoading,
     isCreateUserFormOpen,
-    fetchError,
-    gridData,
+    //fetchError,
+    //gridData,
     pageSize,
     setPageSize,
     handleDeleteMultiple,
@@ -32,7 +65,7 @@ const Users = () => {
   } = useContext(UsersContext)
 
   const CustomNoRowsOverlay = () => {
-    return fetchError ? <Box sx={{ mt: 1 }}>{fetchError}</Box> : <Box sx={{ mt: 1 }}>No Data.</Box>
+    return error ? <Box sx={{ mt: 1 }}>{error}</Box> : <Box sx={{ mt: 1 }}>No Data.</Box>
   }
 
   const columns = [
@@ -143,34 +176,39 @@ const Users = () => {
           }
         }}
       >
-        {fetchError && <p>Error: {fetchError} </p>}
-        <DataGrid
-          getRowId={row => row._id}
-          sx={{
-            boxShadow: 4
-          }}
-          components={{
-            Toolbar: GridToolbar,
-            LoadingOverlay: LinearProgress,
-            NoRowsOverlay: CustomNoRowsOverlay
-          }}
-          experimentalFeatures={{ newEditingApi: true }}
-          loading={isLoading}
-          pageSize={pageSize}
-          onPageSizeChange={newPageSize => setPageSize(newPageSize)}
-          rowsPerPageOptions={[5, 10, 20]}
-          rows={gridData}
-          columns={columns}
-          checkboxSelection
-          disableSelectionOnClick
-          onSelectionModelChange={ids => {
-            // pass the ids to a state
-            // console.log(ids)
-            setCheckedItemsIds(ids)
-          }}
-        />
+        {error && <p>Error: {error} </p>}
+        {users ? (
+          <DataGrid
+            getRowId={row => row._id}
+            sx={{
+              boxShadow: 4
+            }}
+            components={{
+              Toolbar: GridToolbar,
+              LoadingOverlay: LinearProgress,
+              NoRowsOverlay: CustomNoRowsOverlay
+            }}
+            experimentalFeatures={{ newEditingApi: true }}
+            loading={isLoading}
+            pageSize={pageSize}
+            onPageSizeChange={newPageSize => setPageSize(newPageSize)}
+            rowsPerPageOptions={[5, 10, 20]}
+            rows={users}
+            columns={columns}
+            checkboxSelection
+            disableSelectionOnClick
+            onSelectionModelChange={ids => {
+              // pass the ids to a state
+              // console.log(ids)
+              setCheckedItemsIds(ids)
+            }}
+          />
+        ) : (
+          'Loading ...'
+        )}
       </Box>
     </Box>
   )
 }
+
 export default Users
