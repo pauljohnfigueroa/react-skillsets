@@ -32,7 +32,10 @@ export const useRegisterUser = () => {
         if (response.ok) {
             // save the {email, token} in the localStorage
             localStorage.setItem('user', JSON.stringify(json))
-            //dispatch({ type: 'LOGIN_USER', payload: json })
+
+            // login user after registration
+            //dispatch({ type: 'auth/login', payload: json })
+
             setIsLoading(false)
             console.log('response OK')
         }

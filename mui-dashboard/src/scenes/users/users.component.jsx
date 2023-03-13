@@ -23,6 +23,9 @@ const Users = () => {
 
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(true)
+
+  const [checkedIds, setCheckedIds] = useState([])
+
   const { users, dispatch } = useUsersContext()
   const { user } = useAuthContext()
 
@@ -38,7 +41,7 @@ const Users = () => {
 
       if (response.ok) {
         //this will invoke the reducer function in UserContextProvider
-        dispatch({ type: 'GET_USERS', payload: json })
+        dispatch({ type: 'users/get', payload: json })
         setIsLoading(false)
         setError(null)
       }
@@ -51,6 +54,22 @@ const Users = () => {
     }
   }, [dispatch, user])
 
+  // Delete User/s
+  const handleDeleteUsers = async () => {
+    // Delete item/s from the database - Backend
+    checkedIds.map(async id => {
+      const response = await fetch(`http://localhost:4000/api/user/${id}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${user.token}`
+        }
+      })
+    })
+
+    // Remove the item/s from the DataGrid - Frontend
+    dispatch({ type: 'users/delete', payload: checkedIds })
+  }
+
   const {
     //isLoading,
     isCreateUserFormOpen,
@@ -58,8 +77,8 @@ const Users = () => {
     //gridData,
     pageSize,
     setPageSize,
-    handleDeleteMultiple,
-    setCheckedItemsIds,
+    // handleDeleteMultiple,
+    //setCheckedItemsIds,
     showEditForm,
     showCreateForm
   } = useContext(UsersContext)
@@ -142,7 +161,7 @@ const Users = () => {
           <Button onClick={showCreateForm} variant="outlined">
             Add User
           </Button>
-          <Button onClick={handleDeleteMultiple} variant="outlined">
+          <Button onClick={handleDeleteUsers} variant="outlined">
             Delete Selected
           </Button>
         </Stack>
@@ -190,7 +209,7 @@ const Users = () => {
               LoadingOverlay: LinearProgress,
               NoRowsOverlay: CustomNoRowsOverlay
             }}
-            experimentalFeatures={{ newEditingApi: true }}
+            experimentalFeatures={{ newEditingApi: false }}
             loading={isLoading}
             pageSize={pageSize}
             onPageSizeChange={newPageSize => setPageSize(newPageSize)}
@@ -201,8 +220,8 @@ const Users = () => {
             disableSelectionOnClick
             onSelectionModelChange={ids => {
               // pass the ids to a state
-              // console.log(ids)
-              setCheckedItemsIds(ids)
+              console.log(ids)
+              setCheckedIds(ids)
             }}
           />
         ) : (

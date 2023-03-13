@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
+// import { useEffect, useState } from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import { ColorModeContext, useMode } from './theme'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 
@@ -27,33 +27,33 @@ import Missing from './components/missing/Missing.component'
 
 import { useAuthContext } from './hooks/useAuthContext'
 
-const API_URL = 'http://localhost:3500/scenePermissions'
+// const API_URL = 'http://localhost:3500/scenePermissions'
 
 function App() {
   const [theme, colorMode] = useMode()
-  const [allowedRoles, setAllowedRoles] = useState([])
+  // const [allowedRoles, setAllowedRoles] = useState([])
 
   const { user } = useAuthContext()
 
   // set where to redirect user after successful login
-  const location = useLocation()
-  console.log('location', location)
-  const fromLoc = location.pathname || '/dashboard'
-  console.log('fromLoc', fromLoc)
+  // const location = useLocation()
+  // console.log('location', location)
+  // const fromLoc = location.pathname || '/dashboard'
+  // console.log('fromLoc', fromLoc)
 
-  useEffect(() => {
-    const fetchItems = async () => {
-      try {
-        const response = await fetch(API_URL)
-        if (!response.ok) throw Error('Did not receive the expected data.')
-        const items = await response.json()
-        setAllowedRoles(items[0])
-      } catch (err) {
-        console.log(err.message)
-      }
-    }
-    fetchItems()
-  }, [])
+  // useEffect(() => {
+  //   const fetchItems = async () => {
+  //     try {
+  //       const response = await fetch(API_URL)
+  //       if (!response.ok) throw Error('Did not receive the expected data.')
+  //       const items = await response.json()
+  //       setAllowedRoles(items[0])
+  //     } catch (err) {
+  //       console.log(err.message)
+  //     }
+  //   }
+  //   fetchItems()
+  // }, [])
 
   return (
     <ColorModeContext.Provider value={colorMode}>

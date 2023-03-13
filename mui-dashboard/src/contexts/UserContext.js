@@ -4,10 +4,15 @@ export const UserContext = createContext({})
 
 export const usersReducer = (state, action) => {
     switch (action.type) {
-        case 'GET_USERS':
+        // creation of a user is handled in useRegisterUser hook
+        // case 'users/create':
+        //     return { users: [action.payload, ...state.users] }
+        case 'users/get':
             return { users: action.payload }
-        case 'CREATE_USER':
-            return { users: [action.payload, ...state.users] }
+        case 'users/delete':
+            return { users: state.users.filter(user => !action.payload.includes(user._id)) }
+        case 'users/update':
+            return state
         default:
             return state
     }
