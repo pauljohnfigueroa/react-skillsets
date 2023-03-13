@@ -150,7 +150,7 @@ const SideBar = () => {
           to="/profile-form"
         />
         <Item
-          title="Users (Admins Only)"
+          title="Users Management"
           icon={<PeopleOutlinedIcon />}
           selected={selected}
           setSelected={setSelected}

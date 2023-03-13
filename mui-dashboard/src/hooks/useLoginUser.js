@@ -14,9 +14,9 @@ export const useLoginUser = () => {
     }
 
     // set where to redirect user after successful login
-    const navigate = useNavigate()
-    const location = useLocation()
-    const fromLoc = location.state?.from?.pathname || '/dashboard'
+    // const navigate = useNavigate()
+    // const location = useLocation()
+    // const fromLoc = location.state?.from?.pathname || '/dashboard'
 
     const loginUser = async (email, password) => {
         setIsLoading(true)
@@ -46,9 +46,9 @@ export const useLoginUser = () => {
             setIsLoading(false)
 
             // if login is successfull, redirect user
-            if (json.token) {
-                navigate(fromLoc, { replace: true })
-            }
+            // if (json.token) {
+            //     navigate(fromLoc, { replace: true })
+            // }
         }
     }
 

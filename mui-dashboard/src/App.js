@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { ColorModeContext, useMode } from './theme'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 
@@ -24,13 +24,22 @@ import { InvoicesProvider } from './contexts/invoices.context'
 import Layout from './components/layout/Layout.component'
 import LoginForm from './scenes/login/LoginForm.component'
 import Missing from './components/missing/Missing.component'
-import RequireAuth from './utils/RequireAuth.util'
+
+import { useAuthContext } from './hooks/useAuthContext'
 
 const API_URL = 'http://localhost:3500/scenePermissions'
 
 function App() {
   const [theme, colorMode] = useMode()
   const [allowedRoles, setAllowedRoles] = useState([])
+
+  const { user } = useAuthContext()
+
+  // set where to redirect user after successful login
+  const location = useLocation()
+  console.log('location', location)
+  const fromLoc = location.pathname || '/dashboard'
+  console.log('fromLoc', fromLoc)
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -54,31 +63,32 @@ function App() {
           <ContactsProvider>
             <InvoicesProvider>
               <Routes>
-                <Route path="/" element={<LoginForm />} />
+                <Route path="/" element={user ? <Navigate to='/dashboard' /> : <LoginForm />} />
                 <Route path="/" element={<Layout />}>
                   {/* <Route element={<RequireAuth allowedRoles={allowedRoles?.DASHBOARD_PAGE} />}> */}
-                  <Route path="dashboard" element={<Dashboard />} />
+                  {/* <Route path="dashboard" element={user ? <Dashboard /> : <Navigate to="/" />} /> */}
                   {/* </Route> */}
 
                   {/* <Route
                     element={<RequireAuth allowedRoles={allowedRoles?.USERS_MANAGEMENT_PAGE} />}
                   > */}
-                  <Route path="users" element={<Users />} />
+                  {/* <Route path="users" element={user ? <Users /> : <Navigate to="/" />} /> */}
                   {/* </Route> */}
 
-                  {/* <Route element={<RequireAuth allowedRoles={allowedRoles?.CONTACTS_PAGE} />}> */}
-                  <Route path="contacts" element={<Contacts />} />
-                  {/* </Route> */}
 
-                  <Route path="invoices" element={<Invoices />} />
-                  <Route path="profile-form" element={<ProfileForm />} />
-                  <Route path="event-calendar" element={<EventCalendar />} />
-                  <Route path="faq" element={<Faq />} />
-                  <Route path="bar-chart" element={<Bar />} />
-                  <Route path="pie-chart" element={<Pie />} />
-                  <Route path="line-chart" element={<Line />} />
-                  <Route path="geography-chart" element={<Geography />} />
-                  <Route path="settings" element={<Settings />} />
+                  <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/" />} />
+                  <Route path="/users" element={user ? <Users /> : <Navigate to="/" />} />
+
+                  <Route path="/contacts" element={user ? <Contacts /> : <Navigate to="/" />} />
+                  <Route path="/invoices" element={user ? <Invoices /> : <Navigate to="/" />} />
+                  <Route path="/profile-form" element={user ? <ProfileForm /> : <Navigate to="/" />} />
+                  <Route path="/event-calendar" element={user ? <EventCalendar /> : <Navigate to="/" />} />
+                  <Route path="/faq" element={user ? <Faq /> : <Navigate to="/" />} />
+                  <Route path="/bar-chart" element={user ? <Bar /> : <Navigate to="/" />} />
+                  <Route path="/pie-chart" element={user ? <Pie /> : <Navigate to="/" />} />
+                  <Route path="/line-chart" element={user ? <Line /> : <Navigate to="/" />} />
+                  <Route path="/geography-chart" element={user ? <Geography /> : <Navigate to="/" />} />
+                  <Route path="/settings" element={user ? <Settings /> : <Navigate to="/" />} />
                 </Route>
                 <Route path="*" element={<Missing />} />
               </Routes>

@@ -1,10 +1,10 @@
 import { useState } from "react";
-// import { useAuthContext } from './useAuthContext'
+import { useAuthContext } from './useAuthContext'
 
 export const useRegisterUser = () => {
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
-    // const { dispatch } = useAuthContext()
+    const { user } = useAuthContext()
 
     const registerUser = async (email, name, password, phone, roles) => {
         setIsLoading(true)
@@ -13,7 +13,8 @@ export const useRegisterUser = () => {
         const response = await fetch('http://localhost:4000/api/user/register', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${user.token}`
             },
             body: JSON.stringify({ email, name, password, phone, roles })
         })

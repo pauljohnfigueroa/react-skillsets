@@ -59,31 +59,31 @@ export const UsersProvider = ({ children }) => {
 
   // }, [user])
 
-  const handleAddItem = async values => {
-    // get the last id
-    const response = await fetch(API_URL)
-    const data = await response.json()
-    const id = data.length ? data[data.length - 1].id + 1 : 1
-    const salt = bcrypt.genSaltSync(5)
-    const hashedPassword = bcrypt.hashSync(values.password, salt)
-    const newItem = { ...values, password: hashedPassword, id }
+  // const handleAddItem = async values => {
+  //   // get the last id
+  //   const response = await fetch(API_URL)
+  //   const data = await response.json()
+  //   const id = data.length ? data[data.length - 1].id + 1 : 1
+  //   const salt = bcrypt.genSaltSync(5)
+  //   const hashedPassword = bcrypt.hashSync(values.password, salt)
+  //   const newItem = { ...values, password: hashedPassword, id }
 
-    // Insert record in the backend
-    const result = await apiRequest('/api/user/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newItem)
-    })
+  //   // Insert record in the backend
+  //   const result = await apiRequest('/api/user/register', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify(newItem)
+  //   })
 
-    if (result) setFetchError(result)
-    setIsCreateUserFormOpen(false)
+  //   if (result) setFetchError(result)
+  //   setIsCreateUserFormOpen(false)
 
-    // update the front-end
-    const listItems = [...data, newItem]
-    setGridData(listItems)
-  }
+  //   // update the front-end
+  //   const listItems = [...data, newItem]
+  //   setGridData(listItems)
+  // }
 
   const handleUpdateItem = async () => {
     // update the backend
@@ -146,7 +146,7 @@ export const UsersProvider = ({ children }) => {
     setPageSize,
     setFetchError,
     setGridData,
-    handleAddItem,
+    // handleAddItem,
     handleUpdateItem,
     handleDeleteMultiple,
     showEditForm,

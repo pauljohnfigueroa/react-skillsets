@@ -149,6 +149,7 @@ const Users = () => {
       </Box>
 
       {isCreateUserFormOpen && <UserForm />}
+
       <Box
         m="10px 0 0 0"
         height="100vh"
@@ -177,6 +178,7 @@ const Users = () => {
         }}
       >
         {error && <p>Error: {error} </p>}
+
         {users ? (
           <DataGrid
             getRowId={row => row._id}
