@@ -161,7 +161,11 @@ const Users = () => {
           <Button onClick={showCreateForm} variant="outlined">
             Add User
           </Button>
-          <Button onClick={handleDeleteUsers} variant="outlined">
+          <Button
+            disabled={checkedIds.length ? false : true}
+            onClick={handleDeleteUsers}
+            variant="outlined"
+          >
             Delete Selected
           </Button>
         </Stack>
