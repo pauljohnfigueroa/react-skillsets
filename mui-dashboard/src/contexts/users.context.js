@@ -7,7 +7,7 @@ import { useAuthContext } from '../hooks/useAuthContext'
 const API_URL = 'http://localhost:3500/users'
 
 const initialValues = {
-  id: null,
+  _id: null,
   name: '',
   email: '',
   password: '',
@@ -107,19 +107,19 @@ export const UsersProvider = ({ children }) => {
     setGridData([...data])
   }
 
-  const handleDeleteMultiple = () => {
-    const items = gridData.filter(item => !checkedItemsIds.includes(item.id))
-    // remove the item/s from the front-end
-    setGridData(items)
-    //console.log(checkedItemsIds)
-    // delete items from the backend
-    const deleteOptions = { method: 'DELETE' }
-    checkedItemsIds.map(async id => {
-      const results = await apiRequest(`${API_URL}/${id}`, deleteOptions)
-      if (results) setFetchError(results)
-    })
-    setIsCreateUserFormOpen(false)
-  }
+  // const handleDeleteMultiple = () => {
+  //   const items = gridData.filter(item => !checkedItemsIds.includes(item.id))
+  //   // remove the item/s from the front-end
+  //   setGridData(items)
+  //   //console.log(checkedItemsIds)
+  //   // delete items from the backend
+  //   const deleteOptions = { method: 'DELETE' }
+  //   checkedItemsIds.map(async id => {
+  //     const results = await apiRequest(`${API_URL}/${id}`, deleteOptions)
+  //     if (results) setFetchError(results)
+  //   })
+  //   setIsCreateUserFormOpen(false)
+  // }
 
   const showEditForm = row => {
     setFormLabel('Update User Information')
@@ -148,7 +148,7 @@ export const UsersProvider = ({ children }) => {
     setGridData,
     // handleAddItem,
     handleUpdateItem,
-    handleDeleteMultiple,
+    // handleDeleteMultiple,
     showEditForm,
     setCheckedItemsIds,
     showCreateForm,

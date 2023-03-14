@@ -12,7 +12,7 @@ export const usersReducer = (state, action) => {
         case 'users/delete':
             return { users: state.users.filter(user => !action.payload.includes(user._id)) }
         case 'users/update':
-            return state
+            return { users: [...state.users, { ...action.payload }] }
         default:
             return state
     }

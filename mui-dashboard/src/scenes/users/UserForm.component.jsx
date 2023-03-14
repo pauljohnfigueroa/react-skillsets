@@ -16,15 +16,20 @@ import DialogTitle from '@mui/material/DialogTitle'
 
 import { UsersContext } from '../../contexts/users.context'
 
+import { useUsersContext } from '../../hooks/useUsersContext'
+import { useAuthContext } from '../../hooks/useAuthContext'
+
 const UserForm = () => {
   const isNonMobile = useMediaQuery('(min-width: 600px)')
   const { registerUser } = useRegisterUser()
+  const { dispatch } = useUsersContext()
+  const { user } = useAuthContext()
 
   const {
     initFormValues,
     isCreateUserFormOpen,
     setIsCreateUserFormOpen,
-    handleUpdateItem,
+    // handleUpdateItem,
     setFormValues,
     formLabel
   } = useContext(UsersContext)
@@ -37,6 +42,23 @@ const UserForm = () => {
     await registerUser(values.email, values.name, values.password, values.phone, values.roles)
   }
 
+  const handleUpdateUser = async values => {
+    // Delete item/s from the database - Backend
+    const response = await fetch(`http://localhost:4000/api/user/${values._id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${user.token}`
+      },
+      body: JSON.stringify(values)
+    })
+
+    const json = await response.json()
+
+    // Remove the item/s from the DataGrid - Frontend
+    dispatch({ type: 'users/update', payload: values })
+  }
+
   return (
     <div>
       <Dialog open={isCreateUserFormOpen} onClose={handleClose} fullWidth>
@@ -45,8 +67,10 @@ const UserForm = () => {
           <DialogContentText>Please fill up all the required ( * ) fields.</DialogContentText>
           <Formik
             onSubmit={
-              initFormValues.id
-                ? handleUpdateItem
+              initFormValues._id
+                ? (values, actions) => {
+                    handleUpdateUser(values)
+                  }
                 : (values, actions) => {
                     handleRegisterUser(values)
                   }
@@ -155,9 +179,9 @@ const UserForm = () => {
                     type="submit"
                     sx={{ minWidth: 100 }}
                     variant="contained"
-                    onClick={values.id ? () => setFormValues(values) : undefined}
+                    onClick={values._id ? () => setFormValues(values) : undefined}
                   >
-                    {values.id ? 'Update' : 'Save'}
+                    {values._id ? 'Update' : 'Save'}
                   </Button>
                 </DialogActions>
               </Form>
