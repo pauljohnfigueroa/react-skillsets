@@ -40,6 +40,7 @@ const UserForm = () => {
 
   const handleRegisterUser = async values => {
     await registerUser(values.email, values.name, values.password, values.phone, values.roles)
+    setIsCreateUserFormOpen(false)
   }
 
   const handleUpdateUser = async values => {
@@ -55,6 +56,7 @@ const UserForm = () => {
 
     // Remove the item/s from the DataGrid - Frontend
     dispatch({ type: 'users/update', payload: values })
+    setIsCreateUserFormOpen(false)
   }
 
   return (

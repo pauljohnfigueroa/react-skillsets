@@ -191,35 +191,31 @@ const Users = () => {
       >
         {error && <p>Error: {error} </p>}
 
-        {users ? (
-          <DataGrid
-            getRowId={row => row._id}
-            sx={{
-              boxShadow: 4
-            }}
-            components={{
-              Toolbar: GridToolbar,
-              LoadingOverlay: LinearProgress,
-              NoRowsOverlay: CustomNoRowsOverlay
-            }}
-            experimentalFeatures={{ newEditingApi: false }}
-            loading={isLoading}
-            pageSize={pageSize}
-            onPageSizeChange={newPageSize => setPageSize(newPageSize)}
-            rowsPerPageOptions={[5, 10, 20]}
-            rows={users}
-            columns={columns}
-            checkboxSelection
-            disableSelectionOnClick
-            onSelectionModelChange={ids => {
-              // pass the ids to a state
-              console.log(ids)
-              setCheckedIds(ids)
-            }}
-          />
-        ) : (
-          'Loading ...'
-        )}
+        <DataGrid
+          getRowId={row => row._id}
+          sx={{
+            boxShadow: 4
+          }}
+          components={{
+            Toolbar: GridToolbar,
+            LoadingOverlay: LinearProgress,
+            NoRowsOverlay: CustomNoRowsOverlay
+          }}
+          experimentalFeatures={{ newEditingApi: false }}
+          loading={isLoading}
+          pageSize={pageSize}
+          onPageSizeChange={newPageSize => setPageSize(newPageSize)}
+          rowsPerPageOptions={[5, 10, 20]}
+          rows={users ? users : []}
+          columns={columns}
+          checkboxSelection
+          disableSelectionOnClick
+          onSelectionModelChange={ids => {
+            // pass the ids to a state
+            console.log(ids)
+            setCheckedIds(ids)
+          }}
+        />
       </Box>
     </Box>
   )
