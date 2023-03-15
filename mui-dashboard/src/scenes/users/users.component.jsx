@@ -31,7 +31,6 @@ const Users = () => {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      setIsLoading(true)
       const response = await fetch(`http://localhost:4000/api/user`, {
         headers: {
           Authorization: `Bearer ${user.token}`
@@ -58,7 +57,7 @@ const Users = () => {
   const handleDeleteUsers = async () => {
     // Delete item/s from the database - Backend
     checkedIds.map(async id => {
-      const response = await fetch(`http://localhost:4000/api/user/${id}`, {
+      await fetch(`http://localhost:4000/api/user/${id}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${user.token}`
@@ -70,18 +69,8 @@ const Users = () => {
     dispatch({ type: 'users/delete', payload: checkedIds })
   }
 
-  const {
-    //isLoading,
-    isCreateUserFormOpen,
-    //fetchError,
-    //gridData,
-    pageSize,
-    setPageSize,
-    // handleDeleteMultiple,
-    //setCheckedItemsIds,
-    showEditForm,
-    showCreateForm
-  } = useContext(UsersContext)
+  const { isCreateUserFormOpen, pageSize, setPageSize, showEditForm, showCreateForm } =
+    useContext(UsersContext)
 
   const CustomNoRowsOverlay = () => {
     return error ? <Box sx={{ mt: 1 }}>{error}</Box> : <Box sx={{ mt: 1 }}>No Data.</Box>

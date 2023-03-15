@@ -44,7 +44,7 @@ const UserForm = () => {
 
   const handleUpdateUser = async values => {
     // Delete item/s from the database - Backend
-    const response = await fetch(`http://localhost:4000/api/user/${values._id}`, {
+    await fetch(`http://localhost:4000/api/user/${values._id}`, {
       method: 'PATCH',
       headers: {
         'Content-type': 'application/json',
@@ -52,8 +52,6 @@ const UserForm = () => {
       },
       body: JSON.stringify(values)
     })
-
-    const json = await response.json()
 
     // Remove the item/s from the DataGrid - Frontend
     dispatch({ type: 'users/update', payload: values })
