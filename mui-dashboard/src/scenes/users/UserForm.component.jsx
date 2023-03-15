@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { useRegisterUser } from '../../hooks/useRegisterUser'
 
 import { Formik, Form } from 'formik'
@@ -21,6 +21,8 @@ import { useAuthContext } from '../../hooks/useAuthContext'
 
 const UserForm = () => {
   const isNonMobile = useMediaQuery('(min-width: 600px)')
+
+  const [error, setError] = useState(null)
   const { registerUser } = useRegisterUser()
   const { dispatch } = useUsersContext()
   const { user } = useAuthContext()
@@ -45,7 +47,7 @@ const UserForm = () => {
 
   const handleUpdateUser = async values => {
     // Delete item/s from the database - Backend
-    await fetch(`http://localhost:4000/api/user/${values._id}`, {
+    const response = await fetch(`http://localhost:4000/api/user/${values._id}`, {
       method: 'PATCH',
       headers: {
         'Content-type': 'application/json',
@@ -54,6 +56,12 @@ const UserForm = () => {
       body: JSON.stringify(values)
     })
 
+    const json = await response.json()
+
+    // check for errors
+    if (!response.ok) {
+      setError(json.error)
+    }
     // Remove the item/s from the DataGrid - Frontend
     dispatch({ type: 'users/update', payload: values })
     setIsCreateUserFormOpen(false)
@@ -61,6 +69,7 @@ const UserForm = () => {
 
   return (
     <div>
+      {error && <div>{error}</div>}
       <Dialog open={isCreateUserFormOpen} onClose={handleClose} fullWidth>
         <DialogTitle>{formLabel}</DialogTitle>
         <DialogContent>

@@ -21,7 +21,7 @@ const Users = () => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
-  const [error, setError] = useState('')
+  const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
 
   const [checkedIds, setCheckedIds] = useState([])
@@ -37,6 +37,11 @@ const Users = () => {
         }
       })
       const json = await response.json()
+
+      // check for errors
+      if (!response.ok) {
+        setError(json.error)
+      }
 
       if (response.ok) {
         //this will invoke the reducer function in UserContextProvider
