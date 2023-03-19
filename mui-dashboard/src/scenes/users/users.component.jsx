@@ -10,6 +10,7 @@ import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutl
 
 import Header from '../../components/header/Header.component'
 import UserForm from './UserForm.component'
+import ConfirmDialog from '../../components/dialog/ConfirmDialog.component'
 
 import { UsersContext } from '../../contexts/users.context'
 import { tokens } from '../../theme'
@@ -23,6 +24,7 @@ const Users = () => {
 
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
+  const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false)
 
   const [checkedIds, setCheckedIds] = useState([])
 
@@ -60,18 +62,20 @@ const Users = () => {
 
   // Delete User/s
   const handleDeleteUsers = async () => {
-    // Delete item/s from the database - Backend
-    checkedIds.map(async id => {
-      await fetch(`http://localhost:4000/api/user/${id}`, {
-        method: 'DELETE',
-        headers: {
-          Authorization: `Bearer ${user.token}`
-        }
-      })
-    })
+    setIsConfirmDialogOpen(true)
 
-    // Remove the item/s from the DataGrid - Frontend
-    dispatch({ type: 'users/delete', payload: checkedIds })
+    // Delete item/s from the database - Backend
+    // checkedIds.map(async id => {
+    //   await fetch(`http://localhost:4000/api/user/${id}`, {
+    //     method: 'DELETE',
+    //     headers: {
+    //       Authorization: `Bearer ${user.token}`
+    //     }
+    //   })
+    // })
+
+    // // Remove the item/s from the DataGrid - Frontend
+    // dispatch({ type: 'users/delete', payload: checkedIds })
   }
 
   const { isCreateUserFormOpen, pageSize, setPageSize, showEditForm, showCreateForm } =
@@ -166,7 +170,7 @@ const Users = () => {
       </Box>
 
       {isCreateUserFormOpen && <UserForm />}
-
+      {isConfirmDialogOpen && <ConfirmDialog open={isConfirmDialogOpen} />}
       <Box
         m="10px 0 0 0"
         height="100vh"
