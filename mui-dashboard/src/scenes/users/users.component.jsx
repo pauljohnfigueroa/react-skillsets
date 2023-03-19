@@ -62,20 +62,28 @@ const Users = () => {
 
   // Delete User/s
   const handleDeleteUsers = async () => {
-    setIsConfirmDialogOpen(true)
-
     // Delete item/s from the database - Backend
-    // checkedIds.map(async id => {
-    //   await fetch(`http://localhost:4000/api/user/${id}`, {
-    //     method: 'DELETE',
-    //     headers: {
-    //       Authorization: `Bearer ${user.token}`
-    //     }
-    //   })
-    // })
+    checkedIds.map(async id => {
+      await fetch(`http://localhost:4000/api/user/${id}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${user.token}`
+        }
+      })
+    })
 
     // // Remove the item/s from the DataGrid - Frontend
-    // dispatch({ type: 'users/delete', payload: checkedIds })
+    dispatch({ type: 'users/delete', payload: checkedIds })
+    setIsConfirmDialogOpen(false)
+  }
+
+  const DeleteUserDialog = () => {
+    setIsConfirmDialogOpen(true)
+  }
+
+  const handleCloseDialog = () => {
+    setIsConfirmDialogOpen(false)
+    console.log('Dialog closed.')
   }
 
   const { isCreateUserFormOpen, pageSize, setPageSize, showEditForm, showCreateForm } =
@@ -161,7 +169,7 @@ const Users = () => {
           </Button>
           <Button
             disabled={checkedIds.length ? false : true}
-            onClick={handleDeleteUsers}
+            onClick={DeleteUserDialog}
             variant="outlined"
           >
             Delete Selected
@@ -170,7 +178,13 @@ const Users = () => {
       </Box>
 
       {isCreateUserFormOpen && <UserForm />}
-      {isConfirmDialogOpen && <ConfirmDialog open={isConfirmDialogOpen} />}
+      {isConfirmDialogOpen && (
+        <ConfirmDialog
+          open={isConfirmDialogOpen}
+          handleClose={handleCloseDialog}
+          handleConfirm={handleDeleteUsers}
+        />
+      )}
       <Box
         m="10px 0 0 0"
         height="100vh"

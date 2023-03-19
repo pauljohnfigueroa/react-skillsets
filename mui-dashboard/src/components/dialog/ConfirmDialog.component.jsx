@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import Dialog from '@mui/material/Dialog'
@@ -7,15 +6,10 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogContentText from '@mui/material/DialogContentText'
 import DialogTitle from '@mui/material/DialogTitle'
 
-const ConfirmDialog = ({ open }) => {
-  const handleClose = () => {
-    // setOpen(false)
-    console.log('closed')
-  }
-
+const ConfirmDialog = ({ open, handleClose, handleConfirm }) => {
   return (
     <div>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={open}>
         <DialogTitle>Confirm Delete</DialogTitle>
         <DialogContent>
           <DialogContentText>
@@ -34,7 +28,7 @@ const ConfirmDialog = ({ open }) => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Delete</Button>
+          <Button onClick={handleConfirm}>Delete</Button>
         </DialogActions>
       </Dialog>
     </div>
