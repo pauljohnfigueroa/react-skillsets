@@ -10,7 +10,7 @@ import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutl
 
 import Header from '../../components/header/Header.component'
 import UserForm from './UserForm.component'
-import ConfirmDialog from '../../components/dialog/ConfirmDialog.component'
+import ConfirmDialogForm from '../../components/dialog/ConfirmDialog.component'
 
 import { UsersContext } from '../../contexts/users.context'
 import { tokens } from '../../theme'
@@ -179,7 +179,7 @@ const Users = () => {
 
       {isCreateUserFormOpen && <UserForm />}
       {isConfirmDialogOpen && (
-        <ConfirmDialog
+        <ConfirmDialogForm
           open={isConfirmDialogOpen}
           handleClose={handleCloseDialog}
           handleConfirm={handleDeleteUsers}

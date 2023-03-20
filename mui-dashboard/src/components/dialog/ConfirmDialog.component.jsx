@@ -7,11 +7,23 @@ import DialogContentText from '@mui/material/DialogContentText'
 import DialogTitle from '@mui/material/DialogTitle'
 
 import { Formik, Form } from 'formik'
-// import * as yup from 'yup'
+import * as yup from 'yup'
 
-const ConfirmDialog = ({ open, handleClose, handleConfirm }) => {
+const dialogSchema = yup.object().shape({
+  confirmation: yup
+    .string()
+    .matches('delete', "Please type 'delete' to confirm action.")
+    .required('Required')
+})
+
+const ConfirmDialogForm = ({ open, handleClose, handleConfirm }) => {
   const handleConfirmSubmit = values => {
-    console.log('Confirmed delete', values._id)
+    if (values.confirmation !== 'delete') {
+      //console.log("Please type 'delete' to confirm action.")
+      return
+    }
+    //console.log('Confirmed delete', values.confirmation)
+    handleConfirm()
   }
 
   return (
@@ -21,23 +33,41 @@ const ConfirmDialog = ({ open, handleClose, handleConfirm }) => {
         <DialogContent>
           <DialogContentText>
             You are going to delete an item from the database. Please type <em>delete</em> to
-            confirm.
+            confirm action.
           </DialogContentText>
-          <Formik onSubmit={(values, actions) => handleConfirmSubmit(values)} initialValues="">
+          <Formik
+            onSubmit={(values, actions) => {
+              handleConfirmSubmit(values)
+            }}
+            initialValues={{ confirmation: '' }}
+            validationSchema={dialogSchema}
+          >
             {({ values, errors, touched, handleBlur, handleChange, handleSubmit }) => (
               <Form>
                 <TextField
                   autoFocus
                   margin="dense"
-                  id="confirm"
+                  id="confirmation"
+                  name="confirmation"
                   label="Confirmation"
                   type="text"
                   fullWidth
                   variant="standard"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={!!touched.confirmation && !!errors.confirmation}
+                  helperText={touched.confirmation && errors.confirmation}
                 />
                 <DialogActions>
-                  <Button onClick={handleClose}>Cancel</Button>
-                  <Button type="submit" sx={{ minWidth: 100 }} variant="contained">
+                  <Button onClick={handleClose} variant="contained">
+                    Cancel
+                  </Button>
+                  <Button
+                    disabled={values.confirmation !== 'delete' ? true : false}
+                    type="submit"
+                    sx={{ minWidth: 100 }}
+                    variant="outlined"
+                  >
                     Delete
                   </Button>
                 </DialogActions>
@@ -50,4 +80,4 @@ const ConfirmDialog = ({ open, handleClose, handleConfirm }) => {
   )
 }
 
-export default ConfirmDialog
+export default ConfirmDialogForm
