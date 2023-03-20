@@ -9,50 +9,52 @@ import DialogTitle from '@mui/material/DialogTitle'
 import { Formik, Form } from 'formik'
 import * as yup from 'yup'
 
-const dialogSchema = yup.object().shape({
-  confirmation: yup
-    .string()
-    .matches('delete', "Please type 'delete' to confirm action.")
-    .required('Required')
-})
+const ConfirmDialogForm = ({ open, confirmationStr, handleClose, handleConfirm }) => {
+  const initialValues = {
+    confirmation: ''
+  }
 
-const ConfirmDialogForm = ({ open, handleClose, handleConfirm }) => {
+  const dialogSchema = yup.object().shape({
+    confirmation: yup
+      .string()
+      .matches(confirmationStr, `Please type "${confirmationStr}" to confirm action.`)
+      .required('Required')
+  })
+
   const handleConfirmSubmit = values => {
-    if (values.confirmation !== 'delete') {
-      //console.log("Please type 'delete' to confirm action.")
+    if (values.confirmation !== confirmationStr) {
+      console.log(confirmationStr)
       return
     }
-    //console.log('Confirmed delete', values.confirmation)
     handleConfirm()
   }
 
   return (
     <div>
       <Dialog open={open}>
-        <DialogTitle>Confirm Delete</DialogTitle>
+        <DialogTitle>Confirm Action</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            You are going to delete an item from the database. Please type <em>delete</em> to
+            You are going to delete record/s from the database. Please type <em>delete</em> to
             confirm action.
           </DialogContentText>
           <Formik
-            onSubmit={(values, actions) => {
+            onSubmit={values => {
               handleConfirmSubmit(values)
             }}
-            initialValues={{ confirmation: '' }}
+            initialValues={initialValues}
             validationSchema={dialogSchema}
           >
             {({ values, errors, touched, handleBlur, handleChange, handleSubmit }) => (
               <Form>
                 <TextField
-                  autoFocus
-                  margin="dense"
-                  id="confirmation"
-                  name="confirmation"
-                  label="Confirmation"
-                  type="text"
                   fullWidth
-                  variant="standard"
+                  margin="dense"
+                  label="Confirm Action"
+                  type="text"
+                  variant="outlined"
+                  value={values.confirmation}
+                  name="confirmation"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   error={!!touched.confirmation && !!errors.confirmation}
@@ -63,7 +65,7 @@ const ConfirmDialogForm = ({ open, handleClose, handleConfirm }) => {
                     Cancel
                   </Button>
                   <Button
-                    disabled={values.confirmation !== 'delete' ? true : false}
+                    disabled={values.confirmation !== confirmationStr ? true : false}
                     type="submit"
                     sx={{ minWidth: 100 }}
                     variant="outlined"

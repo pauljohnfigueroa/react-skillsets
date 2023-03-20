@@ -183,6 +183,7 @@ const Users = () => {
           open={isConfirmDialogOpen}
           handleClose={handleCloseDialog}
           handleConfirm={handleDeleteUsers}
+          confirmationStr="delete"
         />
       )}
       <Box
